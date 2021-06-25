@@ -1,0 +1,17 @@
+.. _tag-t-tagged:
+
+**************************************************
+tagged タグ
+**************************************************
+タグを設定したすべてのタスクを実行します。ただし、タグ never を設定したタスクは除きます。
+
+.. literalinclude:: ./yaml/tag4.yml
+   :language: yaml
+
+上記のプレイにタグ tagged を指定して実行しました。タグ never 以外のタグを設定したタスクを実行しました。
+
+.. literalinclude:: ./log/tag-t-tagged-1.log
+   :language: none
+
+.. literalinclude:: ./log/tag-t-tagged-2.log
+   :language: none

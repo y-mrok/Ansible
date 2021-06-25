@@ -1,0 +1,17 @@
+---
+- name: Example of error handling usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: First processing
+      ansible.builtin.debug:
+
+    - name: Checking file differences
+      ansible.builtin.command: diff file1 file2
+      any_errors_fatal: yes
+      register: result_of_diff
+      failed_when: result_of_diff['rc'] >= 2
+      
+    - name: Last processing
+      ansible.builtin.debug:

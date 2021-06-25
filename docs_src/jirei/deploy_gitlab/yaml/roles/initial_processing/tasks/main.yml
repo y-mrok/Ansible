@@ -1,0 +1,13 @@
+---
+# roles/initial_processing/tasks/main.yml
+# ・初期処理
+# 　・インストール済みのすべてのパッケージを最新状態に更新
+
+- name: インストール済みパッケージを更新
+  ansible.builtin.dnf:
+    name: '*'
+    state: latest
+  notify: reboot_system
+
+- name: ハンドラーを実行（再起動）
+  ansible.builtin.meta: flush_handlers

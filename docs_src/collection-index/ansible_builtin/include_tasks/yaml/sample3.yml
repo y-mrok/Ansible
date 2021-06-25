@@ -1,0 +1,13 @@
+- name: Example of "ansible.builtin.include_tasks" usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Message No.1
+      ansible.builtin.debug:
+    
+    - name: Include tasks
+      ansible.builtin.include_tasks: ./includes/inc_task3.yml
+
+    - name: Message No.2
+      ansible.builtin.debug:

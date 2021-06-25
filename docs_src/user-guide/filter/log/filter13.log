@@ -1,0 +1,18 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter13.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Extract file names] ****************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "/usr/local/bin/foobar -> foobar"
+}
+
+TASK [Extract directory] *****************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "/usr/local/bin/foobar -> /usr/local/bin"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

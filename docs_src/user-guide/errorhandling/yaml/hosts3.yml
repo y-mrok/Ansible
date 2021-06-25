@@ -1,0 +1,21 @@
+---
+all:
+  children:
+    centos8:
+      hosts:
+        hydrogen:
+        helium:
+        lithium:
+    cenos7 :
+      hosts:
+        beryllium:
+        boron:
+        carbon:
+    ubuntu20:
+      hosts:
+        oxygen:
+        nitrogen:
+        fluorine:
+    ubuntu18:
+      hosts:
+        neon:

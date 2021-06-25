@@ -1,0 +1,20 @@
+---
+# roles/configure_firewall_and_start_service/tasks/main.yml
+# ・ファイアウォールに穴を開ける
+# ・サービスを起動する ＆ 再起動時にサービスを自動起動する
+
+- name: ファイアウォールに穴あけ
+  ansible.posix.firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    zone: public
+    immediate: yes
+    state: enabled
+  loop: "{{ zabbix_ports }}"
+
+- name: サービスを起動（自動起動あり）
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop: "{{ zabbix_services }}"

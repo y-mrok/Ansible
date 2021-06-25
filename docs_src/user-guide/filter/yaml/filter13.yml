@@ -1,0 +1,15 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  vars:
+    path: /usr/local/bin/foobar
+
+  tasks:
+    - name: Extract file names
+      ansible.builtin.debug:
+        msg: "{{ path }} -> {{ path | basename }}"
+    - name: Extract directory
+      ansible.builtin.debug:
+        msg: "{{ path }} -> {{ path | dirname }}"

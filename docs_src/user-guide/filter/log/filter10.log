@@ -1,0 +1,61 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter10.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Convert to bool type] **************************************************************************************************************************
+ok: [hydrogen] => (item=-1) => {
+    "msg": "Cast the -1 set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=0) => {
+    "msg": "Cast the 0 set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=1) => {
+    "msg": "Cast the 1 set in item to a bool type. -> True"
+}
+ok: [hydrogen] => (item=100) => {
+    "msg": "Cast the 100 set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=0.0) => {
+    "msg": "Cast the 0.0 set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=1.0) => {
+    "msg": "Cast the 1.0 set in item to a bool type. -> True"
+}
+ok: [hydrogen] => (item=1.1) => {
+    "msg": "Cast the 1.1 set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=yes) => {
+    "msg": "Cast the yes set in item to a bool type. -> True"
+}
+ok: [hydrogen] => (item=true) => {
+    "msg": "Cast the true set in item to a bool type. -> True"
+}
+ok: [hydrogen] => (item=True) => {
+    "msg": "Cast the True set in item to a bool type. -> True"
+}
+ok: [hydrogen] => (item=TRUE) => {
+    "msg": "Cast the TRUE set in item to a bool type. -> True"
+}
+ok: [hydrogen] => (item=no) => {
+    "msg": "Cast the no set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=false) => {
+    "msg": "Cast the false set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=False) => {
+    "msg": "Cast the False set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=FALSE) => {
+    "msg": "Cast the FALSE set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=abc) => {
+    "msg": "Cast the abc set in item to a bool type. -> False"
+}
+ok: [hydrogen] => (item=None) => {
+    "msg": "Cast the  set in item to a bool type. -> "
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

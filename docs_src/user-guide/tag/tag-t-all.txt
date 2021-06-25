@@ -1,0 +1,30 @@
+.. _tag-t-all:
+
+**************************************************
+all タグ
+**************************************************
+タグ never を設定したタスクを除いたすべてのタスクを実行します。
+
+.. literalinclude:: ./yaml/tag4.yml
+   :language: yaml
+
+上記のプレイにタグ all を指定して実行しました。タグ never を設定したタスク以外のタスクを実行しました。
+
+.. literalinclude:: ./log/tag-t-all-1.log
+   :language: none
+
+.. literalinclude:: ./log/tag-t-all-2.log
+   :language: none
+
+これは ``--tags`` パラメーターを指定しないときの結果と同じです。
+
+.. literalinclude:: ./log/tag-t-all-3.log
+   :language: none
+
+タグ never を設定したタスクを含むプレイ内のすべてのタスクを実行するには ``--tags`` パラメーターにタグ all とタグ never を設定します。
+
+.. literalinclude:: ./log/tag-t-all-4.log
+   :language: none
+
+.. literalinclude:: ./log/tag-t-all-5.log
+   :language: none

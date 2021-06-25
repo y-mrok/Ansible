@@ -1,0 +1,76 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts.yml roles4.yml
+
+PLAY [Example of using roles] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [hydrogen]
+
+TASK [The ansible.builtin.include_role module with the loop directive set] ***************************************************************************
+
+TASK [loop-test3 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test3 : Display the contents of the variable item] ****************************************************************************************
+ok: [hydrogen] => (item=A) => {
+    "msg": "Outside of roles -> 1 , Inside of roles -> A."
+}
+ok: [hydrogen] => (item=B) => {
+    "msg": "Outside of roles -> 1 , Inside of roles -> B."
+}
+ok: [hydrogen] => (item=C) => {
+    "msg": "Outside of roles -> 1 , Inside of roles -> C."
+}
+
+TASK [loop-test3 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+TASK [loop-test3 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test3 : Display the contents of the variable item] ****************************************************************************************
+ok: [hydrogen] => (item=A) => {
+    "msg": "Outside of roles -> 2 , Inside of roles -> A."
+}
+ok: [hydrogen] => (item=B) => {
+    "msg": "Outside of roles -> 2 , Inside of roles -> B."
+}
+ok: [hydrogen] => (item=C) => {
+    "msg": "Outside of roles -> 2 , Inside of roles -> C."
+}
+
+TASK [loop-test3 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+TASK [loop-test3 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test3 : Display the contents of the variable item] ****************************************************************************************
+ok: [hydrogen] => (item=A) => {
+    "msg": "Outside of roles -> 3 , Inside of roles -> A."
+}
+ok: [hydrogen] => (item=B) => {
+    "msg": "Outside of roles -> 3 , Inside of roles -> B."
+}
+ok: [hydrogen] => (item=C) => {
+    "msg": "Outside of roles -> 3 , Inside of roles -> C."
+}
+
+TASK [loop-test3 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/role$ 

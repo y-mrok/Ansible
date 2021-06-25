@@ -1,0 +1,17 @@
+.. _tag-t-untagged:
+
+**************************************************
+untagged タグ
+**************************************************
+ タグを設定していないタスクとタグ always を設定したタスクを実行します。
+
+.. literalinclude:: ./yaml/tag4.yml
+   :language: yaml
+
+上記のプレイにタグ untagged を指定して実行しました。タグを設定していないタスクとタグ always を設定したタスクを実行しました。
+
+.. literalinclude:: ./log/tag-t-untagged-1.log
+   :language: none
+
+.. literalinclude:: ./log/tag-t-untagged-2.log
+   :language: none

@@ -1,0 +1,3 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts2.yml roles6.yml
+ERROR! 'ansible_facts' is undefined
+piyo@vmpc:~/example/role$ 

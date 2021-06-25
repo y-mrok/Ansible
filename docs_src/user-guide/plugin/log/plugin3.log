@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/plugin$ ansible-playbook -i hosts.yml plugin3.yml
+
+PLAY [Examples of plugin usage.] *********************************************************************************************************************
+
+TASK [Get the value of the PATH environment variable] ************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "/home/piyo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/plugin$ 

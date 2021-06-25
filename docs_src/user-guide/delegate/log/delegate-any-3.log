@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/delegate$ ansible-playbook -i beryllium.exam.local, delegate12.yml 
+
+PLAY [Delegate the execution of a task] *****************************************************************************************************
+
+TASK [Get the hostname of a node] ***********************************************************************************************************
+changed: [beryllium.exam.local]
+
+TASK [Display the retrieved hostname] *******************************************************************************************************
+ok: [beryllium.exam.local] => {
+    "msg": "The hostname of the node is beryllium.exam.local."
+}
+
+PLAY RECAP **********************************************************************************************************************************
+beryllium.exam.local       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/delegate$ 

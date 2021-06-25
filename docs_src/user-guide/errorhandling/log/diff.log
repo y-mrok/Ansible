@@ -1,0 +1,8 @@
+[ansible-user@hydrogen ~]$ diff file1 file2
+1c1
+< abc
+---
+> xyz
+[ansible-user@hydrogen ~]$ echo $?
+1
+[ansible-user@hydrogen ~]$ 

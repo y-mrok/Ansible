@@ -1,0 +1,17 @@
+piyo@vmpc:~/example/lint$ ansible-lint apache.yml 
+WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: apache.yml
+WARNING  Listing 2 violation(s) that are fatal
+package-latest: Package installs should not use latest
+apache.yml:7 Task/Handler: Install Apache
+
+risky-file-permissions: File permissions unset or incorrect
+apache.yml:16 Task/Handler: copy index.html
+
+You can skip specific rules or tags by adding them to your configuration file:
+# .ansible-lint
+warn_list:  # or 'skip_list' to silence them completely
+  - experimental  # all rules tagged as experimental
+  - package-latest  # Package installs should not use latest
+
+Finished with 1 failure(s), 1 warning(s) on 1 files.
+piyo@vmpc:~/example/lint$ 

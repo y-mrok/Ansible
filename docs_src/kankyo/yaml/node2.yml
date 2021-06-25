@@ -1,0 +1,48 @@
+# node.yml
+---
+- name: 管理対象ノードに接続用のアカウントを作成
+  hosts: all
+
+  vars:
+    account: ansible-user
+
+  tasks:   
+    - name: 鍵を作成
+      community.crypto.openssh_keypair:
+        path: ~/.ssh/id_ed25519
+        type: ed25519
+        state: present
+      run_once: yes
+      delegate_to: localhost
+    
+    - name: アカウント ansible-user を作成
+      ansible.builtin.user:
+        name: "{{ account }}"
+      become: yes
+    
+    - name: 管理対象ノードに鍵を登録
+      ansible.posix.authorized_key:
+        user: "{{ account }}"
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+      become: yes
+    
+    - name: sudo 用ファイルをコピー / Linux
+      ansible.builtin.copy:
+        src: ./sudo.txt
+        dest: /etc/sudoers.d/ansible-user
+        owner: root
+        group: root
+        mode: '0440'
+      when: ansible_facts['distribution'] !=  'FreeBSD'
+      become: yes
+    
+    - name: sudo 用ファイルをコピー / FreeBSD
+      ansible.builtin.copy:
+        src: ./sudo.txt
+        dest: /usr/local/etc/sudoers.d/ansible-user
+        owner: root
+        group: wheel
+        mode: '0440'
+      when: ansible_facts['distribution'] ==  'FreeBSD'
+      become: yes

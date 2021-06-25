@@ -1,0 +1,10 @@
+---
+- name: Delegate the execution of a task
+  hosts: web
+  gather_facts: no
+
+  tasks:
+    - name: include any tasks
+      ansible.builtin.include_tasks:
+        file: ./inc_tasks.yml
+      delegate_to: helium

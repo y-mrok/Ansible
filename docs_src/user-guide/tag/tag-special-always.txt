@@ -1,0 +1,33 @@
+.. _tag-special-always:
+
+**************************************************
+always タグ
+**************************************************
+常に実行するタスクに **always** タグを設定します。 ``--tags`` パラメーターや ``--skip-tags`` パラメーターでタグを指定してもタグ **always** を設定したタスクは常に実行します。
+
+.. literalinclude:: ./yaml/tag2.yml
+   :language: yaml
+
+``--tags`` パラメーターでタグ job1 を設定したログです。タグ job1 以外にタグ always を設定したタスクも実行されました。
+
+.. literalinclude:: ./log/tag-special-1.log
+   :language: none
+
+.. literalinclude:: ./log/tag-special-2.log
+   :language: none
+
+``--tags`` パラメーターでタグ always を指定すると、タグ always を設定したタスクだけを実行します。
+
+.. literalinclude:: ./log/tag-special-3.log
+   :language: none
+
+.. literalinclude:: ./log/tag-special-4.log
+   :language: none
+
+``--skip-tags`` パラメーターでタグ always を指定すると、タグ always を設定したタスクだけをスキップします。
+
+.. literalinclude:: ./log/tag-special-5.log
+   :language: none
+
+.. literalinclude:: ./log/tag-special-6.log
+   :language: none

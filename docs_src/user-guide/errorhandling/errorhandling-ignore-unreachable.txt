@@ -1,0 +1,89 @@
+.. _errorhandling-ignore-unreachable:
+
+**************************************************
+不達エラー（ unreachable ）を無視する
+**************************************************
+``ignore_unreachable`` ディレクティブを使用して、管理対象ノードへの不達（ unreachable ）エラーを無視します。
+
+.. _errorhandling-ignore-unreachable-shinai:
+
+不達エラーを無視しない
+==================================================
+管理対象ノードの電源を OFF にして不達エラーを発生させます。まず :command:`ssh` コマンドを実行して、管理対象ノードに到達できないことを確認します。
+
+.. literalinclude:: ./log/ssh.log
+   :language: none
+
+管理対象ノード上の 2 つのファイルを比較するプレイです。インベントリは管理対象ノード hydrogen だけを定義しました。
+
+.. literalinclude:: ./yaml/error3.yml
+   :language: yaml
+
+実行ログです。
+
+.. literalinclude:: ./log/error3.log
+   :language: none
+
+次のメッセージから管理対象ノードに不達だったことがわかります。
+
+.. code-block:: none
+
+   "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.23.11 port 22: No route to host"
+
+.. code-block:: none
+
+   "unreachable": true
+
+.. _errorhandling-ignore-unreachable-suru:
+
+不達エラーを無視する
+==================================================
+``ignore_unreachable`` ディレクティブを使用してエラーを無視します。 ``ignore_unreachable`` ディレクティブの設定値です。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 5
+
+   * - 設定値
+     - 意味
+   * - yes
+     - 不達エラーを無視する
+   * - no
+     - 不達エラーを無視しない（既定値）
+
+``ignore_unreachable`` ディレクティブを使用して書き直したプレイです。
+
+.. literalinclude:: ./yaml/error4.yml
+   :language: yaml
+   :emphasize-lines: 13
+
+実行ログです。不達エラーは発生しましたが、最後のタスクまで実行しました。
+
+.. literalinclude:: ./log/error4.log
+   :language: none
+
+エラーメッセージ内に次の内容が追加され、エラーが発生した結果、タスクの実行がスキップしたことがわかります。
+
+.. code-block:: none
+
+   "skip_reason": "Host hydrogen is unreachable"
+
+.. _errorhandling-ignore-unreachable-play-recap:
+
+PLAY RECAP
+==================================================
+不達エラーを無視しないときの PLAY RECAP です。
+
+.. code-block:: none
+
+   PLAY RECAP *******************************************************************************************************************************************
+   hydrogen                   : ok=1    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
+``ignore_unreachable`` ディレクティブを指定して不達エラーを無視したときの PLAY RECAP です。
+
+.. code-block:: none
+
+   PLAY RECAP *******************************************************************************************************************************************
+   hydrogen                   : ok=2    changed=0    unreachable=1    failed=0    skipped=1    rescued=0    ignored=0   
+
+不達エラーを無視しない／したに関わらず **unreachable** はカウントされました。無視した場合は不達エラーになったタスクの実行をスキップしたので **skipped** もカウントされました。

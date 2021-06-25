@@ -1,0 +1,11 @@
+piyo@vmpc:~/example/tag$ ansible-playbook -i hosts.yml tag1.yml --skip-tags job1 --list-tasks
+
+playbook: tag1.yml
+
+  play #1 (all): Examples of tag usage  TAGS: []
+    tasks:
+      task#2    TAGS: [job2]
+      task#5    TAGS: []
+      task#6    TAGS: [job3]
+      task#7    TAGS: [job2, job3]
+piyo@vmpc:~/example/tag$ 

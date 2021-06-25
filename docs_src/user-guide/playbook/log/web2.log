@@ -1,0 +1,25 @@
+piyo@vmpc:~/example/ex4$ ansible-playbook -i hosts.yml web.yml
+
+PLAY [Building a Web Server] *************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [helium]
+ok: [lithium]
+
+TASK [Install Apache] ********************************************************************************************************************************
+ok: [lithium]
+ok: [helium]
+
+TASK [Enabling Apache services and starting services at startup] *************************************************************************************
+ok: [helium]
+ok: [lithium]
+
+TASK [Open up the http service in the firewall] ******************************************************************************************************
+ok: [helium]
+ok: [lithium]
+
+PLAY RECAP *******************************************************************************************************************************************
+helium                     : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lithium                    : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/ex4$ 

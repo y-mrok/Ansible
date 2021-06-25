@@ -1,0 +1,17 @@
+---
+- name: Example of loop usage
+  hosts: hydrogen
+  gather_facts: no
+
+  tasks:
+    - name: Create an account
+      ansible.builtin.debug:
+        var: item
+      loop:
+        - user_name: hanako-san
+          user_password: hanako-no-password
+        - user_name: taro-san
+          user_password: taro-no-password
+        - user_name: jiro-san
+          user_password: jiro-no-password
+      

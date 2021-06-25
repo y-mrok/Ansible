@@ -1,0 +1,20 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Create a user account for password authentication.
+      ansible.builtin.user:
+        name: "{{ item['name'] }}"
+        password: "{{ item['password'] | password_hash('sha512') }}"
+      loop: "{{ accounts }}"
+      vars:
+        accounts:
+          - name: taro
+            password: taropass
+          - name: jiro
+            password: jiropass
+          - name: hanako
+            password: hanakopass
+      become: yes

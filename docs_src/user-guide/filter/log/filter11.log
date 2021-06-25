@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter11.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Create a user account for password authentication.] ********************************************************************************************
+changed: [hydrogen] => (item={'name': 'taro', 'password': 'taropass'})
+changed: [hydrogen] => (item={'name': 'jiro', 'password': 'jiropass'})
+changed: [hydrogen] => (item={'name': 'hanako', 'password': 'hanakopass'})
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

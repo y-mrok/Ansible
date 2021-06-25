@@ -1,0 +1,26 @@
+---
+- name: Examples of tag usage / play No.1
+  hosts: all
+  gather_facts: no
+  tags: play1
+
+  tasks:
+    - name: task-1
+      ansible.builtin.debug:
+    - name: task-2
+      ansible.builtin.debug:
+    - name: task-3
+      ansible.builtin.debug:
+
+- name: Examples of tag usage / play No.2
+  hosts: all
+  gather_facts: no
+  tags: play2
+
+  tasks:
+    - name: task-4
+      ansible.builtin.debug:
+    - name: task-5
+      ansible.builtin.debug:
+    - name: task-6
+      ansible.builtin.debug:

@@ -1,0 +1,4 @@
+---
+db_user: scott
+db_pass: tiger
+db_port: 1521

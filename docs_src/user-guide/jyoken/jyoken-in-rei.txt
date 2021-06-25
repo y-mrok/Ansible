@@ -1,0 +1,95 @@
+.. _jyoken-in-rei:
+
+**************************************************
+使用例
+**************************************************
+in / not in の使用例です。
+
+.. _jyoken-in-rei-kihon:
+
+基本的な使い方
+==================================================
+使用するインベントリです。
+
+.. literalinclude:: ./yaml/hosts.yml
+   :language: yaml
+
+インベントリ内のホスト名は OS のディストリビューション名 + バージョンです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 2
+
+   * - インベントリ内のホスト名
+     - ディストリビューション名 + バージョン
+   * - centos83
+     - CentOS 8.3
+   * - centos79
+     - CentOS 7.9
+   * - ubuntu2004
+     - Ubuntu 20.04 LTS
+   * - ubuntu 1804
+     - Ubuntu 18.04 LTS
+   * - debian108
+     - Debian 10.8
+   * - debian913
+     - Debian 9.13
+   * - opensuse152
+     - openSUSE Leap 15.2
+   * - fedora33
+     - Fedora 33
+
+ディストリビューションが Debian 、 openSUSE Leap 、Fedora の管理対象ノードを再起動するプレイと実行ログです。
+
+.. literalinclude:: ./yaml/when8.yml
+   :language: yaml
+   :emphasize-lines: 8
+
+.. literalinclude:: ./log/when8.log
+   :language: none
+
+ディストリビューションが Debian 、 openSUSE Leap 、Fedora のいずれでもない管理対象ノードを再起動するプレイと実行ログです。
+
+.. literalinclude:: ./yaml/when9.yml
+   :language: yaml
+   :emphasize-lines: 8
+
+.. literalinclude:: ./log/when9.log
+   :language: none
+
+.. _jyoken-in-rei-hensu-ni-okikae:
+
+列記する値を変数に置き換える
+==================================================
+ディストリビューションが Debian 、 openSUSE Leap 、Fedora の管理対象ノードを再起動するプレイの条件内のディストリビューション名の列記部分をタスク変数を使用して書き換えたプレイです。
+
+.. literalinclude:: ./yaml/when10.yml
+   :language: yaml
+   :emphasize-lines: 8-13
+
+同様に変数を vars セクションで定義したプレイです。
+
+.. literalinclude:: ./yaml/when11.yml
+   :language: yaml
+   :emphasize-lines: 5-9, 14
+
+列記する値にマジック変数を指定した例です。使用するインベントリです。
+
+.. literalinclude:: ./yaml/hosts1.yml
+   :language: yaml
+
+webservers グループに含まれる管理対象ノードに最新版の Apache をインストールするプレイです。
+
+.. literalinclude:: ./yaml/when12.yml
+   :language: yaml
+   :emphasize-lines: 10
+
+マジック変数 groups の内容です。 webservers グループの管理対象ノードは groups['webservers'] 内に格納されています。
+
+.. literalinclude:: ./log/groups.log
+   :language: none
+
+実行ログです。
+
+.. literalinclude:: ./log/when12.log
+   :language: none

@@ -1,0 +1,7 @@
+.
+├── hosts.yml
+├── roles
+│   └── loop-test
+│       └── tasks
+│           └── main.yml
+└── roles1.yml

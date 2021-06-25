@@ -1,0 +1,50 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts2.yml webservers3.yml 
+
+PLAY [Example of using roles] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+ok: [ubuntu2004]
+
+TASK [basic_webserver_configuration2 : Install the latest version of the httpd package.] *************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [basic_webserver_configuration2 : Set the server name for Apache.] ******************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [basic_webserver_configuration2 : Set the http port for httpd.conf.] ****************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [basic_webserver_configuration2 : Change the group and user for the /var/www/html directory.] ***************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [basic_webserver_configuration2 : Change the group and user for the /var/www/cgi-bin directory.] ************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [basic_webserver_configuration2 : Copying content.] *********************************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [basic_webserver_configuration2 : Open a hole in the firewall of the CentOS management node for the http port.] *********************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+RUNNING HANDLER [basic_webserver_configuration2 : Syntax check of httpd.conf.] ***********************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [basic_webserver_configuration2 : Restart or start httpd.service.] *******************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [basic_webserver_configuration2 : Reload the firewalld configuration.] ***************************************************************
+changed: [centos83]
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=11   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2004                 : ok=1    changed=0    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/role$ 

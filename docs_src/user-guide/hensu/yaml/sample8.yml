@@ -1,0 +1,22 @@
+---
+- name: Example of a task variables
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: Register a user account
+    ansible.builtin.user:
+      name: "{{ item['user_name'] }}"
+      password: "{{ item['user_password'] | password_hash('sha512') }}"
+      state: present
+    loop: "{{ user_account }}"
+    vars:
+      user_account:
+        - user_name: hanako-san
+          user_password: hanako-no-password
+        - user_name: taro-san
+          user_password: taro-no-password
+        - user_name: jiro-san
+          user_password: jiro-no-password
+    become: yes
+    

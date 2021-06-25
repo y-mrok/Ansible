@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/delegate$ ansible-playbook -i hosts.yml delegate7.yml 
+
+PLAY [Delegate the execution of a task] *****************************************************************************************************
+
+TASK [Get the name of the account that is logged into the node] *****************************************************************************
+changed: [hydrogen -> beryllium.exam.local]
+
+TASK [Display the retrieved account name] ***************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "The account name you are logged in as is piyo."
+}
+
+PLAY RECAP **********************************************************************************************************************************
+hydrogen                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/delegate$ 

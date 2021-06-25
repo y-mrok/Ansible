@@ -1,0 +1,37 @@
+.. _filter-default-omit:
+
+**************************************************
+変数が未定義時に無視する
+**************************************************
+変数の参照時にその変数が未定義のとき、パラメーターを含めてその変数を無視します。
+
+.. _filter-default-omit-koubun:
+
+構文
+==================================================
+.. code-block:: yaml
+
+   変数 | default(omit)
+
+.. _filter-default-omit-rei:
+
+使用例
+==================================================
+管理対象ノードにユーザーアカウントを登録するプレイです。 item.group 変数が存在しないとき ``group`` パラメーターを無視します。
+
+.. literalinclude:: ./yaml/filter3.yml
+   :language: yaml
+   :emphasize-lines: 10
+
+実行ログです。ループの 2 回目で item.group 変数が存在しないので ``group`` パラメーターが存在しない（ = ``name`` パラメーターと同じ値が設定された）ものとして実行しました。
+
+.. literalinclude:: ./log/filter3.log
+   :language: none
+   :emphasize-lines: 7
+
+管理対象ノードの :file:`/etc/passwd` ファイルと :file:`/etc/group` フォイルの内容です。ループの 2 回目で ``group`` パラメーターが存在しないものとして実行したので ``name`` パラメーターに設定した値をグループ名として登録されました。
+
+.. literalinclude:: ./log/filter3-1.log
+   :language: none
+   :emphasize-lines: 27, 75
+

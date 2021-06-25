@@ -1,0 +1,19 @@
+piyo@vmpc:~/example/when$ ansible-playbook -i hosts.yml when14.yml
+
+PLAY [Example usage of the When directive] ***********************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [freebsd122]
+ok: [fedora33]
+
+TASK [Display the path to the file where the distribution information is recorded] *******************************************************************
+skipping: [freebsd122]
+ok: [fedora33] => {
+    "msg": "Path of the file where the distribution information is recorded　→　/etc/redhat-release"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+fedora33                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+freebsd122                 : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/when$ 

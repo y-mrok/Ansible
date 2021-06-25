@@ -1,0 +1,4 @@
+---
+- name: Processing in Ubuntu
+  ansible.builtin.debug:
+    msg: "The OS of the managed node is Ubuntu."

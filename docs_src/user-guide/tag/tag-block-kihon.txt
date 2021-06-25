@@ -1,0 +1,80 @@
+.. _tag-block-kihon:
+
+**************************************************
+タグと block 内のタスク
+**************************************************
+
+.. _tag-block-kihon-1:
+
+block ディレクティブ
+==================================================
+``block`` ディレクティブ内のタスクにタグを設定したプレイです。実行時にタグを指定しなければ ``block`` ディレクティブ内のすべてのタスクを実行します。実行時にタグを指定すると、指定したタグを設定したタスクだけを実行します。
+
+.. literalinclude:: ./yaml/tag5.yml
+   :language: yaml
+
+タグを指定しないで実行しました。すべてのタスクを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-3.log
+   :language: none
+
+タグ job1 を指定して実行しました。タグ job1 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-1.log
+   :language: none
+
+タグ job2 を指定して実行しました。タグ job2 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-2.log
+   :language: none
+
+.. _tag-block-kihon-2:
+
+always ディレクティブ
+==================================================
+``alwsyas`` ディレクティブ内のタスクにタグを設定したプレイです。実行時にタグを指定しなければ ``always`` ディレクティブ内のすべてのタスクを実行します。実行時にタグを指定すると、指定したタグを設定したタスクだけを実行します。
+
+.. literalinclude:: ./yaml/tag6.yml
+   :language: yaml
+
+タグを指定しないで実行しました。 ``always`` ディレクティブ内はすべてのタスクを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-4.log
+   :language: none
+
+タグ job1 を指定して実行しました。 ``always`` ディレクティブ内はタグ job1 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-5.log
+   :language: none
+
+タグ job2 を指定して実行しました。 ``always`` ディレクティブ内はタグ job2 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-6.log
+   :language: none
+
+.. _tag-block-kihon-3:
+
+rescue ディレクティブ
+==================================================
+``rescue`` ディレクティブ内のタスクにタグを設定したプレイです。実行時にタグを指定しなければ ``rescue`` ディレクティブ内のすべてのタスクを実行します。実行時にタグを指定すると、指定したタグを設定したタスクだけを実行します。
+
+``rescue`` ディレクティブ内のタスクを実行するよう TASK [task-3 (block) -> The execution of this task will fail.] でエラーが発生します。
+
+.. literalinclude:: ./yaml/tag7.yml
+   :language: yaml
+
+タグを指定しないで実行しました。 ``rescue`` ディレクティブ内はすべてのタスクを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-7.log
+   :language: none
+
+タグ job1 を指定して実行しました。 ``rescue`` ディレクティブ内はタグ job1 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-8.log
+   :language: none
+
+タグ job2 を指定して実行しました。 ``rescue`` ディレクティブ内はタグ job2 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-kihon-9.log
+   :language: none
+

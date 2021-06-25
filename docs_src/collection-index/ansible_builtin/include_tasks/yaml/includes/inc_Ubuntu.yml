@@ -1,0 +1,5 @@
+# includes/inc_Ubuntu.yml
+---
+- name: List of tasks to include
+  ansible.builtin.debug:
+    msg: "Ubuntu"

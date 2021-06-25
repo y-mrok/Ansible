@@ -1,0 +1,35 @@
+piyo@vmpc:~/example/when$ ansible-playbook -i hosts.yml when5.yml
+
+PLAY [Example usage of the When directive] ***********************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos79]
+ok: [debian108]
+ok: [centos83]
+ok: [ubuntu1804]
+ok: [ubuntu2004]
+ok: [debian913]
+ok: [opensuse152]
+ok: [fedora33]
+
+TASK [Reboot a managed node on CentOS 8 or Ubuntu 20 or Debian 10] ***********************************************************************************
+skipping: [centos79]
+skipping: [ubuntu1804]
+skipping: [debian913]
+skipping: [opensuse152]
+skipping: [fedora33]
+changed: [debian108]
+changed: [ubuntu2004]
+changed: [centos83]
+
+PLAY RECAP *******************************************************************************************************************************************
+centos79                   : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+centos83                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+debian108                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+debian913                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+fedora33                   : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+opensuse152                : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+ubuntu1804                 : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+ubuntu2004                 : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/when$

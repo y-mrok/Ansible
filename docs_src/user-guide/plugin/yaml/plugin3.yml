@@ -1,0 +1,9 @@
+---
+- name: Examples of plugin usage.
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Get the value of the PATH environment variable
+      ansible.builtin.debug:
+        msg: "{{ lookup('env', 'PATH') }}"

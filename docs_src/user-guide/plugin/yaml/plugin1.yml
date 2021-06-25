@@ -1,0 +1,12 @@
+---
+- name: Examples of plugin usage.
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Get the contents of a text file.
+      ansible.builtin.debug:
+        msg: "{{ contents }}"
+      vars:
+        contents: "{{ lookup('file', './testfile.txt') }}"
+  

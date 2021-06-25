@@ -1,0 +1,22 @@
+---
+- name: Example of error handling usage
+  hosts: all
+  gather_facts: no
+  max_fail_percentage: 50
+
+  tasks:
+    - name: First processing
+      ansible.builtin.debug:
+
+    - name: Checking the file, part 1
+      ansible.builtin.command: diff file1 file2
+      register: result_of_diff
+      failed_when: result_of_diff['rc'] >= 2
+
+    - name: Checking the file, part 2
+      ansible.builtin.command: diff file1 file2
+      register: result_of_diff
+      failed_when: result_of_diff['rc'] == 0
+
+    - name: Last processing
+      ansible.builtin.debug:

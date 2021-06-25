@@ -1,0 +1,14 @@
+---
+- name: Example of error handling usage
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: Repeat for as many accounts as you need.
+      ansible.builtin.include_tasks: ./include/user-add.yml
+      loop: "{{ user_account }}"
+      vars:
+        user_account:
+          - ansible-user
+          - taro
+          - jiro

@@ -1,0 +1,65 @@
+---
+# roles/installing_and_configuring_mysql/tasks/main.yml
+# ・MySQL をインストールし Zabbix 用に設定する
+
+- name: MySQL のリポジトリをインストール
+  ansible.builtin.dnf:
+    name: "{{ mysql_repo_url }}"
+    disable_gpg_check: yes
+    state: present
+
+- name: デフォルトの MySQL を無効化
+  ansible.builtin.command:
+    cmd: 'dnf module disable -y mysql'
+
+- name: MySQL をインストール
+  ansible.builtin.dnf:
+    name: "{{ mysql_packages }}"
+    state: present
+
+- name: mysql_native_password の有効化
+  ansible.builtin.lineinfile:
+    path: '/etc/my.cnf'
+    regexp: 'default-authentication-plugin='
+    line: 'default-authentication-plugin=mysql_native_password'
+    backup: yes
+    state: present
+
+- name: MySQL サービスを起動（自動起動あり）
+  ansible.builtin.systemd:
+    name: "{{ mysql_srv_name }}"
+    enabled: yes
+    state: started
+
+- name: MySQL の初期パスワードを抽出
+  ansible.builtin.shell:
+    cmd: "grep 'A temporary password is generated for root@localhost' /var/log/mysqld.log | awk -F ' ' '{print $(NF)}'"
+  changed_when: no
+  register: mysql_result
+
+- name: MySQL の root アカウントのパスワードを再設定
+  ansible.builtin.command:
+    cmd: mysql --user=root --password={{ mysql_result['stdout'] }} --connect-expired-password --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql_root_pass }}'; flush privileges;"
+
+- name: MySQL にユーザーアカウント zabbix を作成
+  community.mysql.mysql_user:
+    login_user: "root"
+    login_password: "{{ mysql_root_pass }}"
+    name: "{{ zabbix_user }}"
+    password: "{{ zabbix_pass }}"
+    priv: '{{ zabbix_db_name }}.*:ALL,GRANT'
+    state: present
+    host: '%'
+
+- name: データベースを作成
+  community.mysql.mysql_db:
+    login_user: "root"
+    login_password: "{{ mysql_root_pass }}"
+    name: "{{ zabbix_db_name }}"
+    state: present
+    encoding: utf8
+    collation: utf8_bin
+
+- name: Zabbix 用スキーマを作成
+  ansible.builtin.shell:
+    cmd: zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql --user=root --password={{ mysql_root_pass }} {{ zabbix_db_name }}

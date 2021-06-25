@@ -1,0 +1,15 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+
+  vars:
+    distribution_list:
+      - 'Debian'
+      - 'openSUSE Leap'
+      - 'Fedora'
+
+  tasks:
+    - name: Reboot managed nodes with Debian, openSUSE Leap or Fedora distributions
+      ansible.builtin.reboot:
+      when: ansible_facts['distribution'] in distribution_list
+      become: yes

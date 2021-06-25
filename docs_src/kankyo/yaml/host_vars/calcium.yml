@@ -1,0 +1,4 @@
+# host_vars/calcium.yml
+---
+ansible_host: 192.168.23.30
+ansible_python_interpreter: /usr/bin/python3.6

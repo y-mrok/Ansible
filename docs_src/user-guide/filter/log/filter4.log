@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter4.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Comparison] ************************************************************************************************************************************
+ok: [hydrogen] => (item=True) => {
+    "msg": "Same value."
+}
+ok: [hydrogen] => (item=False) => {
+    "msg": "Different values."
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

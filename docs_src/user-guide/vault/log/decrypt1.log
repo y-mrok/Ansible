@@ -1,0 +1,4 @@
+piyo@vmpc:~/example/vault$ ansible-vault decrypt host_vars/hydrogen.yml
+Vault password: 
+Decryption successful
+piyo@vmpc:~/example/vault$ 

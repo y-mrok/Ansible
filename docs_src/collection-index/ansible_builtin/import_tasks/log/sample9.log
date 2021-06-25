@@ -1,0 +1,12 @@
+piyo@vmpc:~/example/collection$ ansible-playbook -i hosts.yml sample9.yml 
+ERROR! couldn't resolve module/action 'ansible.builtin.debugging'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/home/piyo/example/collection/imports/imp_task3.yml': line 7, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: List of tasks to import No.2
+  ^ here
+piyo@vmpc:~/example/collection$ 

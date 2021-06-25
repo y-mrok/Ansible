@@ -1,0 +1,4 @@
+# host_vars/ruthenium.yml
+---
+ansible_host: 192.168.23.55
+ansible_python_interpreter: /usr/bin/python

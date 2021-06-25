@@ -1,0 +1,22 @@
+---
+- name: Example of loop usage
+  hosts: hydrogen
+  gather_facts: no
+
+  tasks:
+    - name: Display the accounts in order
+      ansible.builtin.debug:
+        msg: "{{ order_num }} 番目のアカウントは {{ item['user_name'] }} / {{ item['user_password'] }} です"
+      loop: "{{ account }}"
+      loop_control:
+        index_var: order_num
+      vars: 
+        account:
+          - user_name: hanako-san
+            user_password: hanako-no-password
+          - user_name: taro-san
+            user_password: taro-no-password
+          - user_name: jiro-san
+            user_password: jiro-no-password
+      become: yes
+      

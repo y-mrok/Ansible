@@ -1,0 +1,22 @@
+piyo@vmpc:~/example/when$ ansible-playbook -i hosts.yml when15.yml
+
+PLAY [Example usage of the When directive] ***********************************************************************************************************
+
+TASK [Use with the loop directive] *******************************************************************************************************************
+skipping: [freebsd122] => (item=0) 
+skipping: [freebsd122] => (item=2) 
+skipping: [freebsd122] => (item=4) 
+ok: [freebsd122] => (item=6) => {
+    "msg": "Value of the variable item　→　6"
+}
+ok: [freebsd122] => (item=8) => {
+    "msg": "Value of the variable item　→　8"
+}
+ok: [freebsd122] => (item=10) => {
+    "msg": "Value of the variable item　→　10"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+freebsd122                 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/when$ 

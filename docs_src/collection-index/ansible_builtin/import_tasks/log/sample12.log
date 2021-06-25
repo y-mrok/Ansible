@@ -1,0 +1,41 @@
+piyo@vmpc:~/example/collection$ ansible-playbook -i hosts2.yml sample12.yml 
+
+PLAY [Example of "ansible.builtin.import_tasks" usage] ***********************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+ok: [ubuntu2004]
+
+TASK [Message No.1] **********************************************************************************************************************************
+ok: [centos83] => {
+    "msg": "Hello world!"
+}
+ok: [ubuntu2004] => {
+    "msg": "Hello world!"
+}
+
+TASK [List of tasks to import No.1] ******************************************************************************************************************
+skipping: [centos83]
+ok: [ubuntu2004] => {
+    "msg": "task #1"
+}
+
+TASK [List of tasks to import No.2] ******************************************************************************************************************
+skipping: [centos83]
+ok: [ubuntu2004] => {
+    "msg": "task #2"
+}
+
+TASK [Message No.2] **********************************************************************************************************************************
+ok: [centos83] => {
+    "msg": "Hello world!"
+}
+ok: [ubuntu2004] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=3    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+ubuntu2004                 : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/collection$ 

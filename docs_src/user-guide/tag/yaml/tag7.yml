@@ -1,0 +1,32 @@
+---
+- name: Examples of tag usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: task-1
+      ansible.builtin.debug:
+    - name: Use block
+      block:
+        - name: task-2 (block)
+          ansible.builtin.debug:
+          tags: job1
+        - name: task-3 (block) -> The execution of this task will fail.
+          ansible.builtin.command: /bin/false
+          tags: always
+        - name: task-4 (block)
+          ansible.builtin.debug:
+          tags: job2
+      rescue:
+        - name: task-6 (rescue)
+          ansible.builtin.debug:
+          tags: job1
+        - name: task-7 (rescue)
+          ansible.builtin.debug:
+          tags: job2
+        - name: task-8 (rescue)
+          ansible.builtin.debug:
+
+    - name: task-5
+      ansible.builtin.debug:
+      tags: job1

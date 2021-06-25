@@ -1,0 +1,44 @@
+piyo@vmpc:~/example/tag$ ansible-playbook -i hosts.yml tag10.yml --tags job2
+
+PLAY [Examples of tag usage] ****************************************************************************************************************
+
+TASK [test_role : task-5 (test_rols/tasks/main.yml)] ****************************************************************************************
+changed: [hydrogen]
+
+TASK [test_role : task-7 (test_rols/tasks/main.yml)] ****************************************************************************************
+changed: [hydrogen]
+
+RUNNING HANDLER [test_role : task-9 (test_rols/handlers/main.yml)] **************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+RUNNING HANDLER [test_role : task-10 (test_rols/handlers/main.yml)] *************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+RUNNING HANDLER [test_role : task-11 (test_rols/handlers/main.yml)] *************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+RUNNING HANDLER [test_role : task-12 (test_rols/handlers/main.yml)] *************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+RUNNING HANDLER [test_role : task-13 (test_rols/handlers/main.yml)] *************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+RUNNING HANDLER [test_role : task-14 (test_rols/handlers/main.yml)] *************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP **********************************************************************************************************************************
+hydrogen                   : ok=8    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/tag$ 

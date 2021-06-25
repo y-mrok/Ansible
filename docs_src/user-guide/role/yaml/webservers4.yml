@@ -1,0 +1,10 @@
+---
+- name: Example of using roles
+  hosts: all
+
+  tasks:
+    - name: Web server construction roles.
+      ansible.builtin.include_role:
+        name: basic_webserver_configuration2
+      when: ansible_facts['distribution'] == "CentOS"
+      become: yes

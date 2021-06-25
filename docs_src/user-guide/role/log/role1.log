@@ -1,0 +1,12 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts.yml roles1.yml 
+ERROR! You cannot use loops on 'import_role' statements. You should use 'include_role' instead.
+
+The error appears to be in '/home/piyo/example/role/roles1.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: The ansible.builtin.import_role module with the loop directive set
+      ^ here
+piyo@vmpc:~/example/role$ 

@@ -1,0 +1,46 @@
+.. _delegate-control-command:
+
+**************************************************
+ansible-playbook コマンドで指定
+**************************************************
+:command:`ansible-playbook` コマンドの実行時に、コントロールノードでプレイを実行するよう指定します。
+
+.. list-table:: 使用するパラメーター
+   :widths: 1, 5
+   :header-rows: 1
+
+   * - パラメーター
+     - 意味
+   * - | -c
+       | --connection
+     - | ・ 対象ノードに接続するときのコネクションタイプを指定する
+       | ・ default = smart
+       | ・ コントロールノード = local
+   * - | -i
+       | --inventory
+       | --inventory-file
+     - | ・ 対象になるインベントリファイルを指定する
+       | ・ IP アドレスや名前解決が可能な場合はホスト名の指定も可能
+       | ・ IP アドレスはホスト名を指定する場合の最後は "," にする
+
+この場合、 targets セクションの ``hosts`` ディレクティブは以下のように定義します。
+
+.. code-block:: yaml
+
+   hosts: all
+
+プレイです。 ``hosts`` ディレクティブに ``all`` を指定しています。
+
+.. literalinclude:: ./yaml/delegate12.yml
+   :language: yaml
+   :emphasize-lines: 3
+
+実行ログです。コントロールノードで実行するのでインベントリファイルではなく ``localhost`` または ``127.0.0.1`` を指定します。
+
+.. literalinclude:: ./log/delegate-control-command-1.log
+   :language: none
+   :emphasize-lines: 1
+
+.. literalinclude:: ./log/delegate-control-command-2.log
+   :language: none
+   :emphasize-lines: 1

@@ -1,0 +1,22 @@
+- name: Example of block usage
+  hosts: all
+
+  tasks:
+    - name: task-1
+      ansible.builtin.debug:
+    - name: Use block
+      block:
+        - name: task-2
+          ansible.builtin.debug:
+        - name: task-3
+          ansible.builtin.command: /bin/false
+          when: ansible_facts['distribution'] == "CentOS"
+        - name: task-4
+          ansible.builtin.debug:
+      always:
+        - name: task-9
+          ansible.builtin.debug:
+        - name: task-10
+          ansible.builtin.debug:
+    - name: task-5
+      ansible.builtin.debug:

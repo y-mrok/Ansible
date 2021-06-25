@@ -1,0 +1,16 @@
+---
+- name: Display the start message
+  ansible.builtin.debug:
+    msg: "Start!"
+
+- name: Display the contents of the variable item
+  ansible.builtin.debug:
+    msg: "The value of item is {{ item }}."
+  loop:
+    - A
+    - B
+    - C
+
+- name: Display an exit message
+  ansible.builtin.debug:
+    msg: "End!"

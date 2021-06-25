@@ -1,0 +1,33 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  vars:
+    num1: 3
+    num2: 3.14159
+
+  tasks:
+    - name: pow
+      ansible.builtin.debug:
+        msg: "pow -> {{ num1 | pow(4) }}"
+
+    - name: root
+      ansible.builtin.debug:
+        msg: "root -> {{ num1 | root }}"
+
+    - name: round 1
+      ansible.builtin.debug:
+        msg: "round -> {{ num2 | round }}"
+
+    - name: round 2
+      ansible.builtin.debug:
+        msg: "round(3, 'common') -> {{ num2 | round(3, 'common') }}"
+
+    - name: roundup
+      ansible.builtin.debug:
+        msg: "round(1, 'ceil') -> {{ num2 | round(1, 'ceil') }}"
+
+    - name: roundup
+      ansible.builtin.debug:
+        msg: "round(3, 'floor') -> {{ num2 | round(3, 'floor') }}"

@@ -1,0 +1,29 @@
+.. _errorhandling-sonota-changed_when-ok:
+
+**************************************************
+実行結果を常に "ok" にする
+**************************************************
+``ansible.builtin.command`` モジュールや ``ansible.builtin.shell`` モジュールで実行するコマンドやシェルスクリプトが管理対象ノードの状態を変更しないことが明らかな場合、 ``changed_when`` ディレクティブを使用してタスクの実行結果を常に **ok** にできます。
+
+:file:`/etc/passwd` ファイルの内容を表示するタスクです。
+
+.. literalinclude:: ./yaml/error17.yml
+   :language: yaml
+
+実行結果です。 ``ansible.builtin.command`` モジュールの仕様により、実行結果は **changed** です。
+
+.. literalinclude:: ./log/error17.log
+   :language: none
+   :emphasize-lines: 6
+
+``changed_when`` ディレクティブを使用して、タスクの実行結果が常に **ok** になるよう書き直したプレイです。 ``changed_when`` ディレクティブに "no" を設定すると、タスクの実行結果は常に **ok** になります。
+
+.. literalinclude:: ./yaml/error18.yml
+   :language: yaml
+   :emphasize-lines: 9
+
+実行ログです。タスクに ``ansible.builtin.command`` モジュールを使用しましたが、実行結果は **ok** です。
+
+.. literalinclude:: ./log/error18.log
+   :language: none
+   :emphasize-lines: 6

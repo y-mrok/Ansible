@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter2.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Register a user account.] **********************************************************************************************************************
+changed: [hydrogen] => (item={'name': 'taro', 'group': 'admin'})
+changed: [hydrogen] => (item={'name': 'jiro'})
+changed: [hydrogen] => (item={'name': 'hanako', 'group': 'admin'})
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

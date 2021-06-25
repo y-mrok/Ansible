@@ -1,0 +1,40 @@
+---
+# roles/installing_and_configuring_gitlab/tasks/main.yml
+# ・GitLab と関連パッケージをインストールし設定する
+
+- name: 関連パッケージをインストール
+  ansible.builtin.dnf:
+    name: "{{ other_packages }}"
+    state: present
+
+- name: GitLab package repository のスクリプトファイルの存在確認
+  ansible.builtin.stat:
+    path: "{{ gitlab_script_path }}/{{ gitlab_script_name }}"
+  register: stat_status
+
+- name: GitLab package repository の追加
+  block:
+    - name: GitLab package repository の取得
+      ansible.builtin.get_url:
+        url: "{{ gitlab_repo_url }}{{ gitlab_script_name }}"
+        dest: "{{ gitlab_script_path }}"
+        mode: '0744'
+
+    - name: GitLab package repository のスクリプトを実行
+      ansible.builtin.shell: 
+        cmd: "./{{ gitlab_script_name }}"
+      args:
+        chdir: "{{ gitlab_script_path }}"
+  when: stat_status['stat']['exists'] == false
+
+- name: GitLab Community Edition がインストール済みかチェック
+  ansible.builtin.dnf:
+    name: "{{ gitlab_package }}"
+    state: installed
+  check_mode: yes
+  register: dnf_status
+
+- name: GitLab Community Edition をインストール
+  ansible.builtin.shell:
+    cmd: 'EXTERNAL_URL="{{ gitlab_url }}" dnf install -y {{ gitlab_package }}'
+  when: dnf_status['changed'] == true

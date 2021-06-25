@@ -1,0 +1,4 @@
+# host_vars/chromium.yml
+---
+ansible_host: 192.168.23.34
+ansible_python_interpreter: /usr/bin/python3

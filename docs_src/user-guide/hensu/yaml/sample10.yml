@@ -1,0 +1,18 @@
+---
+- name: Example of variable reference
+  hosts: all
+  gather_facts: no
+
+  vars:
+    file_path:
+      source_path: ~/textfile.txt       # file_path['source_path']
+      destination_path: /tmp/sample/    # file_path['destination_path']
+
+  tasks:
+    - name: Copying a file from a control node to a managed node
+      ansible.builtin.copy:
+        src: "{{ file_path['source_path'] }}"
+        dest: "{{ file_path['destination_path'] }}"
+    - name: View source and destination
+      ansible.builtin.debug:
+        msg: "コピー元のファイルは  {{ file_path['source_path'] }} です。コピー先は {{ file_path['destination_path'] }} です。"

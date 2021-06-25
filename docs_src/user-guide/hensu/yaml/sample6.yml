@@ -1,0 +1,14 @@
+---
+- name: Example of a Magic variables
+  hosts: all
+
+  tasks:
+    - name : Value of inventory_hostname
+      ansible.builtin.debug:
+        var: inventory_hostname
+    - name: Value of group_names
+      ansible.builtin.debug:
+        var: group_names
+    - name: Value of groups
+      ansible.builtin.debug:
+        var: groups

@@ -1,0 +1,41 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts.yml webservers.yml 
+
+PLAY [Example of using roles] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [hydrogen]
+
+TASK [Install the latest version of the httpd package.] **********************************************************************************************
+changed: [hydrogen]
+
+TASK [Set the server name for Apache.] ***************************************************************************************************************
+changed: [hydrogen]
+
+TASK [Set the http port for httpd.conf.] *************************************************************************************************************
+changed: [hydrogen]
+
+TASK [Change the group and user for the /var/www/html directory.] ************************************************************************************
+changed: [hydrogen]
+
+TASK [Change the group and user for the /var/www/cgi-bin directory.] *********************************************************************************
+changed: [hydrogen]
+
+TASK [Copying content.] ******************************************************************************************************************************
+changed: [hydrogen]
+
+TASK [Open a hole in the firewall of the CentOS management node for the http port.] ******************************************************************
+changed: [hydrogen]
+
+RUNNING HANDLER [Syntax check of httpd.conf.] ********************************************************************************************************
+changed: [hydrogen]
+
+RUNNING HANDLER [Restart or start httpd.service.] ****************************************************************************************************
+changed: [hydrogen]
+
+RUNNING HANDLER [Reload the firewalld configuration.] ************************************************************************************************
+changed: [hydrogen]
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=11   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/role$

@@ -1,0 +1,7 @@
+
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:ee:1f:c1 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.23.230/24 brd 192.168.23.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::39fa:1819:7901:62af/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever

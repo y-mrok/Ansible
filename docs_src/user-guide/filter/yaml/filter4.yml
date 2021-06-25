@@ -1,0 +1,12 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Comparison
+      ansible.builtin.debug:
+        msg: "{{ item  | ternary('Same value.', 'Different values.') }}"
+      loop:
+        - "{{ 0 == 0 }}"
+        - "{{ 1 == 0 }}"

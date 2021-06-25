@@ -1,0 +1,24 @@
+.
+├── hosts.yml
+├── roles
+│   └── basic_webserver_configuration
+│       ├── defaults
+│       │   └── main.yml
+│       ├── files
+│       │   ├── file1
+│       │   └── file2
+│       ├── handlers
+│       │   └── main.yml
+│       ├── library
+│       │   ├── module1
+│       │   └── module2
+│       ├── meta
+│       │   └── main.yml
+│       ├── tasks
+│       │   └── main.yml
+│       ├── templates
+│       │   ├── templatefile1
+│       │   └── templatefile2
+│       └── vars
+│           └── main.yml
+└── webservers.yml

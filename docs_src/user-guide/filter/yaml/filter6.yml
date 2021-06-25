@@ -1,0 +1,41 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Comparison
+      ansible.builtin.debug:
+        msg: "Type of {{ item  }} -> {{ item | type_debug }}"
+      loop: "{{ variables }}"
+      vars:
+        variables:
+          - 1
+          - -1
+          - "1"
+          - "-1"
+          - 3.14
+          - -3.14
+          - a
+          - abc
+          - "xyz"
+          - yes
+          - "yes"
+          - no
+          - "no"
+          - true
+          - "true"
+          - false
+          - "false"
+          - yes
+          - "yes"
+          - no
+          - "no"
+          - null
+          - "null"
+          - 0x123
+          - 0456
+          - name: taro
+          - name: jiro
+            group: staff
+          - [1, 2, 3]

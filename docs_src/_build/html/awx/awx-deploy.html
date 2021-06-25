@@ -1,0 +1,1011 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="コレクション インデックス" href="../collection-index/collection-index.html" /><link rel="prev" title="AWX" href="awx.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>AWX をデプロイ - Learning Ansible 2021/06/24 更新 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/06/24 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/24 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user-guide/user-guide.html">ユーザーガイド</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/ansible-no-install.html">Ansible のインストール</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/control-node-ni-ansible-wo-install.html">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/hensu/hensu.html">変数</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/hensu/play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-sansho.html">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/vault/vault.html">コンテンツの暗号化</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="awx.html">AWX</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">AWX をデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-tuika.html">管理対象ノードを追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-inventory.html">追加した管理対象ノードのインベントリ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="awx">
+<span id="awx-deploy"></span><h1>AWX をデプロイ<a class="headerlink" href="#awx" title="Permalink to this headline">¶</a></h1>
+<p>CentOS 8.4 に AWX 19.2.0 をインストールします。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AWX をデプロイするにあたり、下記のサイトを参考にしました。ありがとうございました。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.bitbull.ch/wiki/index.php/Install_AWX_on_K3S">Install AWX on K3S</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ansible/awx-operator">ansible/awx-operator - GitHub</a></p></li>
+</ul>
+</div>
+<div class="section" id="awx-install-command">
+<span id="id1"></span><h2>実行コマンド<a class="headerlink" href="#awx-install-command" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#
+# 既存パッケージを更新
+#
+dnf -y install open-vm-tools
+dnf -y install epel-release
+dnf -y update
+reboot
+
+#
+# OS を設定
+#
+dnf -y upgrade
+dnf -y install setroubleshoot-server curl lsof wget
+sed -i  '/swap/d' /etc/fstab
+swapoff -a
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --zone=public --add-masquerade --permanent
+firewall-cmd --reload
+reboot
+
+#
+# K3S をセットアップ
+#
+curl -sfL https://get.k3s.io | sh
+cat /etc/systemd/system/k3s.service
+systemctl status k3s
+kubectl get nodes
+kubectl get pods --all-namespaces
+
+#
+# AWX operator をデプロイ
+#
+kubectl config set-context --current --namespace=default
+kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.10.0/deploy/awx-operator.yaml
+kubectl get events -w --all-namespaces
+kubectl get pods
+kubectl logs -f deployment.apps/awx-operator
+
+#
+# AWX をデプロイ
+#
+kubectl create namespace awx
+kubectl config set-context --current --namespace=awx
+vi myawx.yml
+
+----- ここから myawx.yml の内容 -----
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  ingress_type: Ingress
+  route_tls_termination_mechanism: edge
+  hostname: awx.example.jp
+----- ここまで myawx.yml の内容 -----
+
+cat myawx.yml
+kubectl apply -f myawx.yml
+kubectl get events -w --all-namespaces
+kubectl logs -f deployment.apps/awx-operator -n default
+kubectl get pods
+kubectl get svc
+
+#
+# admin アカウントのパスワードを生成
+#
+kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode
+</pre></div>
+</div>
+</div>
+<div class="section" id="awx-install-log">
+<span id="id2"></span><h2>実行ログ<a class="headerlink" href="#awx-install-log" title="Permalink to this headline">¶</a></h2>
+<p>実行ログです。すべてを掲載すると長くなるので一部を省略しました。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# dnf -y install open-vm-tools
+</span>CentOS Linux 8 - AppStream                                          4.0 MB/s | 7.5 MB     00:01    
+CentOS Linux 8 - BaseOS                                             3.2 MB/s | 2.6 MB     00:00    
+CentOS Linux 8 - Extras                                              15 kB/s | 9.6 kB     00:00    
+パッケージ open-vm-tools-11.2.0-2.el8.x86_64 は既にインストールされています。
+依存関係が解決しました。
+行うべきことはありません。
+完了しました!
+<span class="hll">[root@awx ~]# dnf -y install epel-release
+</span>メタデータの期限切れの最終確認: 0:00:11 時間前の 2021年06月23日 21時26分31秒 に実施しました。
+依存関係が解決しました。
+====================================================================================================
+ パッケージ                 アーキテクチャー     バージョン              リポジトリー         サイズ
+====================================================================================================
+インストール:
+ epel-release               noarch               8-8.el8                 extras                23 k
+
+トランザクションの概要
+====================================================================================================
+インストール  1 パッケージ
+
+ダウンロードサイズの合計: 23 k
+インストール後のサイズ: 32 k
+パッケージのダウンロード:
+epel-release-8-8.el8.noarch.rpm                                     116 kB/s |  23 kB     00:00    
+----------------------------------------------------------------------------------------------------
+合計                                                                 35 kB/s |  23 kB     00:00     
+警告: /var/cache/dnf/extras-2770d521ba03e231/packages/epel-release-8-8.el8.noarch.rpm: ヘッダー V3 R
+SA/SHA256 Signature、鍵 ID 8483c65d: NOKEY
+CentOS Linux 8 - Extras                                             1.6 MB/s | 1.6 kB     00:00    
+GPG 鍵 0x8483C65D をインポート中:
+ Userid     : "CentOS (CentOS Official Signing Key) &lt;security@centos.org&gt;"
+ Fingerprint: 99DB 70FA E1D7 CE22 7FB6 4882 05B5 55B3 8483 C65D
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+鍵のインポートに成功しました
+トランザクションの確認を実行中
+トランザクションの確認に成功しました。
+トランザクションのテストを実行中
+トランザクションのテストに成功しました。
+トランザクションを実行中
+  準備             :                                                                            1/1 
+  インストール中   : epel-release-8-8.el8.noarch                                                1/1 
+  scriptletの実行中: epel-release-8-8.el8.noarch                                                1/1 
+  検証             : epel-release-8-8.el8.noarch                                                1/1 
+
+インストール済み:
+  epel-release-8-8.el8.noarch                                                                       
+
+完了しました!
+<span class="hll">[root@awx ~]# dnf -y update
+</span>Extra Packages for Enterprise Linux Modular 8 - x86_64              465 kB/s | 611 kB     00:01    
+Extra Packages for Enterprise Linux 8 - x86_64                      4.4 MB/s | 9.5 MB     00:02    
+メタデータの期限切れの最終確認: 0:00:01 時間前の 2021年06月23日 21時26分53秒 に実施しました。
+依存関係が解決しました。
+====================================================================================================
+ パッケージ               Arch           バージョン                            リポジトリー   サイズ
+====================================================================================================
+アップグレード:
+ bash                     x86_64         4.4.20-1.el8_4                        baseos         1.5 M
+ bind-export-libs         x86_64         32:9.11.26-4.el8_4                    baseos         1.1 M
+ dbus                     x86_64         1:1.12.8-12.el8_4.2                   baseos          41 k
+ dbus-common              noarch         1:1.12.8-12.el8_4.2                   baseos          46 k
+ dbus-daemon              x86_64         1:1.12.8-12.el8_4.2                   baseos         240 k
+ dbus-libs                x86_64         1:1.12.8-12.el8_4.2                   baseos         184 k
+ dbus-tools               x86_64         1:1.12.8-12.el8_4.2                   baseos          85 k
+ epel-release             noarch         8-10.el8                              epel            22 k
+ glib2                    x86_64         2.56.4-10.el8_4                       baseos         2.5 M
+ gnutls                   x86_64         3.6.14-8.el8_3                        baseos         1.0 M
+ microcode_ctl            x86_64         4:20210216-1.20210525.1.el8_4         baseos         5.5 M
+ nettle                   x86_64         3.4.1-4.el8_3                         baseos         301 k
+ openssh                  x86_64         8.0p1-6.el8_4.2                       baseos         521 k
+ openssh-clients          x86_64         8.0p1-6.el8_4.2                       baseos         667 k
+ openssh-server           x86_64         8.0p1-6.el8_4.2                       baseos         484 k
+ polkit                   x86_64         0.115-11.el8_4.1                      baseos         154 k
+ polkit-libs              x86_64         0.115-11.el8_4.1                      baseos          76 k
+
+（中略）
+
+  検証             : openssh-server-8.0p1-5.el8.x86_64                                        28/34 
+  検証             : polkit-0.115-11.el8_4.1.x86_64                                           29/34 
+  検証             : polkit-0.115-11.el8.x86_64                                               30/34 
+  検証             : polkit-libs-0.115-11.el8_4.1.x86_64                                      31/34 
+  検証             : polkit-libs-0.115-11.el8.x86_64                                          32/34 
+  検証             : epel-release-8-10.el8.noarch                                             33/34 
+  検証             : epel-release-8-8.el8.noarch                                              34/34 
+
+アップグレード済み:
+  bash-4.4.20-1.el8_4.x86_64                           bind-export-libs-32:9.11.26-4.el8_4.x86_64  
+  dbus-1:1.12.8-12.el8_4.2.x86_64                      dbus-common-1:1.12.8-12.el8_4.2.noarch      
+  dbus-daemon-1:1.12.8-12.el8_4.2.x86_64               dbus-libs-1:1.12.8-12.el8_4.2.x86_64        
+  dbus-tools-1:1.12.8-12.el8_4.2.x86_64                epel-release-8-10.el8.noarch                
+  glib2-2.56.4-10.el8_4.x86_64                         gnutls-3.6.14-8.el8_3.x86_64                
+  microcode_ctl-4:20210216-1.20210525.1.el8_4.x86_64   nettle-3.4.1-4.el8_3.x86_64                 
+  openssh-8.0p1-6.el8_4.2.x86_64                       openssh-clients-8.0p1-6.el8_4.2.x86_64      
+  openssh-server-8.0p1-6.el8_4.2.x86_64                polkit-0.115-11.el8_4.1.x86_64              
+  polkit-libs-0.115-11.el8_4.1.x86_64                 
+
+完了しました!
+<span class="hll">[root@awx ~]# reboot
+</span></pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# dnf -y upgrade
+</span>メタデータの期限切れの最終確認: 0:07:34 時間前の 2021年06月23日 21時26分53秒 に実施しました。
+依存関係が解決しました。
+行うべきことはありません。
+完了しました!
+<span class="hll">[root@awx ~]# dnf -y install setroubleshoot-server curl lsof wget
+</span>メタデータの期限切れの最終確認: 0:07:40 時間前の 2021年06月23日 21時26分53秒 に実施しました。
+パッケージ curl-7.61.1-18.el8.x86_64 は既にインストールされています。
+依存関係が解決しました。
+====================================================================================================
+ パッケージ                      Arch      バージョン                            リポジトリー サイズ
+====================================================================================================
+インストール:
+ lsof                            x86_64    4.93.2-1.el8                          baseos       253 k
+ setroubleshoot-server           x86_64    3.3.24-3.el8                          appstream    401 k
+ wget                            x86_64    1.19.5-10.el8                         appstream    734 k
+依存関係のインストール:
+ cairo                           x86_64    1.15.12-3.el8                         appstream    721 k
+ cairo-gobject                   x86_64    1.15.12-3.el8                         appstream     33 k
+ checkpolicy                     x86_64    2.9-1.el8                             baseos       348 k
+ dejavu-fonts-common             noarch    2.35-7.el8                            baseos        74 k
+ dejavu-sans-fonts               noarch    2.35-7.el8                            baseos       1.6 M
+ fontconfig                      x86_64    2.13.1-3.el8                          baseos       275 k
+ fontpackages-filesystem         noarch    1.44-22.el8                           baseos        16 k
+ libX11                          x86_64    1.6.8-4.el8                           appstream    611 k
+ libX11-common                   noarch    1.6.8-4.el8                           appstream    158 k
+ libXau                          x86_64    1.0.9-3.el8                           appstream     37 k
+ libXext                         x86_64    1.3.4-1.el8                           appstream     45 k
+ libXrender                      x86_64    0.9.10-7.el8                          appstream     33 k
+ libxcb                          x86_64    1.13.1-1.el8                          appstream    229 k
+ pixman                          x86_64    0.38.4-1.el8                          appstream    257 k
+ policycoreutils-python-utils    noarch    2.9-14.el8                            baseos       252 k
+ python3-audit                   x86_64    3.0-0.17.20191104git1c2f876.el8       baseos        86 k
+ python3-cairo                   x86_64    1.16.3-6.el8                          appstream     90 k
+ python3-gobject                 x86_64    3.28.3-2.el8                          appstream     26 k
+ python3-libsemanage             x86_64    2.9-6.el8                             baseos       127 k
+ python3-libxml2                 x86_64    2.9.7-9.el8                           baseos       237 k
+ python3-policycoreutils         noarch    2.9-14.el8                            baseos       2.2 M
+ python3-pydbus                  noarch    0.6.0-5.el8                           appstream     53 k
+ python3-setools                 x86_64    4.3.0-2.el8                           baseos       626 k
+ python3-systemd                 x86_64    234-8.el8                             appstream     81 k
+ setroubleshoot-plugins          noarch    3.3.13-1.el8                          appstream    361 k
+
+（中略）
+
+インストール済み:
+  cairo-1.15.12-3.el8.x86_64                                                                        
+  cairo-gobject-1.15.12-3.el8.x86_64                                                                
+  checkpolicy-2.9-1.el8.x86_64                                                                      
+  dejavu-fonts-common-2.35-7.el8.noarch                                                             
+  dejavu-sans-fonts-2.35-7.el8.noarch                                                               
+  fontconfig-2.13.1-3.el8.x86_64                                                                    
+  fontpackages-filesystem-1.44-22.el8.noarch                                                        
+  libX11-1.6.8-4.el8.x86_64                                                                         
+  libX11-common-1.6.8-4.el8.noarch                                                                  
+  libXau-1.0.9-3.el8.x86_64                                                                         
+  libXext-1.3.4-1.el8.x86_64                                                                        
+  libXrender-0.9.10-7.el8.x86_64                                                                    
+  libxcb-1.13.1-1.el8.x86_64                                                                        
+  lsof-4.93.2-1.el8.x86_64                                                                          
+  pixman-0.38.4-1.el8.x86_64                                                                        
+  policycoreutils-python-utils-2.9-14.el8.noarch                                                    
+  python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64                                              
+  python3-cairo-1.16.3-6.el8.x86_64                                                                 
+  python3-gobject-3.28.3-2.el8.x86_64                                                               
+  python3-libsemanage-2.9-6.el8.x86_64                                                              
+  python3-libxml2-2.9.7-9.el8.x86_64                                                                
+  python3-policycoreutils-2.9-14.el8.noarch                                                         
+  python3-pydbus-0.6.0-5.el8.noarch                                                                 
+  python3-setools-4.3.0-2.el8.x86_64                                                                
+  python3-systemd-234-8.el8.x86_64                                                                  
+  setroubleshoot-plugins-3.3.13-1.el8.noarch                                                        
+  setroubleshoot-server-3.3.24-3.el8.x86_64                                                         
+  wget-1.19.5-10.el8.x86_64                                                                         
+
+完了しました!
+<span class="hll">[root@awx ~]# sed -i  '/swap/d' /etc/fstab
+</span><span class="hll">[root@awx ~]# swapoff -a
+</span><span class="hll">[root@awx ~]# firewall-cmd --permanent --zone=public --add-service=https
+</span>success
+<span class="hll">[root@awx ~]# firewall-cmd --zone=public --add-masquerade --permanent
+</span>success
+<span class="hll">[root@awx ~]# firewall-cmd --reload
+</span>success
+<span class="hll">[root@awx ~]# reboot
+</span></pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# curl -sfL https://get.k3s.io | sh
+</span>[INFO]  Finding release for channel stable
+[INFO]  Using v1.21.1+k3s1 as release
+[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.21.1+k3s1/sha256sum-amd6
+4.txt
+[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.21.1+k3s1/k3s
+[INFO]  Verifying binary download
+[INFO]  Installing k3s to /usr/local/bin/k3s
+Rancher K3s Common (stable)                                         834  B/s | 1.2 kB     00:01    
+依存関係が解決しました。
+====================================================================================================
+ パッケージ        Arch   バージョン                                リポジトリー              サイズ
+====================================================================================================
+インストール:
+ k3s-selinux       noarch 0.3-0.el8                                 rancher-k3s-common-stable  18 k
+依存関係のインストール:
+ container-selinux noarch 2:2.162.0-1.module_el8.4.0+830+8027e1c4   appstream                  52 k
+モジュールストリームの有効化中:
+ container-tools          rhel8                                                                    
+
+（中略）
+
+インストール済み:
+  container-selinux-2:2.162.0-1.module_el8.4.0+830+8027e1c4.noarch   k3s-selinux-0.3-0.el8.noarch  
+
+完了しました!
+[INFO]  Creating /usr/local/bin/kubectl symlink to k3s
+[INFO]  Creating /usr/local/bin/crictl symlink to k3s
+[INFO]  Creating /usr/local/bin/ctr symlink to k3s
+[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
+[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
+[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
+[INFO]  systemd: Enabling k3s unit
+Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.se
+rvice.
+[INFO]  systemd: Starting k3s
+<span class="hll">[root@awx ~]# cat /etc/systemd/system/k3s.service
+</span>[Unit]
+Description=Lightweight Kubernetes
+Documentation=https://k3s.io
+Wants=network-online.target
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/default/%N
+EnvironmentFile=-/etc/sysconfig/%N
+EnvironmentFile=-/etc/systemd/system/k3s.service.env
+KillMode=process
+Delegate=yes
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+ExecStartPre=/bin/sh -xc '! /usr/bin/systemctl is-enabled --quiet nm-cloud-setup.service'
+ExecStartPre=-/sbin/modprobe br_netfilter
+ExecStartPre=-/sbin/modprobe overlay
+ExecStart=/usr/local/bin/k3s \
+    server \
+
+<span class="hll">[root@awx ~]# systemctl status k3s
+</span>● k3s.service - Lightweight Kubernetes
+   Loaded: loaded (/etc/systemd/system/k3s.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2021-06-23 21:38:03 JST; 1min 4s ago
+     Docs: https://k3s.io
+  Process: 2501 ExecStartPre=/sbin/modprobe overlay (code=exited, status=0/SUCCESS)
+  Process: 2494 ExecStartPre=/sbin/modprobe br_netfilter (code=exited, status=0/SUCCESS)
+  Process: 2491 ExecStartPre=/bin/sh -xc ! /usr/bin/systemctl is-enabled --quiet nm-cloud-setup.ser&gt;
+ Main PID: 2503 (k3s-server)
+    Tasks: 98
+   Memory: 1.2G
+   CGroup: /system.slice/k3s.service
+           ├─2503 /usr/local/bin/k3s server
+           ├─2533 containerd 
+           ├─3048 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
+           ├─3073 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
+           ├─3077 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
+           ├─4156 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
+           └─4334 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
+
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.230576    2503 reconciler.go:196] "operat&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.230608    2503 reconciler.go:196] "operat&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: W0623 21:38:51.230892    2503 empty_dir.go:520] Warning:&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: W0623 21:38:51.231703    2503 empty_dir.go:520] Warning:&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.231930    2503 operation_generator.go:829&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.232145    2503 operation_generator.go:829&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.245708    2503 operation_generator.go:829&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.331499    2503 reconciler.go:319] "Volume&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.331587    2503 reconciler.go:319] "Volume&gt;
+ 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.331616    2503 reconciler.go:319] "Volume&gt;
+<span class="hll">[root@awx ~]# kubectl get nodes
+</span>NAME             STATUS   ROLES                  AGE   VERSION
+awx.example.jp   Ready    control-plane,master   73s   v1.21.1+k3s1
+<span class="hll">[root@awx ~]# kubectl get pods --all-namespaces
+</span>NAMESPACE     NAME                                      READY   STATUS      RESTARTS   AGE
+kube-system   coredns-7448499f4d-j9msp                  1/1     Running     0          8m38s
+kube-system   metrics-server-86cbb8457f-2xcjn           1/1     Running     0          8m38s
+kube-system   local-path-provisioner-5ff76fc89d-cpvz9   1/1     Running     0          8m38s
+kube-system   helm-install-traefik-crd-m8q8v            0/1     Completed   0          8m38s
+kube-system   helm-install-traefik-xvhn2                0/1     Completed   1          8m38s
+kube-system   svclb-traefik-crrbq                       2/2     Running     0          8m6s
+kube-system   traefik-97b44b794-s999w                   1/1     Running     0          8m6s
+<span class="hll">[root@awx ~]# kubectl config set-context --current --namespace=default
+</span>Context "default" modified.
+<span class="hll">[root@awx ~]# kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.10.0/deploy/
+</span>awx-operator.yaml
+customresourcedefinition.apiextensions.k8s.io/awxs.awx.ansible.com created
+customresourcedefinition.apiextensions.k8s.io/awxbackups.awx.ansible.com created
+customresourcedefinition.apiextensions.k8s.io/awxrestores.awx.ansible.com created
+clusterrole.rbac.authorization.k8s.io/awx-operator created
+clusterrolebinding.rbac.authorization.k8s.io/awx-operator created
+serviceaccount/awx-operator created
+deployment.apps/awx-operator created
+<span class="hll">[root@awx ~]# kubectl get events -w --all-namespaces
+</span>NAMESPACE     LAST SEEN   TYPE      REASON                    OBJECT                                
+         MESSAGE
+default       9m21s       Normal    Starting                  node/awx.example.jp                   
+         Starting kubelet.
+default       9m21s       Warning   InvalidDiskCapacity       node/awx.example.jp                   
+         invalid capacity 0 on image filesystem
+default       9m21s       Normal    NodeHasSufficientMemory   node/awx.example.jp                   
+         Node awx.example.jp status is now: NodeHasSufficientMemory
+default       9m21s       Normal    NodeHasNoDiskPressure     node/awx.example.jp                   
+         Node awx.example.jp status is now: NodeHasNoDiskPressure
+
+（中略）
+
+
+default       9s          Normal    Scheduled                 pod/awx-operator-75c79f5489-62lbb     
+         Successfully assigned default/awx-operator-75c79f5489-62lbb to awx.example.jp
+default       9s          Normal    Pulling                   pod/awx-operator-75c79f5489-62lbb     
+         Pulling image "quay.io/ansible/awx-operator:0.10.0"
+default       0s          Normal    Pulled                    pod/awx-operator-75c79f5489-62lbb     
+         Successfully pulled image "quay.io/ansible/awx-operator:0.10.0" in 24.289586903s
+default       0s          Normal    Created                   pod/awx-operator-75c79f5489-62lbb     
+         Created container awx-operator
+default       0s          Normal    Started                   pod/awx-operator-75c79f5489-62lbb     
+         Started container awx-operator
+<span class="hll">^C[root@awx ~]# kubectl get pods
+</span>NAME                            READY   STATUS    RESTARTS   AGE
+awx-operator-75c79f5489-62lbb   1/1     Running   0          3m26s
+<span class="hll">[root@awx ~]# kubectl logs -f deployment.apps/awx-operator
+</span>{"level":"info","ts":1624452462.4707985,"logger":"cmd","msg":"Go Version: go1.13.15"}
+{"level":"info","ts":1624452462.4709737,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
+{"level":"info","ts":1624452462.4710875,"logger":"cmd","msg":"Version of ansible-operator: v0.19.4"}
+{"level":"info","ts":1624452462.471164,"logger":"cmd","msg":"Git commit of ansible-operator: 125d0df
+cc71fef4f9d7e2a42b1354cb79ffdee03"}
+{"level":"info","ts":1624452462.4718332,"logger":"cmd","msg":"Watching all namespaces.","Namespace":
+""}
+{"level":"info","ts":1624452463.2776682,"logger":"controller-runtime.metrics","msg":"metrics server 
+is starting to listen","addr":"0.0.0.0:8383"}
+{"level":"info","ts":1624452463.2785845,"logger":"watches","msg":"Environment variable not set; usin
+g default value","envVar":"WORKER_AWX_AWX_ANSIBLE_COM","default":1}
+
+（中略）
+
+{"level":"info","ts":1624452468.1431108,"logger":"controller-runtime.controller","msg":"Starting Eve
+ntSource","controller":"awx-controller","source":"kind source: awx.ansible.com/v1beta1, Kind=AWX"}
+{"level":"info","ts":1624452468.2454379,"logger":"controller-runtime.controller","msg":"Starting Con
+troller","controller":"awxrestore-controller"}
+{"level":"info","ts":1624452468.2454855,"logger":"controller-runtime.controller","msg":"Starting wor
+kers","controller":"awxrestore-controller","worker count":1}
+{"level":"info","ts":1624452468.2457247,"logger":"controller-runtime.controller","msg":"Starting Con
+troller","controller":"awxbackup-controller"}
+{"level":"info","ts":1624452468.2457676,"logger":"controller-runtime.controller","msg":"Starting wor
+kers","controller":"awxbackup-controller","worker count":1}
+{"level":"info","ts":1624452468.2467782,"logger":"controller-runtime.controller","msg":"Starting Con
+troller","controller":"awx-controller"}
+{"level":"info","ts":1624452468.2468538,"logger":"controller-runtime.controller","msg":"Starting wor
+kers","controller":"awx-controller","worker count":1}
+^C
+<span class="hll">[root@awx ~]# kubectl create namespace awx
+</span>namespace/awx created
+<span class="hll">[root@awx ~]# kubectl config set-context --current --namespace=awx
+</span>Context "default" modified.
+<span class="hll">[root@awx ~]# vi myawx.yml
+</span><span class="hll">[root@awx ~]# cat myawx.yml
+</span>---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  ingress_type: Ingress
+  route_tls_termination_mechanism: edge
+  hostname: awx.example.jp
+
+<span class="hll">[root@awx ~]# kubectl apply -f myawx.yml
+</span>awx.awx.ansible.com/awx created
+<span class="hll">[root@awx ~]# kubectl get events -w --all-namespaces
+</span>NAMESPACE     LAST SEEN   TYPE      REASON                    OBJECT                                
+         MESSAGE
+default       15m         Normal    Starting                  node/awx.example.jp                   
+         Starting kubelet.
+default       15m         Warning   InvalidDiskCapacity       node/awx.example.jp                   
+         invalid capacity 0 on image filesystem
+default       15m         Normal    NodeHasSufficientMemory   node/awx.example.jp                   
+         Node awx.example.jp status is now: NodeHasSufficientMemory
+default       15m         Normal    NodeHasNoDiskPressure     node/awx.example.jp                   
+         Node awx.example.jp status is now: NodeHasNoDiskPressure
+
+（中略）
+
+default       6m13s       Normal    Created                   pod/awx-operator-75c79f5489-62lbb     
+         Created container awx-operator
+default       6m13s       Normal    Started                   pod/awx-operator-75c79f5489-62lbb     
+         Started container awx-operator
+awx           0s          Normal    SuccessfulCreate          statefulset/awx-postgres              
+         create Claim postgres-awx-postgres-0 Pod awx-postgres-0 in StatefulSet awx-postgres success
+awx           0s          Normal    SuccessfulCreate          statefulset/awx-postgres              
+         create Pod awx-postgres-0 in StatefulSet awx-postgres successful
+awx           0s          Normal    WaitForFirstConsumer      persistentvolumeclaim/postgres-awx-pos
+tgres-0   waiting for first consumer to be created before binding
+awx           0s          Normal    ExternalProvisioning      persistentvolumeclaim/postgres-awx-pos
+tgres-0   waiting for a volume to be created, either by external provisioner "rancher.io/local-path"
+ or manually created by system administrator
+awx           0s          Normal    ExternalProvisioning      persistentvolumeclaim/postgres-awx-pos
+tgres-0   waiting for a volume to be created, either by external provisioner "rancher.io/local-path"
+ or manually created by system administrator
+awx           0s          Normal    Provisioning              persistentvolumeclaim/postgres-awx-pos
+tgres-0   External provisioner is provisioning volume for claim "awx/postgres-awx-postgres-0"
+awx           0s          Normal    ExternalProvisioning      persistentvolumeclaim/postgres-awx-pos
+tgres-0   waiting for a volume to be created, either by external provisioner "rancher.io/local-path"
+ or manually created by system administrator
+kube-system   0s          Normal    Pulling                   pod/helper-pod-create-pvc-7d2733ad-bbb
+5-4085-b4d3-41817d1f8498   Pulling image "rancher/library-busybox:1.32.1"
+kube-system   0s          Normal    Pulled                    pod/helper-pod-create-pvc-7d2733ad-bbb
+5-4085-b4d3-41817d1f8498   Successfully pulled image "rancher/library-busybox:1.32.1" in 4.747771925
+s
+kube-system   0s          Normal    Created                   pod/helper-pod-create-pvc-7d2733ad-bbb
+5-4085-b4d3-41817d1f8498   Created container helper-pod
+kube-system   0s          Normal    Started                   pod/helper-pod-create-pvc-7d2733ad-bbb
+5-4085-b4d3-41817d1f8498   Started container helper-pod
+awx           0s          Normal    ProvisioningSucceeded     persistentvolumeclaim/postgres-awx-pos
+tgres-0                    Successfully provisioned volume pvc-7d2733ad-bbb5-4085-b4d3-41817d1f8498
+awx           0s          Normal    Scheduled                 pod/awx-postgres-0                    
+                           Successfully assigned awx/awx-postgres-0 to awx.example.jp
+awx           0s          Normal    Pulling                   pod/awx-postgres-0                    
+                           Pulling image "postgres:12"
+awx           0s          Normal    ScalingReplicaSet         deployment/awx                        
+                           Scaled up replica set awx-6d97bb8b9f to 1
+awx           0s          Normal    SuccessfulCreate          replicaset/awx-6d97bb8b9f             
+                           Created pod: awx-6d97bb8b9f-s4z5t
+awx           0s          Normal    Scheduled                 pod/awx-6d97bb8b9f-s4z5t              
+                           Successfully assigned awx/awx-6d97bb8b9f-s4z5t to awx.example.jp
+awx           0s          Normal    Pulling                   pod/awx-6d97bb8b9f-s4z5t              
+                           Pulling image "docker.io/redis:latest"
+awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
+                           Successfully pulled image "docker.io/redis:latest" in 7.096207056s
+awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
+                           Created container redis
+awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
+                           Started container redis
+awx           0s          Normal    Pulling                   pod/awx-6d97bb8b9f-s4z5t              
+                           Pulling image "quay.io/ansible/awx:19.2.0"
+awx           0s          Normal    Pulled                    pod/awx-postgres-0                    
+                           Successfully pulled image "postgres:12" in 16.409029626s
+awx           0s          Normal    Created                   pod/awx-postgres-0                    
+                           Created container postgres
+awx           0s          Normal    Started                   pod/awx-postgres-0                    
+                           Started container postgres
+awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
+                           Successfully pulled image "quay.io/ansible/awx:19.2.0" in 38.545021461s
+awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
+                           Created container awx-web
+awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
+                           Started container awx-web
+awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
+                           Container image "quay.io/ansible/awx:19.2.0" already present on machine
+awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
+                           Created container awx-task
+awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
+                           Started container awx-task
+awx           0s          Normal    Pulling                   pod/awx-6d97bb8b9f-s4z5t              
+                           Pulling image "quay.io/ansible/awx-ee:0.3.0"
+awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
+                           Successfully pulled image "quay.io/ansible/awx-ee:0.3.0" in 47.595402606s
+awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
+                           Created container awx-ee
+awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
+                           Started container awx-ee
+<span class="hll">^C[root@awx ~]# kubectl logs -f deployment.apps/awx-operator -n default
+</span>{"level":"info","ts":1624452462.4707985,"logger":"cmd","msg":"Go Version: go1.13.15"}
+{"level":"info","ts":1624452462.4709737,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
+{"level":"info","ts":1624452462.4710875,"logger":"cmd","msg":"Version of ansible-operator: v0.19.4"}
+{"level":"info","ts":1624452462.471164,"logger":"cmd","msg":"Git commit of ansible-operator: 125d0df
+cc71fef4f9d7e2a42b1354cb79ffdee03"}
+{"level":"info","ts":1624452462.4718332,"logger":"cmd","msg":"Watching all namespaces.","Namespace":
+""}
+{"level":"info","ts":1624452463.2776682,"logger":"controller-runtime.metrics","msg":"metrics server 
+is starting to listen","addr":"0.0.0.0:8383"}
+{"level":"info","ts":1624452463.2785845,"logger":"watches","msg":"Environment variable not set; usin
+g default value","envVar":"WORKER_AWX_AWX_ANSIBLE_COM","default":1}
+
+（中略）
+
+{"level":"info","ts":1624453218.18947,"logger":"proxy","msg":"Read object from cache","resource":{"I
+sResourceRequest":true,"Path":"/api/v1/namespaces/awx/secrets/awx-broadcast-websocket","Verb":"get",
+"APIPrefix":"api","APIGroup":"","APIVersion":"v1","Namespace":"awx","Resource":"secrets","Subresourc
+e":"","Name":"awx-broadcast-websocket","Parts":["secrets","awx-broadcast-websocket"]}}
+{"level":"info","ts":1624453218.5074484,"logger":"runner","msg":"Ansible-runner exited successfully"
+,"job":"5486140987150761883","name":"awx","namespace":"awx"}
+
+--------------------------- Ansible Task Status Event StdOut  -----------------
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=49   changed=2    unreachable=0    failed=0    skipped=34   rescued=
+0    ignored=0   
+
+
+-------------------------------------------------------------------------------
+^C
+<span class="hll">[root@awx ~]# kubectl get pods
+</span>NAME                   READY   STATUS    RESTARTS   AGE
+awx-postgres-0         1/1     Running   0          15m
+awx-6d97bb8b9f-s4z5t   4/4     Running   0          14m
+<span class="hll">[root@awx ~]# kubectl get svc
+</span>NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+awx-postgres   ClusterIP   None            &lt;none&gt;        5432/TCP   15m
+awx-service    ClusterIP   10.43.119.138   &lt;none&gt;        80/TCP     15m
+<span class="hll">[root@awx ~]# kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode
+</span>Vsybh2z7SXwr4yo7GVBVPafPWc2vgZKW[root@awx ~]# 
+</pre></div>
+</div>
+</div>
+<div class="section" id="awx-install-login">
+<span id="id3"></span><h2>ログイン<a class="headerlink" href="#awx-install-login" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>ブラウザーで <strong>http://192.168.23.40</strong> を開く</p>
+<img alt="awx/img/2021-05-01_22h15_48.png" src="awx/img/2021-05-01_22h15_48.png"/>
+<p>名前解決ができるのなら <strong>http://awx</strong> のような指定も可能</p>
+<img alt="awx/img/2021-05-01_22h17_12.png" src="awx/img/2021-05-01_22h17_12.png"/>
+</li>
+<li><p><span class="guilabel">Username</span> に <strong>Admin</strong> 、 <span class="guilabel">Password</span> に <strong>password</strong>  を入力</p>
+<a class="reference internal image-reference" href="awx/img/2021-05-01_22h16_22.png"><img alt="awx/img/2021-05-01_22h16_22.png" src="awx/img/2021-05-01_22h16_22.png"/></a>
+</li>
+<li><p><span class="guilabel">Log In</span> をクリック</p>
+<a class="reference internal image-reference" href="awx/img/2021-05-01_22h16_31.png"><img alt="awx/img/2021-05-01_22h16_31.png" src="awx/img/2021-05-01_22h16_31.png"/></a>
+</li>
+<li><p>ログイン終了　＝　AWX のダッシュボードを表示</p>
+<a class="reference internal image-reference" href="awx/img/2021-05-01_22h16_49.png"><img alt="awx/img/2021-05-01_22h16_49.png" src="awx/img/2021-05-01_22h16_49.png"/></a>
+</li>
+</ol>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../collection-index/collection-index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">コレクション インデックス</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="awx.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">AWX</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">AWX をデプロイ</a><ul>
+<li><a class="reference internal" href="#awx-install-command">実行コマンド</a></li>
+<li><a class="reference internal" href="#awx-install-log">実行ログ</a></li>
+<li><a class="reference internal" href="#awx-install-login">ログイン</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

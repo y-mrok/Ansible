@@ -1,0 +1,383 @@
+piyo@vmpc:~$ ansible-lint -L
+                            ╷                                                                      
+  command-instead-of-module │ Using command rather than module                                     
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Executing a command when there is an Ansible module is generally a   
+                            │ bad idea                                                             
+  version_added             │ historic                                                             
+  tags                      │ command-shell, idiom                                                 
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  command-instead-of-shell  │ Use shell only when shell functionality is required                  
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Shell should only be used when piping, redirecting or chaining       
+                            │ commands (and Ansible would be preferred for some of those!)         
+  version_added             │ historic                                                             
+  tags                      │ command-shell, idiom                                                 
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  deprecated-bare-vars      │ Using bare variables is deprecated                                   
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Using bare variables is deprecated. Update your playbooks so that    
+                            │ the environment value uses the full variable syntax {{               
+                            │ your_variable }}                                                     
+  version_added             │ historic                                                             
+  tags                      │ deprecations                                                         
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  deprecated-command-syntax │ Using command rather than an argument to e.g. file                   
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Executing a command when there are arguments to modules is           
+                            │ generally a bad idea                                                 
+  version_added             │ historic                                                             
+  tags                      │ command-shell, deprecations                                          
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  deprecated-local-action   │ Do not use 'local_action', use 'delegate_to: localhost'              
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Do not use local_action, use delegate_to: localhost                  
+  version_added             │ v4.0.0                                                               
+  tags                      │ deprecations                                                         
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  deprecated-module         │ Deprecated module                                                    
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ These are deprecated modules, some modules are kept temporarily for  
+                            │ backwards compatibility but usage is discouraged. For more details   
+                            │ see:                                                                 
+                            │ https://docs.ansible.com/ansible/latest/collections/index_module.h…  
+  version_added             │ v4.0.0                                                               
+  tags                      │ deprecations                                                         
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  empty-string-compare      │ Don't compare to empty string                                        
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Use when: var|length > 0 rather than when: var != "" (or conversely  
+                            │ when: var|length == 0 rather than when: var == "")                   
+  version_added             │ v4.0.0                                                               
+  tags                      │ idiom                                                                
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  git-latest                │ Git checkouts must contain explicit version                          
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ All version control checkouts must point to an explicit commit or    
+                            │ tag, not just latest                                                 
+  version_added             │ historic                                                             
+  tags                      │ idempotency                                                          
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  hg-latest                 │ Mercurial checkouts must contain explicit revision                   
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ All version control checkouts must point to an explicit commit or    
+                            │ tag, not just latest                                                 
+  version_added             │ historic                                                             
+  tags                      │ idempotency                                                          
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  ignore-errors             │ Use failed_when and specify error conditions instead of using        
+                            │ ignore_errors                                                        
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Instead of ignoring all errors, ignore the errors only when using    
+                            │ {{ ansible_check_mode }}, register the errors using register, or     
+                            │ use failed_when: and specify acceptable error conditions to reduce   
+                            │ the risk of ignoring important failures.                             
+  version_added             │ v5.0.7                                                               
+  tags                      │ unpredictability, experimental                                       
+  severity                  │ LOW                                                                  
+                            ╵                                                                      
+                            ╷                                                                      
+  inline-env-var            │ Command module does not accept setting environment variables inline  
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Use environment: to set environment variables or use shell module    
+                            │ which accepts both                                                   
+  version_added             │ historic                                                             
+  tags                      │ command-shell, idiom                                                 
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  internal-error            │ Unexpected internal error                                            
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ This error can be caused by internal bugs but also by custom rules.  
+                            │ Instead of just stopping linter we generate there errors and         
+                            │ continue processing. This allows users to add this rule to warn      
+                            │ list until the root cause is fixed.                                  
+  version_added             │ v5.0.0                                                               
+  tags                      │ core                                                                 
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  literal-compare           │ Don't compare to literal True/False                                  
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Use when: var rather than when: var == True (or conversely when:     
+                            │ not var)                                                             
+  version_added             │ v4.0.0                                                               
+  tags                      │ idiom                                                                
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  load-failure              │ Failed to load or parse file                                         
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Linter failed to process a YAML file, possible not an Ansible file.  
+  version_added             │ v4.3.0                                                               
+  tags                      │ core                                                                 
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  meta-incorrect            │ meta/main.yml default values should be changed                       
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ meta/main.yml default values should be changed for: author,          
+                            │ description, company, license, license                               
+  version_added             │ v4.0.0                                                               
+  tags                      │ metadata                                                             
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  meta-no-info              │ meta/main.yml should contain relevant info                           
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ meta/main.yml should contain: author, description, license,          
+                            │ min_ansible_version, platforms                                       
+  version_added             │ v4.0.0                                                               
+  tags                      │ metadata                                                             
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  meta-no-tags              │ Tags must contain lowercase letters and digits only                  
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Tags must contain lowercase letters and digits only, and             
+                            │ galaxy_tags is expected to be a list                                 
+  version_added             │ v4.0.0                                                               
+  tags                      │ metadata                                                             
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  meta-video-links          │ meta/main.yml video_links should be formatted correctly              
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Items in video_links in meta/main.yml should be dictionaries, and    
+                            │ contain only keys url and title, and have a shared link from a       
+                            │ supported provider                                                   
+  version_added             │ v4.0.0                                                               
+  tags                      │ metadata                                                             
+  severity                  │ LOW                                                                  
+                            ╵                                                                      
+                            ╷                                                                      
+  no-changed-when           │ Commands should not change things if nothing needs doing             
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Commands should either read information (and thus set changed_when)  
+                            │ or not do something if it has already been done (using               
+                            │ creates/removes) or only do it if another check has a particular     
+                            │ result (when)                                                        
+  version_added             │ historic                                                             
+  tags                      │ command-shell, idempotency                                           
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  no-handler                │ Tasks that run when changed should likely be handlers                
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ If a task has a when: result.changed setting, it is effectively      
+                            │ acting as a handler. You could use notify and move that task to      
+                            │ handlers. (more)                                                     
+  version_added             │ historic                                                             
+  tags                      │ idiom                                                                
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  no-jinja-nesting          │ Nested jinja pattern                                                 
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ There should not be any nested jinja pattern. Example (bad): {{      
+                            │ list_one + {{ list_two | max }} }}, Example (good): {{ list_one +    
+                            │ max(list_two) }}, Example (allowed):                                 
+                            │ --format='{{'{{'}}.Size{{'}}'}}'                                     
+  version_added             │ v4.3.0                                                               
+  tags                      │ formatting                                                           
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  no-jinja-when             │ No Jinja2 in when                                                    
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ when is a raw Jinja2 expression, remove redundant {{ }} from         
+                            │ variable(s).                                                         
+  version_added             │ historic                                                             
+  tags                      │ deprecations                                                         
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  no-log-password           │ password should not be logged.                                       
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ When passing password argument you should have no_log configured to  
+                            │ a non False value to avoid accidental leaking of secrets.            
+  version_added             │ v5.0.9                                                               
+  tags                      │ security, experimental                                               
+  severity                  │ LOW                                                                  
+                            ╵                                                                      
+                            ╷                                                                      
+  no-loop-var-prefix        │ Role loop_var should use configured prefix.                          
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Looping inside roles has the risk of clashing with loops from        
+                            │ user-playbooks. (more)                                               
+  tags                      │ idiom                                                                
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  no-relative-paths         │ Doesn't need a relative path in role                                 
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ copy and template do not need to use relative path for src           
+  version_added             │ v4.0.0                                                               
+  tags                      │ idiom                                                                
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  no-tabs                   │ Most files should not contain tabs                                   
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Tabs can cause unexpected display issues, use spaces                 
+  version_added             │ v4.0.0                                                               
+  tags                      │ formatting                                                           
+  severity                  │ LOW                                                                  
+                            ╵                                                                      
+                            ╷                                                                      
+  package-latest            │ Package installs should not use latest                               
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Package installs should use state=present with or without a version  
+  version_added             │ historic                                                             
+  tags                      │ idempotency                                                          
+  severity                  │ VERY_LOW                                                             
+                            ╵                                                                      
+                            ╷                                                                      
+  parser-error              │ AnsibleParserError                                                   
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Ansible parser fails, this usually indicate invalid file.            
+  version_added             │ v5.0.0                                                               
+  tags                      │ core                                                                 
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  partial-become            │ become_user requires become to work as expected                      
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ become_user without become will not actually change user             
+  version_added             │ historic                                                             
+  tags                      │ unpredictability                                                     
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  playbook-extension        │ Use ".yml" or ".yaml" playbook extension                             
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Playbooks should have the ".yml" or ".yaml" extension                
+  version_added             │ v4.0.0                                                               
+  tags                      │ formatting                                                           
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  risky-file-permissions    │ File permissions unset or incorrect                                  
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Missing or unsupported mode parameter can cause unexpected file      
+                            │ permissions based on version of Ansible being used. Be explicit,     
+                            │ like mode: 0644 to avoid hitting this rule. Special preserve value   
+                            │ is accepted only by copy, template modules. See                      
+                            │ https://github.com/ansible/ansible/issues/71200                      
+  version_added             │ v4.3.0                                                               
+  tags                      │ unpredictability, experimental                                       
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  risky-octal               │ Octal file permissions must contain leading zero or be a string      
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Numeric file permissions without leading zero can behave in          
+                            │ unexpected ways. See                                                 
+                            │ https://docs.ansible.com/ansible/latest/collections/ansible/builti…  
+  version_added             │ historic                                                             
+  tags                      │ formatting                                                           
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  risky-shell-pipe          │ Shells that use pipes should set the pipefail option                 
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Without the pipefail option set, a shell command that implements a   
+                            │ pipeline can fail and still return 0. If any part of the pipeline    
+                            │ other than the terminal command fails, the whole pipeline will       
+                            │ still return 0, which may be considered a success by Ansible.        
+                            │ Pipefail is available in the bash shell.                             
+  version_added             │ v4.1.0                                                               
+  tags                      │ command-shell                                                        
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  role-name                 │ Role name {0} does not match ^[a-z][a-z0-9_]+$ pattern               
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Role names are now limited to contain only lowercase alphanumeric    
+                            │ characters, plus '' and start with an alpha character. See           
+                            │ developing collections                                               
+                            │ <https://docs.ansible.com/ansible/devel/dev_guide/developing_colle…  
+  version_added             │ v4.3.0                                                               
+  tags                      │ deprecations, metadata                                               
+  severity                  │ HIGH                                                                 
+                            ╵                                                                      
+                            ╷                                                                      
+  syntax-check              │ Ansible syntax check failed                                          
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Running ansible-playbook --syntax-check ... failed.                  
+                            │                                                                      
+                            │ This error cannot be disabled due to being a prerequisite for other  
+                            │ steps. You can either exclude these files from linting or better     
+                            │ assure they can be loaded by Ansible. This is often achieved by      
+                            │ editing inventory file and/or ansible.cfg so ansible can load        
+                            │ required variables.                                                  
+                            │                                                                      
+                            │ If undefined variables are the failure reason you could use jinja    
+                            │ default() filter in order to provide fallback values.                
+  version_added             │ v5.0.0                                                               
+  tags                      │ core, unskippable                                                    
+  severity                  │ VERY_HIGH                                                            
+                            ╵                                                                      
+                            ╷                                                                      
+  unnamed-task              │ All tasks should be named                                            
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ All tasks should have a distinct name for readability and for        
+                            │ --start-at-task to work                                              
+  version_added             │ historic                                                             
+  tags                      │ idiom                                                                
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  var-naming                │ All variables should be named using only lowercase and underscores   
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ All variables should be named using only lowercase and underscores   
+  version_added             │ v5.0.10                                                              
+  tags                      │ idiom, experimental                                                  
+  severity                  │ MEDIUM                                                               
+                            ╵                                                                      
+                            ╷                                                                      
+  var-spacing               │ Variables should have spaces before and after:  {{ var_name }}       
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Variables should have spaces before and after: {{ var_name }}        
+  version_added             │ v4.0.0                                                               
+  tags                      │ formatting                                                           
+  severity                  │ LOW                                                                  
+                            ╵                                                                      
+                            ╷                                                                      
+  yaml                      │ Violations reported by yamllint                                      
+╶───────────────────────────┼─────────────────────────────────────────────────────────────────────╴
+  description               │ Rule violations reported by YamlLint when this is installed.         
+                            │                                                                      
+                            │ You can fully disable all of them by adding 'yaml' to the            
+                            │ 'skip_list'.                                                         
+                            │                                                                      
+                            │ Specific tag identifiers that are printed at the end of rule name,   
+                            │ like 'trailing-spaces' or 'indentation' can also be be skipped,      
+                            │ allowing you to have a more fine control.                            
+                            │                                                                      
+                            │ By default this rule is not used when yamllint library is missing.   
+                            │ If you want to make its absence a runtime failure, please add        
+                            │ 'yaml' to 'enable_list' inside the configuration file.               
+  version_added             │ v5.0.0                                                               
+  tags                      │ formatting, yaml                                                     
+  severity                  │ VERY_LOW                                                             
+                            ╵                                                                      
+piyo@vmpc:~$ 

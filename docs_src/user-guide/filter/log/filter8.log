@@ -1,0 +1,25 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter8.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Convert to real type] **************************************************************************************************************************
+ok: [hydrogen] => (item=123) => {
+    "msg": "Cast the 123 set in item to a real type. -> 123.0"
+}
+ok: [hydrogen] => (item=456.78) => {
+    "msg": "Cast the 456.78 set in item to a real type. -> 456.78"
+}
+ok: [hydrogen] => (item=123) => {
+    "msg": "Cast the 123 set in item to a real type. -> 123.0"
+}
+ok: [hydrogen] => (item=248.7) => {
+    "msg": "Cast the 248.7 set in item to a real type. -> 248.7"
+}
+ok: [hydrogen] => (item=abc) => {
+    "msg": "Cast the abc set in item to a real type. -> 0.0"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

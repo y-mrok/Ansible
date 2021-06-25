@@ -1,0 +1,760 @@
+Last login: Thu Apr 29 11:23:12 2021 from 192.168.23.224
+[ansible-user@awx ~]$ su -
+Password: 
+Last login: Thu Apr 29 11:23:32 JST 2021 on tty1
+[root@awx ~]# dnf -y install epel-release
+Last metadata expiration check: 2:27:01 ago on Sat 01 May 2021 07:23:31 PM JST.
+Dependencies resolved.
+=============================================================================================================================================
+ Package                              Architecture                   Version                            Repository                      Size
+=============================================================================================================================================
+Installing:
+ epel-release                         noarch                         8-8.el8                            extras                          23 k
+
+Transaction Summary
+=============================================================================================================================================
+Install  1 Package
+
+Total download size: 23 k
+Installed size: 32 k
+Downloading Packages:
+epel-release-8-8.el8.noarch.rpm                                                                              158 kB/s |  23 kB     00:00    
+---------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                         26 kB/s |  23 kB     00:00     
+warning: /var/cache/dnf/extras-2770d521ba03e231/packages/epel-release-8-8.el8.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID 8483c65d: NO
+KEY
+CentOS Linux 8 - Extras                                                                                      1.6 MB/s | 1.6 kB     00:00    
+Importing GPG key 0x8483C65D:
+ Userid     : "CentOS (CentOS Official Signing Key) <security@centos.org>"
+ Fingerprint: 99DB 70FA E1D7 CE22 7FB6 4882 05B5 55B3 8483 C65D
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                     1/1 
+  Installing       : epel-release-8-8.el8.noarch                                                                                         1/1 
+  Running scriptlet: epel-release-8-8.el8.noarch                                                                                         1/1 
+  Verifying        : epel-release-8-8.el8.noarch                                                                                         1/1 
+
+Installed:
+  epel-release-8-8.el8.noarch                                                                                                                
+
+Complete!
+[root@awx ~]# dnf -y update
+Extra Packages for Enterprise Linux Modular 8 - x86_64                                                       653 kB/s | 557 kB     00:00    
+Extra Packages for Enterprise Linux 8 - x86_64                                                               8.4 MB/s | 9.3 MB     00:01    
+Dependencies resolved.
+=============================================================================================================================================
+ Package                                 Architecture           Version                                         Repository              Size
+=============================================================================================================================================
+Installing:
+ kernel                                  x86_64                 4.18.0-240.22.1.el8_3                           baseos                 4.4 M
+ kernel-core                             x86_64                 4.18.0-240.22.1.el8_3                           baseos                  30 M
+ kernel-modules                          x86_64                 4.18.0-240.22.1.el8_3                           baseos                  26 M
+Upgrading:
+ NetworkManager                          x86_64                 1:1.26.0-12.el8_3                               baseos                 2.4 M
+ NetworkManager-libnm                    x86_64                 1:1.26.0-12.el8_3                               baseos                 1.8 M
+ NetworkManager-team                     x86_64                 1:1.26.0-12.el8_3                               baseos                 142 k
+ NetworkManager-tui                      x86_64                 1:1.26.0-12.el8_3                               baseos                 320 k
+ bind-export-libs                        x86_64                 32:9.11.20-5.el8_3.1                            baseos                 1.1 M
+ crypto-policies                         noarch                 20210209-1.gitbfb6bed.el8_3                     baseos                  62 k
+ crypto-policies-scripts                 noarch                 20210209-1.gitbfb6bed.el8_3                     baseos                  67 k
+ curl                                    x86_64                 7.61.1-14.el8_3.1                               baseos                 353 k
+ dbus                                    x86_64                 1:1.12.8-12.el8_3                               baseos                  41 k
+ dbus-common                             noarch                 1:1.12.8-12.el8_3                               baseos                  45 k
+ dbus-daemon                             x86_64                 1:1.12.8-12.el8_3                               baseos                 240 k
+ dbus-libs                               x86_64                 1:1.12.8-12.el8_3                               baseos                 183 k
+ dbus-tools                              x86_64                 1:1.12.8-12.el8_3                               baseos                  85 k
+ dbxtool                                 x86_64                 8-5.el8_3.2                                     baseos                  37 k
+ dracut                                  x86_64                 049-95.git20200804.el8_3.4                      baseos                 368 k
+ dracut-config-rescue                    x86_64                 049-95.git20200804.el8_3.4                      baseos                  56 k
+ dracut-network                          x86_64                 049-95.git20200804.el8_3.4                      baseos                 103 k
+ dracut-squash                           x86_64                 049-95.git20200804.el8_3.4                      baseos                  57 k
+ epel-release                            noarch                 8-10.el8                                        epel                    22 k
+ file                                    x86_64                 5.33-16.el8_3.1                                 baseos                  77 k
+ file-libs                               x86_64                 5.33-16.el8_3.1                                 baseos                 543 k
+ freetype                                x86_64                 2.9.1-4.el8_3.1                                 baseos                 394 k
+ gnutls                                  x86_64                 3.6.14-8.el8_3                                  baseos                 1.0 M
+ grub2-common                            noarch                 1:2.02-90.el8_3.1                               baseos                 885 k
+ grub2-efi-x64                           x86_64                 1:2.02-90.el8_3.1                               baseos                 409 k
+ grub2-tools                             x86_64                 1:2.02-90.el8_3.1                               baseos                 2.0 M
+ grub2-tools-extra                       x86_64                 1:2.02-90.el8_3.1                               baseos                 1.1 M
+ grub2-tools-minimal                     x86_64                 1:2.02-90.el8_3.1                               baseos                 206 k
+ iptables                                x86_64                 1.8.4-15.el8_3.3                                baseos                 584 k
+ iptables-ebtables                       x86_64                 1.8.4-15.el8_3.3                                baseos                  71 k
+ iptables-libs                           x86_64                 1.8.4-15.el8_3.3                                baseos                 106 k
+ iwl100-firmware                         noarch                 39.31.5.1-101.el8_3.1                           baseos                 169 k
+ iwl1000-firmware                        noarch                 1:39.31.5.1-101.el8_3.1                         baseos                 232 k
+ iwl105-firmware                         noarch                 18.168.6.1-101.el8_3.1                          baseos                 253 k
+ iwl135-firmware                         noarch                 18.168.6.1-101.el8_3.1                          baseos                 262 k
+ iwl2000-firmware                        noarch                 18.168.6.1-101.el8_3.1                          baseos                 256 k
+ iwl2030-firmware                        noarch                 18.168.6.1-101.el8_3.1                          baseos                 265 k
+ iwl3160-firmware                        noarch                 1:25.30.13.0-101.el8_3.1                        baseos                 1.7 M
+ iwl5000-firmware                        noarch                 8.83.5.1_1-101.el8_3.1                          baseos                 313 k
+ iwl5150-firmware                        noarch                 8.24.2.2-101.el8_3.1                            baseos                 166 k
+ iwl6000-firmware                        noarch                 9.221.4.1-101.el8_3.1                           baseos                 186 k
+ iwl6000g2a-firmware                     noarch                 18.168.6.1-101.el8_3.1                          baseos                 329 k
+ iwl6050-firmware                        noarch                 41.28.5.1-101.el8_3.1                           baseos                 262 k
+ iwl7260-firmware                        noarch                 1:25.30.13.0-101.el8_3.1                        baseos                  15 M
+ kernel-tools                            x86_64                 4.18.0-240.22.1.el8_3                           baseos                 4.5 M
+ kernel-tools-libs                       x86_64                 4.18.0-240.22.1.el8_3                           baseos                 4.4 M
+ kexec-tools                             x86_64                 2.0.20-34.el8_3.1                               baseos                 496 k
+ libcurl                                 x86_64                 7.61.1-14.el8_3.1                               baseos                 299 k
+ libldb                                  x86_64                 2.1.3-3.el8_3                                   baseos                 179 k
+ libselinux                              x86_64                 2.9-4.el8_3                                     baseos                 165 k
+ libselinux-utils                        x86_64                 2.9-4.el8_3                                     baseos                 242 k
+ linux-firmware                          noarch                 20200619-101.git3890db36.el8_3                  baseos                 101 M
+ microcode_ctl                           x86_64                 4:20200609-2.20210216.1.el8_3                   baseos                 4.6 M
+ nettle                                  x86_64                 3.4.1-4.el8_3                                   baseos                 301 k
+ openssl                                 x86_64                 1:1.1.1g-15.el8_3                               baseos                 707 k
+ openssl-libs                            x86_64                 1:1.1.1g-15.el8_3                               baseos                 1.5 M
+ procps-ng                               x86_64                 3.3.15-3.el8_3.1                                baseos                 328 k
+ python3-libselinux                      x86_64                 2.9-4.el8_3                                     baseos                 283 k
+ python3-perf                            x86_64                 4.18.0-240.22.1.el8_3                           baseos                 4.5 M
+ selinux-policy                          noarch                 3.14.3-54.el8_3.4                               baseos                 622 k
+ selinux-policy-targeted                 noarch                 3.14.3-54.el8_3.4                               baseos                  15 M
+ sudo                                    x86_64                 1.8.29-6.el8_3.1                                baseos                 924 k
+ systemd                                 x86_64                 239-41.el8_3.2                                  baseos                 3.5 M
+ systemd-libs                            x86_64                 239-41.el8_3.2                                  baseos                 1.1 M
+ systemd-pam                             x86_64                 239-41.el8_3.2                                  baseos                 456 k
+ systemd-udev                            x86_64                 239-41.el8_3.2                                  baseos                 1.3 M
+ tuned                                   noarch                 2.14.0-3.el8_3.1                                baseos                 292 k
+ tzdata                                  noarch                 2021a-1.el8                                     baseos                 473 k
+ zlib                                    x86_64                 1.2.11-16.2.el8_3                               baseos                 102 k
+Installing dependencies:
+ grub2-tools-efi                         x86_64                 1:2.02-90.el8_3.1                               baseos                 471 k
+
+Transaction Summary
+=============================================================================================================================================
+Install   4 Packages
+Upgrade  69 Packages
+
+Total download size: 242 M
+Downloading Packages:
+(1/73): grub2-tools-efi-2.02-90.el8_3.1.x86_64.rpm                                                           1.8 MB/s | 471 kB     00:00    
+(2/73): kernel-4.18.0-240.22.1.el8_3.x86_64.rpm                                                              3.0 MB/s | 4.4 MB     00:01    
+(3/73): NetworkManager-1.26.0-12.el8_3.x86_64.rpm                                                            3.7 MB/s | 2.4 MB     00:00    
+(4/73): NetworkManager-libnm-1.26.0-12.el8_3.x86_64.rpm                                                      3.6 MB/s | 1.8 MB     00:00    
+(5/73): NetworkManager-team-1.26.0-12.el8_3.x86_64.rpm                                                       2.2 MB/s | 142 kB     00:00    
+(6/73): NetworkManager-tui-1.26.0-12.el8_3.x86_64.rpm                                                        2.9 MB/s | 320 kB     00:00    
+(7/73): bind-export-libs-9.11.20-5.el8_3.1.x86_64.rpm                                                        3.6 MB/s | 1.1 MB     00:00    
+(8/73): crypto-policies-20210209-1.gitbfb6bed.el8_3.noarch.rpm                                               1.5 MB/s |  62 kB     00:00    
+(9/73): crypto-policies-scripts-20210209-1.gitbfb6bed.el8_3.noarch.rpm                                       1.5 MB/s |  67 kB     00:00    
+(10/73): curl-7.61.1-14.el8_3.1.x86_64.rpm                                                                   3.2 MB/s | 353 kB     00:00    
+(11/73): dbus-1.12.8-12.el8_3.x86_64.rpm                                                                     1.6 MB/s |  41 kB     00:00    
+(12/73): dbus-common-1.12.8-12.el8_3.noarch.rpm                                                              2.1 MB/s |  45 kB     00:00    
+(13/73): dbus-daemon-1.12.8-12.el8_3.x86_64.rpm                                                              5.0 MB/s | 240 kB     00:00    
+(14/73): dbus-libs-1.12.8-12.el8_3.x86_64.rpm                                                                2.5 MB/s | 183 kB     00:00    
+(15/73): dbus-tools-1.12.8-12.el8_3.x86_64.rpm                                                               3.0 MB/s |  85 kB     00:00    
+(16/73): dbxtool-8-5.el8_3.2.x86_64.rpm                                                                      1.7 MB/s |  37 kB     00:00    
+(17/73): dracut-049-95.git20200804.el8_3.4.x86_64.rpm                                                        4.0 MB/s | 368 kB     00:00    
+(18/73): dracut-config-rescue-049-95.git20200804.el8_3.4.x86_64.rpm                                          2.4 MB/s |  56 kB     00:00    
+(19/73): dracut-network-049-95.git20200804.el8_3.4.x86_64.rpm                                                2.7 MB/s | 103 kB     00:00    
+(20/73): dracut-squash-049-95.git20200804.el8_3.4.x86_64.rpm                                                 2.7 MB/s |  57 kB     00:00    
+(21/73): file-5.33-16.el8_3.1.x86_64.rpm                                                                     3.1 MB/s |  77 kB     00:00    
+(22/73): file-libs-5.33-16.el8_3.1.x86_64.rpm                                                                3.8 MB/s | 543 kB     00:00    
+(23/73): freetype-2.9.1-4.el8_3.1.x86_64.rpm                                                                 2.9 MB/s | 394 kB     00:00    
+(24/73): gnutls-3.6.14-8.el8_3.x86_64.rpm                                                                    2.5 MB/s | 1.0 MB     00:00    
+(25/73): grub2-common-2.02-90.el8_3.1.noarch.rpm                                                             3.0 MB/s | 885 kB     00:00    
+(26/73): grub2-efi-x64-2.02-90.el8_3.1.x86_64.rpm                                                            2.7 MB/s | 409 kB     00:00    
+(27/73): grub2-tools-2.02-90.el8_3.1.x86_64.rpm                                                              1.9 MB/s | 2.0 MB     00:01    
+(28/73): kernel-core-4.18.0-240.22.1.el8_3.x86_64.rpm                                                        5.1 MB/s |  30 MB     00:05    
+(29/73): grub2-tools-minimal-2.02-90.el8_3.1.x86_64.rpm                                                      3.5 MB/s | 206 kB     00:00    
+(30/73): iptables-1.8.4-15.el8_3.3.x86_64.rpm                                                                3.4 MB/s | 584 kB     00:00    
+(31/73): iptables-ebtables-1.8.4-15.el8_3.3.x86_64.rpm                                                       1.5 MB/s |  71 kB     00:00    
+(32/73): iptables-libs-1.8.4-15.el8_3.3.x86_64.rpm                                                           2.3 MB/s | 106 kB     00:00    
+(33/73): iwl100-firmware-39.31.5.1-101.el8_3.1.noarch.rpm                                                    4.2 MB/s | 169 kB     00:00    
+(34/73): grub2-tools-extra-2.02-90.el8_3.1.x86_64.rpm                                                        1.7 MB/s | 1.1 MB     00:00    
+(35/73): iwl1000-firmware-39.31.5.1-101.el8_3.1.noarch.rpm                                                   2.0 MB/s | 232 kB     00:00    
+(36/73): iwl135-firmware-18.168.6.1-101.el8_3.1.noarch.rpm                                                   4.1 MB/s | 262 kB     00:00    
+(37/73): iwl105-firmware-18.168.6.1-101.el8_3.1.noarch.rpm                                                   1.8 MB/s | 253 kB     00:00    
+(38/73): iwl2000-firmware-18.168.6.1-101.el8_3.1.noarch.rpm                                                  3.7 MB/s | 256 kB     00:00    
+(39/73): iwl2030-firmware-18.168.6.1-101.el8_3.1.noarch.rpm                                                  1.9 MB/s | 265 kB     00:00    
+(40/73): iwl5000-firmware-8.83.5.1_1-101.el8_3.1.noarch.rpm                                                  3.3 MB/s | 313 kB     00:00    
+(41/73): iwl5150-firmware-8.24.2.2-101.el8_3.1.noarch.rpm                                                    2.8 MB/s | 166 kB     00:00    
+(42/73): iwl3160-firmware-25.30.13.0-101.el8_3.1.noarch.rpm                                                  5.1 MB/s | 1.7 MB     00:00    
+(43/73): iwl6000-firmware-9.221.4.1-101.el8_3.1.noarch.rpm                                                   1.9 MB/s | 186 kB     00:00    
+(44/73): iwl6000g2a-firmware-18.168.6.1-101.el8_3.1.noarch.rpm                                               4.0 MB/s | 329 kB     00:00    
+(45/73): iwl6050-firmware-41.28.5.1-101.el8_3.1.noarch.rpm                                                   3.7 MB/s | 262 kB     00:00    
+(46/73): kernel-modules-4.18.0-240.22.1.el8_3.x86_64.rpm                                                     3.5 MB/s |  26 MB     00:07    
+(47/73): kernel-tools-4.18.0-240.22.1.el8_3.x86_64.rpm                                                       3.7 MB/s | 4.5 MB     00:01    
+(48/73): kexec-tools-2.0.20-34.el8_3.1.x86_64.rpm                                                            3.2 MB/s | 496 kB     00:00    
+(49/73): libcurl-7.61.1-14.el8_3.1.x86_64.rpm                                                                2.7 MB/s | 299 kB     00:00    
+(50/73): libldb-2.1.3-3.el8_3.x86_64.rpm                                                                     1.3 MB/s | 179 kB     00:00    
+(51/73): libselinux-2.9-4.el8_3.x86_64.rpm                                                                   1.0 MB/s | 165 kB     00:00    
+(52/73): libselinux-utils-2.9-4.el8_3.x86_64.rpm                                                             2.4 MB/s | 242 kB     00:00    
+(53/73): kernel-tools-libs-4.18.0-240.22.1.el8_3.x86_64.rpm                                                  3.1 MB/s | 4.4 MB     00:01    
+(54/73): iwl7260-firmware-25.30.13.0-101.el8_3.1.noarch.rpm                                                  4.0 MB/s |  15 MB     00:03    
+(55/73): nettle-3.4.1-4.el8_3.x86_64.rpm                                                                     7.1 MB/s | 301 kB     00:00    
+(56/73): openssl-1.1.1g-15.el8_3.x86_64.rpm                                                                  6.3 MB/s | 707 kB     00:00    
+(57/73): microcode_ctl-20200609-2.20210216.1.el8_3.x86_64.rpm                                                2.3 MB/s | 4.6 MB     00:01    
+(58/73): openssl-libs-1.1.1g-15.el8_3.x86_64.rpm                                                             6.3 MB/s | 1.5 MB     00:00    
+(59/73): procps-ng-3.3.15-3.el8_3.1.x86_64.rpm                                                               3.5 MB/s | 328 kB     00:00    
+(60/73): python3-libselinux-2.9-4.el8_3.x86_64.rpm                                                           6.9 MB/s | 283 kB     00:00    
+(61/73): selinux-policy-3.14.3-54.el8_3.4.noarch.rpm                                                         7.7 MB/s | 622 kB     00:00    
+(62/73): python3-perf-4.18.0-240.22.1.el8_3.x86_64.rpm                                                       3.8 MB/s | 4.5 MB     00:01    
+(63/73): sudo-1.8.29-6.el8_3.1.x86_64.rpm                                                                    3.8 MB/s | 924 kB     00:00    
+(64/73): systemd-239-41.el8_3.2.x86_64.rpm                                                                   4.0 MB/s | 3.5 MB     00:00    
+(65/73): systemd-libs-239-41.el8_3.2.x86_64.rpm                                                              3.4 MB/s | 1.1 MB     00:00    
+(66/73): systemd-pam-239-41.el8_3.2.x86_64.rpm                                                               4.2 MB/s | 456 kB     00:00    
+(67/73): selinux-policy-targeted-3.14.3-54.el8_3.4.noarch.rpm                                                5.1 MB/s |  15 MB     00:02    
+(68/73): systemd-udev-239-41.el8_3.2.x86_64.rpm                                                              3.9 MB/s | 1.3 MB     00:00    
+(69/73): tuned-2.14.0-3.el8_3.1.noarch.rpm                                                                   3.0 MB/s | 292 kB     00:00    
+(70/73): zlib-1.2.11-16.2.el8_3.x86_64.rpm                                                                   2.6 MB/s | 102 kB     00:00    
+(71/73): tzdata-2021a-1.el8.noarch.rpm                                                                       5.3 MB/s | 473 kB     00:00    
+(72/73): epel-release-8-10.el8.noarch.rpm                                                                    253 kB/s |  22 kB     00:00    
+(73/73): linux-firmware-20200619-101.git3890db36.el8_3.noarch.rpm                                            4.7 MB/s | 101 MB     00:21    
+---------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                        7.8 MB/s | 242 MB     00:31     
+warning: /var/cache/dnf/epel-6519ee669354a484/packages/epel-release-8-10.el8.noarch.rpm: Header V4 RSA/SHA256 Signature, key ID 2f86d6a1: NOK
+EY
+Extra Packages for Enterprise Linux 8 - x86_64                                                               1.6 MB/s | 1.6 kB     00:00    
+Importing GPG key 0x2F86D6A1:
+ Userid     : "Fedora EPEL (8) <epel@fedoraproject.org>"
+ Fingerprint: 94E2 79EB 8D8F 25B2 1810 ADF1 21EA 45AB 2F86 D6A1
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                     1/1 
+  Running scriptlet: zlib-1.2.11-16.2.el8_3.x86_64                                                                                       1/1 
+  Upgrading        : zlib-1.2.11-16.2.el8_3.x86_64                                                                                     1/142 
+  Upgrading        : systemd-libs-239-41.el8_3.2.x86_64                                                                                2/142 
+  Running scriptlet: systemd-libs-239-41.el8_3.2.x86_64                                                                                2/142 
+  Upgrading        : libselinux-2.9-4.el8_3.x86_64                                                                                     3/142 
+  Running scriptlet: libselinux-2.9-4.el8_3.x86_64                                                                                     3/142 
+  Upgrading        : grub2-common-1:2.02-90.el8_3.1.noarch                                                                             4/142 
+  Upgrading        : crypto-policies-scripts-20210209-1.gitbfb6bed.el8_3.noarch                                                        5/142 
+  Upgrading        : crypto-policies-20210209-1.gitbfb6bed.el8_3.noarch                                                                6/142 
+  Running scriptlet: crypto-policies-20210209-1.gitbfb6bed.el8_3.noarch                                                                6/142 
+  Upgrading        : openssl-libs-1:1.1.1g-15.el8_3.x86_64                                                                             7/142 
+  Running scriptlet: openssl-libs-1:1.1.1g-15.el8_3.x86_64                                                                             7/142 
+  Upgrading        : libcurl-7.61.1-14.el8_3.1.x86_64                                                                                  8/142 
+  Upgrading        : grub2-tools-minimal-1:2.02-90.el8_3.1.x86_64                                                                      9/142 
+  Upgrading        : dbus-libs-1:1.12.8-12.el8_3.x86_64                                                                               10/142 
+  Running scriptlet: dbus-libs-1:1.12.8-12.el8_3.x86_64                                                                               10/142 
+  Upgrading        : iptables-libs-1.8.4-15.el8_3.3.x86_64                                                                            11/142 
+  Running scriptlet: iptables-1.8.4-15.el8_3.3.x86_64                                                                                 12/142 
+  Upgrading        : iptables-1.8.4-15.el8_3.3.x86_64                                                                                 12/142 
+  Running scriptlet: iptables-1.8.4-15.el8_3.3.x86_64                                                                                 12/142 
+  Upgrading        : dbus-tools-1:1.12.8-12.el8_3.x86_64                                                                              13/142 
+  Upgrading        : procps-ng-3.3.15-3.el8_3.1.x86_64                                                                                14/142 
+  Upgrading        : file-libs-5.33-16.el8_3.1.x86_64                                                                                 15/142 
+  Upgrading        : file-5.33-16.el8_3.1.x86_64                                                                                      16/142 
+  Upgrading        : freetype-2.9.1-4.el8_3.1.x86_64                                                                                  17/142 
+  Upgrading        : grub2-tools-extra-1:2.02-90.el8_3.1.x86_64                                                                       18/142 
+  Upgrading        : selinux-policy-3.14.3-54.el8_3.4.noarch                                                                          19/142 
+  Running scriptlet: selinux-policy-3.14.3-54.el8_3.4.noarch                                                                          19/142 
+  Upgrading        : python3-perf-4.18.0-240.22.1.el8_3.x86_64                                                                        20/142 
+  Upgrading        : nettle-3.4.1-4.el8_3.x86_64                                                                                      21/142 
+  Running scriptlet: nettle-3.4.1-4.el8_3.x86_64                                                                                      21/142 
+  Upgrading        : gnutls-3.6.14-8.el8_3.x86_64                                                                                     22/142 
+  Upgrading        : NetworkManager-libnm-1:1.26.0-12.el8_3.x86_64                                                                    23/142 
+  Running scriptlet: NetworkManager-libnm-1:1.26.0-12.el8_3.x86_64                                                                    23/142 
+  Upgrading        : linux-firmware-20200619-101.git3890db36.el8_3.noarch                                                             24/142 
+  Upgrading        : kernel-tools-libs-4.18.0-240.22.1.el8_3.x86_64                                                                   25/142 
+  Running scriptlet: kernel-tools-libs-4.18.0-240.22.1.el8_3.x86_64                                                                   25/142 
+  Upgrading        : kernel-tools-4.18.0-240.22.1.el8_3.x86_64                                                                        26/142 
+  Upgrading        : dbus-common-1:1.12.8-12.el8_3.noarch                                                                             27/142 
+  Running scriptlet: dbus-daemon-1:1.12.8-12.el8_3.x86_64                                                                             28/142 
+  Upgrading        : dbus-daemon-1:1.12.8-12.el8_3.x86_64                                                                             28/142 
+  Running scriptlet: dbus-daemon-1:1.12.8-12.el8_3.x86_64                                                                             28/142 
+  Upgrading        : systemd-pam-239-41.el8_3.2.x86_64                                                                                29/142 
+  Running scriptlet: systemd-239-41.el8_3.2.x86_64                                                                                    30/142 
+  Upgrading        : systemd-239-41.el8_3.2.x86_64                                                                                    30/142 
+  Running scriptlet: systemd-239-41.el8_3.2.x86_64                                                                                    30/142 
+  Upgrading        : dbus-1:1.12.8-12.el8_3.x86_64                                                                                    31/142 
+  Running scriptlet: NetworkManager-1:1.26.0-12.el8_3.x86_64                                                                          32/142 
+  Upgrading        : NetworkManager-1:1.26.0-12.el8_3.x86_64                                                                          32/142 
+  Running scriptlet: NetworkManager-1:1.26.0-12.el8_3.x86_64                                                                          32/142 
+  Upgrading        : systemd-udev-239-41.el8_3.2.x86_64                                                                               33/142 
+  Running scriptlet: systemd-udev-239-41.el8_3.2.x86_64                                                                               33/142 
+  Upgrading        : dracut-049-95.git20200804.el8_3.4.x86_64                                                                         34/142 
+  Installing       : kernel-core-4.18.0-240.22.1.el8_3.x86_64                                                                         35/142 
+  Running scriptlet: kernel-core-4.18.0-240.22.1.el8_3.x86_64                                                                         35/142 
+  Installing       : kernel-modules-4.18.0-240.22.1.el8_3.x86_64                                                                      36/142 
+  Running scriptlet: kernel-modules-4.18.0-240.22.1.el8_3.x86_64                                                                      36/142 
+  Upgrading        : dracut-network-049-95.git20200804.el8_3.4.x86_64                                                                 37/142 
+  Upgrading        : dracut-squash-049-95.git20200804.el8_3.4.x86_64                                                                  38/142 
+  Running scriptlet: grub2-tools-1:2.02-90.el8_3.1.x86_64                                                                             39/142 
+  Upgrading        : grub2-tools-1:2.02-90.el8_3.1.x86_64                                                                             39/142 
+  Running scriptlet: grub2-tools-1:2.02-90.el8_3.1.x86_64                                                                             39/142 
+  Upgrading        : grub2-efi-x64-1:2.02-90.el8_3.1.x86_64                                                                           40/142 
+  Upgrading        : kexec-tools-2.0.20-34.el8_3.1.x86_64                                                                             41/142 
+  Running scriptlet: kexec-tools-2.0.20-34.el8_3.1.x86_64                                                                             41/142 
+  Installing       : kernel-4.18.0-240.22.1.el8_3.x86_64                                                                              42/142 
+  Upgrading        : dracut-config-rescue-049-95.git20200804.el8_3.4.x86_64                                                           43/142 
+  Upgrading        : NetworkManager-team-1:1.26.0-12.el8_3.x86_64                                                                     44/142 
+  Upgrading        : NetworkManager-tui-1:1.26.0-12.el8_3.x86_64                                                                      45/142 
+  Upgrading        : tuned-2.14.0-3.el8_3.1.noarch                                                                                    46/142 
+  Running scriptlet: tuned-2.14.0-3.el8_3.1.noarch                                                                                    46/142 
+  Upgrading        : dbxtool-8-5.el8_3.2.x86_64                                                                                       47/142 
+  Running scriptlet: dbxtool-8-5.el8_3.2.x86_64                                                                                       47/142 
+  Upgrading        : microcode_ctl-4:20200609-2.20210216.1.el8_3.x86_64                                                               48/142 
+  Running scriptlet: microcode_ctl-4:20200609-2.20210216.1.el8_3.x86_64                                                               48/142 
+  Running scriptlet: selinux-policy-targeted-3.14.3-54.el8_3.4.noarch                                                                 49/142 
+  Upgrading        : selinux-policy-targeted-3.14.3-54.el8_3.4.noarch                                                                 49/142 
+  Running scriptlet: selinux-policy-targeted-3.14.3-54.el8_3.4.noarch                                                                 49/142 
+  Installing       : grub2-tools-efi-1:2.02-90.el8_3.1.x86_64                                                                         50/142 
+  Upgrading        : iptables-ebtables-1.8.4-15.el8_3.3.x86_64                                                                        51/142 
+  Running scriptlet: iptables-ebtables-1.8.4-15.el8_3.3.x86_64                                                                        51/142 
+  Upgrading        : curl-7.61.1-14.el8_3.1.x86_64                                                                                    52/142 
+  Upgrading        : bind-export-libs-32:9.11.20-5.el8_3.1.x86_64                                                                     53/142 
+  Running scriptlet: bind-export-libs-32:9.11.20-5.el8_3.1.x86_64                                                                     53/142 
+  Upgrading        : openssl-1:1.1.1g-15.el8_3.x86_64                                                                                 54/142 
+  Upgrading        : libselinux-utils-2.9-4.el8_3.x86_64                                                                              55/142 
+  Upgrading        : python3-libselinux-2.9-4.el8_3.x86_64                                                                            56/142 
+  Upgrading        : sudo-1.8.29-6.el8_3.1.x86_64                                                                                     57/142 
+  Running scriptlet: sudo-1.8.29-6.el8_3.1.x86_64                                                                                     57/142 
+  Upgrading        : epel-release-8-10.el8.noarch                                                                                     58/142 
+  Upgrading        : tzdata-2021a-1.el8.noarch                                                                                        59/142 
+  Upgrading        : libldb-2.1.3-3.el8_3.x86_64                                                                                      60/142 
+  Upgrading        : iwl7260-firmware-1:25.30.13.0-101.el8_3.1.noarch                                                                 61/142 
+  Upgrading        : iwl6050-firmware-41.28.5.1-101.el8_3.1.noarch                                                                    62/142 
+  Upgrading        : iwl6000g2a-firmware-18.168.6.1-101.el8_3.1.noarch                                                                63/142 
+  Upgrading        : iwl6000-firmware-9.221.4.1-101.el8_3.1.noarch                                                                    64/142 
+  Upgrading        : iwl5150-firmware-8.24.2.2-101.el8_3.1.noarch                                                                     65/142 
+  Upgrading        : iwl5000-firmware-8.83.5.1_1-101.el8_3.1.noarch                                                                   66/142 
+  Upgrading        : iwl3160-firmware-1:25.30.13.0-101.el8_3.1.noarch                                                                 67/142 
+  Upgrading        : iwl2030-firmware-18.168.6.1-101.el8_3.1.noarch                                                                   68/142 
+  Upgrading        : iwl2000-firmware-18.168.6.1-101.el8_3.1.noarch                                                                   69/142 
+  Upgrading        : iwl135-firmware-18.168.6.1-101.el8_3.1.noarch                                                                    70/142 
+  Upgrading        : iwl105-firmware-18.168.6.1-101.el8_3.1.noarch                                                                    71/142 
+  Upgrading        : iwl1000-firmware-1:39.31.5.1-101.el8_3.1.noarch                                                                  72/142 
+  Upgrading        : iwl100-firmware-39.31.5.1-101.el8_3.1.noarch                                                                     73/142 
+  Cleanup          : NetworkManager-tui-1:1.26.0-8.el8.x86_64                                                                         74/142 
+  Running scriptlet: kexec-tools-2.0.20-34.el8.x86_64                                                                                 75/142 
+  Cleanup          : kexec-tools-2.0.20-34.el8.x86_64                                                                                 75/142 
+  Running scriptlet: kexec-tools-2.0.20-34.el8.x86_64                                                                                 75/142 
+  Cleanup          : openssl-1:1.1.1g-11.el8.x86_64                                                                                   76/142 
+  Running scriptlet: tuned-2.14.0-3.el8.noarch                                                                                        77/142 
+  Cleanup          : tuned-2.14.0-3.el8.noarch                                                                                        77/142 
+  Running scriptlet: tuned-2.14.0-3.el8.noarch                                                                                        77/142 
+  Cleanup          : curl-7.61.1-14.el8.x86_64                                                                                        78/142 
+  Cleanup          : grub2-efi-x64-1:2.02-90.el8.x86_64                                                                               79/142 
+  Running scriptlet: microcode_ctl-4:20200609-2.el8.x86_64                                                                            80/142 
+  Cleanup          : microcode_ctl-4:20200609-2.el8.x86_64                                                                            80/142 
+  Running scriptlet: microcode_ctl-4:20200609-2.el8.x86_64                                                                            80/142 
+  Running scriptlet: grub2-tools-1:2.02-90.el8.x86_64                                                                                 81/142 
+  Cleanup          : grub2-tools-1:2.02-90.el8.x86_64                                                                                 81/142 
+  Cleanup          : grub2-tools-extra-1:2.02-90.el8.x86_64                                                                           82/142 
+  Cleanup          : file-5.33-16.el8.x86_64                                                                                          83/142 
+  Cleanup          : bind-export-libs-32:9.11.20-5.el8.x86_64                                                                         84/142 
+  Running scriptlet: bind-export-libs-32:9.11.20-5.el8.x86_64                                                                         84/142 
+  Cleanup          : selinux-policy-targeted-3.14.3-54.el8.noarch                                                                     85/142 
+  Running scriptlet: selinux-policy-targeted-3.14.3-54.el8.noarch                                                                     85/142 
+  Cleanup          : kernel-tools-4.18.0-240.el8.x86_64                                                                               86/142 
+  Cleanup          : sudo-1.8.29-6.el8.x86_64                                                                                         87/142 
+  Cleanup          : python3-libselinux-2.9-3.el8.x86_64                                                                              88/142 
+  Cleanup          : libselinux-utils-2.9-3.el8.x86_64                                                                                89/142 
+  Running scriptlet: dbxtool-8-5.el8.x86_64                                                                                           90/142 
+  Cleanup          : dbxtool-8-5.el8.x86_64                                                                                           90/142 
+  Cleanup          : dracut-network-049-95.git20200804.el8.x86_64                                                                     91/142 
+  Cleanup          : dracut-squash-049-95.git20200804.el8.x86_64                                                                      92/142 
+  Running scriptlet: iptables-ebtables-1.8.4-15.el8.x86_64                                                                            93/142 
+  Cleanup          : iptables-ebtables-1.8.4-15.el8.x86_64                                                                            93/142 
+  Running scriptlet: iptables-ebtables-1.8.4-15.el8.x86_64                                                                            93/142 
+  Cleanup          : dracut-config-rescue-049-95.git20200804.el8.x86_64                                                               94/142 
+  Cleanup          : dracut-049-95.git20200804.el8.x86_64                                                                             95/142 
+  Cleanup          : systemd-udev-239-40.el8.x86_64                                                                                   96/142 
+  Running scriptlet: systemd-udev-239-40.el8.x86_64                                                                                   96/142 
+  Cleanup          : procps-ng-3.3.15-3.el8.x86_64                                                                                    97/142 
+  Cleanup          : iptables-1.8.4-15.el8.x86_64                                                                                     98/142 
+  Running scriptlet: iptables-1.8.4-15.el8.x86_64                                                                                     98/142 
+  Cleanup          : file-libs-5.33-16.el8.x86_64                                                                                     99/142 
+  Cleanup          : grub2-tools-minimal-1:2.02-90.el8.x86_64                                                                        100/142 
+  Cleanup          : freetype-2.9.1-4.el8.x86_64                                                                                     101/142 
+  Cleanup          : NetworkManager-team-1:1.26.0-8.el8.x86_64                                                                       102/142 
+  Cleanup          : grub2-common-1:2.02-90.el8.noarch                                                                               103/142 
+  Cleanup          : selinux-policy-3.14.3-54.el8.noarch                                                                             104/142 
+  Running scriptlet: selinux-policy-3.14.3-54.el8.noarch                                                                             104/142 
+  Cleanup          : epel-release-8-8.el8.noarch                                                                                     105/142 
+  Cleanup          : tzdata-2020d-1.el8.noarch                                                                                       106/142 
+  Cleanup          : linux-firmware-20200619-99.git3890db36.el8.noarch                                                               107/142 
+  Cleanup          : iwl7260-firmware-1:25.30.13.0-99.el8.1.noarch                                                                   108/142 
+  Cleanup          : iwl6050-firmware-41.28.5.1-99.el8.1.noarch                                                                      109/142 
+  Cleanup          : iwl6000g2a-firmware-18.168.6.1-99.el8.1.noarch                                                                  110/142 
+  Cleanup          : iwl6000-firmware-9.221.4.1-99.el8.1.noarch                                                                      111/142 
+  Cleanup          : iwl5150-firmware-8.24.2.2-99.el8.1.noarch                                                                       112/142 
+  Cleanup          : iwl5000-firmware-8.83.5.1_1-99.el8.1.noarch                                                                     113/142 
+  Cleanup          : iwl3160-firmware-1:25.30.13.0-99.el8.1.noarch                                                                   114/142 
+  Cleanup          : iwl2030-firmware-18.168.6.1-99.el8.1.noarch                                                                     115/142 
+  Cleanup          : iwl2000-firmware-18.168.6.1-99.el8.1.noarch                                                                     116/142 
+  Cleanup          : iwl135-firmware-18.168.6.1-99.el8.1.noarch                                                                      117/142 
+  Cleanup          : iwl105-firmware-18.168.6.1-99.el8.1.noarch                                                                      118/142 
+  Cleanup          : iwl1000-firmware-1:39.31.5.1-99.el8.1.noarch                                                                    119/142 
+  Cleanup          : iwl100-firmware-39.31.5.1-99.el8.1.noarch                                                                       120/142 
+  Running scriptlet: NetworkManager-1:1.26.0-8.el8.x86_64                                                                            121/142 
+  Cleanup          : NetworkManager-1:1.26.0-8.el8.x86_64                                                                            121/142 
+  Running scriptlet: NetworkManager-1:1.26.0-8.el8.x86_64                                                                            121/142 
+  Cleanup          : libcurl-7.61.1-14.el8.x86_64                                                                                    122/142 
+  Cleanup          : dbus-1:1.12.8-11.el8.x86_64                                                                                     123/142 
+  Running scriptlet: systemd-239-40.el8.x86_64                                                                                       124/142 
+  Cleanup          : systemd-239-40.el8.x86_64                                                                                       124/142 
+  Running scriptlet: dbus-daemon-1:1.12.8-11.el8.x86_64                                                                              125/142 
+  Cleanup          : dbus-daemon-1:1.12.8-11.el8.x86_64                                                                              125/142 
+  Running scriptlet: dbus-daemon-1:1.12.8-11.el8.x86_64                                                                              125/142 
+  Cleanup          : dbus-tools-1:1.12.8-11.el8.x86_64                                                                               126/142 
+  Cleanup          : NetworkManager-libnm-1:1.26.0-8.el8.x86_64                                                                      127/142 
+  Running scriptlet: NetworkManager-libnm-1:1.26.0-8.el8.x86_64                                                                      127/142 
+  Cleanup          : gnutls-3.6.14-6.el8.x86_64                                                                                      128/142 
+  Cleanup          : dbus-libs-1:1.12.8-11.el8.x86_64                                                                                129/142 
+  Running scriptlet: dbus-libs-1:1.12.8-11.el8.x86_64                                                                                129/142 
+  Cleanup          : openssl-libs-1:1.1.1g-11.el8.x86_64                                                                             130/142 
+  Running scriptlet: openssl-libs-1:1.1.1g-11.el8.x86_64                                                                             130/142 
+  Cleanup          : crypto-policies-20200713-1.git51d1222.el8.noarch                                                                131/142 
+  Cleanup          : crypto-policies-scripts-20200713-1.git51d1222.el8.noarch                                                        132/142 
+  Cleanup          : dbus-common-1:1.12.8-11.el8.noarch                                                                              133/142 
+  Cleanup          : zlib-1.2.11-16.el8_2.x86_64                                                                                     134/142 
+  Cleanup          : systemd-libs-239-40.el8.x86_64                                                                                  135/142 
+  Running scriptlet: nettle-3.4.1-2.el8.x86_64                                                                                       136/142 
+  Cleanup          : nettle-3.4.1-2.el8.x86_64                                                                                       136/142 
+  Running scriptlet: nettle-3.4.1-2.el8.x86_64                                                                                       136/142 
+  Cleanup          : libselinux-2.9-3.el8.x86_64                                                                                     137/142 
+  Cleanup          : iptables-libs-1.8.4-15.el8.x86_64                                                                               138/142 
+  Cleanup          : systemd-pam-239-40.el8.x86_64                                                                                   139/142 
+  Cleanup          : kernel-tools-libs-4.18.0-240.el8.x86_64                                                                         140/142 
+  Running scriptlet: kernel-tools-libs-4.18.0-240.el8.x86_64                                                                         140/142 
+  Cleanup          : python3-perf-4.18.0-240.el8.x86_64                                                                              141/142 
+  Cleanup          : libldb-2.1.3-2.el8.x86_64                                                                                       142/142 
+  Running scriptlet: crypto-policies-scripts-20210209-1.gitbfb6bed.el8_3.noarch                                                      142/142 
+  Running scriptlet: kernel-core-4.18.0-240.22.1.el8_3.x86_64                                                                        142/142 
+  Running scriptlet: tuned-2.14.0-3.el8_3.1.noarch                                                                                   142/142 
+  Running scriptlet: microcode_ctl-4:20200609-2.20210216.1.el8_3.x86_64                                                              142/142 
+  Running scriptlet: libldb-2.1.3-2.el8.x86_64                                                                                       142/142 
+  Running scriptlet: systemd-239-41.el8_3.2.x86_64                                                                                   142/142 
+  Running scriptlet: systemd-udev-239-41.el8_3.2.x86_64                                                                              142/142 
+  Verifying        : grub2-tools-efi-1:2.02-90.el8_3.1.x86_64                                                                          1/142 
+  Verifying        : kernel-4.18.0-240.22.1.el8_3.x86_64                                                                               2/142 
+  Verifying        : kernel-core-4.18.0-240.22.1.el8_3.x86_64                                                                          3/142 
+  Verifying        : kernel-modules-4.18.0-240.22.1.el8_3.x86_64                                                                       4/142 
+  Verifying        : NetworkManager-1:1.26.0-12.el8_3.x86_64                                                                           5/142 
+  Verifying        : NetworkManager-1:1.26.0-8.el8.x86_64                                                                              6/142 
+  Verifying        : NetworkManager-libnm-1:1.26.0-12.el8_3.x86_64                                                                     7/142 
+  Verifying        : NetworkManager-libnm-1:1.26.0-8.el8.x86_64                                                                        8/142 
+  Verifying        : NetworkManager-team-1:1.26.0-12.el8_3.x86_64                                                                      9/142 
+  Verifying        : NetworkManager-team-1:1.26.0-8.el8.x86_64                                                                        10/142 
+  Verifying        : NetworkManager-tui-1:1.26.0-12.el8_3.x86_64                                                                      11/142 
+  Verifying        : NetworkManager-tui-1:1.26.0-8.el8.x86_64                                                                         12/142 
+  Verifying        : bind-export-libs-32:9.11.20-5.el8_3.1.x86_64                                                                     13/142 
+  Verifying        : bind-export-libs-32:9.11.20-5.el8.x86_64                                                                         14/142 
+  Verifying        : crypto-policies-20210209-1.gitbfb6bed.el8_3.noarch                                                               15/142 
+  Verifying        : crypto-policies-20200713-1.git51d1222.el8.noarch                                                                 16/142 
+  Verifying        : crypto-policies-scripts-20210209-1.gitbfb6bed.el8_3.noarch                                                       17/142 
+  Verifying        : crypto-policies-scripts-20200713-1.git51d1222.el8.noarch                                                         18/142 
+  Verifying        : curl-7.61.1-14.el8_3.1.x86_64                                                                                    19/142 
+  Verifying        : curl-7.61.1-14.el8.x86_64                                                                                        20/142 
+  Verifying        : dbus-1:1.12.8-12.el8_3.x86_64                                                                                    21/142 
+  Verifying        : dbus-1:1.12.8-11.el8.x86_64                                                                                      22/142 
+  Verifying        : dbus-common-1:1.12.8-12.el8_3.noarch                                                                             23/142 
+  Verifying        : dbus-common-1:1.12.8-11.el8.noarch                                                                               24/142 
+  Verifying        : dbus-daemon-1:1.12.8-12.el8_3.x86_64                                                                             25/142 
+  Verifying        : dbus-daemon-1:1.12.8-11.el8.x86_64                                                                               26/142 
+  Verifying        : dbus-libs-1:1.12.8-12.el8_3.x86_64                                                                               27/142 
+  Verifying        : dbus-libs-1:1.12.8-11.el8.x86_64                                                                                 28/142 
+  Verifying        : dbus-tools-1:1.12.8-12.el8_3.x86_64                                                                              29/142 
+  Verifying        : dbus-tools-1:1.12.8-11.el8.x86_64                                                                                30/142 
+  Verifying        : dbxtool-8-5.el8_3.2.x86_64                                                                                       31/142 
+  Verifying        : dbxtool-8-5.el8.x86_64                                                                                           32/142 
+  Verifying        : dracut-049-95.git20200804.el8_3.4.x86_64                                                                         33/142 
+  Verifying        : dracut-049-95.git20200804.el8.x86_64                                                                             34/142 
+  Verifying        : dracut-config-rescue-049-95.git20200804.el8_3.4.x86_64                                                           35/142 
+  Verifying        : dracut-config-rescue-049-95.git20200804.el8.x86_64                                                               36/142 
+  Verifying        : dracut-network-049-95.git20200804.el8_3.4.x86_64                                                                 37/142 
+  Verifying        : dracut-network-049-95.git20200804.el8.x86_64                                                                     38/142 
+  Verifying        : dracut-squash-049-95.git20200804.el8_3.4.x86_64                                                                  39/142 
+  Verifying        : dracut-squash-049-95.git20200804.el8.x86_64                                                                      40/142 
+  Verifying        : file-5.33-16.el8_3.1.x86_64                                                                                      41/142 
+  Verifying        : file-5.33-16.el8.x86_64                                                                                          42/142 
+  Verifying        : file-libs-5.33-16.el8_3.1.x86_64                                                                                 43/142 
+  Verifying        : file-libs-5.33-16.el8.x86_64                                                                                     44/142 
+  Verifying        : freetype-2.9.1-4.el8_3.1.x86_64                                                                                  45/142 
+  Verifying        : freetype-2.9.1-4.el8.x86_64                                                                                      46/142 
+  Verifying        : gnutls-3.6.14-8.el8_3.x86_64                                                                                     47/142 
+  Verifying        : gnutls-3.6.14-6.el8.x86_64                                                                                       48/142 
+  Verifying        : grub2-common-1:2.02-90.el8_3.1.noarch                                                                            49/142 
+  Verifying        : grub2-common-1:2.02-90.el8.noarch                                                                                50/142 
+  Verifying        : grub2-efi-x64-1:2.02-90.el8_3.1.x86_64                                                                           51/142 
+  Verifying        : grub2-efi-x64-1:2.02-90.el8.x86_64                                                                               52/142 
+  Verifying        : grub2-tools-1:2.02-90.el8_3.1.x86_64                                                                             53/142 
+  Verifying        : grub2-tools-1:2.02-90.el8.x86_64                                                                                 54/142 
+  Verifying        : grub2-tools-extra-1:2.02-90.el8_3.1.x86_64                                                                       55/142 
+  Verifying        : grub2-tools-extra-1:2.02-90.el8.x86_64                                                                           56/142 
+  Verifying        : grub2-tools-minimal-1:2.02-90.el8_3.1.x86_64                                                                     57/142 
+  Verifying        : grub2-tools-minimal-1:2.02-90.el8.x86_64                                                                         58/142 
+  Verifying        : iptables-1.8.4-15.el8_3.3.x86_64                                                                                 59/142 
+  Verifying        : iptables-1.8.4-15.el8.x86_64                                                                                     60/142 
+  Verifying        : iptables-ebtables-1.8.4-15.el8_3.3.x86_64                                                                        61/142 
+  Verifying        : iptables-ebtables-1.8.4-15.el8.x86_64                                                                            62/142 
+  Verifying        : iptables-libs-1.8.4-15.el8_3.3.x86_64                                                                            63/142 
+  Verifying        : iptables-libs-1.8.4-15.el8.x86_64                                                                                64/142 
+  Verifying        : iwl100-firmware-39.31.5.1-101.el8_3.1.noarch                                                                     65/142 
+  Verifying        : iwl100-firmware-39.31.5.1-99.el8.1.noarch                                                                        66/142 
+  Verifying        : iwl1000-firmware-1:39.31.5.1-101.el8_3.1.noarch                                                                  67/142 
+  Verifying        : iwl1000-firmware-1:39.31.5.1-99.el8.1.noarch                                                                     68/142 
+  Verifying        : iwl105-firmware-18.168.6.1-101.el8_3.1.noarch                                                                    69/142 
+  Verifying        : iwl105-firmware-18.168.6.1-99.el8.1.noarch                                                                       70/142 
+  Verifying        : iwl135-firmware-18.168.6.1-101.el8_3.1.noarch                                                                    71/142 
+  Verifying        : iwl135-firmware-18.168.6.1-99.el8.1.noarch                                                                       72/142 
+  Verifying        : iwl2000-firmware-18.168.6.1-101.el8_3.1.noarch                                                                   73/142 
+  Verifying        : iwl2000-firmware-18.168.6.1-99.el8.1.noarch                                                                      74/142 
+  Verifying        : iwl2030-firmware-18.168.6.1-101.el8_3.1.noarch                                                                   75/142 
+  Verifying        : iwl2030-firmware-18.168.6.1-99.el8.1.noarch                                                                      76/142 
+  Verifying        : iwl3160-firmware-1:25.30.13.0-101.el8_3.1.noarch                                                                 77/142 
+  Verifying        : iwl3160-firmware-1:25.30.13.0-99.el8.1.noarch                                                                    78/142 
+  Verifying        : iwl5000-firmware-8.83.5.1_1-101.el8_3.1.noarch                                                                   79/142 
+  Verifying        : iwl5000-firmware-8.83.5.1_1-99.el8.1.noarch                                                                      80/142 
+  Verifying        : iwl5150-firmware-8.24.2.2-101.el8_3.1.noarch                                                                     81/142 
+  Verifying        : iwl5150-firmware-8.24.2.2-99.el8.1.noarch                                                                        82/142 
+  Verifying        : iwl6000-firmware-9.221.4.1-101.el8_3.1.noarch                                                                    83/142 
+  Verifying        : iwl6000-firmware-9.221.4.1-99.el8.1.noarch                                                                       84/142 
+  Verifying        : iwl6000g2a-firmware-18.168.6.1-101.el8_3.1.noarch                                                                85/142 
+  Verifying        : iwl6000g2a-firmware-18.168.6.1-99.el8.1.noarch                                                                   86/142 
+  Verifying        : iwl6050-firmware-41.28.5.1-101.el8_3.1.noarch                                                                    87/142 
+  Verifying        : iwl6050-firmware-41.28.5.1-99.el8.1.noarch                                                                       88/142 
+  Verifying        : iwl7260-firmware-1:25.30.13.0-101.el8_3.1.noarch                                                                 89/142 
+  Verifying        : iwl7260-firmware-1:25.30.13.0-99.el8.1.noarch                                                                    90/142 
+  Verifying        : kernel-tools-4.18.0-240.22.1.el8_3.x86_64                                                                        91/142 
+  Verifying        : kernel-tools-4.18.0-240.el8.x86_64                                                                               92/142 
+  Verifying        : kernel-tools-libs-4.18.0-240.22.1.el8_3.x86_64                                                                   93/142 
+  Verifying        : kernel-tools-libs-4.18.0-240.el8.x86_64                                                                          94/142 
+  Verifying        : kexec-tools-2.0.20-34.el8_3.1.x86_64                                                                             95/142 
+  Verifying        : kexec-tools-2.0.20-34.el8.x86_64                                                                                 96/142 
+  Verifying        : libcurl-7.61.1-14.el8_3.1.x86_64                                                                                 97/142 
+  Verifying        : libcurl-7.61.1-14.el8.x86_64                                                                                     98/142 
+  Verifying        : libldb-2.1.3-3.el8_3.x86_64                                                                                      99/142 
+  Verifying        : libldb-2.1.3-2.el8.x86_64                                                                                       100/142 
+  Verifying        : libselinux-2.9-4.el8_3.x86_64                                                                                   101/142 
+  Verifying        : libselinux-2.9-3.el8.x86_64                                                                                     102/142 
+  Verifying        : libselinux-utils-2.9-4.el8_3.x86_64                                                                             103/142 
+  Verifying        : libselinux-utils-2.9-3.el8.x86_64                                                                               104/142 
+  Verifying        : linux-firmware-20200619-101.git3890db36.el8_3.noarch                                                            105/142 
+  Verifying        : linux-firmware-20200619-99.git3890db36.el8.noarch                                                               106/142 
+  Verifying        : microcode_ctl-4:20200609-2.20210216.1.el8_3.x86_64                                                              107/142 
+  Verifying        : microcode_ctl-4:20200609-2.el8.x86_64                                                                           108/142 
+  Verifying        : nettle-3.4.1-4.el8_3.x86_64                                                                                     109/142 
+  Verifying        : nettle-3.4.1-2.el8.x86_64                                                                                       110/142 
+  Verifying        : openssl-1:1.1.1g-15.el8_3.x86_64                                                                                111/142 
+  Verifying        : openssl-1:1.1.1g-11.el8.x86_64                                                                                  112/142 
+  Verifying        : openssl-libs-1:1.1.1g-15.el8_3.x86_64                                                                           113/142 
+  Verifying        : openssl-libs-1:1.1.1g-11.el8.x86_64                                                                             114/142 
+  Verifying        : procps-ng-3.3.15-3.el8_3.1.x86_64                                                                               115/142 
+  Verifying        : procps-ng-3.3.15-3.el8.x86_64                                                                                   116/142 
+  Verifying        : python3-libselinux-2.9-4.el8_3.x86_64                                                                           117/142 
+  Verifying        : python3-libselinux-2.9-3.el8.x86_64                                                                             118/142 
+  Verifying        : python3-perf-4.18.0-240.22.1.el8_3.x86_64                                                                       119/142 
+  Verifying        : python3-perf-4.18.0-240.el8.x86_64                                                                              120/142 
+  Verifying        : selinux-policy-3.14.3-54.el8_3.4.noarch                                                                         121/142 
+  Verifying        : selinux-policy-3.14.3-54.el8.noarch                                                                             122/142 
+  Verifying        : selinux-policy-targeted-3.14.3-54.el8_3.4.noarch                                                                123/142 
+  Verifying        : selinux-policy-targeted-3.14.3-54.el8.noarch                                                                    124/142 
+  Verifying        : sudo-1.8.29-6.el8_3.1.x86_64                                                                                    125/142 
+  Verifying        : sudo-1.8.29-6.el8.x86_64                                                                                        126/142 
+  Verifying        : systemd-239-41.el8_3.2.x86_64                                                                                   127/142 
+  Verifying        : systemd-239-40.el8.x86_64                                                                                       128/142 
+  Verifying        : systemd-libs-239-41.el8_3.2.x86_64                                                                              129/142 
+  Verifying        : systemd-libs-239-40.el8.x86_64                                                                                  130/142 
+  Verifying        : systemd-pam-239-41.el8_3.2.x86_64                                                                               131/142 
+  Verifying        : systemd-pam-239-40.el8.x86_64                                                                                   132/142 
+  Verifying        : systemd-udev-239-41.el8_3.2.x86_64                                                                              133/142 
+  Verifying        : systemd-udev-239-40.el8.x86_64                                                                                  134/142 
+  Verifying        : tuned-2.14.0-3.el8_3.1.noarch                                                                                   135/142 
+  Verifying        : tuned-2.14.0-3.el8.noarch                                                                                       136/142 
+  Verifying        : tzdata-2021a-1.el8.noarch                                                                                       137/142 
+  Verifying        : tzdata-2020d-1.el8.noarch                                                                                       138/142 
+  Verifying        : zlib-1.2.11-16.2.el8_3.x86_64                                                                                   139/142 
+  Verifying        : zlib-1.2.11-16.el8_2.x86_64                                                                                     140/142 
+  Verifying        : epel-release-8-10.el8.noarch                                                                                    141/142 
+  Verifying        : epel-release-8-8.el8.noarch                                                                                     142/142 
+
+Upgraded:
+  NetworkManager-1:1.26.0-12.el8_3.x86_64                                 NetworkManager-libnm-1:1.26.0-12.el8_3.x86_64                      
+  NetworkManager-team-1:1.26.0-12.el8_3.x86_64                            NetworkManager-tui-1:1.26.0-12.el8_3.x86_64                        
+  bind-export-libs-32:9.11.20-5.el8_3.1.x86_64                            crypto-policies-20210209-1.gitbfb6bed.el8_3.noarch                 
+  crypto-policies-scripts-20210209-1.gitbfb6bed.el8_3.noarch              curl-7.61.1-14.el8_3.1.x86_64                                      
+  dbus-1:1.12.8-12.el8_3.x86_64                                           dbus-common-1:1.12.8-12.el8_3.noarch                               
+  dbus-daemon-1:1.12.8-12.el8_3.x86_64                                    dbus-libs-1:1.12.8-12.el8_3.x86_64                                 
+  dbus-tools-1:1.12.8-12.el8_3.x86_64                                     dbxtool-8-5.el8_3.2.x86_64                                         
+  dracut-049-95.git20200804.el8_3.4.x86_64                                dracut-config-rescue-049-95.git20200804.el8_3.4.x86_64             
+  dracut-network-049-95.git20200804.el8_3.4.x86_64                        dracut-squash-049-95.git20200804.el8_3.4.x86_64                    
+  epel-release-8-10.el8.noarch                                            file-5.33-16.el8_3.1.x86_64                                        
+  file-libs-5.33-16.el8_3.1.x86_64                                        freetype-2.9.1-4.el8_3.1.x86_64                                    
+  gnutls-3.6.14-8.el8_3.x86_64                                            grub2-common-1:2.02-90.el8_3.1.noarch                              
+  grub2-efi-x64-1:2.02-90.el8_3.1.x86_64                                  grub2-tools-1:2.02-90.el8_3.1.x86_64                               
+  grub2-tools-extra-1:2.02-90.el8_3.1.x86_64                              grub2-tools-minimal-1:2.02-90.el8_3.1.x86_64                       
+  iptables-1.8.4-15.el8_3.3.x86_64                                        iptables-ebtables-1.8.4-15.el8_3.3.x86_64                          
+  iptables-libs-1.8.4-15.el8_3.3.x86_64                                   iwl100-firmware-39.31.5.1-101.el8_3.1.noarch                       
+  iwl1000-firmware-1:39.31.5.1-101.el8_3.1.noarch                         iwl105-firmware-18.168.6.1-101.el8_3.1.noarch                      
+  iwl135-firmware-18.168.6.1-101.el8_3.1.noarch                           iwl2000-firmware-18.168.6.1-101.el8_3.1.noarch                     
+  iwl2030-firmware-18.168.6.1-101.el8_3.1.noarch                          iwl3160-firmware-1:25.30.13.0-101.el8_3.1.noarch                   
+  iwl5000-firmware-8.83.5.1_1-101.el8_3.1.noarch                          iwl5150-firmware-8.24.2.2-101.el8_3.1.noarch                       
+  iwl6000-firmware-9.221.4.1-101.el8_3.1.noarch                           iwl6000g2a-firmware-18.168.6.1-101.el8_3.1.noarch                  
+  iwl6050-firmware-41.28.5.1-101.el8_3.1.noarch                           iwl7260-firmware-1:25.30.13.0-101.el8_3.1.noarch                   
+  kernel-tools-4.18.0-240.22.1.el8_3.x86_64                               kernel-tools-libs-4.18.0-240.22.1.el8_3.x86_64                     
+  kexec-tools-2.0.20-34.el8_3.1.x86_64                                    libcurl-7.61.1-14.el8_3.1.x86_64                                   
+  libldb-2.1.3-3.el8_3.x86_64                                             libselinux-2.9-4.el8_3.x86_64                                      
+  libselinux-utils-2.9-4.el8_3.x86_64                                     linux-firmware-20200619-101.git3890db36.el8_3.noarch               
+  microcode_ctl-4:20200609-2.20210216.1.el8_3.x86_64                      nettle-3.4.1-4.el8_3.x86_64                                        
+  openssl-1:1.1.1g-15.el8_3.x86_64                                        openssl-libs-1:1.1.1g-15.el8_3.x86_64                              
+  procps-ng-3.3.15-3.el8_3.1.x86_64                                       python3-libselinux-2.9-4.el8_3.x86_64                              
+  python3-perf-4.18.0-240.22.1.el8_3.x86_64                               selinux-policy-3.14.3-54.el8_3.4.noarch                            
+  selinux-policy-targeted-3.14.3-54.el8_3.4.noarch                        sudo-1.8.29-6.el8_3.1.x86_64                                       
+  systemd-239-41.el8_3.2.x86_64                                           systemd-libs-239-41.el8_3.2.x86_64                                 
+  systemd-pam-239-41.el8_3.2.x86_64                                       systemd-udev-239-41.el8_3.2.x86_64                                 
+  tuned-2.14.0-3.el8_3.1.noarch                                           tzdata-2021a-1.el8.noarch                                          
+  zlib-1.2.11-16.2.el8_3.x86_64                                          
+
+Installed:
+  grub2-tools-efi-1:2.02-90.el8_3.1.x86_64          kernel-4.18.0-240.22.1.el8_3.x86_64       kernel-core-4.18.0-240.22.1.el8_3.x86_64      
+  kernel-modules-4.18.0-240.22.1.el8_3.x86_64      
+
+Complete!
+[root@awx ~]# sestatus
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Memory protection checking:     actual (secure)
+Max kernel policy version:      32
+[root@awx ~]# grep -v '^#' /etc/selinux/config | grep -v '^$' > mae.txt
+
+"/etc/selinux/config" 14L, 548C
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=enforcing
+# SELINUXTYPE= can take one of these three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+
+
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+~                                                                                                                                            
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=
+-- INSERT --
+SELINUX=disabled
+[root@awx ~]# vi /etc/selinux/config
+[root@awx ~]# grep -v '^#' /etc/selinux/config | grep -v '^$' > ato.txt
+[root@awx ~]# diff -y mae.txt ato.txt
+SELINUX=enforcing                                             | SELINUX=disabled
+SELINUXTYPE=targeted                                            SELINUXTYPE=targeted
+[root@awx ~]# grep -v '^#' /etc/selinux/config | grep -v '^$'
+SELINUX=disabled
+SELINUXTYPE=targeted
+[root@awx ~]# reboot

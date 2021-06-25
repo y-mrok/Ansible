@@ -1,0 +1,25 @@
+---
+- name: Syntax check of httpd.conf.
+  ansible.builtin.command: apachectl configtest 
+  listen: 
+    - Edit the configuration file
+  become: yes
+
+- name: Restart or start httpd.service.
+  ansible.builtin.systemd:
+    name: httpd.service
+    enabled: yes
+    state: restarted
+  listen: 
+    - Installed the httpd package
+    - Edit the configuration file
+  become: yes
+
+- name: Reload the firewalld configuration.
+  ansible.builtin.systemd:
+    name: firewalld.service
+    enabled: yes
+    state: reloaded
+  become: yes
+  listen: 
+    - Reload firewalld

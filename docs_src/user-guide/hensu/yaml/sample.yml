@@ -1,0 +1,12 @@
+---
+- name: Example of a vars section
+  hosts: all
+  gather_facts: no
+
+  vars_prompt:
+    - name: input_value
+
+  tasks:
+    - name: 入力した値を確認 
+      ansible.builtin.debug:
+        var: input_value

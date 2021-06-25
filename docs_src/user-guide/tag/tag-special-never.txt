@@ -1,0 +1,34 @@
+
+.. _tag-special-never:
+
+**************************************************
+never タグ
+**************************************************
+常に実行をスキップするタスクに **never** タグを設定します。 ``--tags`` パラメーターや ``--skip-tags`` パラメーターでタグを指定してもタグ **never** を設定したタスクを常にスキップします。
+
+.. literalinclude:: ./yaml/tag3.yml
+   :language: yaml
+
+``--skip-tags`` パラメーターでタグ job1 を設定したログです。タグ job1 とタグ never を設定したタスクをスキップしました。
+
+.. literalinclude:: ./log/tag-special-7.log
+   :language: none
+
+.. literalinclude:: ./log/tag-special-8.log
+   :language: none
+
+``--tags`` パラメーターでタグ never を指定すると、タグ never を設定したタスクだけを実行します。
+
+.. literalinclude:: ./log/tag-special-9.log
+   :language: none
+
+.. literalinclude:: ./log/tag-special-10.log
+   :language: none
+
+``--skip-tags`` パラメーターでタグ never を指定すると、タグ never を設定したタスクだけをスキップします。
+
+.. literalinclude:: ./log/tag-special-11.log
+   :language: none
+
+.. literalinclude:: ./log/tag-special-12.log
+   :language: none

@@ -1,0 +1,26 @@
+---
+# deploy_zabbix.yml
+# ・ Zabbix サーバーをデプロイする
+# ・ CentOS8.3 + Zabbix5.2 + MySql8
+
+- name:  Zabbix 5.2 サーバーをデプロイする
+  hosts: zabbix_group
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: 初期処理
+      ansible.builtin.import_role:
+        name: initial_processing
+
+    - name: Zabbix のインストールと設定
+      ansible.builtin.import_role:
+        name: installing_and_configuring_zabbix
+
+    - name: MySQL のインストールと設定
+      ansible.builtin.import_role:
+        name: installing_and_configuring_mysql
+
+    - name: ファイアウォールの設定とサービスを起動
+      ansible.builtin.import_role:
+        name: configure_firewall_and_start_service

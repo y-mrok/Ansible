@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/collection/include_tasks$ ansible-playbook -i hosts.yml sample7.yml --tags job1,job2
+
+PLAY [Example of "ansible.builtin.include_tasks" usage] *************************************************************************************
+
+TASK [include tasks] ************************************************************************************************************************
+included: /home/piyo/example/collection/include_tasks/includes/inc_task5.yml for hydrogen
+
+TASK [role tasks No.2] **********************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP **********************************************************************************************************************************
+hydrogen                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/collection/include_tasks$ 

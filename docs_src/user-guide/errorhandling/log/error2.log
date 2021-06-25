@@ -1,0 +1,22 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error2.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [First processing] ******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+TASK [Checking file differences] *********************************************************************************************************************
+fatal: [hydrogen]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/libexec/platform-python"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.003601", "end": "2021-04-03 17:11:21.267679", "msg": "non-zero return code", "rc": 1, "start": "2021-04-03 17:11:21.264078", "stderr": "", "stderr_lines": [], "stdout": "1c1\n< abc\n---\n> xyz", "stdout_lines": ["1c1", "< abc", "---", "> xyz"]}
+...ignoring
+
+TASK [Last processing] *******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+
+piyo@vmpc:~/example/err$ 

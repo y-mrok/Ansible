@@ -1,0 +1,75 @@
+.. _errorhandling-register-hensu-kakunin:
+
+**************************************************
+レジスター変数の確認
+**************************************************
+いくつかのプレイでレジスター変数に設定される内容（項目）を確認します。同じプレイを実行しても実行時の管理対象ノードの状態でレジスター変数に設定される内容が異なります。また、タスクによってもレジスター変数の内容が異なります。
+
+2 つのファイルを比較する
+==================================================
+.. literalinclude:: ./yaml/error5.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+2 つのファイルの内容が同じときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error5.log
+   :language: none
+
+2 つのファイルの内容が異なるときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error5-1.log
+   :language: none
+
+不達エラーが発生したときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error5-2.log
+   :language: none
+
+管理対象ノードの OS が CentOS のときに Apache をインストールする
+====================================================================================================
+.. literalinclude:: ./yaml/error6.yml
+   :language: yaml
+   :emphasize-lines: 12
+
+ディストリビューションが CentOS で Apache が未インストールのときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error6.log
+   :language: none
+
+ディストリビューションが CentOS で Apache がインストール済みのときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error6-1.log
+   :language: none
+
+ディストリビューションが Ubuntu のときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error6-2.log
+   :language: none
+
+ファイルをコピーする
+==================================================
+.. literalinclude:: ./yaml/error8.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+管理対象ノードにファイルが存在しないときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error8.log
+   :language: none
+
+管理対象ノードにファイルをコピー済みのときのレジスター変数の内容です。
+
+.. literalinclude:: ./log/error8-1.log
+   :language: none
+
+loop ディレクティブを指定
+==================================================
+.. literalinclude:: ./yaml/error7.yml
+   :language: yaml
+   :emphasize-lines: 13
+
+レジスター変数にループごとの値が設定されます。
+
+.. literalinclude:: ./log/error7.log
+   :language: none

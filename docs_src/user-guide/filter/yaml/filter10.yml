@@ -1,0 +1,29 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Convert to bool type
+      ansible.builtin.debug:
+        msg: "Cast the {{ item }} set in item to a bool type. -> {{ item | bool }}"
+      loop: "{{ values }}"
+      vars:
+        values:
+          - -1
+          - 0
+          - 1
+          - 100
+          - 0.0
+          - 1.0
+          - 1.1 
+          - "yes"
+          - "true"
+          - "True"
+          - "TRUE"
+          - "no"
+          - "false"
+          - "False"
+          - "FALSE"
+          - abc
+          - null

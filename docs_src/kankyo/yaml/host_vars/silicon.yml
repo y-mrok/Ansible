@@ -1,0 +1,4 @@
+# host_vars/silicon.yml
+---
+ansible_host: 192.168.23.24
+ansible_python_interpreter: /usr/bin/python3

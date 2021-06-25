@@ -1,0 +1,32 @@
+---
+# group_vars/gitlab_group.yml
+# ・ GitLab サーバーのデプロイに使用する変数
+
+# -------------------- GitLab --------------------
+# レポジトリ
+gitlab_repo_url : "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/"
+gitlab_script_name : "script.rpm.sh"
+gitlab_script_path: "/tmp"
+
+# GitLab にアクセスするときの URL
+gitlab_url: "https://gitlab.exam.local"
+
+# 関連パッケージ
+other_packages:
+  - curl
+  - policycoreutils
+  - openssh-server
+  - openssh-clients
+  - postfix
+
+# GitLab のパッケージ
+gitlab_package: gitlab-ce
+
+# ファイアウォールに穴を開けるポート
+gitlab_ports:
+  - http
+  - https
+
+# サービス
+gitlab_services:
+  - postfix.service

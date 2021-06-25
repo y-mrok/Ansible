@@ -1,0 +1,21 @@
+piyo@vmpc:~/example/tag$ ansible-playbook -i hosts.yml tag8.yml --tags job3
+
+PLAY [Examples of tag usage] ****************************************************************************************************************
+
+TASK [task-3(block) -> The execution of this task will fail.] *******************************************************************************
+fatal: [hydrogen]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/libexec/platform-python"}, "changed": true, "cmd": ["/bin/false"], "delta": "0:00:00.003685", "end": "2021-05-22 09:30:16.669770", "msg": "non-zero return code", "rc": 1, "start": "2021-05-22 09:30:16.666085", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [task-6 (rescue)] **********************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+TASK [task-9 (always)] **********************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP **********************************************************************************************************************************
+hydrogen                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+
+piyo@vmpc:~/example/tag$ 

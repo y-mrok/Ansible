@@ -1,0 +1,28 @@
+.. _loop-hensu-no-siyo-task-vars:
+
+**************************************************
+タスク変数
+**************************************************
+.. _loop-hensu-no-siyo-task-vars-mapping-sequence:
+
+マッピングの中にシーケンスをネスト
+==================================================
+.. literalinclude:: ./yaml/user5.yml
+   :language: yaml
+   :emphasize-lines: 9, 11-16
+
+.. literalinclude:: ./log/user5.log
+   :language: none
+   :emphasize-lines: 6-8
+
+.. _loop-hensu-no-siyo-task-vars-mapping-sequence-mapping:
+
+マッピングの中にシーケンスをネストし、シーケンスの中にマッピングをネスト
+========================================================================
+.. literalinclude:: ./yaml/user6.yml
+   :language: yaml
+   :emphasize-lines: 9-10, 12-20
+
+.. literalinclude:: ./log/user6.log
+   :language: none
+   :emphasize-lines: 6-8

@@ -1,0 +1,35 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error5.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [Checking file differences] *********************************************************************************************************************
+changed: [hydrogen]
+
+TASK [Display the contents of register variables] ****************************************************************************************************
+ok: [hydrogen] => {
+    "result_of_diff": {
+        "ansible_facts": {
+            "discovered_interpreter_python": "/usr/libexec/platform-python"
+        },
+        "changed": true,
+        "cmd": [
+            "diff",
+            "file1",
+            "file2"
+        ],
+        "delta": "0:00:00.003064",
+        "end": "2021-04-04 11:42:09.600238",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-04-04 11:42:09.597174",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "",
+        "stdout_lines": []
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

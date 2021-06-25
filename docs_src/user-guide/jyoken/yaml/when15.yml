@@ -1,0 +1,17 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Use with the loop directive
+      ansible.builtin.debug:
+        msg: "Value of the variable item　→　{{ item }}"
+      loop: 
+        - 0
+        - 2
+        - 4
+        - 6
+        - 8
+        - 10
+      when: item > 5

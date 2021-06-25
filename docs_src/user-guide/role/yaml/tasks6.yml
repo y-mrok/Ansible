@@ -1,0 +1,18 @@
+---
+- name: Display the start message
+  ansible.builtin.debug:
+    msg: "Start!"
+
+- name: Display the contents of the variable item
+  ansible.builtin.debug:
+    msg: "Outside of roles -> {{ item }} , Inside of roles -> {{ role_item }}."
+  loop_control:
+    loop_var: role_item
+  loop:
+    - A
+    - B
+    - C
+
+- name: Display an exit message
+  ansible.builtin.debug:
+    msg: "End!"

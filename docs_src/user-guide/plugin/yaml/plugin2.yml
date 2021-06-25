@@ -1,0 +1,18 @@
+---
+- name: Examples of plugin usage.
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Obtain the password from the CSV file.
+      ansible.builtin.user:
+        name: item
+        password: "{{ lookup('csvfile', '{{ item }} file=./passwd.csv delimiter=,') | password_hash('sha512') }}"
+        comment: "{{ lookup('csvfile', '{{ item }} file=./passwd.csv delimiter=, col=2') }}"
+      loop: "{{ accounts }}"
+      vars:
+        accounts:
+          - taro
+          - jiro
+          - hanako
+      become: yes

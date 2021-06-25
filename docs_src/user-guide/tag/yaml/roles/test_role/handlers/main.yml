@@ -1,0 +1,25 @@
+---
+# roles/test_role/handlers/main.yml
+
+- name: task-9 (test_rols/handlers/main.yml)
+  ansible.builtin.debug:
+  listen: handler1
+- name: task-10 (test_rols/handlers/main.yml)
+  ansible.builtin.debug:
+  listen: handler2
+- name: task-11 (test_rols/handlers/main.yml)
+  ansible.builtin.debug:
+  listen: handler1
+  tags: job2
+- name: task-12 (test_rols/handlers/main.yml)
+  ansible.builtin.debug:
+  listen: handler1
+  tags: job3
+- name: task-13 (test_rols/handlers/main.yml)
+  ansible.builtin.debug:
+  listen: handler2
+  tags: job2
+- name: task-14 (test_rols/handlers/main.yml)
+  ansible.builtin.debug:
+  listen: handler2
+  tags: job3

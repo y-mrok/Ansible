@@ -1,0 +1,12 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+
+  tasks:
+    - name: Install the latest version of Apache on the managed nodes included in the webservers group
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+      when: inventory_hostname in groups['webservers']
+      become: yes
+  

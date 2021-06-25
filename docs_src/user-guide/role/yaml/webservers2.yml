@@ -1,0 +1,8 @@
+---
+- name: Example of using roles
+  hosts: all
+
+  tasks:
+    - name: Web server construction roles.
+      ansible.builtin.import_role:
+        name: basic_webserver_configuration

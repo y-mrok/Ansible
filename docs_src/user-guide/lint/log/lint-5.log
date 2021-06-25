@@ -1,0 +1,3 @@
+piyo@vmpc:~/example/lint$ ansible-lint apache.yml 
+WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: apache.yml
+piyo@vmpc:~/example/lint$ 

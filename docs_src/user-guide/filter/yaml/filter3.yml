@@ -1,0 +1,19 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Register a user account.
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        group: "{{ item.group | default(omit) }}"
+      loop: "{{ accounts }}"
+      vars:
+        accounts:
+          - name: taro
+            group: admin
+          - name: jiro
+          - name: hanako
+            group: staff
+      become: yes

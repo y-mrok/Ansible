@@ -1,0 +1,10 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+
+  tasks:
+    - name: Rebooting a CentOS 8 managed node
+      ansible.builtin.reboot:
+      when: ansible_facts['distribution'] == "CentOS" and 
+            ansible_facts['distribution_major_version'] == "8"
+      become: yes

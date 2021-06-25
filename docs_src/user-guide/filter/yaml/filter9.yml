@@ -1,0 +1,26 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Convert to string type
+      ansible.builtin.debug:
+        msg: "Cast the {{ item }} set in item to a string type. -> {{ item | string }}"
+      loop: "{{ values }}"
+      vars:
+        values:
+          - 123
+          - 456.78
+          - abc
+          - true
+          - "true"
+          - True
+          - false 
+          - "false"
+          - False
+          - yes
+          - "yes"
+          - no
+          - "no"
+          - null

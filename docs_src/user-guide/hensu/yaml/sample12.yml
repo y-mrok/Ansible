@@ -1,0 +1,31 @@
+---
+- name: Example of variable reference
+  hosts: all
+  gather_facts: no
+
+  vars:
+     user_account:
+       - user_name: hanako-san                    # user_account[0]['user_name']
+         user_password: hanako-no-password        # user_account[0]['user_password']
+       - user_name: taro-san                      # user_account[1['user_name']
+         user_password: taro-no-password          # user_account[1]['user_password']
+
+  tasks:
+    - name: Create the first account
+      ansible.builtin.user:
+        name: "{{ user_account[0]['user_name'] }}"
+        password: "{{ user_account[0]['user_password'] | password_hash('sha512') }}"
+        state: present
+      become: yes
+    - name: Create the second account
+      ansible.builtin.user:
+        name: "{{ user_account[1]['user_name'] }}"
+        password: "{{ user_account[1]['user_password'] | password_hash('sha512') }}"
+        state: present
+      become: yes
+    - name: Check the first person's account
+      ansible.builtin.debug:
+        msg: "アカウント {{ user_account[0]['user_name'] }} のパスワードは {{ user_account[0]['user_password'] }} です。"
+    - name: Check the second person's account
+      ansible.builtin.debug:
+        msg: "アカウント {{ user_account[1]['user_name'] }} のパスワードは {{ user_account[1]['user_password'] }} です。"

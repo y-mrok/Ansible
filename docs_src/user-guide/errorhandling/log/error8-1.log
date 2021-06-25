@@ -1,0 +1,41 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error8.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [hydrogen]
+
+TASK [Copy the file] *********************************************************************************************************************************
+ok: [hydrogen]
+
+TASK [Display the contents of register variables] ****************************************************************************************************
+ok: [hydrogen] => {
+    "result_of_copy": {
+        "changed": false,
+        "checksum": "03cfd743661f07975fa2f1220c5194cbaff48451",
+        "dest": "/home/ansible-user/file3",
+        "diff": {
+            "after": {
+                "path": "/home/ansible-user/file3"
+            },
+            "before": {
+                "path": "/home/ansible-user/file3"
+            }
+        },
+        "failed": false,
+        "gid": 1000,
+        "group": "ansible-user",
+        "mode": "0644",
+        "owner": "ansible-user",
+        "path": "/home/ansible-user/file3",
+        "secontext": "unconfined_u:object_r:user_home_t:s0",
+        "size": 4,
+        "state": "file",
+        "uid": 1000
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

@@ -1,0 +1,22 @@
+.. _delegate-control-targets:
+
+**************************************************
+targets セクションで指定
+**************************************************
+コントロールノードでプレイを実行するよう targets セクションを定義します。 ``localhost`` の代わりに ``127.0.0.1`` を指定できます。
+
+.. code-block:: yaml
+
+   hosts: localhost
+   connection: local
+
+実際のプレイです。
+
+.. literalinclude:: ./yaml/delegate11.yml
+   :language: yaml
+   :emphasize-lines: 3-4
+
+実行ログです。インベントリは使用しないので :command:`ansible-playbook` コマンドでプレイを実行するときに指定しません。インベントリを指定しないことで [WARNING] が 2 つ表示されました。 
+
+.. literalinclude:: ./log/delegate-control-target-1.log
+   :language: none

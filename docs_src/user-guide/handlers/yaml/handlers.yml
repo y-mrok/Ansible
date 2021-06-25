@@ -1,0 +1,30 @@
+---
+- name: Example of handleres usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Display a message indicating the start of processing
+      ansible.builtin.debug:
+        msg: "Start processing."
+    - name: Install apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      become: yes
+      notify:
+        - start httpd
+    - name: Display a message indicating the end of processing
+      ansible.builtin.debug:
+        msg: "End of processing."
+  
+  handlers:
+    - name: NOP
+      ansible.builtin.debug:
+    - name: Start httpd.service
+      ansible.builtin.systemd:
+        name: httpd.service
+        state: started
+      become: yes
+      listen: 
+        - start httpd

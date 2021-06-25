@@ -1,0 +1,81 @@
+piyo@vmpc:~$ sudo apt -y update
+[sudo] piyo のパスワード: 
+ヒット:1 http://archive.ubuntulinux.jp/ubuntu focal InRelease
+ヒット:2 http://archive.ubuntulinux.jp/ubuntu-ja-non-free focal InRelease                         
+ヒット:3 http://jp.archive.ubuntu.com/ubuntu focal InRelease                                      
+取得:4 http://jp.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]                       
+取得:5 http://jp.archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]                    
+取得:6 http://jp.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [490 kB]
+取得:7 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+取得:8 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1,031 kB]
+取得:9 http://jp.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [229 kB]      
+取得:10 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [283 kB]
+取得:11 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [13.5 kB] 
+取得:12 http://jp.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [272 kB] 
+取得:13 http://jp.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [39.5 kB]
+取得:14 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [576 kB]    
+取得:15 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [781 kB]
+取得:16 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [170 kB]
+取得:17 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [330 kB]
+取得:18 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [17.7 kB]
+取得:19 http://jp.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [2,468 B]
+取得:20 http://jp.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [1,768 B]
+取得:21 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [704 kB]          
+取得:22 http://security.ubuntu.com/ubuntu focal-security/main Translation-en [141 kB]
+取得:23 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [24.5 kB]
+取得:24 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [251 kB]
+取得:25 http://security.ubuntu.com/ubuntu focal-security/restricted Translation-en [36.5 kB]
+取得:26 http://security.ubuntu.com/ubuntu focal-security/universe i386 Packages [462 kB]
+取得:27 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [588 kB]
+取得:28 http://security.ubuntu.com/ubuntu focal-security/universe Translation-en [95.2 kB]
+取得:29 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [58.4 kB]
+取得:30 http://security.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [11.5 kB]
+取得:31 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2,464 B]
+6,940 kB を 4秒 で取得しました (1,888 kB/s)              
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています       
+状態情報を読み取っています... 完了
+アップグレードできるパッケージが 289 個あります。表示するには 'apt list --upgradable' を実行してください。
+piyo@vmpc:~$ 
+piyo@vmpc:~$ sudo apt -y dist-upgrade
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています                
+状態情報を読み取っています... 完了
+アップグレードパッケージを検出しています... 完了
+以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+  libfprint-2-tod1 libllvm10
+これを削除するには 'sudo apt autoremove' を利用してください。
+以下のパッケージが新たにインストールされます:
+  distro-info libllvm11
+以下のパッケージはアップグレードされます:
+  alsa-ucm-conf alsa-utils apt apt-utils aptdaemon-data base-files bind9-dnsutils bind9-libs bluez bluez-cups bluez-obexd bolt bsdutils
+  busybox-initramfs busybox-static cheese cheese-common command-not-found cpp-9 dirmngr distro-info-data enchant-2 evince evince-common
+  evolution-data-server evolution-data-server-common fdisk file-roller fonts-noto-color-emoji fonts-noto-mono fonts-opensymbol
+  friendly-recovery gcc-9-base gdb gdbserver gdm3 gir1.2-accountsservice-1.0 gir1.2-gdm-1.0 gir1.2-gnomebluetooth-1.0
+  gir1.2-gnomedesktop-3.0 gir1.2-goa-1.0 gir1.2-gst-plugins-base-1.0 gir1.2-gweather-3.0 gir1.2-mutter-6 gir1.2-nm-1.0 gir1.2-nma-1.0
+
+（中略）
+
+libebook-1.2-20:amd64 (3.36.5-0ubuntu1) を設定しています ...
+evolution-data-server (3.36.5-0ubuntu1) を設定しています ...
+進捗: [ 98%] [########################################################################################################################...] 
+gnome-shell (3.36.9-0ubuntu0.20.04.1) を設定しています ...
+gnome-shell-extension-appindicator (33.1-0ubuntu0.20.04.2) を設定しています ...
+gdm3 (3.36.3-0ubuntu0.20.04.3) を設定しています ...
+network-manager-gnome (1.8.24-1ubuntu3) を設定しています ...
+gnome-shell-extension-desktop-icons (20.04.0-3~ubuntu20.04.1) を設定しています ...
+update-manager (1:20.04.10.7) を設定しています ...
+進捗: [ 99%] [#########################################################################################################################..] 
+update-notifier (3.192.30.8) を設定しています ...
+ubuntu-desktop-minimal (1.450.2) を設定しています ...
+ubuntu-desktop (1.450.2) を設定しています ...
+initramfs-tools (0.136ubuntu6.5) のトリガを処理しています ...
+update-initramfs: Generating /boot/initrd.img-5.8.0-55-generic
+libc-bin (2.31-0ubuntu9.2) のトリガを処理しています ...
+piyo@vmpc:~$ 
+piyo@vmpc:~$ reboot
+Failed to set wall message, ignoring: Interactive authentication required.
+Failed to reboot system via logind: Interactive authentication required.
+Failed to open initctl fifo: 許可がありません
+Failed to talk to init daemon.
+piyo@vmpc:~$ sudo reboot

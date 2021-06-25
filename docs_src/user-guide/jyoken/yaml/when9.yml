@@ -1,0 +1,9 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+
+  tasks:
+    - name: Reboot a managed node whose distribution is not Debian, openSUSE Leap, or Fedora
+      ansible.builtin.reboot:
+      when: ansible_facts['distribution'] not in ['Debian', 'openSUSE Leap', 'Fedora']
+      become: yes

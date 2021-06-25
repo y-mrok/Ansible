@@ -1,0 +1,21 @@
+---
+- name: Example of filter usage
+  hosts: all
+
+  tasks:
+    - name: Current date
+      ansible.builtin.debug:
+        msg: "{{ '%Y-%m-%d' | strftime }}"
+    - name: Current Time
+      ansible.builtin.debug:
+        msg: "{{ '%H:%M:%S' | strftime }}"
+    - name: Collection date and time of the fact variable
+      ansible.builtin.debug:
+        msg: "{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_facts['date_time']['epoch']) }}"
+    - name: Specify zero for UNIX time
+      ansible.builtin.debug:
+        msg: "{{ '%Y-%m-%d' | strftime(0) }}"
+    - name: Specify 1441357287 for UNIX time
+      ansible.builtin.debug:
+        msg: "{{ '%Y-%m-%d %H:%M:%S' | strftime(1441357287) }} "
+ 

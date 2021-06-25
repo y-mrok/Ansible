@@ -1,0 +1,12 @@
+.. _tag-task-t-skip:
+
+****************************************************
+--tags パラメーターと --skip-tags パラメーターを併用
+****************************************************
+``-t`` / ``--tags`` パラメーターと ``--skip-tags`` パラメータを併用した場合 and 条件になります。
+
+.. literalinclude:: ./log/tag-task-t-skip-1.log
+   :language: none
+
+.. literalinclude:: ./log/tag-task-t-skip-2.log
+   :language: none

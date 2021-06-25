@@ -1,0 +1,392 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="ansible-vault コマンド" href="ansible-vault-command.html" /><link rel="prev" title="“changed” と判断する条件を定義する" href="../errorhandling/errorhandling-sonota-changed_when.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>コンテンツの暗号化 - Learning Ansible 2021/06/13 更新 documentation</title>
+      <link rel="stylesheet" href="../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Learning Ansible 2021/06/13 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/13 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../user-guide.html">ユーザーガイド</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ansible-no-install/ansible-no-install.html">Ansible のインストール</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ansible-no-install/node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ansible-no-install/control-node-ni-ansible-wo-install.html">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../ansible-no-install/managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ansible-no-install/managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ansible-no-install/managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ansible-no-install/managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../hensu/hensu.html">変数</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../hensu/play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hensu/play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hensu/play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hensu/play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/hensu-no-sansho.html">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">コンテンツの暗号化</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-install.html">AWX をインストール</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-tuika.html">管理対象ノードを追加</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="vault">
+<span id="id1"></span><h1>コンテンツの暗号化<a class="headerlink" href="#vault" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong class="command">ansible-vault</strong> コマンドでファイルや変数を暗号化する</p></li>
+<li><p>暗号化／復号化するにはパスワードが必要</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ansible-vault-command.html">ansible-vault コマンド</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ansible-vault-command.html#ansible-vault-command-kobun">構文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible-vault-command.html#ansible-vault-command-parameter">パラメーター</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vault-file.html">ファイルを暗号化</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vault-file.html#vault-file-taisho">暗号化するファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault-file.html#encrypt">既存のファイルを暗号化（ encrypt ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault-file.html#view">暗号化したファイルの内容を確認（ view ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault-file.html#edit">暗号化したファイルの内容を編集（ edit ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault-file.html#decrypt">暗号化したファイルを復号化（ decrypt ）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault-file.html#create">新規に暗号化したファイルを作成（ create ）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault-usage.html">暗号化したファイルを使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vault-usage.html#vault-usage-ask">コマンドの実行時にパスワードを入力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault-usage.html#vault-usage-file">コマンドの実行時にパスワードを記録したファイルを指定</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="ansible-vault-command.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">ansible-vault コマンド</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../errorhandling/errorhandling-sonota-changed_when.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">“changed” と判断する条件を定義する</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

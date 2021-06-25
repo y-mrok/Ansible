@@ -1,0 +1,46 @@
+piyo@vmpc:~/example/sample/gitlab$ ansible-playbook -i hosts.yml deploy_gitlab.yml 
+
+PLAY [GitLab サーバーをデプロイする] ********************************************************************************************************
+***********
+
+TASK [initial_processing : インストール済みパッケージを更新] ********************************************************************************
+****************
+ok: [gitlab]
+
+TASK [installing_and_configuring_gitlab : 関連パッケージをインストール] *********************************************************************
+**************
+ok: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab package repository のスクリプトファイルの存在確認] *****************************************
+***************
+ok: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab package repository の取得] *****************************************************************
+***
+skipping: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab package repository のスクリプトを実行] *****************************************************
+*********
+skipping: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab Community Edition がインストール済みかチェック] ********************************************
+**************
+ok: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab Community Edition をインストール] **********************************************************
+*******
+skipping: [gitlab]
+
+TASK [configure_firewall_and_start_service : ファイアウォールに穴あけ] **********************************************************************
+************
+ok: [gitlab] => (item=http)
+ok: [gitlab] => (item=https)
+
+TASK [configure_firewall_and_start_service : サービスを起動（自動起動あり）] ****************************************************************
+***************
+ok: [gitlab] => (item=postfix.service)
+
+PLAY RECAP **********************************************************************************************************************************
+gitlab                     : ok=6    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/sample/gitlab$ 

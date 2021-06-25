@@ -1,0 +1,30 @@
+piyo@vmpc:~/node$ ansible-playbook -i hosts.yml node.yml
+
+PLAY [管理対象ノードに接続用のアカウントを作成] *********************************************************************************************
+
+TASK [鍵を作成] *****************************************************************************************************************************
+changed: [hydrogen -> localhost]
+
+TASK [アカウント ansible-user を作成] *******************************************************************************************************
+changed: [hydrogen]
+changed: [lithium]
+changed: [helium]
+
+TASK [管理対象ノードに鍵を登録] *************************************************************************************************************
+[WARNING]: Module remote_tmp /home/ansible-user/.ansible/tmp did not exist and was created with a mode of 0700, this may cause issues when
+running as another user. To avoid this, create the remote_tmp dir with the correct permissions manually
+changed: [hydrogen]
+changed: [lithium]
+changed: [helium]
+
+TASK [sudo 用ファイルをコピー] **************************************************************************************************************
+changed: [lithium]
+changed: [hydrogen]
+changed: [helium]
+
+PLAY RECAP **********************************************************************************************************************************
+helium                     : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+hydrogen                   : ok=4    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lithium                    : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/node$ 

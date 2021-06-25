@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/delegate$ ansible-playbook -i 127.0.0.1, -c local delegate12.yml 
+
+PLAY [Delegate the execution of a task] *****************************************************************************************************
+
+TASK [Get the hostname of a node] ***********************************************************************************************************
+changed: [127.0.0.1]
+
+TASK [Display the retrieved hostname] *******************************************************************************************************
+ok: [127.0.0.1] => {
+    "msg": "The hostname of the node is vmpc."
+}
+
+PLAY RECAP **********************************************************************************************************************************
+127.0.0.1                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/delegate$ 

@@ -1,0 +1,53 @@
+piyo@vmpc:~/example/block$ ansible-playbook -i hosts.yml block2.yml 
+
+PLAY [Example of block usage] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+ok: [ubuntu2004]
+
+TASK [Install the latest version of the httpd package] ***********************************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [Set the server name for Apache] ****************************************************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [Syntax check of httpd.conf] ********************************************************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [Restart or start httpd.service] ****************************************************************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [Open a hole in the firewall of the CentOS management node for the http port] *******************************************************************
+skipping: [ubuntu2004]
+changed: [centos83]
+
+TASK [Install the latest version of the apache2 package] *********************************************************************************************
+skipping: [centos83]
+changed: [ubuntu2004]
+
+TASK [Set the server name for Apache2] ***************************************************************************************************************
+skipping: [centos83]
+changed: [ubuntu2004]
+
+TASK [Syntax check of apache2.conf] ******************************************************************************************************************
+skipping: [centos83]
+changed: [ubuntu2004]
+
+TASK [Restart or start apache2.service] **************************************************************************************************************
+skipping: [centos83]
+changed: [ubuntu2004]
+
+TASK [Open a hole in the firewall of the Ubuntu management node for the http port] *******************************************************************
+skipping: [centos83]
+changed: [ubuntu2004]
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=6    changed=5    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+ubuntu2004                 : ok=6    changed=5    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/block$ 

@@ -1,0 +1,53 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error7.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [ubuntu2004]
+
+TASK [Use with loop directive] ***********************************************************************************************************************
+ok: [ubuntu2004] => (item=1) => {
+    "msg": "loop The value of the variable -> 1"
+}
+ok: [ubuntu2004] => (item=2) => {
+    "msg": "loop The value of the variable -> 2"
+}
+ok: [ubuntu2004] => (item=3) => {
+    "msg": "loop The value of the variable -> 3"
+}
+
+TASK [Display the contents of register variables] ****************************************************************************************************
+ok: [ubuntu2004] => {
+    "result_of_loop": {
+        "changed": false,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "item": 1,
+                "msg": "loop The value of the variable -> 1"
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "item": 2,
+                "msg": "loop The value of the variable -> 2"
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "item": 3,
+                "msg": "loop The value of the variable -> 3"
+            }
+        ]
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+ubuntu2004                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

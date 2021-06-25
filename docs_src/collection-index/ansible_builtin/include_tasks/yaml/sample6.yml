@@ -1,0 +1,16 @@
+- name: Example of "ansible.builtin.include_tasks" usage
+  hosts: all
+
+  tasks:
+    - name: Message No.1
+      ansible.builtin.debug:
+    
+    - name: Include tasks
+      ansible.builtin.include_tasks: ./includes/inc_task2.yml
+      loop:
+        - taro
+        - jiro
+        - hanako
+
+    - name: Message No.2
+      ansible.builtin.debug:

@@ -1,0 +1,10 @@
+.
+├── hosts2.yml
+├── roles
+│   ├── CentOS
+│   │   └── tasks
+│   │       └── main.yml
+│   └── Ubuntu
+│       └── tasks
+│           └── main.yml
+└── roles5.yml

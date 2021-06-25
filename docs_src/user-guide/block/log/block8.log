@@ -1,0 +1,12 @@
+piyo@vmpc:~/example/block$ ansible-playbook -i hosts.yml block8.yml 
+ERROR! 'loop' is not a valid attribute for a Block
+
+The error appears to be in '/home/piyo/example/block/block8.yml': line 5, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Use block
+      ^ here
+piyo@vmpc:~/example/block$ 

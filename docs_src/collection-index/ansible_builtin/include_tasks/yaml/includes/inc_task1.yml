@@ -1,0 +1,9 @@
+# includes/inc_task1.yml
+---
+- name: List of tasks to include No.1
+  ansible.builtin.debug:
+    msg: "task #1"
+
+- name: List of tasks to include No.2
+  ansible.builtin.debug:
+    msg: "task #2"

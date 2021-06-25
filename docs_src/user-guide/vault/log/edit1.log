@@ -1,0 +1,2 @@
+piyo@vmpc:~/example/vault$ ansible-vault edit host_vars/hydrogen.yml
+Vault password: 

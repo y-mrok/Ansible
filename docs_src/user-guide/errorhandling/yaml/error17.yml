@@ -1,0 +1,8 @@
+---
+- name: Example of error handling usage
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: Display the contents of the "/etc/passwd" file
+      ansible.builtin.command: cat /etc/passwd

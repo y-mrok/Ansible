@@ -1,0 +1,28 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter7.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Convert to integer type] ***********************************************************************************************************************
+ok: [hydrogen] => (item=2.4) => {
+    "msg": "Cast the 2.4 set in item to an integer type. -> 2"
+}
+ok: [hydrogen] => (item=3.5) => {
+    "msg": "Cast the 3.5 set in item to an integer type. -> 3"
+}
+ok: [hydrogen] => (item=100.0) => {
+    "msg": "Cast the 100.0 set in item to an integer type. -> 100"
+}
+ok: [hydrogen] => (item=123) => {
+    "msg": "Cast the 123 set in item to an integer type. -> 123"
+}
+ok: [hydrogen] => (item=248.7) => {
+    "msg": "Cast the 248.7 set in item to an integer type. -> 248"
+}
+ok: [hydrogen] => (item=abc) => {
+    "msg": "Cast the abc set in item to an integer type. -> 0"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

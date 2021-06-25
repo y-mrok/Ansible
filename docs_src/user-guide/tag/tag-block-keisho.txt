@@ -1,0 +1,26 @@
+.. _tag-block-keisho:
+
+**************************************************
+タグの継承
+**************************************************
+``block`` ディレクティブにタグを設定すると、設定したタグは ``block`` ディレクティブ、 ``always`` ディレクティブ、 ``rescue`` ディレクティブ内の各タスクに継承され、各タスクにそのタグを設定したのと同じ結果になります。
+
+このプレイはタグ job1 を ``block`` ディレクティブ、 ``always`` ディレクティブ、 ``rescue`` ディレクティブ内の各タスクに設定したのと同じことになります。
+
+.. literalinclude:: ./yaml/tag8.yml
+   :emphasize-lines: 39
+   :language: yaml
+
+
+タグ job1 を指定してプレイを実行したログです。タグ job1 を設定したタスクだけを実行しました。
+
+.. literalinclude:: ./log/tag-blok-keisho-2.log
+   :language: none
+
+タグ job1 以外のタグを指定してプレイを実行したログです。
+
+.. literalinclude:: ./log/tag-blok-keisho-1.log
+   :language: none
+
+.. literalinclude:: ./log/tag-blok-keisho-3.log
+   :language: none

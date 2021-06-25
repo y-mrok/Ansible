@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/tag$ ansible-playbook -i hosts.yml tag5.yml --tags job2
+
+PLAY [Examples of tag usage] ****************************************************************************************************************
+
+TASK [task-4 (block)] ***********************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP **********************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/tag$ 

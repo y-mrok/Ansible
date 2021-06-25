@@ -1,0 +1,3 @@
+# host_vars/neon.yml
+---
+ansible_host: 192.168.23.20

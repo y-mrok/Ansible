@@ -1,0 +1,67 @@
+.. _inventory-no-bunkatu:
+
+**************************************************
+インベントリの分割
+**************************************************
+次のインベントリを分割・整理します。
+
+.. literalinclude:: ./yaml/hosts9.yml
+   :language: yaml
+
+含まれる管理対象ノードとグループは以下のとおりです。
+
+- 管理対象ノード
+
+   - hydrogen
+   - helium
+   - lithium
+
+- グループ
+
+   - all
+   - webservers
+   - dbservers
+
+インベントリからホスト変数、グループ変数を取り除きます。
+
+.. literalinclude:: ./yaml/hosts10.yml
+   :language: yaml
+
+:file:`host_vars/` ディレクトリ内に管理対象ノードごとのファイルを作り、ホスト変数を記述します。
+
+- :file:`host_vars/hydrogen.yml`
+
+   .. literalinclude:: ./yaml/host_vars/hydrogen.yml
+      :language: yaml
+
+- :file:`host_vars/helium.yml`
+
+   .. literalinclude:: ./yaml/host_vars/helium.yml
+      :language: yaml
+
+- :file:`host_vars/lithium.yml`
+
+   .. literalinclude:: ./yaml/host_vars/lithium.yml
+      :language: yaml
+
+:file:`group_vars` ディレクトリ内にグループごとのファイルを作り、グループ変数を記述します。
+
+- :file:`group_vars/all.yml`
+
+   .. literalinclude:: ./yaml/group_vars/all.yml
+      :language: yaml
+
+- :file:`group_vars/webservers.yml`
+
+   .. literalinclude:: ./yaml/group_vars/webservers.yml
+      :language: yaml
+
+- :file:`group_vars/dbservers.yml`
+
+   .. literalinclude:: ./yaml/group_vars/dbservers.yml
+      :language: yaml
+
+各ファイルの配置です。
+
+.. literalinclude:: ./log/tree.log
+   :language: none

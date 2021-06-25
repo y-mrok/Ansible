@@ -1,0 +1,43 @@
+piyo@vmpc:~/example/collection$ ansible-playbook -i hosts2.yml sample16.yml 
+
+PLAY [Example of "ansible.builtin.include_tasks" usage] **********************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+ok: [ubuntu2004]
+
+TASK [Message No.1] **********************************************************************************************************************************
+ok: [centos83] => {
+    "msg": "Hello world!"
+}
+ok: [ubuntu2004] => {
+    "msg": "Hello world!"
+}
+
+TASK [include tasks] *********************************************************************************************************************************
+included: /home/piyo/example/collection/includes/inc_CentOS.yml for centos83
+included: /home/piyo/example/collection/includes/inc_Ubuntu.yml for ubuntu2004
+
+TASK [List of tasks to include] **********************************************************************************************************************
+ok: [centos83] => {
+    "msg": "CentOS"
+}
+
+TASK [List of tasks to include] **********************************************************************************************************************
+ok: [ubuntu2004] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Message No.2] **********************************************************************************************************************************
+ok: [centos83] => {
+    "msg": "Hello world!"
+}
+ok: [ubuntu2004] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2004                 : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/collection$ 

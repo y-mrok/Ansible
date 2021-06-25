@@ -1,0 +1,22 @@
+---
+# deploy_gitlab.yml
+# ・ GitLab サーバーをデプロイする
+# ・ GitLab Community Edition
+
+- name:  GitLab サーバーをデプロイする
+  hosts: gitlab_group
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: 初期処理
+      ansible.builtin.import_role:
+        name: initial_processing
+
+    - name: GitLab のインストールと設定
+      ansible.builtin.import_role:
+        name: installing_and_configuring_gitlab
+
+    - name: ファイアウォールの設定とサービスを起動
+      ansible.builtin.import_role:
+        name: configure_firewall_and_start_service

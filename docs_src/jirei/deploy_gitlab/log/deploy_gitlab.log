@@ -1,0 +1,50 @@
+piyo@vmpc:~/example/sample/gitlab$ ansible-playbook -i hosts.yml deploy_gitlab.yml 
+
+PLAY [GitLab サーバーをデプロイする] ********************************************************************************************************
+***********
+
+TASK [initial_processing : インストール済みパッケージを更新] ********************************************************************************
+****************
+changed: [gitlab]
+
+RUNNING HANDLER [initial_processing : 再起動] ***********************************************************************************************
+***
+changed: [gitlab]
+
+TASK [installing_and_configuring_gitlab : 関連パッケージをインストール] *********************************************************************
+**************
+changed: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab package repository のスクリプトファイルの存在確認] *****************************************
+***************
+ok: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab package repository の取得] *****************************************************************
+***
+changed: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab package repository のスクリプトを実行] *****************************************************
+*********
+changed: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab Community Edition がインストール済みかチェック] ********************************************
+**************
+changed: [gitlab]
+
+TASK [installing_and_configuring_gitlab : GitLab Community Edition をインストール] **********************************************************
+*******
+changed: [gitlab]
+
+TASK [configure_firewall_and_start_service : ファイアウォールに穴あけ] **********************************************************************
+************
+changed: [gitlab] => (item=http)
+changed: [gitlab] => (item=https)
+
+TASK [configure_firewall_and_start_service : サービスを起動（自動起動あり）] ****************************************************************
+***************
+changed: [gitlab] => (item=postfix.service)
+
+PLAY RECAP **********************************************************************************************************************************
+gitlab                     : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/sample/gitlab$ 

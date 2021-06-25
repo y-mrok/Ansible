@@ -1,0 +1,18 @@
+- name: Example of block usage
+  hosts: all
+
+  tasks:
+    - name: Use block
+      block:
+        - name: task-1
+          ansible.builtin.debug:
+          loop:
+            - 1
+            - 2
+            - 3
+      rescue:
+        - name: task-2
+          ansible.builtin.debug:
+      always:
+        - name: task-3
+          ansible.builtin.debug:

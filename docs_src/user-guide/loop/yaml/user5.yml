@@ -1,0 +1,18 @@
+---
+- name: Example of loop usage
+  hosts: hydrogen
+  gather_facts: no
+
+  tasks:
+    - name: Create an account
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ account }}"
+      vars: 
+        account:
+          - alice
+          - bob
+          - carol 
+      become: yes
+      

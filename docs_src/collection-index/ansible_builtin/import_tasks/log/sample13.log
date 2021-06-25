@@ -1,0 +1,12 @@
+piyo@vmpc:~/example/collection$ ansible-playbook -i hosts.yml sample13.yml 
+ERROR! You cannot use loops on 'import_tasks' statements. You should use 'include_tasks' instead.
+
+The error appears to be in '/home/piyo/example/collection/sample13.yml': line 9, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+    - name: import tasks
+      ^ here
+piyo@vmpc:~/example/collection$ 

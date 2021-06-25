@@ -1,0 +1,9 @@
+piyo@vmpc:~/example/tag$ ansible-playbook -i hosts.yml tag2.yml --tags job1 --list-tasks
+
+playbook: tag2.yml
+
+  play #1 (all): Examples of tag usage  TAGS: []
+    tasks:
+      task#1    TAGS: [job1]
+      task#2    TAGS: [always]
+piyo@vmpc:~/example/tag$ 

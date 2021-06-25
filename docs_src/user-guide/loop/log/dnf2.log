@@ -1,0 +1,14 @@
+piyo@vmpc:~/example/loop$ ansible-playbook -i hosts.yml dnf2.yml
+
+PLAY [Example of loop usage] *************************************************************************************************************************
+
+TASK [Install the latest version of the Apache package] **********************************************************************************************
+changed: [hydrogen] => (item=httpd)
+ok: [hydrogen] => (item=httpd-tools)
+changed: [hydrogen] => (item=httpd-devel)
+changed: [hydrogen] => (item=httpd-manual)
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/loop$ 

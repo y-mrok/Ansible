@@ -1,0 +1,5 @@
+# imports/imp_CentOS.yml
+---
+- name: List of tasks to import
+  ansible.builtin.debug:
+    msg: "CentOS"

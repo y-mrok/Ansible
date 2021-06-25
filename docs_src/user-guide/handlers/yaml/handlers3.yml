@@ -1,0 +1,67 @@
+---
+- name: Example of handleres usage
+  hosts: all
+
+  tasks:
+    - name: Install the latest version of Apache or update to the latest version
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+      become: yes
+      notify:
+        - Installed the package
+    - name: Update the configuration file -> Set the host name
+      ansible.builtin.lineinfile:
+        path: "/etc/httpd/conf/httpd.conf"
+        regexp: "^#ServerName"
+        line: "ServerName {{ ansible_facts['fqdn'] }}:8080"
+        backrefs: yes
+        state: present
+      become: yes
+      notify:
+        -  Edit the configuration file
+    - name: Run the handler
+      ansible.builtin.meta: flush_handlers
+    - name: Update the configuration file -> Set the listen port
+      ansible.builtin.lineinfile:
+        path: "/etc/httpd/conf/httpd.conf"
+        regexp: "^Listen "
+        line: "Listen 8080"
+        backrefs: yes
+        state: present
+      become: yes
+      notify:
+        -  Edit the configuration file
+    - name: Open port:8080/tcp
+      ansible.posix.firewalld:
+        port: 8080/tcp
+        zone: public
+        permanent: yes
+        state: enabled
+      become: yes
+      notify:
+        - Reload firewalld
+
+  handlers:
+    - name: Syntax check of httpd.conf
+      ansible.builtin.command: apachectl configtest 
+      become: yes
+      listen: 
+        - Edit the configuration file
+    - name: Restart or start httpd.service
+      ansible.builtin.systemd:
+        name: httpd.service
+        enabled: yes
+        state: restarted
+      become: yes
+      listen: 
+        - Installed the package
+        - Edit the configuration file
+    - name: Reload the firewalld configuration
+      ansible.builtin.systemd:
+        name: firewalld.service
+        enabled: yes
+        state: reloaded
+      become: yes
+      listen: 
+        - Reload firewalld

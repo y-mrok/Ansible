@@ -1,0 +1,4 @@
+# include/user-add.yml
+---
+- name: Create the specified user account when it has not yet been created.
+  ansible.builtin.shell: "./user-add.sh {{ item }}"  

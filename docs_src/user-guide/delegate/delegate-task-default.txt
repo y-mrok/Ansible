@@ -1,0 +1,25 @@
+.. _delegate-task-default:
+
+**************************************************
+デフォルトの動作
+**************************************************
+デフォルトでタスクを実行する管理対象ノードは、次の組み合わせで決定します。
+
+- プレイの targets セクションの ``hosts`` ディレクティブで指定したグループや管理対象ノード
+- :command:`ansible-playbook` コマンドの ``-l`` / ``--limit`` パラメーターに指定したグループや管理対象ノード
+
+:command:`ansible-inventory` コマンドの実行ログです。
+
+.. literalinclude:: ./log/delegate-task-1.log
+   :language: none
+
+タスクを実行する管理対象ノードのホスト名を取得 / 表示するプレイです。
+
+.. literalinclude:: ./yaml/delegate2.yml
+   :language: yaml
+
+実行ログです。 web グループに含まれる管理対象ノード hydrogen でタスクを実行しました。
+
+.. literalinclude:: ./log/delegate-task-2.log
+   :language: none
+   :emphasize-lines: 10

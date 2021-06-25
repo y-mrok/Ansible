@@ -1,0 +1,39 @@
+piyo@vmpc:~$ pip3 install ansible-lint
+Collecting ansible-lint
+  Downloading ansible_lint-5.0.12-py3-none-any.whl (110 kB)
+     |████████████████████████████████| 110 kB 5.0 MB/s 
+Collecting enrich>=1.2.6
+  Downloading enrich-1.2.6-py3-none-any.whl (8.6 kB)
+Collecting rich>=9.5.1
+  Downloading rich-10.2.2-py3-none-any.whl (203 kB)
+     |████████████████████████████████| 203 kB 23.3 MB/s 
+Collecting wcmatch>=7.0
+  Downloading wcmatch-8.2-py3-none-any.whl (41 kB)
+     |████████████████████████████████| 41 kB 545 kB/s 
+Collecting tenacity
+  Downloading tenacity-7.0.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from ansible-lint) (5.3.1)
+Requirement already satisfied: packaging in ./.local/lib/python3.8/site-packages (from ansible-lint) (20.9)
+Collecting ruamel.yaml<1,>=0.15.37; python_version >= "3.7"
+  Downloading ruamel.yaml-0.17.7-py3-none-any.whl (108 kB)
+     |████████████████████████████████| 108 kB 24.6 MB/s 
+Collecting pygments<3.0.0,>=2.6.0
+  Downloading Pygments-2.9.0-py3-none-any.whl (1.0 MB)
+     |████████████████████████████████| 1.0 MB 32.4 MB/s 
+Requirement already satisfied: colorama<0.5.0,>=0.4.0 in /usr/lib/python3/dist-packages (from rich>=9.5.1->ansible-lint) (0.4.3)
+Collecting commonmark<0.10.0,>=0.9.0
+  Downloading commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+     |████████████████████████████████| 51 kB 15.7 MB/s 
+Collecting bracex>=2.1.1
+  Downloading bracex-2.1.1-py3-none-any.whl (10 kB)
+Requirement already satisfied: six>=1.9.0 in /usr/lib/python3/dist-packages (from tenacity->ansible-lint) (1.14.0)
+Requirement already satisfied: pyparsing>=2.0.2 in ./.local/lib/python3.8/site-packages (from packaging->ansible-lint) (2.4.7)
+Collecting ruamel.yaml.clib>=0.1.2; platform_python_implementation == "CPython" and python_version < "3.10"
+  Downloading ruamel.yaml.clib-0.2.2-cp38-cp38-manylinux1_x86_64.whl (578 kB)
+     |████████████████████████████████| 578 kB 41.6 MB/s 
+Installing collected packages: pygments, commonmark, rich, enrich, bracex, wcmatch, tenacity, ruamel.yaml.clib, ruamel.yaml, ansible-lint
+Successfully installed ansible-lint-5.0.12 bracex-2.1.1 commonmark-0.9.1 enrich-1.2.6 pygments-2.9.0 rich-10.2.2 ruamel.yaml-0.17.7 ruamel.yaml.clib-0.2.2 tenacity-7.0.0 wcmatch-8.2
+piyo@vmpc:~$ 
+piyo@vmpc:~$ ansible-lint --version
+ansible-lint 5.0.12 using ansible 2.11.1
+piyo@vmpc:~$ 

@@ -1,0 +1,13 @@
+# includes/inc_task2.yml
+---
+- name: List of tasks to include No.1
+  ansible.builtin.debug:
+    msg: "task #1"
+
+- name: loop The value of the variable
+  ansible.builtin.debug:
+    msg: "Value -> {{ item }}"
+
+- name: List of tasks to include No.2
+  ansible.builtin.debug:
+    msg: "task #2"

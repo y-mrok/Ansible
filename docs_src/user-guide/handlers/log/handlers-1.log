@@ -1,0 +1,21 @@
+piyo@vmpc:~/example/handlers$ ansible-playbook -i hosts.yml handlers.yml 
+
+PLAY [Example of handleres usage] ********************************************************************************************************************
+
+TASK [Display a message indicating the start of processing] ******************************************************************************************
+ok: [centos83] => {
+    "msg": "Start processing."
+}
+
+TASK [Install apache] ********************************************************************************************************************************
+ok: [centos83]
+
+TASK [Display a message indicating the end of processing] ********************************************************************************************
+ok: [centos83] => {
+    "msg": "End of processing."
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/handlers$ 

@@ -1,0 +1,14 @@
+piyo@vmpc:~$ mkdir ~/.ssh
+piyo@vmpc:~$ chmod 0700 ~/.ssh
+piyo@vmpc:~$ echo "Host *" > ~/.ssh/config
+piyo@vmpc:~$ echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+piyo@vmpc:~$ echo "  UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+piyo@vmpc:~$ chmod 0600 ~/.ssh/config
+piyo@vmpc:~$ ls -l ~/.ssh
+合計 4
+-rw------- 1 piyo piyo 65  6月 12 19:36 config
+piyo@vmpc:~$ cat ~/.ssh/config
+Host *
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+piyo@vmpc:~$ 

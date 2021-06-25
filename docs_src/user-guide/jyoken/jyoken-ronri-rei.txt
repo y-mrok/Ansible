@@ -1,0 +1,93 @@
+.. _jyoken-ronri-rei:
+
+**************************************************
+使用例
+**************************************************
+論理条件の使用例です。使用するインベントリです。
+
+.. literalinclude:: ./yaml/hosts.yml
+   :language: yaml
+
+インベントリ内のホスト名は OS のディストリビューション名 + バージョンです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 2
+
+   * - インベントリ内のホスト名
+     - ディストリビューション名 + バージョン
+   * - centos83
+     - CentOS 8.3
+   * - centos79
+     - CentOS 7.9
+   * - ubuntu2004
+     - Ubuntu 20.04 LTS
+   * - ubuntu 1804
+     - Ubuntu 18.04 LTS
+   * - debian108
+     - Debian 10.8
+   * - debian913
+     - Debian 9.13
+   * - opensuse152
+     - openSUSE Leap 15.2
+   * - fedora33
+     - Fedora 33
+
+.. _jyoken-ronri-rei-2-tsu-no-jyoken:
+
+2 つの条件の結合
+==================================================
+CentOS 8 の管理対象ノードだけ再起動するプレイです。
+
+.. literalinclude:: ./yaml/when2.yml
+   :language: yaml
+   :emphasize-lines: 8
+
+実行ログです。 CentOS 8 の管理対象ノードだけが再起動しました。
+
+.. literalinclude:: ./log/when2.log
+   :language: none
+
+横に長い条件は次のように書き換えられます。
+
+.. literalinclude:: ./yaml/when3.yml
+   :language: yaml
+   :emphasize-lines: 8-9
+
+上記のように、すべての条件を ``and`` で結合する場合、条件をシーケンスで指定できます。
+
+.. literalinclude:: ./yaml/when4.yml
+   :language: yaml
+   :emphasize-lines: 8-10
+
+.. _jyoken-ronri-rei-fukusu-no-jyoken:
+
+複数の条件の結合
+==================================================
+少し複雑な例です。 CentOS 8 か Ubuntu 20 か Debian 10 の管理対象ノードを再起動するプレイと実行ログです。
+
+.. literalinclude:: ./yaml/when5.yml
+   :language: yaml
+   :emphasize-lines: 8-13
+
+.. literalinclude:: ./log/when5.log
+   :language: none
+
+上記のような場合、カッコを使って条件をグループ化すると条件がわかりやすくなります。
+
+.. literalinclude:: ./yaml/when6.yml
+   :language: yaml
+   :emphasize-lines: 8-13
+
+.. _jyoken-ronri-rei-jyoken-no-hitei:
+
+条件の否定
+==================================================
+``not`` を使用して否定の条件を作成します。 CentOS 以外の管理対象ノードを再起動するプレイと実行ログです。
+
+.. literalinclude:: ./yaml/when7.yml
+   :language: yaml
+   :emphasize-lines: 8
+
+.. literalinclude:: ./log/when7.log
+   :language: none

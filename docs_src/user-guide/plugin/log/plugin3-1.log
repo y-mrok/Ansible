@@ -1,0 +1,4 @@
+piyo@vmpc:~/example/plugin$ printenv | grep PATH
+WINDOWPATH=2
+PATH=/home/piyo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+piyo@vmpc:~/example/plugin$ 

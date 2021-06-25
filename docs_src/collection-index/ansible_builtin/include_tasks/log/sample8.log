@@ -1,0 +1,7 @@
+piyo@vmpc:~/example/collection/include_tasks$ ansible-playbook -i hosts.yml sample7.yml --tags job2
+
+PLAY [Example of "ansible.builtin.include_tasks" usage] *************************************************************************************
+
+PLAY RECAP **********************************************************************************************************************************
+
+piyo@vmpc:~/example/collection/include_tasks$ 

@@ -1,0 +1,17 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Convert to real type
+      ansible.builtin.debug:
+        msg: "Cast the {{ item }} set in item to a real type. -> {{ item | float }}"
+      loop: "{{ values }}"
+      vars:
+        values:
+          - 123
+          - 456.78
+          - "123"
+          - '248.7'
+          - abc

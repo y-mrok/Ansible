@@ -1,0 +1,8 @@
+---
+# roles/initial_processing/handlers/main.yml
+# ・初期処理のハンドラー
+# 　・サーバーを再起動
+
+- name: 再起動
+  ansible.builtin.reboot:
+  listen: reboot_system

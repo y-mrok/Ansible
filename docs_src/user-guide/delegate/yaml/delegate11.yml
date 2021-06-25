@@ -1,0 +1,14 @@
+---
+- name: Delegate the execution of a task
+  hosts: localhost   # The same is true if you specify 127.0.0.1 instead of localhost.
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Get the hostname of a node
+      ansible.builtin.command:
+        cmd: hostname
+      register: reg_hostname
+    - name: Display the retrieved hostname
+      ansible.builtin.debug:
+        msg: "The hostname of the node is {{ reg_hostname['stdout'] }}."

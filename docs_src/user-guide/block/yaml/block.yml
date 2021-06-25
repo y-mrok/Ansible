@@ -1,0 +1,77 @@
+---
+- name: Example of block usage
+  hosts: all
+
+  tasks:
+    # Installing Apache on CentOS
+
+    - name: Install the latest version of the httpd package
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+      become: yes
+      when: ansible_facts['distribution'] == "CentOS"
+    - name: Set the server name for Apache
+      ansible.builtin.lineinfile:
+        path: "/etc/httpd/conf/httpd.conf"
+        regexp: "^#ServerName"
+        line: "ServerName {{ ansible_facts['fqdn'] }}:80"
+        state: present
+      become: yes
+      when: ansible_facts['distribution'] == "CentOS"
+    - name: Syntax check of httpd.conf
+      ansible.builtin.command: apachectl configtest 
+      become: yes
+      when: ansible_facts['distribution'] == "CentOS"
+    - name: Restart or start httpd.service
+      ansible.builtin.systemd:
+        name: httpd.service
+        enabled: yes
+        state: restarted
+      become: yes
+      when: ansible_facts['distribution'] == "CentOS"
+    - name: Open a hole in the firewall of the CentOS management node for the http port
+      ansible.posix.firewalld:
+        service: http
+        zone: public
+        permanent: yes
+        immediate: yes
+        state: enabled
+      become: yes
+      when: ansible_facts['distribution'] == "CentOS"
+
+    # Installing Apache on Ubuntu
+
+    - name: Install the latest version of the apache2 package
+      ansible.builtin.apt:
+        name: apache2
+        state: latest
+      become: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
+    - name: Set the server name for Apache2
+      ansible.builtin.lineinfile:
+        path: "/etc/apache2/apache2.conf"
+        insertafter: "^#ServerRoot "
+        line: "ServerName {{ ansible_facts['hostname'] }}.exam.local"
+        state: present
+      become: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
+    - name: Syntax check of apache2.conf
+      ansible.builtin.command: apache2ctl configtest 
+      become: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
+    - name: Restart or start apache2.service
+      ansible.builtin.systemd:
+        name: apache2.service
+        enabled: yes
+        state: restarted
+      become: yes
+      when: ansible_facts['distribution'] == "Ubuntu"
+    - name: Open a hole in the firewall of the Ubuntu management node for the http port
+      community.general.ufw:
+        rule: allow
+        port: http
+        proto: tcp
+        state: enabled
+      become: yes
+      when: ansible_facts['distribution'] == "Ubuntu"

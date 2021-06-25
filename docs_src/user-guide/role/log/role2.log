@@ -1,0 +1,32 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts.yml roles2.yml 
+
+PLAY [Example of using roles] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [hydrogen]
+
+TASK [loop-test2 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test2 : Display the contents of the variable item] ****************************************************************************************
+ok: [hydrogen] => (item=1) => {
+    "msg": "The value of item is 1."
+}
+ok: [hydrogen] => (item=2) => {
+    "msg": "The value of item is 2."
+}
+ok: [hydrogen] => (item=3) => {
+    "msg": "The value of item is 3."
+}
+
+TASK [loop-test2 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/role$ 

@@ -1,0 +1,103 @@
+piyo@vmpc:~/example/ex4$ ansible-playbook -i hosts.yml sample.yml 
+
+PLAY [Example of a Magic variables] ******************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [helium]
+ok: [hydrogen]
+ok: [lithium]
+
+TASK [Value of inventory_hostname] *******************************************************************************************************************
+ok: [hydrogen] => {
+    "inventory_hostname": "hydrogen"
+}
+ok: [helium] => {
+    "inventory_hostname": "helium"
+}
+ok: [lithium] => {
+    "inventory_hostname": "lithium"
+}
+
+TASK [Value of group_names] **************************************************************************************************************************
+ok: [hydrogen] => {
+    "group_names": [
+        "ungrouped"
+    ]
+}
+ok: [helium] => {
+    "group_names": [
+        "webservers"
+    ]
+}
+ok: [lithium] => {
+    "group_names": [
+        "dbservers",
+        "webservers"
+    ]
+}
+
+TASK [Value of groups] *******************************************************************************************************************************
+ok: [hydrogen] => {
+    "groups": {
+        "all": [
+            "hydrogen",
+            "helium",
+            "lithium"
+        ],
+        "dbservers": [
+            "lithium"
+        ],
+        "ungrouped": [
+            "hydrogen"
+        ],
+        "webservers": [
+            "helium",
+            "lithium"
+        ]
+    }
+}
+ok: [helium] => {
+    "groups": {
+        "all": [
+            "hydrogen",
+            "helium",
+            "lithium"
+        ],
+        "dbservers": [
+            "lithium"
+        ],
+        "ungrouped": [
+            "hydrogen"
+        ],
+        "webservers": [
+            "helium",
+            "lithium"
+        ]
+    }
+}
+ok: [lithium] => {
+    "groups": {
+        "all": [
+            "hydrogen",
+            "helium",
+            "lithium"
+        ],
+        "dbservers": [
+            "lithium"
+        ],
+        "ungrouped": [
+            "hydrogen"
+        ],
+        "webservers": [
+            "helium",
+            "lithium"
+        ]
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+helium                     : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+hydrogen                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lithium                    : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/ex4$ 

@@ -1,0 +1,21 @@
+usage: ansible-vault [-h] [--version] [-v] {create,decrypt,edit,view,encrypt,encrypt_string,rekey} ...
+
+encryption/decryption utility for Ansible data files
+
+positional arguments:
+  {create,decrypt,edit,view,encrypt,encrypt_string,rekey}
+    create              Create new vault encrypted file
+    decrypt             Decrypt vault encrypted file
+    edit                Edit vault encrypted file
+    view                View vault encrypted file
+    encrypt             Encrypt YAML file
+    encrypt_string      Encrypt a string
+    rekey               Re-key a vault encrypted file
+
+optional arguments:
+  --version             show program's version number, config file location, configured module search path, module location, executable location and
+                        exit
+  -h, --help            show this help message and exit
+  -v, --verbose         verbose mode (-vvv for more, -vvvv to enable connection debugging)
+
+See 'ansible-vault <command> --help' for more information on a specific command.

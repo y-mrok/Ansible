@@ -1,0 +1,12 @@
+piyo@vmpc:~/example/delegate$ ansible-playbook -i hosts.yml delegate1.yml 
+ERROR! 'delegate_to' is not a valid attribute for a TaskInclude
+
+The error appears to be in '/home/piyo/example/delegate/delegate1.yml': line 7, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: include any tasks
+      ^ here
+piyo@vmpc:~/example/delegate$ 

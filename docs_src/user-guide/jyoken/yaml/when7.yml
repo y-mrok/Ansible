@@ -1,0 +1,9 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+
+  tasks:
+    - name: Reboot the managed nodes in the Debian family
+      ansible.builtin.reboot:
+      when: not (ansible_facts['distribution'] == "CentOS")
+      become: yes

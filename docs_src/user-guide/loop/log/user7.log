@@ -1,0 +1,19 @@
+piyo@vmpc:~/example/loop$ ansible-playbook -i hosts.yml user7.yml
+
+PLAY [Example of loop usage] *************************************************************************************************************************
+
+TASK [Display the accounts in order] ****************************************************************************************************************
+ok: [hydrogen] => (item={'user_name': 'hanako-san', 'user_password': 'hanako-no-password'}) => {
+    "msg": "0 番目のアカウントは hanako-san / hanako-no-password です"
+}
+ok: [hydrogen] => (item={'user_name': 'taro-san', 'user_password': 'taro-no-password'}) => {
+    "msg": "1 番目のアカウントは taro-san / taro-no-password です"
+}
+ok: [hydrogen] => (item={'user_name': 'jiro-san', 'user_password': 'jiro-no-password'}) => {
+    "msg": "2 番目のアカウントは jiro-san / jiro-no-password です"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/loop$ 

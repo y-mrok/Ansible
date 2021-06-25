@@ -1,0 +1,17 @@
+    "groups": {
+        "all": [
+            "hydrogen",
+            "helium",
+            "lithium"
+        ],
+        "dbservers": [
+            "lithium"
+        ],
+        "ungrouped": [
+            "hydrogen"
+        ],
+        "webservers": [
+            "helium",
+            "lithium"
+        ]
+    }

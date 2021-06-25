@@ -1,0 +1,81 @@
+.. _errorhandling-ignore-errors:
+
+**************************************************
+タスクで発生したエラーを無視する
+**************************************************
+``ignore_errors`` ディレクティブを使用して、タスクの実行エラーを無視します。
+
+.. _errorhandling-ignore-errors-shinai:
+
+発生したエラーを無視しない
+==================================================
+管理対象ノード上の 2 つのファイルに差分があるかチェックします。まず :command:`diff` コマンドの実行結果とリターンコードを確認します。
+
+.. literalinclude:: ./log/diff.log
+   :language: none
+
+ファイルに差異があり、リターンコードは 1 になっています。
+
+上記の処理をプレイにしました。インベントリは管理対象ノード hydrogen だけを定義しました。
+
+.. literalinclude:: ./yaml/error1.yml
+   :language: yaml
+
+実行ログです。タスク [Checking file differences] を実行した結果、リターンコードが 1 （ "rc": 1 ）になったのでエラーが発生しました。
+
+.. literalinclude:: ./log/error1.log
+   :language: none
+
+.. _errorhandling-ignore-errors-suru:
+
+発生したエラーを無視する
+==================================================
+``ignore_erros`` ディレクティブを使用してエラーを無視します。 ``ignore_erros`` ディレクティブの設定値です。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 5
+
+   * - 設定値
+     - 意味
+   * - yes
+     - 発生したエラーを無視する
+   * - no
+     - 発生したエラーを無視しない（既定値）
+
+``ignore_erros`` ディレクティブを使用して書き直したプレイです。
+
+.. literalinclude:: ./yaml/error2.yml
+   :language: yaml
+   :emphasize-lines: 12
+
+実行ログです。タスクで発生したエラーを無視したのでエラーメッセージの後に "...ignoring" と表示しました。
+
+.. literalinclude:: ./log/error2.log
+   :language: none
+   :emphasize-lines: 12
+
+.. _errorhandling-ignore-errors-play-recap:
+
+PLAY RECAP
+==================================================
+エラーを無視しないときの PLAY RECAP です。
+
+.. code-block:: none
+
+   PLAY RECAP *******************************************************************************************************************************************
+   hydrogen                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+``ignore_erros`` ディレクティブを指定してエラーを無視したときの PLAY RECAP です。
+
+.. code-block:: none
+
+   PLAY RECAP *******************************************************************************************************************************************
+   hydrogen                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+
+エラーを無視しないときはエラーを **failed** でカウントします。エラーを無視したときは発生したエラーを **failed** でカウントしません。 **ignored** で無視したエラーをカウントします。
+
+.. caution::
+
+   ``ignore_errors`` ディレクティブで無視できるのはタスクを実行したときに発生するエラーです。ネットワーク障害などで管理対象ノードと通信できないときに発生する不達（ unreachable ）エラーは無視できません。
+

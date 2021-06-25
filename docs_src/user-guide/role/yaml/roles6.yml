@@ -1,0 +1,8 @@
+---
+- name: Example of using roles
+  hosts: all
+
+  tasks:
+    - name: Executing a role
+      ansible.builtin.import_role:
+        name: "{{ ansible_facts['distribution'] }}"

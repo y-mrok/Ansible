@@ -1,0 +1,47 @@
+.. _tag-task-tags:
+
+**************************************************
+タグをつける
+**************************************************
+``tags`` ディレクティブを使用してタスクにタグを付けます。
+
+.. literalinclude:: ./yaml/tag1.yml
+   :language: yaml
+
+タスクにタグを 1 つだけ付けるときは ``tags`` ディレクティブに続けてタグを指定するか、シーケンスでタグを指定します。
+
+.. code-block:: yaml
+
+   - name: task#1
+     ansible.builtin.debug:
+     tags: job1
+
+.. code-block:: yaml
+
+   - name: task#2
+     ansible.builtin.debug:
+     tags:
+       - job2
+
+タスクに複数のタグを付けるときは ``tags`` ディレクティブに続けてカンマ ``,`` で区切ってタグを指定するか、シーケンスでタグを指定します。
+
+.. code-block:: yaml
+
+   - name: task#3
+     ansible.builtin.debug:
+     tags: job1, job2
+
+.. code-block:: yaml
+
+   - name: task#4
+     ansible.builtin.debug:
+     tags:
+       - job1
+       - job3
+
+すべてのタスクにタグを設定する必要はありません。タスクにタグが不要なら設定しません。
+
+.. code-block:: yaml
+
+   - name: task#5
+     ansible.builtin.debug:

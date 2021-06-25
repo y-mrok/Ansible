@@ -1,0 +1,9 @@
+---
+- name: Example usage of the When directive
+  hosts: all
+
+  tasks:
+    - name: Display the path to the file where the distribution information is recorded
+      ansible.builtin.debug:
+        msg: "Path of the file where the distribution information is recorded　→　{{ ansible_facts['distribution_file_path'] }}"
+  

@@ -1,0 +1,4 @@
+# host_vars/manganese.yml
+---
+ansible_host: 192.168.23.35
+ansible_python_interpreter: /usr/local/bin/python3.8

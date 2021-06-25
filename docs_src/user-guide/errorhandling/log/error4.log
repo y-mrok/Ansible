@@ -1,0 +1,21 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error4.yml
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [First processing] ******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+TASK [Checking file differences] *********************************************************************************************************************
+fatal: [hydrogen]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.23.11 port 22: No route to host", "skip_reason": "Host hydrogen is unreachable", "unreachable": true}
+
+TASK [Last processing] *******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=2    changed=0    unreachable=1    failed=0    skipped=1    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

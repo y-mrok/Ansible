@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/collection/import_tasks$ ansible-playbook -i hosts.yml sample1.yml --tags job2
+
+PLAY [Example of "ansible.builtin.import_tasks" usage] **************************************************************************************
+
+TASK [role tasks No.2] **********************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP **********************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/collection/import_tasks$ 

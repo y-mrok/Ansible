@@ -1,0 +1,128 @@
+piyo@vmpc:~/example/loop$ ansible-playbook -i hosts.yml date.yml
+
+PLAY [Example of loop usage] *************************************************************************************************************************
+
+TASK [Get the date and time] *************************************************************************************************************************
+changed: [hydrogen] => (item=1)
+changed: [hydrogen] => (item=2)
+changed: [hydrogen] => (item=3)
+
+TASK [Display the result] ****************************************************************************************************************************
+ok: [hydrogen] => {
+    "result": {
+        "changed": true,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_facts": {
+                    "discovered_interpreter_python": "/usr/libexec/platform-python"
+                },
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": [
+                    "date"
+                ],
+                "delta": "0:00:00.003894",
+                "end": "2021-03-06 15:06:54.745721",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "date",
+                        "_uses_shell": false,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": true
+                    }
+                },
+                "item": 1,
+                "rc": 0,
+                "start": "2021-03-06 15:06:54.741827",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Sat Mar  6 15:06:54 JST 2021",
+                "stdout_lines": [
+                    "Sat Mar  6 15:06:54 JST 2021"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": [
+                    "date"
+                ],
+                "delta": "0:00:00.003001",
+                "end": "2021-03-06 15:07:05.138126",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "date",
+                        "_uses_shell": false,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": true
+                    }
+                },
+                "item": 2,
+                "rc": 0,
+                "start": "2021-03-06 15:07:05.135125",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Sat Mar  6 15:07:05 JST 2021",
+                "stdout_lines": [
+                    "Sat Mar  6 15:07:05 JST 2021"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": [
+                    "date"
+                ],
+                "delta": "0:00:00.004155",
+                "end": "2021-03-06 15:07:15.525494",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "date",
+                        "_uses_shell": false,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": true
+                    }
+                },
+                "item": 3,
+                "rc": 0,
+                "start": "2021-03-06 15:07:15.521339",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "Sat Mar  6 15:07:15 JST 2021",
+                "stdout_lines": [
+                    "Sat Mar  6 15:07:15 JST 2021"
+                ]
+            }
+        ]
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/loop$ 

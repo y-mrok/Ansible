@@ -1,0 +1,48 @@
+#
+# Common settings for all virtual machines
+#
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "4096"
+    vb.cpus = 1
+    vb.customize [
+      "modifyvm", :id,
+      "--ioapic", "on",
+      "--graphicscontroller", "vmsvga",
+      "--nicpromisc2", "allow-all"
+    ]
+  end
+
+#
+# CentOS 8 / hydrogen
+#
+  config.vm.define :hydrogen do |hydrogen|
+    hydrogen.vm.box = "centos/8"
+    hydrogen.vm.network "private_network", mac: "00006c000011", ip: "192.168.23.11", virtualbox__intnet: true
+    hydrogen.vm.hostname = "hydrogen.exam.local"
+    hydrogen.vm.provider "virtualbox" do |vb|
+      vb.name = "hydrogen"
+    end
+    hydrogen.vm.provision "shell", inline: $remove_vmtools
+    hydrogen.vm.provision "shell", inline: $common_provisioning
+  end
+
+end
+
+#
+# Common provisioning for all virtual machines
+#
+$common_provisioning = <<-'SCRIPT'
+timedatectl set-timezone Asia/Tokyo
+sed -e s/^'PasswordAuthentication no'/'PasswordAuthentication yes'/ /etc/ssh/sshd_config > /tmp/sshd_config
+mv -f /tmp/sshd_config /etc/ssh/
+chmod 0600 /etc/ssh/sshd_config
+systemctl restart sshd.service
+SCRIPT
+
+#
+# Remove open-vm-tools
+#
+$remove_vmtools = <<-'SCRIPT'
+dnf -y remove open-vm-tools
+SCRIPT

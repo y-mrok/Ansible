@@ -1,0 +1,21 @@
+---
+# roles/test_role/tasks/main.yml
+
+- name: task-4 (test_rols/tasks/main.yml)
+  ansible.builtin.debug:
+- name: task-5 (test_rols/tasks/main.yml)
+  command: /usr/bin/true
+  notify: handler1
+  tags: job2
+- name: task-6 (test_rols/tasks/main.yml)
+  command: /usr/bin/true
+  notify: handler1
+  tags: job3
+- name: task-7 (test_rols/tasks/main.yml)
+  command: /usr/bin/true
+  notify: handler2
+  tags: job2
+- name: task-8 (test_rols/tasks/main.yml)
+  command: /usr/bin/true
+  notify: handler2
+  tags: job3

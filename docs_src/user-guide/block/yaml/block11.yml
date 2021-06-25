@@ -1,0 +1,16 @@
+---
+- name: Example of block usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Block
+      block:
+        - name: task-1
+          ansible.builtin.debug:
+            var: block_variable
+      vars:
+        block_variable: hello, ansible world
+    - name: task-2
+      ansible.builtin.debug:
+        var: block_variable

@@ -1,0 +1,15 @@
+---
+- name: Example of loop usage
+  hosts: hydrogen
+  gather_facts: no
+
+  tasks:
+    - name: Install Apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+      become: yes
+      register: dnf_sts
+      until: dnf_sts['rc'] == 0
+      retries: 10
+      delay: 30

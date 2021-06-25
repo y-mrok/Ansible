@@ -1,0 +1,54 @@
+.. _jyoken-hikaku-rei:
+
+**************************************************
+使用例
+**************************************************
+比較条件の使用例です。使用するインベントリです。
+
+.. literalinclude:: ./yaml/hosts.yml
+   :language: yaml
+
+インベントリ内のホスト名は OS のディストリビューション名 + バージョンです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 2, 1
+
+   * - インベントリ内のホスト名
+     - ディストリビューション名 + バージョン
+     - OS の系列
+   * - centos83
+     - CentOS 8.3
+     - RedHat
+   * - centos79
+     - CentOS 7.9
+     - RedHat
+   * - ubuntu2004
+     - Ubuntu 20.04 LTS
+     - Debian
+   * - ubuntu 1804
+     - Ubuntu 18.04 LTS
+     - Debian
+   * - debian108
+     - Debian 10.8
+     - Debian
+   * - debian913
+     - Debian 9.13
+     - Debian
+   * - opensuse152
+     - openSUSE Leap 15.2
+     - Suse
+   * - fedora33
+     - Fedora 33
+     - RedHat
+
+Debian 系列の管理対象ノードだけ再起動するプレイです。
+
+.. literalinclude:: ./yaml/when1.yml
+   :language: yaml
+   :emphasize-lines: 8
+
+実行ログです。 Debian 系列の管理対象ノードだけが再起動しました。
+
+.. literalinclude:: ./log/when1.log
+   :language: none

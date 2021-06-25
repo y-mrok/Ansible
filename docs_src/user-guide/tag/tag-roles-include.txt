@@ -1,0 +1,31 @@
+.. _tag-roles-include:
+
+**************************************************
+include_role
+**************************************************
+- 「 :ref:`role-include-dousa`」の「 :ref:`role-include-dousa-directive` 」の ``when`` ディレクティブと同様に ``tags`` ディレクティブも設定したタスク自体に適用される
+- :file:`handlers/main.yml` 内の各タスクに設定したタグは無視する
+
+.. literalinclude:: ./yaml/tag11.yml
+   :language: yaml
+
+.. literalinclude:: ./yaml/roles/test_role/tasks/main.yml
+   :language: yaml
+
+.. literalinclude:: ./yaml/roles/test_role/handlers/main.yml
+   :language: yaml
+
+上記のプレイで task [task-2] に設定したタグ job1 はタスク自体に適用され、ロール内の各タスクに継承されません。タグ job1 を指定してプレイを実行したログです。ロール内にタグ job1 を設定したタスクが存在しないため、タグ job1 を設定した task [task-2] だけを実行しました。
+
+.. literalinclude:: ./log/tag-roles-include-1.log
+   :language: none
+
+ロール内のタグ job2 を指定したタスクを実行するには ``-t`` / ``--tags`` パラメーターにタグ job1 と job2 を指定する必要があります。
+
+.. literalinclude:: ./log/tag-roles-include-2.log
+   :language: none
+
+:file:`tasks/main.yml` 内は指定したタグを設定したタスクだけを実行しました。 :file:`handlers/main.yml` 内は設定したタグに関係なく ``notify`` ディレクティブに対応するタスクを実行しました。上記のログから :file:`handlers/main.yml` は ``tags`` ディレクティブを指定せずに記述するのが正しいです。
+
+.. literalinclude:: ./yaml/roles/test_role/handlers/main2.yml
+   :language: yaml

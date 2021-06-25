@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/loop$ ansible-playbook -i hosts.yml user6.yml
+
+PLAY [Example of loop usage] *************************************************************************************************************************
+
+TASK [Create an account] *****************************************************************************************************************************
+changed: [hydrogen] => (item={'user_name': 'hanako-san', 'user_password': 'hanako-no-password'})
+changed: [hydrogen] => (item={'user_name': 'taro-san', 'user_password': 'taro-no-password'})
+changed: [hydrogen] => (item={'user_name': 'jiro-san', 'user_password': 'jiro-no-password'})
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/loop$ 

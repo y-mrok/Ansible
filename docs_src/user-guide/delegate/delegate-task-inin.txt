@@ -1,0 +1,97 @@
+.. _delegate-task-inin:
+
+**************************************************
+実行を委任
+**************************************************
+:command:`ansible-inventory` コマンドの実行ログです。
+
+.. literalinclude:: ./log/delegate-task-1.log
+   :language: none
+
+.. _delegate-task-inin-inventory:
+
+インベントリに記載した管理対象ノードに委任
+==================================================
+TASK [Get the hostname of a node] の実行をインベントリに記載した管理対象ノード node1 に委任したプレイです。
+
+.. literalinclude:: ./yaml/delegate3.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+実行ログです。 **[hydrogen -> node1]** はタスクの実行を hydrogen から node1 に委任したことを示します。したがって管理対象ノード node1 で TASK [Get the hostname of a node] を実行しました。
+
+.. literalinclude:: ./log/delegate-task-inin-1.log
+   :language: none
+   :emphasize-lines: 6, 10
+
+.. _delegate-task-inin-inventory-host_vars:
+
+host_vars ディレクトリ内だけに定義したノードに委任
+==================================================
+TASK [Get the hostname of a node] の実行を :file:`host_vars/` ディレクトリ内だけに定義したノード carbon　に委任したプレイです。
+
+.. literalinclude:: ./yaml/delegate6.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+.. literalinclude:: ./log/delegate-task-inin-2.log
+   :language: none
+   :emphasize-lines: 6, 10
+
+.. _delegate-task-inin-ip-to-hostname:
+
+IP アドレスやホスト名で指定したノードに委任
+==================================================
+タスクの委任先はインベントリに記載していないノードに対しても可能です。この場合、委任先は IP アドレスか、名前解決ができる場合はホスト名で指定します。 TASK [Get the name of the account that is logged into the node] の実行を IP アドレスで指定したプレイです。
+
+.. literalinclude:: ./yaml/delegate5.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+.. literalinclude:: ./log/delegate-task-inin-3.log
+   :language: none
+   :emphasize-lines: 6, 10
+
+委任先をホスト名で指定したプレイです。
+
+.. literalinclude:: ./yaml/delegate7.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+.. literalinclude:: ./log/delegate-task-inin-4.log
+   :language: none
+   :emphasize-lines: 6, 10
+
+.. _delegate-task-inin-control:
+
+コントロールノードに委任
+==================================================
+タスクの委任先にコントロールノードを指定できます。コントロールノードを指定するのは IP アドレス ``127.0.0.1`` または ``localhost`` を使用します。TASK [Get the hostname of a node] の実行をコントロールノードに委任したプレイです。
+
+.. literalinclude:: ./yaml/delegate8.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+.. literalinclude:: ./log/delegate-task-inin-5.log
+   :language: none
+   :emphasize-lines: 6, 10
+
+.. literalinclude:: ./yaml/delegate9.yml
+   :language: yaml
+   :emphasize-lines: 11
+
+.. literalinclude:: ./log/delegate-task-inin-6.log
+   :language: none
+   :emphasize-lines: 6, 10
+
+タスクの実行をコントロールノードに委任する場合、 ``local_action`` ディレクティブを使用できます。 ``module:`` パラメーターにモジュールを指定します。それ以外は通常のタスクと同じように記述します。
+
+.. literalinclude:: ./yaml/delegate10.yml
+   :language: yaml
+   :emphasize-lines: 8-10
+
+実行ログは ``delegate_to`` ディレクティブを使用した場合と同じです。
+
+.. literalinclude:: ./log/delegate-task-inin-7.log
+   :language: none
+   :emphasize-lines: 6, 10

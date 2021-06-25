@@ -1,0 +1,737 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="管理対象ノードに接続する準備" href="managed-node-ni-setuzokusuru-junbi.html" /><link rel="prev" title="ノードの要件" href="node-no-yoken.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>コントロールノードに Ansible をインストール - Learning Ansible 2021/06/24 更新 documentation</title>
+      <link rel="stylesheet" href="../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Learning Ansible 2021/06/24 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/24 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../user-guide.html">ユーザーガイド</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="ansible-no-install.html">Ansible のインストール</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../hensu/hensu.html">変数</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../hensu/play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hensu/play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hensu/play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hensu/play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hensu/hensu-no-sansho.html">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../vault/vault.html">コンテンツの暗号化</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../vault/ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault/vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault/vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault/vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-deploy.html">AWX をデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-tuika.html">管理対象ノードを追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-inventory.html">追加した管理対象ノードのインベントリ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="ansible">
+<span id="control-node-ni-ansible-wo-install"></span><h1>コントロールノードに Ansible をインストール<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h1>
+<p>Ubuntu Desktop 20.04.2 LTS のコントロールノードに Ansible をインストールします。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ sudo apt install -y python3-pip
+$ pip3 install ansible
+$ pip3 show ansible
+$ pip3 show ansible-base
+$ ansible --version
+</pre></div>
+</div>
+<p>上記のコマンドを実行したログです。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ sudo apt install -y python3-pip
+</span>[sudo] piyo のパスワード: 
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています                
+状態情報を読み取っています... 完了
+以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+  libfprint-2-tod1 libllvm10
+これを削除するには 'sudo apt autoremove' を利用してください。
+以下の追加パッケージがインストールされます:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential dpkg-dev fakeroot g++ g++-9 gcc gcc-9 libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libatomic1 libbinutils libc-dev-bin libc6-dev libcrypt-dev libctf-nobfd0
+  libctf0 libexpat1-dev libfakeroot libgcc-9-dev libitm1 liblsan0 libpython3-dev libpython3.8-dev libquadmath0 libstdc++-9-dev libtsan0
+  libubsan1 linux-libc-dev make manpages-dev python-pip-whl python3-dev python3-distutils python3-setuptools python3-wheel python3.8-dev
+  zlib1g-dev
+提案パッケージ:
+  binutils-doc debian-keyring g++-multilib g++-9-multilib gcc-9-doc gcc-multilib autoconf automake libtool flex bison gcc-doc
+  gcc-9-multilib gcc-9-locales glibc-doc libstdc++-9-doc make-doc python-setuptools-doc
+以下のパッケージが新たにインストールされます:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential dpkg-dev fakeroot g++ g++-9 gcc gcc-9 libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libatomic1 libbinutils libc-dev-bin libc6-dev libcrypt-dev libctf-nobfd0
+  libctf0 libexpat1-dev libfakeroot libgcc-9-dev libitm1 liblsan0 libpython3-dev libpython3.8-dev libquadmath0 libstdc++-9-dev libtsan0
+  libubsan1 linux-libc-dev make manpages-dev python-pip-whl python3-dev python3-distutils python3-pip python3-setuptools python3-wheel
+  python3.8-dev zlib1g-dev
+アップグレード: 0 個、新規インストール: 43 個、削除: 0 個、保留: 2 個。
+38.6 MB のアーカイブを取得する必要があります。
+この操作後に追加で 171 MB のディスク容量が消費されます。
+取得:1 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 binutils-common amd64 2.34-6ubuntu1 [207 kB]
+取得:2 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libbinutils amd64 2.34-6ubuntu1 [474 kB]
+取得:3 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libctf-nobfd0 amd64 2.34-6ubuntu1 [47.0 kB]
+取得:4 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libctf0 amd64 2.34-6ubuntu1 [46.6 kB]
+取得:5 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 binutils-x86-64-linux-gnu amd64 2.34-6ubuntu1 [1,614 kB]
+取得:6 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 binutils amd64 2.34-6ubuntu1 [3,376 B]
+取得:7 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc-dev-bin amd64 2.31-0ubuntu9.2 [71.8 kB]
+取得:8 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-libc-dev amd64 5.4.0-65.73 [1,116 kB]
+取得:9 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libcrypt-dev amd64 1:4.4.10-10ubuntu4 [104 kB]
+取得:10 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc6-dev amd64 2.31-0ubuntu9.2 [2,520 kB]
+取得:11 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libitm1 amd64 10.2.0-5ubuntu1~20.04 [26.4 kB]
+取得:12 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libatomic1 amd64 10.2.0-5ubuntu1~20.04 [9,300 B]
+取得:13 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libasan5 amd64 9.3.0-17ubuntu1~20.04 [394 kB]
+取得:14 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 liblsan0 amd64 10.2.0-5ubuntu1~20.04 [144 kB]
+取得:15 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libtsan0 amd64 10.2.0-5ubuntu1~20.04 [320 kB]
+取得:16 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libubsan1 amd64 10.2.0-5ubuntu1~20.04 [136 kB]
+取得:17 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libquadmath0 amd64 10.2.0-5ubuntu1~20.04 [146 kB]
+取得:18 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libgcc-9-dev amd64 9.3.0-17ubuntu1~20.04 [2,360 kB]
+取得:19 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 gcc-9 amd64 9.3.0-17ubuntu1~20.04 [8,241 kB]
+取得:20 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 gcc amd64 4:9.3.0-1ubuntu2 [5,208 B]
+取得:21 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libstdc++-9-dev amd64 9.3.0-17ubuntu1~20.04 [1,714 kB]
+取得:22 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 g++-9 amd64 9.3.0-17ubuntu1~20.04 [8,405 kB]
+取得:23 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 g++ amd64 4:9.3.0-1ubuntu2 [1,604 B]
+取得:24 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 make amd64 4.2.1-1.2 [162 kB]
+取得:25 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 dpkg-dev all 1.19.7ubuntu3 [679 kB]
+取得:26 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 build-essential amd64 12.8ubuntu1.1 [4,664 B]
+取得:27 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libfakeroot amd64 1.24-1 [25.7 kB]
+取得:28 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 fakeroot amd64 1.24-1 [62.6 kB]
+取得:29 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-diff-perl all 1.19.03-2 [46.6 kB]
+取得:30 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-diff-xs-perl amd64 0.04-6 [11.3 kB]
+取得:31 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+取得:32 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libexpat1-dev amd64 2.2.9-1build1 [116 kB]
+取得:33 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 libpython3.8-dev amd64 3.8.5-1~20.04 [3,941 kB]
+取得:34 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 libpython3-dev amd64 3.8.2-0ubuntu2 [7,236 B]
+取得:35 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 manpages-dev all 5.05-1 [2,266 kB]
+取得:36 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python-pip-whl all 20.0.2-5ubuntu1.1 [1,799 kB]
+取得:37 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-2ubuntu1.2 [155 kB]
+取得:38 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 python3.8-dev amd64 3.8.5-1~20.04 [514 kB]
+取得:39 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 python3-distutils all 3.8.5-1~20.04.1 [141 kB]
+取得:40 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 python3-dev amd64 3.8.2-0ubuntu2 [1,212 B]
+取得:41 http://jp.archive.ubuntu.com/ubuntu focal/main amd64 python3-setuptools all 45.2.0-1 [330 kB]
+取得:42 http://jp.archive.ubuntu.com/ubuntu focal/universe amd64 python3-wheel all 0.34.2-1 [23.8 kB]
+取得:43 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python3-pip all 20.0.2-5ubuntu1.1 [230 kB]
+38.6 MB を 3秒 で取得しました (11.4 MB/s)
+パッケージからテンプレートを展開しています: 100%
+以前に未選択のパッケージ binutils-common:amd64 を選択しています。
+(データベースを読み込んでいます ... 現在 190665 個のファイルとディレクトリがインストールされています。)
+.../00-binutils-common_2.34-6ubuntu1_amd64.deb を展開する準備をしています ...
+binutils-common:amd64 (2.34-6ubuntu1) を展開しています...
+以前に未選択のパッケージ libbinutils:amd64 を選択しています。
+.../01-libbinutils_2.34-6ubuntu1_amd64.deb を展開する準備をしています ...
+libbinutils:amd64 (2.34-6ubuntu1) を展開しています...
+以前に未選択のパッケージ libctf-nobfd0:amd64 を選択しています。
+.../02-libctf-nobfd0_2.34-6ubuntu1_amd64.deb を展開する準備をしています ...
+libctf-nobfd0:amd64 (2.34-6ubuntu1) を展開しています...
+以前に未選択のパッケージ libctf0:amd64 を選択しています。
+.../03-libctf0_2.34-6ubuntu1_amd64.deb を展開する準備をしています ...
+libctf0:amd64 (2.34-6ubuntu1) を展開しています...
+以前に未選択のパッケージ binutils-x86-64-linux-gnu を選択しています。
+.../04-binutils-x86-64-linux-gnu_2.34-6ubuntu1_amd64.deb を展開する準備をしています ...
+binutils-x86-64-linux-gnu (2.34-6ubuntu1) を展開しています...
+以前に未選択のパッケージ binutils を選択しています。
+.../05-binutils_2.34-6ubuntu1_amd64.deb を展開する準備をしています ...
+binutils (2.34-6ubuntu1) を展開しています...
+以前に未選択のパッケージ libc-dev-bin を選択しています。
+.../06-libc-dev-bin_2.31-0ubuntu9.2_amd64.deb を展開する準備をしています ...
+libc-dev-bin (2.31-0ubuntu9.2) を展開しています...
+以前に未選択のパッケージ linux-libc-dev:amd64 を選択しています。
+.../07-linux-libc-dev_5.4.0-65.73_amd64.deb を展開する準備をしています ...
+linux-libc-dev:amd64 (5.4.0-65.73) を展開しています...
+以前に未選択のパッケージ libcrypt-dev:amd64 を選択しています。
+.../08-libcrypt-dev_1%3a4.4.10-10ubuntu4_amd64.deb を展開する準備をしています ...
+libcrypt-dev:amd64 (1:4.4.10-10ubuntu4) を展開しています...
+以前に未選択のパッケージ libc6-dev:amd64 を選択しています。
+.../09-libc6-dev_2.31-0ubuntu9.2_amd64.deb を展開する準備をしています ...
+libc6-dev:amd64 (2.31-0ubuntu9.2) を展開しています...
+以前に未選択のパッケージ libitm1:amd64 を選択しています。
+.../10-libitm1_10.2.0-5ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libitm1:amd64 (10.2.0-5ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ libatomic1:amd64 を選択しています。
+.../11-libatomic1_10.2.0-5ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libatomic1:amd64 (10.2.0-5ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ libasan5:amd64 を選択しています。
+.../12-libasan5_9.3.0-17ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libasan5:amd64 (9.3.0-17ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ liblsan0:amd64 を選択しています。
+.../13-liblsan0_10.2.0-5ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+liblsan0:amd64 (10.2.0-5ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ libtsan0:amd64 を選択しています。
+.../14-libtsan0_10.2.0-5ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libtsan0:amd64 (10.2.0-5ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ libubsan1:amd64 を選択しています。
+.../15-libubsan1_10.2.0-5ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libubsan1:amd64 (10.2.0-5ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ libquadmath0:amd64 を選択しています。
+.../16-libquadmath0_10.2.0-5ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libquadmath0:amd64 (10.2.0-5ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ libgcc-9-dev:amd64 を選択しています。
+.../17-libgcc-9-dev_9.3.0-17ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libgcc-9-dev:amd64 (9.3.0-17ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ gcc-9 を選択しています。
+.../18-gcc-9_9.3.0-17ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+gcc-9 (9.3.0-17ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ gcc を選択しています。
+.../19-gcc_4%3a9.3.0-1ubuntu2_amd64.deb を展開する準備をしています ...
+gcc (4:9.3.0-1ubuntu2) を展開しています...
+以前に未選択のパッケージ libstdc++-9-dev:amd64 を選択しています。
+.../20-libstdc++-9-dev_9.3.0-17ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+libstdc++-9-dev:amd64 (9.3.0-17ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ g++-9 を選択しています。
+.../21-g++-9_9.3.0-17ubuntu1~20.04_amd64.deb を展開する準備をしています ...
+g++-9 (9.3.0-17ubuntu1~20.04) を展開しています...
+以前に未選択のパッケージ g++ を選択しています。
+.../22-g++_4%3a9.3.0-1ubuntu2_amd64.deb を展開する準備をしています ...
+g++ (4:9.3.0-1ubuntu2) を展開しています...
+以前に未選択のパッケージ make を選択しています。
+.../23-make_4.2.1-1.2_amd64.deb を展開する準備をしています ...
+make (4.2.1-1.2) を展開しています...
+以前に未選択のパッケージ dpkg-dev を選択しています。
+.../24-dpkg-dev_1.19.7ubuntu3_all.deb を展開する準備をしています ...
+dpkg-dev (1.19.7ubuntu3) を展開しています...
+以前に未選択のパッケージ build-essential を選択しています。
+.../25-build-essential_12.8ubuntu1.1_amd64.deb を展開する準備をしています ...
+build-essential (12.8ubuntu1.1) を展開しています...
+以前に未選択のパッケージ libfakeroot:amd64 を選択しています。
+.../26-libfakeroot_1.24-1_amd64.deb を展開する準備をしています ...
+libfakeroot:amd64 (1.24-1) を展開しています...
+以前に未選択のパッケージ fakeroot を選択しています。
+.../27-fakeroot_1.24-1_amd64.deb を展開する準備をしています ...
+fakeroot (1.24-1) を展開しています...
+以前に未選択のパッケージ libalgorithm-diff-perl を選択しています。
+.../28-libalgorithm-diff-perl_1.19.03-2_all.deb を展開する準備をしています ...
+libalgorithm-diff-perl (1.19.03-2) を展開しています...
+以前に未選択のパッケージ libalgorithm-diff-xs-perl を選択しています。
+.../29-libalgorithm-diff-xs-perl_0.04-6_amd64.deb を展開する準備をしています ...
+libalgorithm-diff-xs-perl (0.04-6) を展開しています...
+以前に未選択のパッケージ libalgorithm-merge-perl を選択しています。
+.../30-libalgorithm-merge-perl_0.08-3_all.deb を展開する準備をしています ...
+libalgorithm-merge-perl (0.08-3) を展開しています...
+以前に未選択のパッケージ libexpat1-dev:amd64 を選択しています。
+.../31-libexpat1-dev_2.2.9-1build1_amd64.deb を展開する準備をしています ...
+libexpat1-dev:amd64 (2.2.9-1build1) を展開しています...
+以前に未選択のパッケージ libpython3.8-dev:amd64 を選択しています。
+.../32-libpython3.8-dev_3.8.5-1~20.04_amd64.deb を展開する準備をしています ...
+libpython3.8-dev:amd64 (3.8.5-1~20.04) を展開しています...
+以前に未選択のパッケージ libpython3-dev:amd64 を選択しています。
+.../33-libpython3-dev_3.8.2-0ubuntu2_amd64.deb を展開する準備をしています ...
+libpython3-dev:amd64 (3.8.2-0ubuntu2) を展開しています...
+以前に未選択のパッケージ manpages-dev を選択しています。
+.../34-manpages-dev_5.05-1_all.deb を展開する準備をしています ...
+manpages-dev (5.05-1) を展開しています...
+以前に未選択のパッケージ python-pip-whl を選択しています。
+.../35-python-pip-whl_20.0.2-5ubuntu1.1_all.deb を展開する準備をしています ...
+python-pip-whl (20.0.2-5ubuntu1.1) を展開しています...
+以前に未選択のパッケージ zlib1g-dev:amd64 を選択しています。
+.../36-zlib1g-dev_1%3a1.2.11.dfsg-2ubuntu1.2_amd64.deb を展開する準備をしています ...
+zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.2) を展開しています...
+以前に未選択のパッケージ python3.8-dev を選択しています。
+.../37-python3.8-dev_3.8.5-1~20.04_amd64.deb を展開する準備をしています ...
+python3.8-dev (3.8.5-1~20.04) を展開しています...
+以前に未選択のパッケージ python3-distutils を選択しています。
+.../38-python3-distutils_3.8.5-1~20.04.1_all.deb を展開する準備をしています ...
+python3-distutils (3.8.5-1~20.04.1) を展開しています...
+以前に未選択のパッケージ python3-dev を選択しています。
+.../39-python3-dev_3.8.2-0ubuntu2_amd64.deb を展開する準備をしています ...
+python3-dev (3.8.2-0ubuntu2) を展開しています...
+以前に未選択のパッケージ python3-setuptools を選択しています。
+.../40-python3-setuptools_45.2.0-1_all.deb を展開する準備をしています ...
+python3-setuptools (45.2.0-1) を展開しています...
+以前に未選択のパッケージ python3-wheel を選択しています。
+.../41-python3-wheel_0.34.2-1_all.deb を展開する準備をしています ...
+python3-wheel (0.34.2-1) を展開しています...
+以前に未選択のパッケージ python3-pip を選択しています。
+.../42-python3-pip_20.0.2-5ubuntu1.1_all.deb を展開する準備をしています ...
+python3-pip (20.0.2-5ubuntu1.1) を展開しています...
+python3-distutils (3.8.5-1~20.04.1) を設定しています ...
+manpages-dev (5.05-1) を設定しています ...
+python3-setuptools (45.2.0-1) を設定しています ...
+libalgorithm-diff-perl (1.19.03-2) を設定しています ...
+binutils-common:amd64 (2.34-6ubuntu1) を設定しています ...
+linux-libc-dev:amd64 (5.4.0-65.73) を設定しています ...
+libctf-nobfd0:amd64 (2.34-6ubuntu1) を設定しています ...
+python3-wheel (0.34.2-1) を設定しています ...
+libfakeroot:amd64 (1.24-1) を設定しています ...
+fakeroot (1.24-1) を設定しています ...
+update-alternatives: /usr/bin/fakeroot (fakeroot) を提供するために自動モードで /usr/bin/fakeroot-sysv を使います
+libasan5:amd64 (9.3.0-17ubuntu1~20.04) を設定しています ...
+make (4.2.1-1.2) を設定しています ...
+libquadmath0:amd64 (10.2.0-5ubuntu1~20.04) を設定しています ...
+libatomic1:amd64 (10.2.0-5ubuntu1~20.04) を設定しています ...
+libubsan1:amd64 (10.2.0-5ubuntu1~20.04) を設定しています ...
+libcrypt-dev:amd64 (1:4.4.10-10ubuntu4) を設定しています ...
+python-pip-whl (20.0.2-5ubuntu1.1) を設定しています ...
+libbinutils:amd64 (2.34-6ubuntu1) を設定しています ...
+libc-dev-bin (2.31-0ubuntu9.2) を設定しています ...
+libalgorithm-diff-xs-perl (0.04-6) を設定しています ...
+liblsan0:amd64 (10.2.0-5ubuntu1~20.04) を設定しています ...
+libitm1:amd64 (10.2.0-5ubuntu1~20.04) を設定しています ...
+libalgorithm-merge-perl (0.08-3) を設定しています ...
+libtsan0:amd64 (10.2.0-5ubuntu1~20.04) を設定しています ...
+libctf0:amd64 (2.34-6ubuntu1) を設定しています ...
+libgcc-9-dev:amd64 (9.3.0-17ubuntu1~20.04) を設定しています ...
+python3-pip (20.0.2-5ubuntu1.1) を設定しています ...
+libc6-dev:amd64 (2.31-0ubuntu9.2) を設定しています ...
+binutils-x86-64-linux-gnu (2.34-6ubuntu1) を設定しています ...
+libstdc++-9-dev:amd64 (9.3.0-17ubuntu1~20.04) を設定しています ...
+binutils (2.34-6ubuntu1) を設定しています ...
+dpkg-dev (1.19.7ubuntu3) を設定しています ...
+libexpat1-dev:amd64 (2.2.9-1build1) を設定しています ...
+libpython3.8-dev:amd64 (3.8.5-1~20.04) を設定しています ...
+zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.2) を設定しています ...
+gcc-9 (9.3.0-17ubuntu1~20.04) を設定しています ...
+libpython3-dev:amd64 (3.8.2-0ubuntu2) を設定しています ...
+gcc (4:9.3.0-1ubuntu2) を設定しています ...
+g++-9 (9.3.0-17ubuntu1~20.04) を設定しています ...
+python3.8-dev (3.8.5-1~20.04) を設定しています ...
+g++ (4:9.3.0-1ubuntu2) を設定しています ...
+update-alternatives: /usr/bin/c++ (c++) を提供するために自動モードで /usr/bin/g++ を使います
+build-essential (12.8ubuntu1.1) を設定しています ...
+python3-dev (3.8.2-0ubuntu2) を設定しています ...
+man-db (2.9.1-1) のトリガを処理しています ...
+libc-bin (2.31-0ubuntu9.2) のトリガを処理しています ...
+<span class="hll">piyo@vmpc:~$ pip3 install ansible
+</span>Collecting ansible
+  Downloading ansible-2.10.7.tar.gz (29.9 MB)
+     |████████████████████████████████| 29.9 MB 45.9 MB/s 
+Collecting ansible-base&lt;2.11,&gt;=2.10.5
+  Downloading ansible-base-2.10.5.tar.gz (5.7 MB)
+     |████████████████████████████████| 5.7 MB 15.6 MB/s 
+Requirement already satisfied: PyYAML in /usr/lib/python3/dist-packages (from ansible-base&lt;2.11,&gt;=2.10.5-&gt;ansible) (5.3.1)
+Requirement already satisfied: cryptography in /usr/lib/python3/dist-packages (from ansible-base&lt;2.11,&gt;=2.10.5-&gt;ansible) (2.8)
+Collecting jinja2
+  Downloading Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)
+     |████████████████████████████████| 125 kB 23.2 MB/s 
+Collecting packaging
+  Downloading packaging-20.9-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 11.2 MB/s 
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/lib/python3/dist-packages (from jinja2-&gt;ansible-base&lt;2.11,&gt;=2.10.5-&gt;ansible) (1.1.0)
+Collecting pyparsing&gt;=2.0.2
+  Downloading pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
+     |████████████████████████████████| 67 kB 9.0 MB/s 
+Building wheels for collected packages: ansible, ansible-base
+  Building wheel for ansible (setup.py) ... done
+  Created wheel for ansible: filename=ansible-2.10.7-py3-none-any.whl size=48212990 sha256=11f422fa1a2cf6ee752c37370ca890291f8d3e1efab9d75e3d06f8677441d5b0
+  Stored in directory: /home/piyo/.cache/pip/wheels/79/19/86/6c5f4a91efbdd490ed3885732149185d6fde6efd72ee19d9ae
+  Building wheel for ansible-base (setup.py) ... done
+  Created wheel for ansible-base: filename=ansible_base-2.10.5-py3-none-any.whl size=1870021 sha256=b4efeb5452d150fd59d9e2271e4695c51bd3b369d0ff70186257dbc79d32e487
+  Stored in directory: /home/piyo/.cache/pip/wheels/42/c6/0c/3a4ca90e8116f3d585dff14283e48a6db9982d3f520654c46d
+Successfully built ansible ansible-base
+Installing collected packages: jinja2, pyparsing, packaging, ansible-base, ansible
+Successfully installed ansible-2.10.7 ansible-base-2.10.5 jinja2-2.11.3 packaging-20.9 pyparsing-2.4.7
+<span class="hll">piyo@vmpc:~$ pip3 show ansible
+</span>Name: ansible
+Version: 2.10.7
+Summary: Radically simple IT automation
+Home-page: https://ansible.com/
+Author: Ansible, Inc.
+Author-email: info@ansible.com
+License: GPLv3+
+Location: /home/piyo/.local/lib/python3.8/site-packages
+Requires: ansible-base
+Required-by: 
+<span class="hll">piyo@vmpc:~$ pip3 show ansible-base
+</span>Name: ansible-base
+Version: 2.10.5
+Summary: Radically simple IT automation
+Home-page: https://ansible.com/
+Author: Ansible, Inc.
+Author-email: info@ansible.com
+License: GPLv3+
+Location: /home/piyo/.local/lib/python3.8/site-packages
+Requires: jinja2, PyYAML, cryptography, packaging
+Required-by: ansible
+piyo@vmpc:~$ exit
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ ansible --version
+</span>ansible 2.10.5
+  config file = None
+  configured module search path = ['/home/piyo/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/piyo/.local/lib/python3.8/site-packages/ansible
+  executable location = /home/piyo/.local/bin/ansible
+  python version = 3.8.5 (default, Jul 28 2020, 12:59:40) [GCC 9.3.0]
+piyo@vmpc:~$ 
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>Linux ディストリビューションごとや他の OS に Ansible をインストールする方法は次のリンクで確認ください。</p>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">Installing Ansible</a></p>
+</div></blockquote>
+</li>
+<li><p>2021-05-22 時点で <strong class="command">pip3 install ansible</strong> でインストールされるのは ansible-core と ansible の 2 つです。 ansible-core は ansible-base の後継です。</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ pip3 show ansible-core
+</span>Name: ansible-core
+Version: 2.11.0
+Summary: Radically simple IT automation
+Home-page: https://ansible.com/
+Author: Ansible, Inc.
+Author-email: info@ansible.com
+License: GPLv3+
+Location: /home/piyo/.local/lib/python3.8/site-packages
+Requires: PyYAML, packaging, jinja2, resolvelib, cryptography
+Required-by: ansible
+piyo@vmpc:~$
+<span class="hll">piyo@vmpc:~$ pip3 show ansible
+</span>Name: ansible
+Version: 4.0.0
+Summary: Radically simple IT automation
+Home-page: https://ansible.com/
+Author: Ansible, Inc.
+Author-email: info@ansible.com
+License: GPLv3+
+Location: /home/piyo/.local/lib/python3.8/site-packages
+Requires: ansible-core
+Required-by:
+piyo@vmpc:~$
+<span class="hll">piyo@vmpc:~$ ansible --version
+</span>ansible [core 2.11.0]
+  config file = None
+  configured module search path = ['/home/piyo/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/piyo/.local/lib/python3.8/site-packages/ansible
+  ansible collection location = /home/piyo/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/piyo/.local/bin/ansible
+  python version = 3.8.5 (default, Jan 27 2021, 15:41:15) [GCC 9.3.0]
+  jinja version = 2.11.3
+  libyaml = True
+piyo@vmpc:~$
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="managed-node-ni-setuzokusuru-junbi.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">管理対象ノードに接続する準備</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="node-no-yoken.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ノードの要件</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

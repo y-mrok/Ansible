@@ -1,0 +1,68 @@
+.. _inventory-no-chiled-group:
+
+**************************************************
+子グループ
+**************************************************
+- 用途や目的ごとに管理対象ノードをまとめて子グループを作成する
+- 親グループは "all" グループ
+- 管理対象ノードは複数の子グループに属せる
+
+.. _inventory-no-chiled-group-kihon:
+
+子グループの基本
+==================================================
+インベントリ内に "webservers" グループと "dbservers" グループを設定した例です。管理対象ノードが複数のグループに属す場合、 2 つ目以降のグループで接続情報は記述しません。
+
+.. literalinclude:: ./yaml/hosts3.yml
+   :language: yaml
+   :linenos:
+
+8 行目の "children" が子グループの宣言です。
+
+.. code-block:: yaml
+
+   children:
+     子グループ名
+       hosts:
+         子グループに含まれる管理対象ノード
+           接続情報
+
+上記のインベントリ内の管理対象ノードとグループを整理した結果です。
+
+.. list-table::
+   :header-rows: 1
+
+   * - 
+     - all
+     - ungrouped
+     - webservers
+     - dbservers
+   * - **hydrogen**
+     - ○
+     - ○
+     - ×
+     - ×
+   * - **helium**
+     - ○
+     - ×
+     - ○
+     - ×
+   * - **lithium**
+     - ○
+     - ×
+     - ○
+     - ○
+
+.. _inventory-no-chiled-group-nest:
+
+子グループのネスト
+==================================================
+複数の子グループで同じ管理対象ノードを含む場合、子グループをネストして定義を簡略できます。
+
+.. literalinclude:: ./yaml/hosts4.yml
+   :language: yaml
+
+上記のインベントリの子グループ "webservers" と "cluster" は同じ管理対象ノードを含みます。この様なときは下記のように子グループをネストすると定義を簡略できます。
+
+.. literalinclude:: ./yaml/hosts5.yml
+   :language: yaml

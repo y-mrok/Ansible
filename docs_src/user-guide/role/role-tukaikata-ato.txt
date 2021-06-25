@@ -1,0 +1,58 @@
+.. _role-tukaikata-ato:
+
+**************************************************
+ロールを使用したプレイ
+**************************************************
+上記のプレイをロールを使用して書き直します。ディレクトリ構造です。定義するものが無いディレクトリは定義しません。 :file:`webservers2.yml` はプレイブックファイルです。
+
+.. literalinclude:: ./log/directory2.log
+   :language: none
+
+プレイです。ほとんどの内容がロールに移行したのでスッキリとしました。
+
+.. literalinclude:: ./yaml/webservers2.yml
+   :language: yaml
+   :emphasize-lines: 7-8
+
+ロールの呼び出し（実行）は ``ansible.builtin.import_role`` モジュールか ``ansible.builtin.include_role`` モジュールを使用します。ロール名の指定はモジュールの **name** パラメーターで行います。
+
+続けてロールの中を見ていきます。vars セクションの内容は :file:`defaults/main.yml` に移行しました。変数なので :file:`vars/main.yml`` で良いのですが、定義内容が既定値なので今回は :file:`defaults/main.yml` に移行しました。
+
+.. literalinclude:: ./yaml/roles/basic_webserver_configuration/defaults/main.yml
+   :language: yaml
+
+handler セクションの内容は :file:`handlers/main.yml` に移行しました。
+
+.. literalinclude:: ./yaml/roles/basic_webserver_configuration/handlers/main.yml
+   :language: yaml
+
+``ansible.builtin.copy`` モジュールのコピー元のファイルは :file:`files/` ディレクトリに移行しました。
+
+.. literalinclude:: ./log/directory2.log
+   :language: none
+   :emphasize-lines: 7-8
+
+tasks セクションの内容は :file:`tasks/main.yml` に移行しました。 ``ansible.builtin.copy`` モジュールのコピー元のファイルは :file:`files/` ディレクトリに移行したので、ロール内で指定するときはファイル名だけです。
+
+.. literalinclude:: ./yaml/roles/basic_webserver_configuration/tasks/main.yml
+   :language: yaml
+   :emphasize-lines: 48
+
+実行ログです。
+
+.. literalinclude:: ./log/webservers2.log
+   :language: none
+
+ロール内のタスクはタスク名の前にロール名が追加されます。
+
+- ロール内
+
+   .. code-block:: none
+
+      TASK [basic_webserver_configuration : Install the latest version of the httpd package.]
+
+- ロール外
+
+   .. code-block:: none
+
+      TASK [Install the latest version of the httpd package.]

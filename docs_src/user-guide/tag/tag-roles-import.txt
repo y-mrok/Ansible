@@ -1,0 +1,31 @@
+.. _tag-roles-import:
+
+**************************************************
+import_role
+**************************************************
+- 「 :ref:`role-import-dousa`」の「 :ref:`role-import-dousa-directive` 」の ``when`` ディレクティブや ``become`` ディレクティブと同様に ``tags`` ディレクティブもロール内の各タスクに継承される
+- :file:`handlers/main.yml` 内の各タスクに設定したタグは無視する
+
+.. literalinclude:: ./yaml/tag10.yml
+   :language: yaml
+
+.. literalinclude:: ./yaml/roles/test_role/tasks/main.yml
+   :language: yaml
+
+.. literalinclude:: ./yaml/roles/test_role/handlers/main.yml
+   :language: yaml
+
+上記のプレイで task [task-2] に設定したタグ job1 はロール内の各タスクに継承されます。タグ job1 を指定してプレイを実行したログです。ロール内の task [task-4] に明示的なタグは設定されていませんが、継承されたタグ job1 が設定されるため実行しました。
+
+.. literalinclude:: ./log/tag-roles-import-1.log
+   :language: none
+
+タグ job2 を指定してプレイを実行したログです。 :file:`tasks/main.yml` 内は指定したタグを設定したタスクだけを実行しました。 :file:`handlers/main.yml` 内は設定したタグに関係なく ``notify`` ディレクティブに対応するタスクを実行しました。
+
+.. literalinclude:: ./log/tag-roles-import-2.log
+   :language: none
+
+上記のログから :file:`handlers/main.yml` は ``tags`` ディレクティブを指定せずに記述するのが正しいです。
+
+.. literalinclude:: ./yaml/roles/test_role/handlers/main2.yml
+   :language: yaml

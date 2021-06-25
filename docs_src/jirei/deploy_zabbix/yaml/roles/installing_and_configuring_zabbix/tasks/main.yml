@@ -1,0 +1,54 @@
+---
+# roles/installing_and_configuring_zabbix/tasks/main.yml
+# ・Zabbix と関連パッケージをインストールし設定する
+
+- name: Zabbix 5.2 のリポジトリをインストール
+  ansible.builtin.dnf:
+    name: "{{ zabbix_repo_url }}"
+    disable_gpg_check: yes
+    state: present
+
+- name: Zabbix 5.2 のパッケージをインストール
+  ansible.builtin.dnf:
+    name: "{{ zabbix_packages }}"
+    state: present
+
+- name: 設定ファイルを変更 (PHP)
+  ansible.builtin.lineinfile:
+    path: '/etc/php-fpm.d/zabbix.conf'
+    regexp: 'date.timezone'
+    line: 'php_value[date.timezone] = Asia/Tokyo'
+    backup: yes
+    state: present
+
+- name: 設定ファイルを変更 (Zabbix Server / Database user)
+  ansible.builtin.lineinfile:
+    path: '/etc/zabbix/zabbix_server.conf'
+    regexp: '^DBUser='
+    line: 'DBUser={{ zabbix_user }}'
+    backup: yes
+    state: present
+
+- name: 設定ファイルを変更 (Zabbix Server / Database password)
+  ansible.builtin.lineinfile:
+    path: '/etc/zabbix/zabbix_server.conf'
+    regexp: 'DBPassword='
+    line: 'DBPassword={{ zabbix_pass }}'
+    backup: yes
+    state: present
+
+- name: 設定ファイルを変更 (Zabbix Server / Database name)
+  ansible.builtin.lineinfile:
+    path: '/etc/zabbix/zabbix_server.conf'
+    regexp: '^DBName='
+    line: 'DBName={{ zabbix_db_name }}'
+    backup: yes
+    state: present
+
+- name: 設定ファイルを変更 (Zabbix Agent 2)
+  ansible.builtin.lineinfile:
+    path: '/etc/zabbix/zabbix_agent2.conf'
+    regexp: '^Hostname='
+    line: 'Hostname=zabbix'
+    backup: yes
+    state: present

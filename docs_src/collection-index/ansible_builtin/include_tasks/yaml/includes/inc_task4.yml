@@ -1,0 +1,11 @@
+# includes/inc_task3.yml
+---
+- name: Register a user account.
+  ansible.builtin.user:
+    name: "hanako"
+    state: present
+
+- name: Install Apache
+  ansible.builtin.dnf:
+    name: httpd
+    state: present

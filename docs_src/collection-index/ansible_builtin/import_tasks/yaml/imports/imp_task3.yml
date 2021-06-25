@@ -1,0 +1,9 @@
+# imports/imp_task3.yml
+---
+- name: List of tasks to import No.1
+  ansible.builtin.debug:
+    msg: "task #1"
+
+- name: List of tasks to import No.2
+  ansible.builtin.debugging:
+    msg: "task #2"

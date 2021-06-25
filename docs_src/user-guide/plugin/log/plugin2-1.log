@@ -1,0 +1,59 @@
+piyo@vmpc:~/example/plugin$ ansible all -i hosts.yml -a 'cat /etc/passwd'
+hydrogen | CHANGED | rc=0 >>
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+unbound:x:997:994:Unbound DNS resolver:/etc/unbound:/sbin/nologin
+sssd:x:996:993:User for sssd:/:/sbin/nologin
+chrony:x:995:992::/var/lib/chrony:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+rngd:x:994:991:Random Number Generator Daemon:/var/lib/rngd:/sbin/nologin
+ansible-user:x:1000:1000::/home/ansible-user:/bin/bash
+taro:x:1001:1001:Osaka Taro:/home/taro:/bin/bash
+jiro:x:1002:1002:Kyoto Jiro:/home/jiro:/bin/bash
+hanako:x:1003:1003:Kobe hanako:/home/hanako:/bin/bash
+piyo@vmpc:~/example/plugin$ ansible all -i hosts.yml -a 'cat /etc/shadow' -b
+hydrogen | CHANGED | rc=0 >>
+root:$6$6dxrGdTfoyB9vCb3$FKqh7ZA0OeykRG1NyWU.Vlwc/yFp66hXIuoFRIXGo6foiVA42lC0lfqi8LS1hTanhB2Nezzm3BVKnRD0IVhrD.::0:99999:7:::
+bin:*:18397:0:99999:7:::
+daemon:*:18397:0:99999:7:::
+adm:*:18397:0:99999:7:::
+lp:*:18397:0:99999:7:::
+sync:*:18397:0:99999:7:::
+shutdown:*:18397:0:99999:7:::
+halt:*:18397:0:99999:7:::
+mail:*:18397:0:99999:7:::
+operator:*:18397:0:99999:7:::
+games:*:18397:0:99999:7:::
+ftp:*:18397:0:99999:7:::
+nobody:*:18397:0:99999:7:::
+dbus:!!:18669::::::
+systemd-coredump:!!:18669::::::
+systemd-resolve:!!:18669::::::
+tss:!!:18669::::::
+polkitd:!!:18669::::::
+unbound:!!:18669::::::
+sssd:!!:18669::::::
+chrony:!!:18669::::::
+sshd:!!:18669::::::
+rngd:!!:18669::::::
+ansible-user:$6$eWqTq1nMsEi5bzr.$zei5nXm8pTJGxqwHyTYrD5NnV5U/OOnlX57sh5D2vkXowdhZZG/XjT/YMLNmtSFmYD/.wxClx9QfnAobLcHxk1:18681:0:99999:7:::
+taro:$6$jflOitc8rwFroFGM$0xqsngXOodgPLakcwbWOhIT7wUG96hIPYEhb.u8A61x01xcGAfqU6BLlLACEK6S7xd3lcEhwf34LSpNqLd2up.:18751:0:99999:7:::
+jiro:$6$j5fhzxM7lWxI6B.G$VoOPDkgc0nylP8/ixeNgHrP8cb/rAZcd6UUgtVUjz2PoY.7Be9TPRgHf7fmtqoYrFFr4gvdGmqVjmLYqafhCB.:18751:0:99999:7:::
+hanako:$6$zAjiEeHOXncp5gyJ$o4M4cHYnriHnFpnGLqwKMDYiCqIIQslSvVXf/Ks4/N3UU1jGUv8VzSl8MjVnrgpCJeVGM7Ev6GnEitY6qiuU/0:18751:0:99999:7:::
+piyo@vmpc:~/example/plugin$ 

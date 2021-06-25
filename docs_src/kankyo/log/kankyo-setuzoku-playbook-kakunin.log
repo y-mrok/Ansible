@@ -1,0 +1,57 @@
+piyo@vmpc:~/node$ ssh 192.168.23.11 -l ansible-user
+Warning: Permanently added '192.168.23.11' (ECDSA) to the list of known hosts.
+[ansible-user@hydrogen ~]$ timedatectl
+               Local time: Sat 2021-06-12 21:40:44 JST
+           Universal time: Sat 2021-06-12 12:40:44 UTC
+                 RTC time: Sat 2021-06-12 12:40:43
+                Time zone: Asia/Tokyo (JST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+[ansible-user@hydrogen ~]$ sudo ls -al /etc/sudoers.d
+total 20
+drwxr-x---.  2 root root   41 Jun 12 21:39 .
+drwxr-xr-x. 81 root root 8192 Jun 12 21:39 ..
+-r--r-----.  1 root root   40 Jun 12 21:39 ansible-user
+-r--r-----.  1 root root   33 Dec  5  2020 vagrant
+[ansible-user@hydrogen ~]$ logout
+Connection to 192.168.23.11 closed.
+piyo@vmpc:~/node$ 
+piyo@vmpc:~/node$ ssh 192.168.23.12 -l ansible-user
+Warning: Permanently added '192.168.23.12' (ECDSA) to the list of known hosts.
+[ansible-user@helium ~]$ datetimectl
+-bash: datetimectl: command not found
+[ansible-user@helium ~]$ timedatectl
+               Local time: Sat 2021-06-12 21:41:10 JST
+           Universal time: Sat 2021-06-12 12:41:10 UTC
+                 RTC time: Sat 2021-06-12 12:41:08
+                Time zone: Asia/Tokyo (JST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+[ansible-user@helium ~]$ sudo ls -al /etc/sudoers.d
+total 20
+drwxr-x---.  2 root root   41 Jun 12 21:39 .
+drwxr-xr-x. 81 root root 8192 Jun 12 21:39 ..
+-r--r-----.  1 root root   40 Jun 12 21:39 ansible-user
+-r--r-----.  1 root root   33 Dec  5  2020 vagrant
+[ansible-user@helium ~]$ logout
+Connection to 192.168.23.12 closed.
+piyo@vmpc:~/node$ 
+piyo@vmpc:~/node$ ssh 192.168.23.13 -l ansible-user
+Warning: Permanently added '192.168.23.13' (ECDSA) to the list of known hosts.
+[ansible-user@lithium ~]$ timedatectl
+               Local time: Sat 2021-06-12 21:41:36 JST
+           Universal time: Sat 2021-06-12 12:41:36 UTC
+                 RTC time: Sat 2021-06-12 12:41:34
+                Time zone: Asia/Tokyo (JST, +0900)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+[ansible-user@lithium ~]$ sudo ls -l /etc/sudoers.d
+total 8
+-r--r-----. 1 root root 40 Jun 12 21:39 ansible-user
+-r--r-----. 1 root root 33 Dec  5  2020 vagrant
+[ansible-user@lithium ~]$ logout
+Connection to 192.168.23.13 closed.
+piyo@vmpc:~/node$ 

@@ -1,0 +1,14 @@
+piyo@vmpc:~/example/loop$ ansible-playbook -i hosts.yml until.yml 
+
+PLAY [Example of loop usage] *************************************************************************************************************************
+
+TASK [Install Apache] ********************************************************************************************************************************
+FAILED - RETRYING: Install Apache (10 retries left).
+FAILED - RETRYING: Install Apache (9 retries left).
+FAILED - RETRYING: Install Apache (8 retries left).
+changed: [hydrogen]
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/loop$ 

@@ -1,0 +1,58 @@
+.. _errorhandling-sonota-changed_when-usage:
+
+**************************************************
+changed_when ディレクティブの使い方
+**************************************************
+``changed_when`` ディレクティブを使用してタスクを実行した結果、管理対象ノードの状態が変更された（ **changed** ）と判断する条件を設定します。通常、タスクでモジュールを実行した場合、管理対象ノードが変更されたか否かは Ansible 側で適切に判断します。そのため、 ``changed_when`` ディレクティブは不要です。しかし、管理対象ノードでコマンドを実行する ``ansible.builtin.command`` モジュールとコマンドやシェルスクリプトを実行する ``ansible.builtin.shell`` モジュールの結果は常に **changed** です。この様なときは ``changed_when`` ディレティブで正しい実行結果（ **ok** や **changed** ）を返すよう設定することが望ましいです。 **changed** は :ref:`ハンドラー <handlers>` を実行するトリガーになるため、正しい状態を返すことは大事です。
+
+指定したユーザーアカウントが未作成のときに作成するシェルスクリプトです。
+
+.. literalinclude:: ./sh/user-add.sh
+   :language: shell
+
+管理対象ノードの状態とリターンコードの関係です。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 5
+
+   * - リターンコード
+     - 管理対象ノードの状態
+   * - 0
+     - 指定したユーザーアカウントがすでに登録されていた
+   * - 1
+     - 指定したユーザーアカウントが未登録だったので登録した
+   * - 9
+     - 上記の状態以外の状態が発生した
+
+インベントリです。
+
+.. literalinclude:: ./yaml/hosts.yml
+   :language: yaml
+
+``changed_when`` ディレクティブを使用していないプレイです。 "taro" と "jiro" は未登録のユーザーアカウントです。
+
+.. literalinclude:: ./yaml/error16.yml
+   :language: yaml
+
+.. literalinclude:: ./yaml/include/user-add.yml
+   :language: yaml
+
+実行ログです。アカウント "ansible-user" は登録済みユーザーなので管理対象ノードの状態は変わりません。しかし、実行結果は **changed** になっています。アカウント "taro" は未登録なのでリターンコードは 1 （ "rc": 1 ）です。リターンコードがゼロ以外の場合はタスクの実行が失敗したと判断するのでエラーメッセージが表示されました。
+
+.. literalinclude:: ./log/error16.log
+   :language: none
+   :emphasize-lines: 11, 14
+
+:file:`./include/user-add.yml` ファイルの内容を書き直し、ユーザーアカウントを登録したときだけ **changed** になるようにします。
+
+.. literalinclude:: ./yaml/include/user-add1.yml
+   :language: yaml
+   :emphasize-lines: 6
+
+``changed_when`` ディレクティブとレジスター変数を使用し、タスクを実行した後のリターンコードが 1 のときだけ **changed** を表示します。 ``failed_when`` ディレクティブを併用し、リターンコードがゼロ以外のときにエラーと判断されることを避けています。
+
+実行ログです。登録ユーザーの "ansible-user" は **ok** 、未登録ユーザーの "taro" と "jiro" は **changed** になっています。
+
+.. literalinclude:: ./log/error16-1.log
+   :language: none

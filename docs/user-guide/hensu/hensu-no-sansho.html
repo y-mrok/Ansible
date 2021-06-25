@@ -1,0 +1,551 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="loop" href="../loop/loop.html" /><link rel="prev" title="タスク変数" href="task-hensu.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>変数の参照方法 - Learning Ansible 2021/06/13 更新 documentation</title>
+      <link rel="stylesheet" href="../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Learning Ansible 2021/06/13 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/13 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../user-guide.html">ユーザーガイド</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ansible-no-install/ansible-no-install.html">Ansible のインストール</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ansible-no-install/node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ansible-no-install/control-node-ni-ansible-wo-install.html">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../ansible-no-install/managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ansible-no-install/managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ansible-no-install/managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ansible-no-install/managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="hensu.html">変数</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../vault/vault.html">コンテンツの暗号化</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../vault/ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault/vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault/vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vault/vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-install.html">AWX をインストール</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-tuika.html">管理対象ノードを追加</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="hensu-no-sansho">
+<span id="id1"></span><h1>変数の参照方法<a class="headerlink" href="#hensu-no-sansho" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hensu-no-sansho-mapping">
+<span id="id2"></span><h2>マッピングの参照<a class="headerlink" href="#hensu-no-sansho-mapping" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>プレイ内で変数を参照するときは <code class="docutils literal notranslate"><span class="pre">{{</span></code> と <code class="docutils literal notranslate"><span class="pre">}}</span></code> でくくる</p></li>
+<li><p>パラメーターの設定値に変数を使用するときなど <code class="docutils literal notranslate"><span class="pre">:</span></code> の後で変数を参照するときは <code class="docutils literal notranslate"><span class="pre">"{{</span></code> と <code class="docutils literal notranslate"><span class="pre">}}"</span></code> または <code class="docutils literal notranslate"><span class="pre">'{{</span></code> と <code class="docutils literal notranslate"><span class="pre">}}'</span></code> でくくる</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example of variable reference</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+  <span class="nt">vars</span><span class="p">:</span>
+<span class="hll">    <span class="nt">source_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/textfile.txt</span>         <span class="c1"># {{ source_path }}</span>
+</span><span class="hll">    <span class="nt">destination_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp/sample/</span>      <span class="c1"># {{ destination_path }}</span>
+</span>
+  <span class="nt">tasks</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Copying a file from a control node to a managed node</span>
+      <span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+<span class="hll">        <span class="nt">src</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">source_path</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span class="hll">        <span class="nt">dest</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">destination_path</span><span class="nv"> </span><span class="s">}}"</span>
+</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">View source and destination</span>
+      <span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+<span class="hll">        <span class="nt">msg</span><span class="p">:</span> <span class="s">"コピー元のファイルは</span><span class="nv">  </span><span class="s">{{</span><span class="nv"> </span><span class="s">source_path</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。コピー先は</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">destination_path</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。"</span>
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="hensu-no-sansho-mapping-nest">
+<span id="id3"></span><h2>マッピングをネストした場合の参照<a class="headerlink" href="#hensu-no-sansho-mapping-nest" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>「 <a class="reference internal" href="#hensu-no-sansho-mapping"><span class="std std-ref">マッピングの参照</span></a> 」のルール　＋　下位の変数を <code class="docutils literal notranslate"><span class="pre">['</span></code> と <code class="docutils literal notranslate"><span class="pre">']</span></code> でくくって参照する</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example of variable reference</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+  <span class="nt">vars</span><span class="p">:</span>
+<span class="hll">    <span class="nt">file_path</span><span class="p">:</span>
+</span><span class="hll">      <span class="nt">source_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">~/textfile.txt</span>       <span class="c1"># file_path['source_path']</span>
+</span><span class="hll">      <span class="nt">destination_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp/sample/</span>    <span class="c1"># file_path['destination_path']</span>
+</span>
+  <span class="nt">tasks</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Copying a file from a control node to a managed node</span>
+      <span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+<span class="hll">        <span class="nt">src</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">file_path['source_path']</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span class="hll">        <span class="nt">dest</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">file_path['destination_path']</span><span class="nv"> </span><span class="s">}}"</span>
+</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">View source and destination</span>
+      <span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+<span class="hll">        <span class="nt">msg</span><span class="p">:</span> <span class="s">"コピー元のファイルは</span><span class="nv">  </span><span class="s">{{</span><span class="nv"> </span><span class="s">file_path['source_path']</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。コピー先は</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">file_path['destination_path']</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。"</span>
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="hensu-no-sansho-mapping-sequence-nest">
+<span id="id4"></span><h2>マッピングの中にシーケンスをネストした場合の参照<a class="headerlink" href="#hensu-no-sansho-mapping-sequence-nest" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>「 <a class="reference internal" href="#hensu-no-sansho-mapping"><span class="std std-ref">マッピングの参照</span></a> 」のルール　＋　 要素番号（ゼロオリジン）を <code class="docutils literal notranslate"><span class="pre">[</span></code> と <code class="docutils literal notranslate"><span class="pre">]</span></code> でくくって参照する</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example of variable reference</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+  <span class="nt">vars</span><span class="p">:</span>
+<span class="hll">    <span class="nt">file_path</span><span class="p">:</span>
+</span><span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">~/textfile.txt</span>                  <span class="c1"># file_path[0]</span>
+</span><span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/tmp/sample/</span>                    <span class="c1"># file_path[1]</span>
+</span>
+  <span class="nt">tasks</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Copying a file from a control node to a managed node</span>
+      <span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+<span class="hll">        <span class="nt">src</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">file_path[0]</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span class="hll">        <span class="nt">dest</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">file_path[1]</span><span class="nv"> </span><span class="s">}}"</span>
+</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">View source and destination</span>
+      <span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+<span class="hll">        <span class="nt">msg</span><span class="p">:</span> <span class="s">"コピー元のファイルは</span><span class="nv">  </span><span class="s">{{</span><span class="nv"> </span><span class="s">file_path[0]</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。コピー先は</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">file_path[1]</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。"</span>
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="hensu-no-sansho-mapping-sequence-mapping-nest">
+<span id="id5"></span><h2>マッピングの中にシーケンスをネストし、シーケンスの中にマッピングをネストした場合の参照<a class="headerlink" href="#hensu-no-sansho-mapping-sequence-mapping-nest" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example of variable reference</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+  <span class="nt">vars</span><span class="p">:</span>
+<span class="hll">     <span class="nt">user_account</span><span class="p">:</span>
+</span><span class="hll">       <span class="p p-Indicator">-</span> <span class="nt">user_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hanako-san</span>                    <span class="c1"># user_account[0]['user_name']</span>
+</span><span class="hll">         <span class="nt">user_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hanako-no-password</span>        <span class="c1"># user_account[0]['user_password']</span>
+</span><span class="hll">       <span class="p p-Indicator">-</span> <span class="nt">user_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">taro-san</span>                      <span class="c1"># user_account[1['user_name']</span>
+</span><span class="hll">         <span class="nt">user_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">taro-no-password</span>          <span class="c1"># user_account[1]['user_password']</span>
+</span>
+  <span class="nt">tasks</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create the first account</span>
+      <span class="nt">ansible.builtin.user</span><span class="p">:</span>
+<span class="hll">        <span class="nt">name</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">user_account[0]['user_name']</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span class="hll">        <span class="nt">password</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">user_account[0]['user_password']</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">password_hash('sha512')</span><span class="nv"> </span><span class="s">}}"</span>
+</span>        <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
+      <span class="nt">become</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create the second account</span>
+      <span class="nt">ansible.builtin.user</span><span class="p">:</span>
+<span class="hll">        <span class="nt">name</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">user_account[1]['user_name']</span><span class="nv"> </span><span class="s">}}"</span>
+</span><span class="hll">        <span class="nt">password</span><span class="p">:</span> <span class="s">"{{</span><span class="nv"> </span><span class="s">user_account[1]['user_password']</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">password_hash('sha512')</span><span class="nv"> </span><span class="s">}}"</span>
+</span>        <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
+      <span class="nt">become</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Check the first person's account</span>
+      <span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+<span class="hll">        <span class="nt">msg</span><span class="p">:</span> <span class="s">"アカウント</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">user_account[0]['user_name']</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">のパスワードは</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">user_account[0]['user_password']</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。"</span>
+</span>    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Check the second person's account</span>
+      <span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+<span class="hll">        <span class="nt">msg</span><span class="p">:</span> <span class="s">"アカウント</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">user_account[1]['user_name']</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">のパスワードは</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">user_account[1]['user_password']</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">です。"</span>
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="hensu-no-sansho-fact">
+<span id="id6"></span><h2>ファクト変数の参照<a class="headerlink" href="#hensu-no-sansho-fact" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>基本は上述の 4 パターンと同じ</p></li>
+<li><p>最上位の変数名は ansible_facts</p></li>
+<li><p>下位の変数を参照するとき、プレフィックスの <code class="docutils literal notranslate"><span class="pre">ansible_</span></code> は削除する</p></li>
+</ul>
+<p>ファクト変数の最初の部分です。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hydrogen | SUCCESS =&gt; {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "192.168.23.11"
+        ],
+        "ansible_all_ipv6_addresses": [
+            "fe80::8ac4:75a6:8719:7a"
+        ],
+        "ansible_apparmor": {
+            "status": "disabled"
+        },
+        "ansible_architecture": "x86_64",
+</pre></div>
+</div>
+<p>このように先頭は <code class="docutils literal notranslate"><span class="pre">ansible_facts</span></code> です。したがって、ファクト変数は次のように表記します。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ansible_facts['下位の変数名`]
+</pre></div>
+</div>
+<ul>
+<li><p>ansible_all_ipv4_addresses</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>"ansible_facts['all_ipv4_addresses'][0]"
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ansible_apparmor 内の status</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ansible_facts['apparmor']['status']
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ansible_architecture</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ansible_facts['architecture']
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../loop/loop.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">loop</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="task-hensu.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">タスク変数</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">変数の参照方法</a><ul>
+<li><a class="reference internal" href="#hensu-no-sansho-mapping">マッピングの参照</a></li>
+<li><a class="reference internal" href="#hensu-no-sansho-mapping-nest">マッピングをネストした場合の参照</a></li>
+<li><a class="reference internal" href="#hensu-no-sansho-mapping-sequence-nest">マッピングの中にシーケンスをネストした場合の参照</a></li>
+<li><a class="reference internal" href="#hensu-no-sansho-mapping-sequence-mapping-nest">マッピングの中にシーケンスをネストし、シーケンスの中にマッピングをネストした場合の参照</a></li>
+<li><a class="reference internal" href="#hensu-no-sansho-fact">ファクト変数の参照</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

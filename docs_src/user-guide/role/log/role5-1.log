@@ -1,0 +1,25 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts2.yml roles5.yml
+
+PLAY [Example of using roles] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+ok: [ubuntu2004]
+
+TASK [Executing a role] ******************************************************************************************************************************
+
+TASK [CentOS : Processing in CentOS] *****************************************************************************************************************
+ok: [centos83] => {
+    "msg": "The OS of the managed node is CentOS."
+}
+
+TASK [Ubuntu : Processing in Ubuntu] *****************************************************************************************************************
+ok: [ubuntu2004] => {
+    "msg": "The OS of the managed node is Ubuntu."
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2004                 : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/role$ 

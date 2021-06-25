@@ -1,0 +1,885 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="コレクション インデックス" href="../collection-index/collection-index.html" /><link rel="prev" title="AWX" href="awx.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>AWX をインストール - Learning Ansible 2021/06/13 更新 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/06/13 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/13 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user-guide/user-guide.html">ユーザーガイド</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/ansible-no-install.html">Ansible のインストール</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/control-node-ni-ansible-wo-install.html">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/hensu/hensu.html">変数</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/hensu/play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-sansho.html">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/vault/vault.html">コンテンツの暗号化</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="awx.html">AWX</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">AWX をインストール</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-tuika.html">管理対象ノードを追加</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="awx">
+<span id="awx-install"></span><h1>AWX をインストール<a class="headerlink" href="#awx" title="Permalink to this headline">¶</a></h1>
+<p>CentOS 8.3 に AWX 17.1.0 をインストールします。</p>
+<div class="section" id="awx-install-command">
+<span id="id1"></span><h2>実行コマンド<a class="headerlink" href="#awx-install-command" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># インストール済みパッケージを更新 ＆ SELinux を無効化（要再起動）
+su -
+dnf -y install epel-release
+dnf -y update
+sestatus
+grep -v '^#' /etc/selinux/config | grep -v '^$' &gt; mae.txt
+vi /etc/selinux/config
+
+----- 変更箇所 -----
+SELINUX=disabled
+--------------------
+
+grep -v '^#' /etc/selinux/config | grep -v '^$' &gt; ato.txt
+diff -y mae.txt ato.txt
+grep -v '^#' /etc/selinux/config | grep -v '^$'
+reboot
+su -
+sestatus
+
+# 必要なパッケージをインストール
+dnf -y install wget unzip git gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 python3-pip ansible
+
+# Docker をインストール
+dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+dnf -y  install docker-ce docker-ce-cli containerd.io
+dnf list installed docker-ce docker-ce-cli containerd.io
+rpm -qa | grep docker
+usermod -aG docker $USER
+docker --version
+alternatives --set python /usr/bin/python3
+python --version
+systemctl start docker
+systemctl status docker
+systemctl enable --now docker.service
+pip3 install docker-compose selinux
+docker-compose --version
+pip3 freeze
+
+# AWX 17.1.0 を取得 ＆ インストール
+wget https://github.com/ansible/awx/archive/17.1.0.zip
+unzip 17.1.0.zip
+cd awx-17.1.0/installer
+openssl rand -base64 30
+grep -v '^#' inventory | grep -v '^$' &gt; mae.txt
+vi inventory
+
+---------------------- 変更箇所 ----------------------
+postgres_data_dir="/var/lib/awx/pgdocker"
+docker_compose_dir="/var/lib/awx/awxcompose"
+pg_admin_password=postgrespass
+admin_password=password
+secret_key=EdSIQEBaXQXEvkuhnXO/tc3hMgSkBuco47NaDF63
+awx_official=true
+awx_alternate_dns_servers="8.8.8.8,8.8.4.4"
+project_data_dir=/var/lib/awx/projects
+------------------------------------------------------
+
+grep -v '^#' inventory | grep -v '^$' &gt; ato.txt
+diff -y mae.txt ato.txt
+grep -v '^#' inventory | grep -v '^$'
+mkdir -p /var/lib/awx/pgdocker
+ansible-playbook -i inventory install.yml -vv
+docker images
+docker ps
+cd /var/lib/awx/awxcompose
+docker-compose ps
+docker-compose logs -f
+
+# ファイアウォールに穴あけ
+firewall-cmd --zone=public --add-masquerade --permanent
+firewall-cmd --permanent --add-service=http
+firewall-cmd --permanent --add-service=https
+firewall-cmd --reload
+logout
+logout
+</pre></div>
+</div>
+</div>
+<div class="section" id="awx-install-log">
+<span id="id2"></span><h2>実行ログ<a class="headerlink" href="#awx-install-log" title="Permalink to this headline">¶</a></h2>
+<p><strong>ansible-playbook -i inventory install.yml -vv</strong> を実行すると、次のエラーが表示されます。タスクに <code class="docutils literal notranslate"><span class="pre">ignore_errors</span></code> ディレクティブが設定されているので、無視して問題ないようです</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fatal: [localhost]: FAILED! =&gt; {"changed": true, "cmd": "docker run --rm -v '/var/lib/awx/pgdocker:/var/lib/postgresql' centos:8 bash -c  \"[
+[ -f /var/lib/postgresql/10/data/PG_VERSION ]] &amp;&amp; echo 'exists'\"\n", "delta": "0:00:15.094003", "end": "2021-05-01 22:07:49.312573", "msg":
+"non-zero return code", "rc": 1, "start": "2021-05-01 22:07:34.218570", "stderr": "Unable to find image 'centos:8' locally\n8: Pulling from l
+ibrary/centos\n7a0437f04f83: Pulling fs layer\n7a0437f04f83: Verifying Checksum\n7a0437f04f83: Download complete\n7a0437f04f83: Pull complete
+\nDigest: sha256:5528e8b1b1719d34604c87e11dcd1c0a20bedf46e83b5632cdeac91b8c04efc1\nStatus: Downloaded newer image for centos:8", "stderr_line
+s": ["Unable to find image 'centos:8' locally", "8: Pulling from library/centos", "7a0437f04f83: Pulling fs layer", "7a0437f04f83: Verifying
+Checksum", "7a0437f04f83: Download complete", "7a0437f04f83: Pull complete", "Digest: sha256:5528e8b1b1719d34604c87e11dcd1c0a20bedf46e83b5632
+cdeac91b8c04efc1", "Status: Downloaded newer image for centos:8"], "stdout": "", "stdout_lines": []}
+...ignoring
+</pre></div>
+</div>
+<p>実行ログです。すべての実行ログを掲載すると長くなるので一部を省略しています。すべて実行ログは <a class="reference download internal" download="" href="../_downloads/1901feb784bdf3dcf5c68eb935a176d6/awx_install_log.zip"><code class="xref download docutils literal notranslate"><span class="pre">ここをクリックするとダウンロード</span></code></a> できます。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Last login: Thu Apr 29 11:23:12 2021 from 192.168.23.224
+<span class="hll">[ansible-user@awx ~]$ su -
+</span>Password: 
+Last login: Thu Apr 29 11:23:32 JST 2021 on tty1
+<span class="hll">[root@awx ~]# dnf -y install epel-release
+</span>Last metadata expiration check: 2:27:01 ago on Sat 01 May 2021 07:23:31 PM JST.
+Dependencies resolved.
+=============================================================================================================================================
+ Package                              Architecture                   Version                            Repository                      Size
+=============================================================================================================================================
+Installing:
+ epel-release                         noarch                         8-8.el8                            extras                          23 k
+　　　　　・
+　　　　　・
+　　　　　・
+Installed:
+  epel-release-8-8.el8.noarch                                                                                                                
+
+Complete!
+<span class="hll">[root@awx ~]# dnf -y update
+</span>Extra Packages for Enterprise Linux Modular 8 - x86_64                                                       653 kB/s | 557 kB     00:00    
+Extra Packages for Enterprise Linux 8 - x86_64                                                               8.4 MB/s | 9.3 MB     00:01    
+Dependencies resolved.
+=============================================================================================================================================
+ Package                                 Architecture           Version                                         Repository              Size
+=============================================================================================================================================
+Installing:
+ kernel                                  x86_64                 4.18.0-240.22.1.el8_3                           baseos                 4.4 M
+　　　　　・
+　　　　　・
+　　　　　・
+Installed:
+  grub2-tools-efi-1:2.02-90.el8_3.1.x86_64          kernel-4.18.0-240.22.1.el8_3.x86_64       kernel-core-4.18.0-240.22.1.el8_3.x86_64      
+  kernel-modules-4.18.0-240.22.1.el8_3.x86_64      
+
+Complete!
+<span class="hll">[root@awx ~]# sestatus
+</span>SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Memory protection checking:     actual (secure)
+Max kernel policy version:      32
+<span class="hll">[root@awx ~]# grep -v '^#' /etc/selinux/config | grep -v '^$' &gt; mae.txt
+</span><span class="hll">[root@awx ~]# vi /etc/selinux/config
+</span><span class="hll">[root@awx ~]# grep -v '^#' /etc/selinux/config | grep -v '^$' &gt; ato.txt
+</span><span class="hll">[root@awx ~]# diff -y mae.txt ato.txt
+</span>SELINUX=enforcing                                             | SELINUX=disabled
+SELINUXTYPE=targeted                                            SELINUXTYPE=targeted
+<span class="hll">[root@awx ~]# grep -v '^#' /etc/selinux/config | grep -v '^$'
+</span>SELINUX=disabled
+SELINUXTYPE=targeted
+<span class="hll">[root@awx ~]# reboot
+</span>Last login: Sat May  1 21:50:11 2021 from 192.168.23.234
+<span class="hll">[ansible-user@awx ~]$ su -
+</span>Password: 
+Last login: Sat May  1 21:50:22 JST 2021 on pts/0
+<span class="hll">[root@awx ~]# sestatus
+</span>SELinux status:                 disabled
+<span class="hll">[root@awx ~]# dnf -y install wget unzip git gcc gcc-c++ nodejs gettext device-mapper-persistent-data lvm2 bzip2 python3-pip ansible
+</span>Last metadata expiration check: 0:07:10 ago on Sat 01 May 2021 09:50:41 PM JST.
+Package gettext-0.19.8.1-17.el8.x86_64 is already installed.
+Package device-mapper-persistent-data-0.8.5-4.el8.x86_64 is already installed.
+Package lvm2-8:2.03.09-5.el8.x86_64 is already installed.
+Dependencies resolved.
+=============================================================================================================================================
+ Package                           Architecture      Version                                                      Repository            Size
+=============================================================================================================================================
+Installing:
+ ansible                           noarch            2.9.20-1.el8                                                 epel                  17 M
+ bzip2                             x86_64            1.0.6-26.el8                                                 baseos                60 k
+ gcc                               x86_64            8.3.1-5.1.el8                                                appstream             23 M
+　　　　　・
+　　　　　・
+　　　　　・
+Installed:
+  ansible-2.9.20-1.el8.noarch                                            binutils-2.30-79.el8.x86_64                                         
+  bzip2-1.0.6-26.el8.x86_64                                              cpp-8.3.1-5.1.el8.x86_64                                            
+  emacs-filesystem-1:26.1-5.el8.noarch                                   gcc-8.3.1-5.1.el8.x86_64                                            
+  gcc-c++-8.3.1-5.1.el8.x86_64                                           git-2.27.0-1.el8.x86_64                                             
+  git-core-2.27.0-1.el8.x86_64                                           git-core-doc-2.27.0-1.el8.noarch                                    
+  glibc-devel-2.28-127.el8.x86_64                                        glibc-headers-2.28-127.el8.x86_64                                   
+  isl-0.16.1-6.el8.x86_64                                                kernel-headers-4.18.0-240.22.1.el8_3.x86_64                         
+  libmpc-1.0.2-9.el8.x86_64                                              libpkgconf-1.4.2-1.el8.x86_64                                       
+  libsodium-1.0.18-2.el8.x86_64                                          libstdc++-devel-8.3.1-5.1.el8.x86_64                                
+  libxcrypt-devel-4.1.1-4.el8.x86_64                                     nodejs-1:10.24.0-1.module_el8.3.0+717+fa496f1d.x86_64               
+  nodejs-full-i18n-1:10.24.0-1.module_el8.3.0+717+fa496f1d.x86_64        npm-1:6.14.11-1.10.24.0.1.module_el8.3.0+717+fa496f1d.x86_64        
+  perl-Carp-1.42-396.el8.noarch                                          perl-Data-Dumper-2.167-399.el8.x86_64                               
+  perl-Digest-1.17-395.el8.noarch                                        perl-Digest-MD5-2.55-396.el8.x86_64                                 
+  perl-Encode-4:2.97-3.el8.x86_64                                        perl-Errno-1.28-416.el8.x86_64                                      
+  perl-Error-1:0.17025-2.el8.noarch                                      perl-Exporter-5.72-396.el8.noarch                                   
+  perl-File-Path-2.15-2.el8.noarch                                       perl-File-Temp-0.230.600-1.el8.noarch                               
+  perl-Getopt-Long-1:2.50-4.el8.noarch                                   perl-Git-2.27.0-1.el8.noarch                                        
+  perl-HTTP-Tiny-0.074-1.el8.noarch                                      perl-IO-1.38-416.el8.x86_64                                         
+  perl-IO-Socket-IP-0.39-5.el8.noarch                                    perl-IO-Socket-SSL-2.066-4.module_el8.3.0+410+ff426aa3.noarch       
+  perl-MIME-Base64-3.15-396.el8.x86_64                                   perl-Mozilla-CA-20160104-7.module_el8.3.0+416+dee7bcef.noarch       
+  perl-Net-SSLeay-1.88-1.module_el8.3.0+410+ff426aa3.x86_64              perl-PathTools-3.74-1.el8.x86_64                                    
+  perl-Pod-Escapes-1:1.07-395.el8.noarch                                 perl-Pod-Perldoc-3.28-396.el8.noarch                                
+  perl-Pod-Simple-1:3.35-395.el8.noarch                                  perl-Pod-Usage-4:1.69-395.el8.noarch                                
+  perl-Scalar-List-Utils-3:1.49-2.el8.x86_64                             perl-Socket-4:2.027-3.el8.x86_64                                    
+  perl-Storable-1:3.11-3.el8.x86_64                                      perl-Term-ANSIColor-4.06-396.el8.noarch                             
+  perl-Term-Cap-1.17-395.el8.noarch                                      perl-TermReadKey-2.37-7.el8.x86_64                                  
+  perl-Text-ParseWords-3.30-395.el8.noarch                               perl-Text-Tabs+Wrap-2013.0523-395.el8.noarch                        
+  perl-Time-Local-1:1.280-1.el8.noarch                                   perl-URI-1.73-3.el8.noarch                                          
+  perl-Unicode-Normalize-1.25-396.el8.x86_64                             perl-constant-1.33-396.el8.noarch                                   
+  perl-interpreter-4:5.26.3-416.el8.x86_64                               perl-libnet-3.11-3.el8.noarch                                       
+  perl-libs-4:5.26.3-416.el8.x86_64                                      perl-macros-4:5.26.3-416.el8.x86_64                                 
+  perl-parent-1:0.237-1.el8.noarch                                       perl-podlators-4.11-1.el8.noarch                                    
+  perl-threads-1:2.21-2.el8.x86_64                                       perl-threads-shared-1.58-2.el8.x86_64                               
+  pkgconf-1.4.2-1.el8.x86_64                                             pkgconf-m4-1.4.2-1.el8.noarch                                       
+  pkgconf-pkg-config-1.4.2-1.el8.x86_64                                  python3-asn1crypto-0.24.0-3.el8.noarch                              
+  python3-babel-2.5.1-5.el8.noarch                                       python3-bcrypt-3.1.6-2.el8.1.x86_64                                 
+  python3-cffi-1.11.5-5.el8.x86_64                                       python3-cryptography-2.3-3.el8.x86_64                               
+  python3-idna-2.5-5.el8.noarch                                          python3-jinja2-2.10.1-2.el8_0.noarch                                
+  python3-jmespath-0.9.0-11.el8.noarch                                   python3-markupsafe-0.23-19.el8.x86_64                               
+  python3-paramiko-2.4.3-1.el8.noarch                                    python3-pip-9.0.3-18.el8.noarch                                     
+  python3-ply-3.9-8.el8.noarch                                           python3-pyasn1-0.3.7-6.el8.noarch                                   
+  python3-pycparser-2.14-14.el8.noarch                                   python3-pynacl-1.3.0-5.el8.x86_64                                   
+  python3-pytz-2017.2-9.el8.noarch                                       python3-pyyaml-3.12-12.el8.x86_64                                   
+  python3-setuptools-39.2.0-6.el8.noarch                                 python36-3.6.8-2.module_el8.3.0+562+e162826a.x86_64                 
+  sshpass-1.06-9.el8.x86_64                                              unzip-6.0-43.el8.x86_64                                             
+  wget-1.19.5-10.el8.x86_64                                             
+
+Complete!
+<span class="hll">[root@awx ~]# dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+</span>Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+<span class="hll">[root@awx ~]# dnf -y  install docker-ce docker-ce-cli containerd.io
+</span>Docker CE Stable - x86_64                                                                                     68 kB/s |  12 kB     00:00    
+Dependencies resolved.
+=============================================================================================================================================
+ Package                                Architecture     Version                                            Repository                  Size
+=============================================================================================================================================
+Installing:
+ containerd.io                          x86_64           1.4.4-3.1.el8                                      docker-ce-stable            33 M
+ docker-ce                              x86_64           3:20.10.6-3.el8                                    docker-ce-stable            27 M
+ docker-ce-cli                          x86_64           1:20.10.6-3.el8                                    docker-ce-stable            33 M
+　　　　　・
+　　　　　・
+　　　　　・
+Installed:
+  checkpolicy-2.9-1.el8.x86_64                                container-selinux-2:2.155.0-1.module_el8.3.0+699+d61d9c41.noarch              
+  containerd.io-1.4.4-3.1.el8.x86_64                          docker-ce-3:20.10.6-3.el8.x86_64                                              
+  docker-ce-cli-1:20.10.6-3.el8.x86_64                        docker-ce-rootless-extras-20.10.6-3.el8.x86_64                                
+  docker-scan-plugin-0.7.0-3.el8.x86_64                       fuse-overlayfs-1.3.0-2.module_el8.3.0+699+d61d9c41.x86_64                     
+  fuse3-3.2.1-12.el8.x86_64                                   fuse3-libs-3.2.1-12.el8.x86_64                                                
+  libcgroup-0.41-19.el8.x86_64                                libslirp-4.3.1-1.module_el8.3.0+475+c50ce30b.x86_64                           
+  policycoreutils-python-utils-2.9-9.el8.noarch               python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64                          
+  python3-libsemanage-2.9-3.el8.x86_64                        python3-policycoreutils-2.9-9.el8.noarch                                      
+  python3-setools-4.3.0-2.el8.x86_64                          slirp4netns-1.1.8-1.module_el8.3.0+699+d61d9c41.x86_64                        
+
+Complete!
+<span class="hll">[root@awx ~]# dnf list installed docker-ce docker-ce-cli containerd.io
+</span>Installed Packages
+containerd.io.x86_64                                            1.4.4-3.1.el8                                               @docker-ce-stable
+docker-ce.x86_64                                                3:20.10.6-3.el8                                             @docker-ce-stable
+docker-ce-cli.x86_64                                            1:20.10.6-3.el8                                             @docker-ce-stable
+<span class="hll">[root@awx ~]# rpm -qa | grep docker
+</span>docker-ce-cli-20.10.6-3.el8.x86_64
+docker-ce-20.10.6-3.el8.x86_64
+docker-scan-plugin-0.7.0-3.el8.x86_64
+docker-ce-rootless-extras-20.10.6-3.el8.x86_64
+<span class="hll">[root@awx ~]# usermod -aG docker $USER
+</span><span class="hll">[root@awx ~]# docker --version
+</span>Docker version 20.10.6, build 370c289
+<span class="hll">[root@awx ~]# alternatives --set python /usr/bin/python3
+</span><span class="hll">[root@awx ~]# python --version
+</span>Python 3.6.8
+<span class="hll">[root@awx ~]# systemctl start docker
+</span><span class="hll">[root@awx ~]# systemctl status docker
+</span>● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)
+   Active: active (running) since Sat 2021-05-01 22:01:40 JST; 5s ago
+     Docs: https://docs.docker.com
+ Main PID: 6139 (dockerd)
+    Tasks: 10
+   Memory: 46.2M
+   CGroup: /system.slice/docker.service
+           └─6139 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+May 01 22:01:39 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:39.625102398+09:00" level=warning msg="Your kernel does not support cgr&gt;
+May 01 22:01:39 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:39.625134457+09:00" level=warning msg="Your kernel does not support cgr&gt;
+May 01 22:01:39 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:39.625525121+09:00" level=info msg="Loading containers: start."
+May 01 22:01:40 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:40.569606132+09:00" level=info msg="Default bridge (docker0) is assigne&gt;
+May 01 22:01:40 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:40.701480610+09:00" level=info msg="Firewalld: interface docker0 alread&gt;
+May 01 22:01:40 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:40.851253500+09:00" level=info msg="Loading containers: done."
+May 01 22:01:40 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:40.883082840+09:00" level=info msg="Docker daemon" commit=8728dd2 graph&gt;
+May 01 22:01:40 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:40.883251558+09:00" level=info msg="Daemon has completed initialization"
+May 01 22:01:40 awx.exam.local systemd[1]: Started Docker Application Container Engine.
+May 01 22:01:40 awx.exam.local dockerd[6139]: time="2021-05-01T22:01:40.915133017+09:00" level=info msg="API listen on /var/run/docker.sock"
+<span class="hll">[root@awx ~]# systemctl enable --now docker.service
+</span>Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+<span class="hll">[root@awx ~]# pip3 install docker-compose selinux
+</span>WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead.
+Collecting docker-compose
+  Downloading https://files.pythonhosted.org/packages/68/5f/341e60edaff653942ae78d3036eb7fa0994b53582ed87beb8317d182d70f/docker_compose-1.29.
+1-py2.py3-none-any.whl (114kB)
+    100% |████████████████████████████████| 122kB 4.4MB/s 
+Requirement already satisfied: selinux in /usr/lib64/python3.6/site-packages
+　　　　　・
+　　　　　・
+　　　　　・
+Successfully installed attrs-20.3.0 cached-property-1.5.2 certifi-2020.12.5 chardet-4.0.0 distro-1.5.0 docker-5.0.0 docker-compose-1.29.1 doc
+kerpty-0.4.1 docopt-0.6.2 importlib-metadata-4.0.1 jsonschema-3.2.0 pyrsistent-0.17.3 python-dotenv-0.17.1 requests-2.25.1 texttable-1.6.3 ty
+ping-extensions-3.7.4.3 urllib3-1.26.4 websocket-client-0.58.0 zipp-3.4.1
+<span class="hll">[root@awx ~]# docker-compose --version
+</span>docker-compose version 1.29.1, build unknown
+<span class="hll">[root@awx ~]# pip3 freeze
+</span>ansible==2.9.20
+asn1crypto==0.24.0
+attrs==20.3.0
+　　　　　・
+　　　　　・
+　　　　　・
+typing-extensions==3.7.4.3
+urllib3==1.26.4
+websocket-client==0.58.0
+zipp==3.4.1
+<span class="hll">[root@awx ~]# wget https://github.com/ansible/awx/archive/17.1.0.zip
+</span>--2021-05-01 22:02:45--  https://github.com/ansible/awx/archive/17.1.0.zip
+Resolving github.com (github.com)... 52.192.72.89
+Connecting to github.com (github.com)|52.192.72.89|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/ansible/awx/zip/17.1.0 [following]
+--2021-05-01 22:02:45--  https://codeload.github.com/ansible/awx/zip/17.1.0
+Resolving codeload.github.com (codeload.github.com)... 52.68.31.213
+Connecting to codeload.github.com (codeload.github.com)|52.68.31.213|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘17.1.0.zip’
+
+17.1.0.zip                              [         &lt;=&gt;                                                     ]  10.22M  5.33MB/s    in 1.9s    
+
+2021-05-01 22:02:47 (5.33 MB/s) - ‘17.1.0.zip’ saved [10715509]
+
+<span class="hll">[root@awx ~]# unzip 17.1.0.zip
+</span>Archive:  17.1.0.zip
+c1ab815c80cac96508d9779d92bc1280d0347627
+   creating: awx-17.1.0/
+  inflating: awx-17.1.0/.coveragerc  
+ extracting: awx-17.1.0/.dockerignore  
+　　　　　・
+　　　　　・
+　　　　　・
+   creating: awx-17.1.0/tools/test/
+  inflating: awx-17.1.0/tools/test/test_network_ui.sh  
+  inflating: awx-17.1.0/tox.ini      
+<span class="hll">[root@awx ~]# cd awx-17.1.0/installer
+</span><span class="hll">[root@awx installer]# openssl rand -base64 30
+</span>EjN7ns8YyIqUI9/AzDf5WBvj1VDJqo3DyajDkcwn
+<span class="hll">[root@awx installer]# grep -v '^#' inventory | grep -v '^$' &gt; mae.txt
+</span><span class="hll">[root@awx installer]# vi inventory
+</span><span class="hll">[root@awx installer]# grep -v '^#' inventory | grep -v '^$' &gt; ato.txt
+</span><span class="hll">[root@awx installer]# diff -y mae.txt ato.txt
+</span>localhost ansible_connection=local ansible_python_interpreter   localhost ansible_connection=local ansible_python_interpreter
+[all:vars]                                                      [all:vars]
+dockerhub_base=ansible                                          dockerhub_base=ansible
+awx_task_hostname=awx                                           awx_task_hostname=awx
+awx_web_hostname=awxweb                                         awx_web_hostname=awxweb
+postgres_data_dir="~/.awx/pgdocker"                           | postgres_data_dir="/var/lib/awx/pgdocker"
+host_port=80                                                    host_port=80
+host_port_ssl=443                                               host_port_ssl=443
+docker_compose_dir="~/.awx/awxcompose"                        | docker_compose_dir="/var/lib/awx/awxcompose"
+pg_username=awx                                                 pg_username=awx
+pg_password=awxpass                                             pg_password=awxpass
+pg_database=awx                                                 pg_database=awx
+pg_port=5432                                                    pg_port=5432
+                                                              &gt; pg_admin_password=postgrespass
+admin_user=admin                                                admin_user=admin
+                                                              &gt; admin_password=password
+create_preload_data=True                                        create_preload_data=True
+secret_key=awxsecret                                          | secret_key=EjN7ns8YyIqUI9/AzDf5WBvj1VDJqo3DyajDkcwn
+                                                              &gt; awx_official=true
+                                                              &gt; awx_alternate_dns_servers="8.8.8.8,8.8.4.4"
+                                                              &gt; project_data_dir=/var/lib/awx/projects
+<span class="hll">[root@awx installer]# grep -v '^#' inventory | grep -v '^$'
+</span>localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3"
+[all:vars]
+dockerhub_base=ansible
+awx_task_hostname=awx
+awx_web_hostname=awxweb
+postgres_data_dir="/var/lib/awx/pgdocker"
+host_port=80
+host_port_ssl=443
+docker_compose_dir="/var/lib/awx/awxcompose"
+pg_username=awx
+pg_password=awxpass
+pg_database=awx
+pg_port=5432
+pg_admin_password=postgrespass
+admin_user=admin
+admin_password=password
+create_preload_data=True
+secret_key=EjN7ns8YyIqUI9/AzDf5WBvj1VDJqo3DyajDkcwn
+awx_official=true
+awx_alternate_dns_servers="8.8.8.8,8.8.4.4"
+project_data_dir=/var/lib/awx/projects
+<span class="hll">[root@awx installer]# mkdir -p /var/lib/awx/pgdocker
+</span><span class="hll">[root@awx installer]# ansible-playbook -i inventory install.yml -vv
+</span>ansible-playbook 2.9.20
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.6.8 (default, Aug 24 2020, 17:57:11) [GCC 8.3.1 20191121 (Red Hat 8.3.1-5)]
+　　　　　・
+　　　　　・
+　　　　　・
+task path: /root/awx-17.1.0/installer/roles/local_docker/tasks/compose.yml:69
+changed: [localhost] =&gt; {"changed": true, "cmd": ["docker", "exec", "awx_task", "bash", "-c", "/usr/bin/awx-manage create_preload_data"], "de
+lta": "0:00:10.388430", "end": "2021-05-01 22:12:42.094493", "rc": 0, "start": "2021-05-01 22:12:31.706063", "stderr": "", "stderr_lines": []
+, "stdout": "Default organization added.\nDemo Credential, Inventory, and Job Template added.\n(changed: True)", "stdout_lines": ["Default or
+ganization added.", "Demo Credential, Inventory, and Job Template added.", "(changed: True)"]}
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP **********************************************************************************************************************************
+localhost                  : ok=21   changed=11   unreachable=0    failed=0    skipped=73   rescued=0    ignored=1   
+
+<span class="hll">[root@awx installer]# docker images
+</span>REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+redis         latest    739b59b96069   10 days ago    105MB
+postgres      12        e782ad565d74   2 weeks ago    314MB
+ansible/awx   17.1.0    599918776cf2   7 weeks ago    1.41GB
+centos        8         300e315adb2f   4 months ago   209MB
+<span class="hll">[root@awx installer]# docker ps
+</span>CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+b082bc80c1cd   ansible/awx:17.1.0   "/usr/bin/tini -- /u…"   51 seconds ago   Up 48 seconds   8052/tcp                                awx_tas
+k
+5980cea0214a   ansible/awx:17.1.0   "/usr/bin/tini -- /b…"   3 minutes ago    Up 47 seconds   0.0.0.0:80-&gt;8052/tcp, :::80-&gt;8052/tcp   awx_web
+b7a9d18fe728   postgres:12          "docker-entrypoint.s…"   3 minutes ago    Up 47 seconds   5432/tcp                                awx_pos
+tgres
+8a542d8e4831   redis                "docker-entrypoint.s…"   3 minutes ago    Up 48 seconds   6379/tcp                                awx_red
+is
+<span class="hll">[root@awx installer]# cd /var/lib/awx/awxcompose
+</span><span class="hll">[root@awx awxcompose]# docker-compose ps
+</span>    Name                  Command               State                  Ports                
+--------------------------------------------------------------------------------------------
+awx_postgres   docker-entrypoint.sh postgres    Up      5432/tcp                            
+awx_redis      docker-entrypoint.sh /usr/ ...   Up      6379/tcp                            
+awx_task       /usr/bin/tini -- /usr/bin/ ...   Up      8052/tcp                            
+awx_web        /usr/bin/tini -- /bin/sh - ...   Up      0.0.0.0:80-&gt;8052/tcp,:::80-&gt;8052/tcp
+<span class="hll">[root@awx awxcompose]# docker-compose logs -f
+</span>Attaching to awx_task, awx_web, awx_postgres, awx_redis
+awx_postgres | The files belonging to this database system will be owned by user "postgres".
+awx_postgres | This user must also own the server process.
+awx_postgres | 
+　　　　　・
+　　　　　・
+　　　　　・
+awx_task    | RESULT 2
+awx_task    | OKREADY
+awx_web     | RESULT 2
+awx_web     | OKREADY
+awx_task    | 2021-05-01 13:14:04,372 DEBUG    awx.main.dispatch task a8efc495-de98-41c1-a719-ca72ebfd7c36 starting awx.main.scheduler.tasks.
+run_task_manager(*[])
+awx_task    | 2021-05-01 13:14:04,375 DEBUG    awx.main.scheduler Running Tower task manager.
+awx_task    | 2021-05-01 13:14:04,380 DEBUG    awx.main.scheduler Starting Scheduler
+awx_task    | 2021-05-01 13:14:04,415 DEBUG    awx.main.scheduler Finishing Scheduler
+awx_task    | 2021-05-01 13:14:14,393 DEBUG    awx.main.dispatch task 05b70fb8-cc13-4ea3-868d-518e0ceba4df starting awx.main.tasks.awx_period
+ic_scheduler(*[])
+awx_task    | 2021-05-01 13:14:14,401 DEBUG    awx.main.tasks Starting periodic scheduler
+awx_task    | 2021-05-01 13:14:14,404 DEBUG    awx.main.tasks Last scheduler run was: 2021-05-01 13:13:44.548511+00:00
+awx_task    | 2021-05-01 13:14:24,404 DEBUG    awx.main.dispatch task 42a854f2-c884-4a22-ae62-edcc36d7b107 starting awx.main.scheduler.tasks.
+run_task_manager(*[])
+awx_task    | 2021-05-01 13:14:24,407 DEBUG    awx.main.scheduler Running Tower task manager.
+awx_task    | 2021-05-01 13:14:24,414 DEBUG    awx.main.scheduler Starting Scheduler
+awx_task    | 2021-05-01 13:14:24,446 DEBUG    awx.main.scheduler Finishing Scheduler
+^CERROR: Aborting.
+<span class="hll">[root@awx awxcompose]# firewall-cmd --zone=public --add-masquerade --permanent
+</span>success
+<span class="hll">[root@awx awxcompose]# firewall-cmd --permanent --add-service=http
+</span>success
+<span class="hll">[root@awx awxcompose]# firewall-cmd --permanent --add-service=https
+</span>success
+<span class="hll">[root@awx awxcompose]# firewall-cmd --reload
+</span>success
+<span class="hll">[root@awx awxcompose]# logout
+</span><span class="hll">[ansible-user@awx ~]$ logout
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="awx-install-login">
+<span id="id3"></span><h2>ログイン<a class="headerlink" href="#awx-install-login" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>ブラウザーで <strong>http://192.168.23.40</strong> を開く</p>
+<img alt="../_images/2021-05-01_22h15_48.png" src="../_images/2021-05-01_22h15_48.png"/>
+<p>名前解決ができるのなら <strong>http://awx</strong> のような指定も可能</p>
+<img alt="../_images/2021-05-01_22h17_12.png" src="../_images/2021-05-01_22h17_12.png"/>
+</li>
+<li><p><span class="guilabel">Username</span> に <strong>Admin</strong> 、 <span class="guilabel">Password</span> に <strong>password</strong>  を入力</p>
+<a class="reference internal image-reference" href="../_images/2021-05-01_22h16_22.png"><img alt="../_images/2021-05-01_22h16_22.png" src="../_images/2021-05-01_22h16_22.png" style="width: 832.0px; height: 783.9px;"/></a>
+</li>
+<li><p><span class="guilabel">Log In</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-05-01_22h16_31.png"><img alt="../_images/2021-05-01_22h16_31.png" src="../_images/2021-05-01_22h16_31.png" style="width: 832.0px; height: 783.9px;"/></a>
+</li>
+<li><p>ログイン終了　＝　AWX のダッシュボードを表示</p>
+<a class="reference internal image-reference" href="../_images/2021-05-01_22h16_49.png"><img alt="../_images/2021-05-01_22h16_49.png" src="../_images/2021-05-01_22h16_49.png" style="width: 832.0px; height: 783.9px;"/></a>
+</li>
+</ol>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../collection-index/collection-index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">コレクション インデックス</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="awx.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">AWX</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">AWX をインストール</a><ul>
+<li><a class="reference internal" href="#awx-install-command">実行コマンド</a></li>
+<li><a class="reference internal" href="#awx-install-log">実行ログ</a></li>
+<li><a class="reference internal" href="#awx-install-login">ログイン</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

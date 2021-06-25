@@ -1,0 +1,30 @@
+.. _loop-hensu-no-siyo-vars-section:
+
+**************************************************
+vars セクション
+**************************************************
+今回は vars セクション内で ``vars`` ディレクティブを使用して変数と値を定義しました。定義する変数と値を ``vars_files`` ディレクティブで別ファイルにしても結果は同じです。
+
+.. _loop-hensu-no-siyo-vars-section-mapping-sequence:
+
+マッピングの中にシーケンスをネスト
+==================================================
+.. literalinclude:: ./yaml/user3.yml
+   :language: yaml
+   :emphasize-lines: 6-10, 15, 17
+
+.. literalinclude:: ./log/user3.log
+   :language: none
+   :emphasize-lines: 6-8
+
+.. _loop-hensu-no-siyo-vars-section-mapping-sequence-mapping:
+
+マッピングの中にシーケンスをネストし、シーケンスの中にマッピングをネスト
+========================================================================
+.. literalinclude:: ./yaml/user4.yml
+   :language: yaml
+   :emphasize-lines: 6-13, 18-19, 21
+
+.. literalinclude:: ./log/user4.log
+   :language: none
+   :emphasize-lines: 6-8

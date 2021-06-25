@@ -1,0 +1,15 @@
+---
+- name: Example of error handling usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Checking file differences
+      ansible.builtin.command: diff file1 file2
+      ignore_errors: yes
+      ignore_unreachable: yes
+      register: result_of_diff
+
+    - name: Display the contents of register variables
+      ansible.builtin.debug:
+        var: result_of_diff

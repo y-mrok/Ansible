@@ -1,0 +1,29 @@
+[ansible-user@hydrogen ~]$ sudo cat /etc/shadow
+root:$6$6dxrGdTfoyB9vCb3$FKqh7ZA0OeykRG1NyWU.Vlwc/yFp66hXIuoFRIXGo6foiVA42lC0lfqi8LS1hTanhB2Nezzm3BVKnRD0IVhrD.::0:99999:7:::
+bin:*:18397:0:99999:7:::
+daemon:*:18397:0:99999:7:::
+adm:*:18397:0:99999:7:::
+lp:*:18397:0:99999:7:::
+sync:*:18397:0:99999:7:::
+shutdown:*:18397:0:99999:7:::
+halt:*:18397:0:99999:7:::
+mail:*:18397:0:99999:7:::
+operator:*:18397:0:99999:7:::
+games:*:18397:0:99999:7:::
+ftp:*:18397:0:99999:7:::
+nobody:*:18397:0:99999:7:::
+dbus:!!:18669::::::
+systemd-coredump:!!:18669::::::
+systemd-resolve:!!:18669::::::
+tss:!!:18669::::::
+polkitd:!!:18669::::::
+unbound:!!:18669::::::
+sssd:!!:18669::::::
+chrony:!!:18669::::::
+sshd:!!:18669::::::
+rngd:!!:18669::::::
+ansible-user:$6$eWqTq1nMsEi5bzr.$zei5nXm8pTJGxqwHyTYrD5NnV5U/OOnlX57sh5D2vkXowdhZZG/XjT/YMLNmtSFmYD/.wxClx9QfnAobLcHxk1:18681:0:99999:7:::
+taro:$6$J1O808Y7jgsKy//W$tOAwUX3zpyMGNrV3QHZ6gbRcs5A6KcnoYf0rjzaGoYg8d4V8faiSYVII3yTwPv36tGTdMZbKBIo52iu4XPSXw0:18750:0:99999:7:::
+jiro:$6$VR.D.bU8c5BYwzoe$Cxr9HcA707vNDtCKQbVZi0LqGPhdrHQdjGo3Ok2UUePrAbgYm.iEGM1J4SNlH6MJV8AIxAGLSOgABSAcWzlWy0:18750:0:99999:7:::
+hanako:$6$fcLQsgVhgIhl.PYK$eybUeqlG91Q6.dTVnotsZE80ClWkAebvGPxeXDonJB1TlCqJm1/N4Y6vMTql.aQ8n5c.ZrAFTbjUp00Q0NY4y0:18750:0:99999:7:::
+[ansible-user@hydrogen ~]$ 

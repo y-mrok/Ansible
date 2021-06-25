@@ -1,0 +1,36 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error6.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+
+TASK [Install Apache only on CentOS] *****************************************************************************************************************
+changed: [centos83]
+
+TASK [Display the contents of register variables] ****************************************************************************************************
+ok: [centos83] => {
+    "result_of_dnf": {
+        "changed": true,
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "results": [
+            "Installed: httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64",
+            "Installed: httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch",
+            "Installed: centos-logos-httpd-80.5-2.el8.noarch",
+            "Installed: httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64",
+            "Installed: apr-1.6.3-11.el8.x86_64",
+            "Installed: apr-util-1.6.1-6.el8.x86_64",
+            "Installed: mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86_64",
+            "Installed: apr-util-bdb-1.6.1-6.el8.x86_64",
+            "Installed: mailcap-2.1.48-3.el8.noarch",
+            "Installed: apr-util-openssl-1.6.1-6.el8.x86_64"
+        ]
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

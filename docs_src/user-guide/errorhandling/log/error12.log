@@ -1,0 +1,23 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts2.yml error12.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [First processing] ******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+ok: [nitrogen] => {
+    "msg": "Hello world!"
+}
+
+TASK [Checking file differences] *********************************************************************************************************************
+fatal: [nitrogen]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.004481", "end": "2021-04-06 20:50:53.592246", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-06 20:50:53.587765", "stderr": "diff: file1: No such file or directory", "stderr_lines": ["diff: file1: No such file or directory"], "stdout": "", "stdout_lines": []}
+changed: [hydrogen]
+
+NO MORE HOSTS LEFT ***********************************************************************************************************************************
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+nitrogen                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

@@ -1,0 +1,107 @@
+---
+- name: Example of using roles
+  hosts: all
+
+  vars:
+    http_port: 8080
+    http_user: apache
+    http_group: apache
+    http_mode: "0775"
+    http_packages:
+      - httpd
+      - httpd-tools
+      - httpd-devel
+      - httpd-manual
+
+  tasks:
+    #
+    # Installing Apache on CentOS
+    #
+    - name: Configure basic settings for the Web server.
+      block:
+
+        - name: Install the latest version of the httpd package.
+          ansible.builtin.dnf:
+            name: "{{ http_packages }}"
+            state: latest
+          notify:
+            - Installed the httpd package
+
+        - name: Set the server name for Apache.
+          ansible.builtin.lineinfile:
+            path: "/etc/httpd/conf/httpd.conf"
+            regexp: "^#ServerName"
+            line: "ServerName {{ ansible_facts['fqdn'] }}:{{ http_port }}"
+            state: present
+          notify:
+            -  Edit the configuration file
+
+        - name: Set the http port for httpd.conf.
+          ansible.builtin.lineinfile:
+            path: "/etc/httpd/conf/httpd.conf"
+            regexp: "^Listen "
+            line: "Listen {{ http_port }}"
+            state: present
+          notify:
+            -  Edit the configuration file
+
+        - name: Change the group and user for the /var/www/html directory.
+          ansible.builtin.file:
+            path: "/var/www/html"
+            owner: "{{ http_user }}"
+            group: "{{ http_group }}"
+            mode: "{{ http_mode }}"
+            state: directory
+
+        - name: Change the group and user for the /var/www/cgi-bin directory.
+          ansible.builtin.file:
+            path: "/var/www/cgi-bin"
+            owner: "{{ http_user }}"
+            group: "{{ http_group }}"
+            mode: "{{ http_mode }}"
+            state: directory
+
+        - name: Copying content.
+          ansible.builtin.copy:
+            src: "~/example/index.html"
+            dest: "/var/www/html/"
+            owner: "{{ http_user }}"
+            group: "{{ http_group }}"
+            mode: "{{ http_mode }}"
+
+        - name: Open a hole in the firewall of the CentOS management node for the http port.
+          ansible.posix.firewalld:
+            port: "{{ http_port }}/tcp"
+            zone: public
+            permanent: yes
+            state: enabled
+          notify:
+            - Reload firewalld
+
+      become: yes
+
+  handlers:
+    - name: Syntax check of httpd.conf.
+      ansible.builtin.command: apachectl configtest 
+      listen: 
+        - Edit the configuration file
+      become: yes
+
+    - name: Restart or start httpd.service.
+      ansible.builtin.systemd:
+        name: httpd.service
+        enabled: yes
+        state: restarted
+      listen: 
+        - Installed the httpd package
+        - Edit the configuration file
+      become: yes
+
+    - name: Reload the firewalld configuration.
+      ansible.builtin.systemd:
+        name: firewalld.service
+        enabled: yes
+        state: reloaded
+      become: yes
+      listen: 
+        - Reload firewalld

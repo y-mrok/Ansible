@@ -1,0 +1,18 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Convert to integer type
+      ansible.builtin.debug:
+        msg: "Cast the {{ item }} set in item to an integer type. -> {{ item | int }}"
+      loop: "{{ values }}"
+      vars:
+        values:
+          - 2.4
+          - 3.5
+          - 100.0
+          - "123"
+          - '248.7'
+          - abc

@@ -1,0 +1,87 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts3.yml error13.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [First processing] ******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+ok: [helium] => {
+    "msg": "Hello world!"
+}
+ok: [lithium] => {
+    "msg": "Hello world!"
+}
+ok: [beryllium] => {
+    "msg": "Hello world!"
+}
+ok: [boron] => {
+    "msg": "Hello world!"
+}
+ok: [carbon] => {
+    "msg": "Hello world!"
+}
+ok: [oxygen] => {
+    "msg": "Hello world!"
+}
+ok: [nitrogen] => {
+    "msg": "Hello world!"
+}
+ok: [fluorine] => {
+    "msg": "Hello world!"
+}
+ok: [neon] => {
+    "msg": "Hello world!"
+}
+
+TASK [Checking the file, part 1] *********************************************************************************************************************
+changed: [boron]
+changed: [beryllium]
+fatal: [helium]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/libexec/platform-python"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.004810", "end": "2021-04-07 20:57:34.165837", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-07 20:57:34.161027", "stderr": "diff: file1: No such file or directory\ndiff: file2: No such file or directory", "stderr_lines": ["diff: file1: No such file or directory", "diff: file2: No such file or directory"], "stdout": "", "stdout_lines": []}
+changed: [lithium]
+changed: [hydrogen]
+fatal: [carbon]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.010575", "end": "2021-04-07 20:57:35.165557", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-07 20:57:35.154982", "stderr": "diff: file1: そのようなファイルやディレクトリはありません\ndiff: file2: そのようなファイルやディレクトリはありません", "stderr_lines": ["diff: file1: そのようなファイルやディレクトリはありません", "diff: file2: そのようなファイルやディレクトリはありません"], "stdout": "", "stdout_lines": []}
+fatal: [oxygen]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.005020", "end": "2021-04-07 20:57:35.662315", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-07 20:57:35.657295", "stderr": "diff: file1: No such file or directory\ndiff: file2: No such file or directory", "stderr_lines": ["diff: file1: No such file or directory", "diff: file2: No such file or directory"], "stdout": "", "stdout_lines": []}
+changed: [neon]
+changed: [fluorine]
+changed: [nitrogen]
+
+TASK [Checking the file, part 2] *********************************************************************************************************************
+changed: [boron]
+changed: [beryllium]
+changed: [nitrogen]
+fatal: [hydrogen]: FAILED! => {"changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.003145", "end": "2021-04-07 20:57:36.464131", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2021-04-07 20:57:36.460986", "stderr": "", "stderr_lines": [], "stdout": "1c1\n< abc\n---\n> xyz", "stdout_lines": ["1c1", "< abc", "---", "> xyz"]}
+changed: [lithium]
+changed: [neon]
+fatal: [fluorine]: FAILED! => {"changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.004158", "end": "2021-04-07 20:57:36.720710", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2021-04-07 20:57:36.716552", "stderr": "", "stderr_lines": [], "stdout": "1c1\n< 123\n---\n> abc", "stdout_lines": ["1c1", "< 123", "---", "> abc"]}
+
+TASK [Last processing] *******************************************************************************************************************************
+ok: [lithium] => {
+    "msg": "Hello world!"
+}
+ok: [beryllium] => {
+    "msg": "Hello world!"
+}
+ok: [boron] => {
+    "msg": "Hello world!"
+}
+ok: [nitrogen] => {
+    "msg": "Hello world!"
+}
+ok: [neon] => {
+    "msg": "Hello world!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+beryllium                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+boron                      : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+carbon                     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+fluorine                   : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+helium                     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+hydrogen                   : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+lithium                    : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+neon                       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+nitrogen                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+oxygen                     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

@@ -1,0 +1,10 @@
+# imports/imp_task5.yml
+---
+- name: role tasks No.1
+  ansible.builtin.debug:
+- name: role tasks No.2
+  ansible.builtin.debug:
+  tags: job2
+- name: role tasks No.3
+  ansible.builtin.debug:
+  tags: job3

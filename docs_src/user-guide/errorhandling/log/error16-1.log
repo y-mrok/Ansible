@@ -1,0 +1,22 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error16.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [Repeat for as many accounts as you need.] ******************************************************************************************************
+included: /home/piyo/example/err/include/user-add.yml for hydrogen => (item=ansible-user)
+included: /home/piyo/example/err/include/user-add.yml for hydrogen => (item=taro)
+included: /home/piyo/example/err/include/user-add.yml for hydrogen => (item=jiro)
+
+TASK [Create the specified user account when it has not yet been created.] ***************************************************************************
+ok: [hydrogen]
+
+TASK [Create the specified user account when it has not yet been created.] ***************************************************************************
+changed: [hydrogen]
+
+TASK [Create the specified user account when it has not yet been created.] ***************************************************************************
+changed: [hydrogen]
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

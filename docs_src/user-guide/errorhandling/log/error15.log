@@ -1,0 +1,65 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts3.yml error15.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [First processing] ******************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+ok: [helium] => {
+    "msg": "Hello world!"
+}
+ok: [lithium] => {
+    "msg": "Hello world!"
+}
+ok: [beryllium] => {
+    "msg": "Hello world!"
+}
+ok: [boron] => {
+    "msg": "Hello world!"
+}
+ok: [carbon] => {
+    "msg": "Hello world!"
+}
+ok: [oxygen] => {
+    "msg": "Hello world!"
+}
+ok: [nitrogen] => {
+    "msg": "Hello world!"
+}
+ok: [fluorine] => {
+    "msg": "Hello world!"
+}
+ok: [neon] => {
+    "msg": "Hello world!"
+}
+
+TASK [Checking the file, part 1] *********************************************************************************************************************
+changed: [boron]
+changed: [beryllium]
+fatal: [helium]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/libexec/platform-python"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.004093", "end": "2021-04-07 21:46:02.473197", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-07 21:46:02.469104", "stderr": "diff: file1: No such file or directory\ndiff: file2: No such file or directory", "stderr_lines": ["diff: file1: No such file or directory", "diff: file2: No such file or directory"], "stdout": "", "stdout_lines": []}
+changed: [lithium]
+changed: [hydrogen]
+fatal: [carbon]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.012526", "end": "2021-04-07 21:46:03.527106", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-07 21:46:03.514580", "stderr": "diff: file1: そのようなファイルやディレクトリはありません\ndiff: file2: そのようなファイルやディレクトリはありません", "stderr_lines": ["diff: file1: そのようなファイルやディレクトリはありません", "diff: file2: そのようなファイルやディレクトリはありません"], "stdout": "", "stdout_lines": []}
+fatal: [oxygen]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "changed": true, "cmd": ["diff", "file1", "file2"], "delta": "0:00:00.004551", "end": "2021-04-07 21:46:04.084996", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2021-04-07 21:46:04.080445", "stderr": "diff: file1: No such file or directory\ndiff: file2: No such file or directory", "stderr_lines": ["diff: file1: No such file or directory", "diff: file2: No such file or directory"], "stdout": "", "stdout_lines": []}
+changed: [neon]
+changed: [nitrogen]
+changed: [fluorine]
+
+NO MORE HOSTS LEFT ***********************************************************************************************************************************
+
+NO MORE HOSTS LEFT ***********************************************************************************************************************************
+
+PLAY RECAP *******************************************************************************************************************************************
+beryllium                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+boron                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+carbon                     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+fluorine                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+helium                     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+hydrogen                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lithium                    : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+neon                       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+nitrogen                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+oxygen                     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

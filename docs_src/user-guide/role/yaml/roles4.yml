@@ -1,0 +1,12 @@
+---
+- name: Example of using roles
+  hosts: all
+
+  tasks:
+    - name: The ansible.builtin.include_role module with the loop directive set
+      ansible.builtin.include_role:
+        name: loop-test2
+      loop:
+        - 1
+        - 2
+        - 3

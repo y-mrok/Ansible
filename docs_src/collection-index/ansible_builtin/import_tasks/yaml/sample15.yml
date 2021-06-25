@@ -1,0 +1,16 @@
+- name: Example of "ansible.builtin.import_tasks" usage
+  hosts: all
+  gather_facts: no
+
+  vars:
+    import_filename: ./imports/imp_task1.yml
+
+  tasks:
+    - name: Message No.1
+      ansible.builtin.debug:
+    
+    - name: import tasks
+      ansible.builtin.import_tasks: "{{ import_filename }}"
+
+    - name: Message No.2
+      ansible.builtin.debug:

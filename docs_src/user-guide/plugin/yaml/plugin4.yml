@@ -1,0 +1,9 @@
+---
+- name: Examples of plugin usage.
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Get a user name for the product version
+      ansible.builtin.debug:
+        msg: "{{ lookup('ini', 'user section=production file=testfile.ini') }}"

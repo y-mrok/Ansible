@@ -1,0 +1,19 @@
+tasks:
+  - name: Install Apache
+    ansible.builtin.dnf:
+      name: httpd
+      state: present
+    become: yes
+  - name: Enabling Apache services and starting services at startup
+    ansible.builtin.systemd:
+      name: httpd.service
+      state: started
+      enabled: yes
+    become: yes
+  - name: Open up the http service in the firewall
+    ansible.posix.firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+      immediate: yes
+    become: yes

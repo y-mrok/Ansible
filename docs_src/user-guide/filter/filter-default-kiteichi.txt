@@ -1,0 +1,59 @@
+.. _filter-default-kiteichi:
+
+**************************************************
+変数が未定義時の既定値を設定
+**************************************************
+変数の参照時にその変数が未定義のとき、変数の既定値を設定します。
+
+.. _filter-default-kiteichi-koubun:
+
+構文
+==================================================
+.. code-block:: yaml
+
+   変数 | default(既定値)
+
+.. _filter-default-kiteichi-rei:
+
+使用例
+==================================================
+管理対象ノードにユーザーアカウントを登録するプレイです。
+
+.. _filter-default-kiteichi-rei-1:
+
+default フィルターを使用しない場合
+--------------------------------------------------
+.. literalinclude:: ./yaml/filter1.yml
+   :language: yaml
+
+実行ログです。ループの 2 回目で item.group 変数が存在しないので実行時エラーが発生しました。
+
+.. literalinclude:: ./log/filter1.log
+   :language: none
+   :emphasize-lines: 6-7
+
+管理対象ノードの :file:`/etc/passwd` ファイルの内容です。ループの 1 回目までは登録されています。 2 回目は実行時エラーが発生したので未登録です。
+
+.. literalinclude:: ./log/filter1-1.log
+   :language: none
+   :emphasize-lines: 26
+
+.. _filter-default-kiteichi-rei-2:
+
+default フィルターを使用した場合
+--------------------------------------------------
+.. literalinclude:: ./yaml/filter2.yml
+   :language: yaml
+   :emphasize-lines: 10
+
+実行ログです。ループの 2 回目で item.group 変数が存在しないので ``default`` フィルターで指定した 'staff' を設定したとして実行されました。
+
+.. literalinclude:: ./log/filter2.log
+   :language: none
+   :emphasize-lines: 7
+
+管理対象ノードの :file:`/etc/passwd` ファイルと file:`/etc/group` フォイルの内容です。ループの 2 回目で staff グループを指定しています。
+
+.. literalinclude:: ./log/filter2-1.log
+   :language: none
+   :emphasize-lines: 27, 73

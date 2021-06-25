@@ -1,0 +1,13 @@
+.
+├── hosts.yml
+├── roles
+│   └── basic_webserver_configuration
+│       ├── defaults
+│       │   └── main.yml
+│       ├── files
+│       │   └── index.html
+│       ├── handlers
+│       │   └── main.yml
+│       └── tasks
+│           └── main.yml
+└── webservers2.yml

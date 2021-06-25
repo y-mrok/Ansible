@@ -1,0 +1,59 @@
+.. _account-wo-sakusei:
+
+**************************************************
+アカウントを作成
+**************************************************
+管理対象ノードにアカウントを作成するコマンドです。
+
+.. code-block:: none
+
+   $ ssh <管理対象ノードの IP アドレス> -l root
+   # useradd ansible-user
+   # passwd ansible-user
+   # visudo -f /etc/sudoers.d/ansible-user
+   # ls -l /etc/sudoers.d
+   # cat /etc/sudoers.d/ansible-user
+   # logout
+
+:file:`/etc/sudoers.d/ansible-user` の内容です。
+
+.. code-block:: none
+
+   ansible-user ALL=(ALL:ALL) NOPASSWD: ALL
+
+上記コマンドの実行ログです。設定したパスワードは fo&Ebr=3hucrlpeclspE です。
+
+.. code-block:: none
+
+   piyo@vmpc:~$ ssh 192.168.23.11 -l root
+   Warning: Permanently added '192.168.23.11' (ECDSA) to the list of known hosts.
+   root@192.168.23.11's password: 
+   Last login: Sat Feb 13 14:27:15 2021 from 192.168.23.224
+   [root@hydrogen ~]# useradd ansible-user
+   [root@hydrogen ~]# passwd ansible-user
+   Changing password for user ansible-user.
+   New password: 
+   Retype new password: 
+   passwd: all authentication tokens updated successfully.
+   [root@hydrogen ~]# visudo -f /etc/sudoers.d/ansible-user
+   [root@hydrogen ~]# ls -l /etc/sudoers.d
+   total 4
+   -r--r-----. 1 root root 41 Feb 13 15:36 ansible-user
+   [root@hydrogen ~]# cat /etc/sudoers.d/ansible-user
+   ansible-user ALL=(ALL:ALL) NOPASSWD: ALL
+   [root@hydrogen ~]# logout
+   Connection to 192.168.23.11 closed.
+   piyo@vmpc:~$ 
+
+アカウント ansible-user で接続テストのログです。
+
+.. code-block:: none
+
+   piyo@vmpc:~$ ssh 192.168.23.11 -l ansible-user
+   Warning: Permanently added '192.168.23.11' (ECDSA) to the list of known hosts.
+   ansible-user@192.168.23.11's password: 
+   [ansible-user@hydrogen ~]$ whoami
+   ansible-user
+   [ansible-user@hydrogen ~]$ logout
+   Connection to 192.168.23.11 closed.
+   piyo@vmpc:~$

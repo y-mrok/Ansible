@@ -1,0 +1,18 @@
+---
+- name: Example of loop usage
+  hosts: hydrogen
+  gather_facts: no
+
+  tasks:
+  - name: Install the latest version of the Apache package
+    ansible.builtin.dnf:
+      name: "{{ item }}"
+      state: latest
+    loop: "{{ packages }}"
+    vars:
+      packages:
+        - httpd
+        - httpd-tools
+        - httpd-devel
+        - httpd-manual
+    become: yes

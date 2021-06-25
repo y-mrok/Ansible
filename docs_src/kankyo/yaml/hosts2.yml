@@ -1,0 +1,133 @@
+# hosts.yml
+---
+all:
+  vars:
+    ansible_user: vagrant
+    ansible_password: vagrant
+  children:
+    centos8:
+      hosts:
+        hydrogen:
+          ansible_host: 192.168.23.11
+        helium:
+          ansible_host: 192.168.23.12
+        lithium:
+          ansible_host: 192.168.23.13
+    centos7:
+      hosts:
+        beryllium:
+          ansible_host: 192.168.23.14
+        boron:
+          ansible_host: 192.168.23.15
+        carbon:
+          ansible_host: 192.168.23.16
+    ubuntu2004:
+      hosts:
+        nitrogen:
+          ansible_host: 192.168.23.17
+        oxygen:
+          ansible_host: 192.168.23.18
+        fluorine:
+          ansible_host: 192.168.23.19
+    ubuntu1804:
+      hosts:
+        neon:
+          ansible_host: 192.168.23.20
+        sodium:
+          ansible_host: 192.168.23.21
+        magnesium:
+          ansible_host: 192.168.23.22
+    debian10:
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+      hosts:
+        aluminum:
+          ansible_host: 192.168.23.23
+        silicon:
+          ansible_host: 192.168.23.24
+        phosphorus:
+          ansible_host: 192.168.23.25
+    debian9:
+      hosts:
+        sulfur:
+          ansible_host: 192.168.23.26
+        chlorine:
+          ansible_host: 192.168.23.27
+        argon:
+          ansible_host: 192.168.23.28
+    almalinux8:
+      vars:
+        ansible_python_interpreter: /usr/libexec/platform-python
+      hosts:
+        nickel:
+          ansible_host: 192.168.23.38
+        copper:
+          ansible_host: 192.168.23.37
+        zinc:
+          ansible_host: 192.168.23.36
+    oarlcelinux8:
+      hosts:
+        gallium:
+          ansible_host: 192.168.23.42
+        germanium:
+          ansible_host: 192.168.23.43
+        arsenic:
+          ansible_host: 192.168.23.44
+    oarlcelinux7:
+      hosts:
+        selenium:
+          ansible_host: 192.168.23.45
+        vabromine:
+          ansible_host: 192.168.23.46
+        krypton:
+          ansible_host: 192.168.23.47
+    opensuse15:
+      vars:
+        ansible_python_interpreter: /usr/bin/python3.6
+      hosts:
+        potassium:
+          ansible_host: 192.168.23.29
+        calcium:
+          ansible_host: 192.168.23.30
+        scandium:
+          ansible_host: 192.168.23.31
+    fedora33:
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+      hosts:
+        titanium:
+          ansible_host: 192.168.23.32
+        vanadium:
+          ansible_host: 192.168.23.33
+        chromium:
+          ansible_host: 192.168.23.34
+    freebsd12:
+      vars:
+        ansible_python_interpreter: /usr/local/bin/python3.8
+      hosts:
+        manganese:
+          ansible_host: 192.168.23.35
+        rubidium:
+          ansible_host: 192.168.23.48
+        strontium:
+          ansible_host: 192.168.23.49
+    freebsd11:
+      vars:
+        ansible_python_interpreter: /usr/local/bin/python3.8
+      hosts:
+        yttrium:
+          ansible_host: 192.168.23.50
+        zirconium:
+          ansible_host: 192.168.23.51
+        niobium:
+          ansible_host: 192.168.23.52
+    arch:
+      vars:
+        ansible_python_interpreter: /usr/bin/python
+      hosts:
+        molybdenum:
+          ansible_host: 192.168.23.53
+        technetium:
+          ansible_host: 192.168.23.54
+        ruthenium:
+          ansible_host: 192.168.23.55

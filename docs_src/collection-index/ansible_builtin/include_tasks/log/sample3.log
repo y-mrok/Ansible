@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/collection$ ansible-playbook -i hosts.yml sample3.yml 
+
+PLAY [Example of "ansible.builtin.include_tasks" usage] **********************************************************************************************
+
+TASK [Message No.1] **********************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+TASK [Include tasks] *********************************************************************************************************************************
+fatal: [hydrogen]: FAILED! => {"reason": "couldn't resolve module/action 'ansible.builtin.debugging'. This often indicates a misspelling, missing collection, or incorrect module path.\n\nThe error appears to be in '/home/piyo/example/collection/includes/inc_task3.yml': line 7, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: List of tasks to include No.2\n  ^ here\n"}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/collection$ 

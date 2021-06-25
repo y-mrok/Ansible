@@ -1,0 +1,82 @@
+piyo@vmpc:~/example/role$ ansible-playbook -i hosts.yml roles4.yml
+
+PLAY [Example of using roles] ************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [hydrogen]
+
+TASK [The ansible.builtin.include_role module with the loop directive set] ***************************************************************************
+
+TASK [loop-test3 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test3 : Display the contents of the variable item] ****************************************************************************************
+[WARNING]: The loop variable 'item' is already in use. You should set the `loop_var` value in the `loop_control` option for the task to something
+else to avoid variable collisions and unexpected behavior.
+ok: [hydrogen] => (item=A) => {
+    "msg": "The value of item is A."
+}
+ok: [hydrogen] => (item=B) => {
+    "msg": "The value of item is B."
+}
+ok: [hydrogen] => (item=C) => {
+    "msg": "The value of item is C."
+}
+
+TASK [loop-test3 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+TASK [loop-test3 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test3 : Display the contents of the variable item] ****************************************************************************************
+[WARNING]: The loop variable 'item' is already in use. You should set the `loop_var` value in the `loop_control` option for the task to something
+else to avoid variable collisions and unexpected behavior.
+ok: [hydrogen] => (item=A) => {
+    "msg": "The value of item is A."
+}
+ok: [hydrogen] => (item=B) => {
+    "msg": "The value of item is B."
+}
+ok: [hydrogen] => (item=C) => {
+    "msg": "The value of item is C."
+}
+
+TASK [loop-test3 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+TASK [loop-test3 : Display the start message] ********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Start!"
+}
+
+TASK [loop-test3 : Display the contents of the variable item] ****************************************************************************************
+[WARNING]: The loop variable 'item' is already in use. You should set the `loop_var` value in the `loop_control` option for the task to something
+else to avoid variable collisions and unexpected behavior.
+ok: [hydrogen] => (item=A) => {
+    "msg": "The value of item is A."
+}
+ok: [hydrogen] => (item=B) => {
+    "msg": "The value of item is B."
+}
+ok: [hydrogen] => (item=C) => {
+    "msg": "The value of item is C."
+}
+
+TASK [loop-test3 : Display an exit message] **********************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "End!"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/role$ 

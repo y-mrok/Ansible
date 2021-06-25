@@ -1,0 +1,41 @@
+.. _jyoken-is-defined-rei:
+
+**************************************************
+使用例
+**************************************************
+is defined / is not defind の使用例です。使用するインベントリです。
+
+.. literalinclude:: ./yaml/hosts2.yml
+   :language: yaml
+
+インベントリ内のホスト名は OS のディストリビューション名 + バージョンです。
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1, 2
+
+   * - インベントリ内のホスト名
+     - ディストリビューション名 + バージョン
+   * - freebsd122
+     - FreeBSD 12.2
+   * - fedora33
+     - Fedora 33
+
+ファクト変数 "ansible_distribution_file_path" はディストリビューション情報が記録されているファイルのパスが設定されます。 Linux 系のディストリビューションで存在するこの変数は FreeBSD に存在しません。したがって、次のプレイは管理対象ノード freebsd122 がタスクを実行するとエラー（ fatal ）が発生します。
+
+.. literalinclude:: ./yaml/when13.yml
+   :language: none
+
+.. literalinclude:: ./log/when13.log
+   :language: none
+
+このようなときに ``is defined`` を使用して変数が存在するときだけにタスクを実行するよう設定します。
+
+.. literalinclude:: ./yaml/when14.yml
+   :language: none
+   :emphasize-lines: 9
+
+ファクト変数 "ansible_distribution_file_path" が存在しない管理対象ノード freebsd122 はタスクの実行を飛ばし（ skipping ）ます。
+
+.. literalinclude:: ./log/when14.log
+   :language: none

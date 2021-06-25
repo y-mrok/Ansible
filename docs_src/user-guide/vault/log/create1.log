@@ -1,0 +1,3 @@
+piyo@vmpc:~/example/vault$ ansible-vault create host_vars/helium.yml
+New Vault password: 
+Confirm New Vault password: 

@@ -1,0 +1,80 @@
+.. _fukusu-no-invnetory-file-wo-sitei:
+
+**************************************************
+複数のインベントリファイルを指定
+**************************************************
+:command:`ansible` コマンド、 :command:`ansible-plyabook` コマンド、 :command:`ansible-inventory` コマンドはインベントリファイルを ``-i`` パラメーターで指定します。この ``-i`` パラメーターを複数指定することで、複数のインベントリファイルを指定します。
+
+.. literalinclude:: ./yaml/hosts10.yml
+   :language: yaml
+
+上記のインベントリファイルをグループごとに分割しました。
+
+- :file:`hosts.yml`
+
+   .. literalinclude:: ./yaml/hosts11.yml
+      :language: yaml
+
+- :file:`db.yml`
+
+   .. literalinclude:: ./yaml/db.yml
+      :language: yaml
+
+- :file:`db.yml`
+
+   .. literalinclude:: ./yaml/web.yml
+      :language: yaml
+
+各ファイルの配置です。
+
+.. code-block:: none
+
+   .
+   ├── db.yml
+   ├── group_vars
+   │   ├── all.yml
+   │   ├── dbservers.yml
+   │   └── webservers.yml
+   ├── host_vars
+   │   ├── helium.yml
+   │   ├── hydrogen.yml
+   │   └── lithium.yml
+   ├── hosts.yml
+   └── web.yml
+
+
+``-i`` パラメーターで分割後の 3 つのインベントリファイルのそれぞれを指定します。
+
+.. code-block:: none
+
+   piyo@vmpc:~/example/ex2$ ansible-inventory -i hosts.yml -i web.yml -i db.yml --list --yaml
+   all:
+     children:
+       dbservers:
+         hosts:
+           lithium:
+             ansible_host: 192.168.23.13
+             ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+             ansible_user: ansible-user
+             db_pass: tiger
+             db_port: 1521
+             db_user: scott
+             http_port: 8080
+             locate_timezone: Asia/Tokyo
+       ungrouped:
+         hosts:
+           hydrogen:
+             ansible_host: 192.168.23.11
+             ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+             ansible_user: ansible-user
+             locate_timezone: Asia/Tokyo
+       webservers:
+         hosts:
+           helium:
+             ansible_host: 192.168.23.12
+             ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+             ansible_user: ansible-user
+             http_port: 8080
+             locate_timezone: Asia/Tokyo
+           lithium: {}
+   piyo@vmpc:~/example/ex2$ 

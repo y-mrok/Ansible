@@ -1,0 +1,21 @@
+---
+- name: Examples of tag usage
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: task-1
+      ansible.builtin.debug:
+    - name: Use block
+      block:
+        - name: task-2 (block)
+          ansible.builtin.debug:
+          tags: job1
+        - name: task-3 (block)
+          ansible.builtin.debug:
+        - name: task-4 (block)
+          ansible.builtin.debug:
+          tags: job2
+    - name: task-5
+      ansible.builtin.debug:
+      tags: job1

@@ -1,0 +1,94 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter6.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Comparison] ************************************************************************************************************************************
+ok: [hydrogen] => (item=1) => {
+    "msg": "Type of 1 -> int"
+}
+ok: [hydrogen] => (item=-1) => {
+    "msg": "Type of -1 -> int"
+}
+ok: [hydrogen] => (item=1) => {
+    "msg": "Type of 1 -> str"
+}
+ok: [hydrogen] => (item=-1) => {
+    "msg": "Type of -1 -> str"
+}
+ok: [hydrogen] => (item=3.14) => {
+    "msg": "Type of 3.14 -> float"
+}
+ok: [hydrogen] => (item=-3.14) => {
+    "msg": "Type of -3.14 -> float"
+}
+ok: [hydrogen] => (item=a) => {
+    "msg": "Type of a -> str"
+}
+ok: [hydrogen] => (item=abc) => {
+    "msg": "Type of abc -> str"
+}
+ok: [hydrogen] => (item=xyz) => {
+    "msg": "Type of xyz -> str"
+}
+ok: [hydrogen] => (item=True) => {
+    "msg": "Type of True -> bool"
+}
+ok: [hydrogen] => (item=yes) => {
+    "msg": "Type of yes -> str"
+}
+ok: [hydrogen] => (item=False) => {
+    "msg": "Type of False -> bool"
+}
+ok: [hydrogen] => (item=no) => {
+    "msg": "Type of no -> str"
+}
+ok: [hydrogen] => (item=True) => {
+    "msg": "Type of True -> bool"
+}
+ok: [hydrogen] => (item=true) => {
+    "msg": "Type of true -> str"
+}
+ok: [hydrogen] => (item=False) => {
+    "msg": "Type of False -> bool"
+}
+ok: [hydrogen] => (item=false) => {
+    "msg": "Type of false -> str"
+}
+ok: [hydrogen] => (item=True) => {
+    "msg": "Type of True -> bool"
+}
+ok: [hydrogen] => (item=yes) => {
+    "msg": "Type of yes -> str"
+}
+ok: [hydrogen] => (item=False) => {
+    "msg": "Type of False -> bool"
+}
+ok: [hydrogen] => (item=no) => {
+    "msg": "Type of no -> str"
+}
+ok: [hydrogen] => (item=None) => {
+    "msg": "Type of  -> NoneType"
+}
+ok: [hydrogen] => (item=null) => {
+    "msg": "Type of null -> str"
+}
+ok: [hydrogen] => (item=291) => {
+    "msg": "Type of 291 -> int"
+}
+ok: [hydrogen] => (item=302) => {
+    "msg": "Type of 302 -> int"
+}
+ok: [hydrogen] => (item={'name': 'taro'}) => {
+    "msg": "Type of {'name': 'taro'} -> dict"
+}
+ok: [hydrogen] => (item={'name': 'jiro', 'group': 'staff'}) => {
+    "msg": "Type of {'name': 'jiro', 'group': 'staff'} -> dict"
+}
+ok: [hydrogen] => (item=[1, 2, 3]) => {
+    "msg": "Type of [1, 2, 3] -> list"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

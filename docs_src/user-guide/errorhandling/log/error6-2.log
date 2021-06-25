@@ -1,0 +1,23 @@
+piyo@vmpc:~/example/err$ ansible-playbook -i hosts.yml error6.yml 
+
+PLAY [Example of error handling usage] ***************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [ubuntu2004]
+
+TASK [Install Apache only on CentOS] *****************************************************************************************************************
+skipping: [ubuntu2004]
+
+TASK [Display the contents of register variables] ****************************************************************************************************
+ok: [ubuntu2004] => {
+    "result_of_dnf": {
+        "changed": false,
+        "skip_reason": "Conditional result was False",
+        "skipped": true
+    }
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+ubuntu2004                 : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/err$ 

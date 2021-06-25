@@ -1,0 +1,38 @@
+piyo@vmpc:~/example/handlers$ ansible-playbook -i hosts.yml handlers3.yml 
+
+PLAY [Example of handleres usage] ********************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [centos83]
+
+TASK [Install the latest version of Apache or update to the latest version] **************************************************************************
+changed: [centos83]
+
+TASK [Update the configuration file -> Set the host name] ********************************************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [Syntax check of httpd.conf] *********************************************************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [Restart or start httpd.service] *****************************************************************************************************
+changed: [centos83]
+
+TASK [Update the configuration file -> Set the listen port] ******************************************************************************************
+changed: [centos83]
+
+TASK [Open port:8080/tcp] ****************************************************************************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [Syntax check of httpd.conf] *********************************************************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [Restart or start httpd.service] *****************************************************************************************************
+changed: [centos83]
+
+RUNNING HANDLER [Reload the firewalld configuration] *************************************************************************************************
+changed: [centos83]
+
+PLAY RECAP *******************************************************************************************************************************************
+centos83                   : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/handlers$ 

@@ -1,0 +1,12 @@
+piyo@vmpc:~/example/filter$ ansible-playbook -i hosts.yml filter1.yml 
+
+PLAY [Example of filter usage] ***********************************************************************************************************************
+
+TASK [Register a user account.] **********************************************************************************************************************
+changed: [hydrogen] => (item={'name': 'taro', 'group': 'admin'})
+fatal: [hydrogen]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'group'\n\nThe error appears to be in '/home/piyo/example/filter/filter1.yml': line 7, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n    - name: Register a user account.\n      ^ here\n"}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/filter$ 

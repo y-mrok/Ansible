@@ -1,0 +1,16 @@
+piyo@vmpc:~/example/collection$ ansible-playbook -i hosts.yml sample10.yml 
+
+PLAY [Example of "ansible.builtin.import_tasks" usage] ***********************************************************************************************
+
+TASK [Message No.1] **********************************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "Hello world!"
+}
+
+TASK [Register a user account.] **********************************************************************************************************************
+fatal: [hydrogen]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/libexec/platform-python"}, "changed": false, "msg": "useradd: Permission denied.\nuseradd: cannot lock /etc/passwd; try again later.\n", "name": "hanako", "rc": 1}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/collection$ 

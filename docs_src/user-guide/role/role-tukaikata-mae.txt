@@ -1,0 +1,34 @@
+.. _role-tukaikata-mae:
+
+**************************************************
+ロールを使用していないプレイ
+**************************************************
+CetOS の管理対象ノード上に Web server を構築するプレイです。処理内容は次のとおりです。
+
+- httpd / apache2 のインストール
+- ホスト名の設定
+- port の設定　→　CentOS:80 / Ubuntu:8080
+- :file:`/var/www/html` ディレクトリと :file:`/var/www/cgi-bin` ディレクトリのパーミッション変更
+- コンテンツファイル (index.html) のコピー
+- ファイアウオールに穴あけ
+
+必要に応じて次の処理を行います。
+
+- conf ファイルの内容確認
+- サービスの起動／再起動
+- ファイアウオールのリロード
+
+インベントリです
+
+.. literalinclude:: ./yaml/hosts.yml
+   :language: yaml
+
+プレイです。
+
+.. literalinclude:: ./yaml/webservers.yml
+   :language: yaml
+
+実行ログです。
+
+.. literalinclude:: ./log/webservers.log
+   :language: none

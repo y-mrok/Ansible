@@ -1,0 +1,7 @@
+piyo@vmpc:~/example/vault$ ansible-vault view host_vars/hydrogen.yml
+Vault password: 
+---
+ansible_host: 192.168.23.11
+ansible_user: ansible-user
+ansible_password: ansible-password
+piyo@vmpc:~/example/vault$ 

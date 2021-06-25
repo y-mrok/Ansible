@@ -1,0 +1,13 @@
+piyo@vmpc:~/example/plugin$ ansible-playbook -i hosts.yml plugin1.yml 
+
+PLAY [Examples of plugin usage.] *********************************************************************************************************************
+
+TASK [Get the contents of a text file.] **************************************************************************************************************
+ok: [hydrogen] => {
+    "msg": "abcdefg\nhijklmn\n1234557"
+}
+
+PLAY RECAP *******************************************************************************************************************************************
+hydrogen                   : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+piyo@vmpc:~/example/plugin$ 

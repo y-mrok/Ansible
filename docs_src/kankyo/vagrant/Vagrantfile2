@@ -1,0 +1,648 @@
+#
+# Common settings for all virtual machines
+#
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "4096"
+    vb.cpus = 1
+    vb.customize [
+      "modifyvm", :id,
+      "--ioapic", "on",
+      "--graphicscontroller", "vmsvga",
+      "--nicpromisc2", "allow-all"
+    ]
+  end
+
+#
+# CentOS 8 / hydrogen
+#
+  config.vm.define :hydrogen do |hydrogen|
+    hydrogen.vm.box = "centos/8"
+    hydrogen.vm.network "private_network", mac: "00006c000011", ip: "192.168.23.11", virtualbox__intnet: true
+    hydrogen.vm.hostname = "hydrogen.exam.local"
+    hydrogen.vm.provider "virtualbox" do |vb|
+      vb.name = "hydrogen"
+    end
+    hydrogen.vm.provision "shell", inline: $remove_vmtools
+    hydrogen.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# CentOS 8 / helium
+#
+  config.vm.define :helium do |helium|
+    helium.vm.box = "centos/8"
+    helium.vm.network "private_network", mac: "00006c000012", ip: "192.168.23.12", virtualbox__intnet: true
+    helium.vm.hostname = "helium.exam.local"
+    helium.vm.provider "virtualbox" do |vb|
+      vb.name = "helium"
+    end
+    helium.vm.provision "shell", inline: $remove_vmtools
+    helium.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# CentOS 8 / lithium
+#
+  config.vm.define :lithium do |lithium|
+    lithium.vm.box = "centos/8"
+    lithium.vm.network "private_network", mac: "00006c000013", ip: "192.168.23.13", virtualbox__intnet: true
+    lithium.vm.hostname = "lithium.exam.local"
+    lithium.vm.provider "virtualbox" do |vb|
+      vb.name = "lithium"
+    end
+    lithium.vm.provision "shell", inline: $remove_vmtools
+    lithium.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# CentOS 7 / beryllium
+#
+  config.vm.define :beryllium do |beryllium|
+    beryllium.vm.box = "centos/7"
+    beryllium.vm.network "private_network", mac: "00006c000014", ip: "192.168.23.14", virtualbox__intnet: true
+    beryllium.vm.hostname = "beryllium.exam.local"
+    beryllium.vm.provider "virtualbox" do |vb|
+      vb.name = "beryllium"
+    end
+    beryllium.vm.provision "shell", inline: $remove_vmtools_yum
+    beryllium.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# CentOS 7 / boron
+#
+  config.vm.define :boron do |boron|
+    boron.vm.box = "centos/7"
+    boron.vm.network "private_network", mac: "00006c000015", ip: "192.168.23.15", virtualbox__intnet: true
+    boron.vm.hostname = "boron.exam.local"
+    boron.vm.provider "virtualbox" do |vb|
+      vb.name = "boron"
+    end
+    boron.vm.provision "shell", inline: $remove_vmtools_yum
+    boron.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# CentOS 7 / carbon
+#
+  config.vm.define :carbon do |carbon|
+    carbon.vm.box = "centos/7"
+    carbon.vm.network "private_network", mac: "00006c000016", ip: "192.168.23.16", virtualbox__intnet: true
+    carbon.vm.hostname = "carbon.exam.local"
+    carbon.vm.provider "virtualbox" do |vb|
+      vb.name = "carbon"
+    end
+    carbon.vm.provision "shell", inline: $remove_vmtools_yum
+    carbon.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Ubuntu 20.04 LTS / nitrogen
+#
+  config.vm.define :nitrogen do |nitrogen|
+    nitrogen.vm.box = "ubuntu/focal64"
+    nitrogen.vm.network "private_network", mac: "00006c000017", ip: "192.168.23.17", virtualbox__intnet: true
+    nitrogen.vm.hostname = "nitrogen.exam.local"
+    nitrogen.vm.provider "virtualbox" do |vb|
+      vb.name = "nitrogen"
+    end
+    nitrogen.vm.provision "shell", inline: $remove_vmtools_apt
+    nitrogen.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Ubuntu 20.04 LTS / oxygen
+#
+  config.vm.define :oxygen do |oxygen|
+    oxygen.vm.box = "ubuntu/focal64"
+    oxygen.vm.network "private_network", mac: "00006c000018", ip: "192.168.23.18", virtualbox__intnet: true
+    oxygen.vm.hostname = "oxygen.exam.local"
+    oxygen.vm.provider "virtualbox" do |vb|
+      vb.name = "oxygen"
+    end
+    oxygen.vm.provision "shell", inline: $remove_vmtools_apt
+    oxygen.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Ubuntu 20.04 LTS / fluorine
+#
+  config.vm.define :fluorine do |fluorine|
+    fluorine.vm.box = "ubuntu/focal64"
+    fluorine.vm.network "private_network", mac: "00006c000019", ip: "192.168.23.19", virtualbox__intnet: true
+    fluorine.vm.hostname = "fluorine.exam.local"
+    fluorine.vm.provider "virtualbox" do |vb|
+      vb.name = "fluorine"
+    end
+    fluorine.vm.provision "shell", inline: $remove_vmtools_apt
+    fluorine.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Ubuntu 18.04 LTS / neon
+#
+  config.vm.define :neon do |neon|
+    neon.vm.box = "ubuntu/bionic64"
+    neon.vm.network "private_network", mac: "00006c000020", ip: "192.168.23.20", virtualbox__intnet: true
+    neon.vm.hostname = "neon.exam.local"
+    neon.vm.provider "virtualbox" do |vb|
+      vb.name = "neon"
+    end
+    neon.vm.provision "shell", inline: $remove_vmtools_apt
+    neon.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Ubuntu 18.04 LTS / sodium
+#
+  config.vm.define :sodium do |sodium|
+    sodium.vm.box = "ubuntu/bionic64"
+    sodium.vm.network "private_network", mac: "00006c000021", ip: "192.168.23.21", virtualbox__intnet: true
+    sodium.vm.hostname = "sodium.exam.local"
+    sodium.vm.provider "virtualbox" do |vb|
+      vb.name = "sodium"
+    end
+    sodium.vm.provision "shell", inline: $remove_vmtools_apt
+    sodium.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Ubuntu 18.04 LTS / magnesium
+#
+  config.vm.define :magnesium do |magnesium|
+    magnesium.vm.box = "ubuntu/bionic64"
+    magnesium.vm.network "private_network", mac: "00006c000022", ip: "192.168.23.22", virtualbox__intnet: true
+    magnesium.vm.hostname = "magnesium.exam.local"
+    magnesium.vm.provider "virtualbox" do |vb|
+      vb.name = "magnesium"
+    end
+    magnesium.vm.provision "shell", inline: $remove_vmtools_apt
+    magnesium.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Debian 10 / aluminum
+#
+  config.vm.define :aluminum do |aluminum|
+    aluminum.vm.box = "debian/buster64"
+    aluminum.vm.network "private_network", mac: "00006c000023", ip: "192.168.23.23", virtualbox__intnet: true
+    aluminum.vm.hostname = "aluminum.exam.local"
+    aluminum.vm.provider "virtualbox" do |vb|
+      vb.name = "aluminum"
+    end
+    aluminum.vm.provision "shell", inline: $common_provisioning
+    aluminum.vm.provision "shell", inline: $set_vagrant_password
+  end
+
+#
+# Debian 10 / silicon
+#
+  config.vm.define :silicon do |silicon|
+    silicon.vm.box = "debian/buster64"
+    silicon.vm.network "private_network", mac: "00006c000024", ip: "192.168.23.24", virtualbox__intnet: true
+    silicon.vm.hostname = "silicon.exam.local"
+    silicon.vm.provider "virtualbox" do |vb|
+      vb.name = "silicon"
+    end
+    silicon.vm.provision "shell", inline: $common_provisioning
+    silicon.vm.provision "shell", inline: $set_vagrant_password
+  end
+
+#
+# Debian 10 / phosphorus
+#
+  config.vm.define :phosphorus do |phosphorus|
+    phosphorus.vm.box = "debian/buster64"
+    phosphorus.vm.network "private_network", mac: "00006c000025", ip: "192.168.23.25", virtualbox__intnet: true
+    phosphorus.vm.hostname = "phosphorus.exam.local"
+    phosphorus.vm.provider "virtualbox" do |vb|
+      vb.name = "phosphorus"
+    end
+    phosphorus.vm.provision "shell", inline: $common_provisioning
+    phosphorus.vm.provision "shell", inline: $set_vagrant_password
+  end
+
+#
+# Debian 9 / sulfur
+#
+  config.vm.define :sulfur do |sulfur|
+    sulfur.vm.box = "debian/stretch64"
+    sulfur.vm.network "private_network", mac: "00006c000026", ip: "192.168.23.26", virtualbox__intnet: true
+    sulfur.vm.hostname = "sulfur.exam.local"
+    sulfur.vm.provider "virtualbox" do |vb|
+      vb.name = "sulfur"
+    end
+    sulfur.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Debian 9 / chlorine
+#
+  config.vm.define :chlorine do |chlorine|
+    chlorine.vm.box = "debian/stretch64"
+    chlorine.vm.network "private_network", mac: "00006c000027", ip: "192.168.23.27", virtualbox__intnet: true
+    chlorine.vm.hostname = "chlorine.exam.local"
+    chlorine.vm.provider "virtualbox" do |vb|
+      vb.name = "chlorine"
+    end
+    chlorine.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# Debian 9 / argon
+#
+  config.vm.define :argon do |argon|
+    argon.vm.box = "debian/stretch64"
+    argon.vm.network "private_network", mac: "00006c000028", ip: "192.168.23.28", virtualbox__intnet: true
+    argon.vm.hostname = "argon.exam.local"
+    argon.vm.provider "virtualbox" do |vb|
+      vb.name = "argon"
+    end
+    argon.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# AlmaLinux 8 / nickel
+#
+  config.vm.define :nickel do |nickel|
+    nickel.vm.box = "almalinux/8"
+    nickel.vm.network "private_network", mac: "00006c000038", ip: "192.168.23.38", virtualbox__intnet: true
+    nickel.vm.hostname = "nickel.exam.local"
+    nickel.vm.provider "virtualbox" do |vb|
+      vb.name = "nickel"
+    end
+    nickel.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# AlmaLinux 8 / copper
+#
+  config.vm.define :copper do |copper|
+    copper.vm.box = "almalinux/8"
+    copper.vm.network "private_network", mac: "00006c000037", ip: "192.168.23.37", virtualbox__intnet: true
+    copper.vm.hostname = "copper.exam.local"
+    copper.vm.provider "virtualbox" do |vb|
+      vb.name = "copper"
+    end
+    copper.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# AlmaLinux 8 / zinc
+#
+  config.vm.define :zinc do |zinc|
+    zinc.vm.box = "almalinux/8"
+    zinc.vm.network "private_network", mac: "00006c000036", ip: "192.168.23.36", virtualbox__intnet: true
+    zinc.vm.hostname = "zinc.exam.local"
+    zinc.vm.provider "virtualbox" do |vb|
+      vb.name = "zinc"
+    end
+    zinc.vm.provision "shell", inline: $common_provisioning
+  end
+
+#
+# OracleLinux 8 / gallium
+#
+  config.vm.define :gallium do |gallium|
+    gallium.vm.box = "oraclelinux/8"
+    gallium.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json"
+    gallium.vm.network "private_network", mac: "00006c000042", ip: "192.168.23.42", virtualbox__intnet: true
+    gallium.vm.hostname = "gallium.exam.local"
+    gallium.vm.provider "virtualbox" do |vb|
+      vb.name = "gallium"
+    end
+    gallium.vm.provision "shell", inline: $common_provisioning
+    gallium.vm.provision "shell", inline: $set_vagrant_password2
+  end
+
+#
+# OracleLinux 8 / germanium
+#
+  config.vm.define :germanium do |germanium|
+    germanium.vm.box = "oraclelinux/8"
+    germanium.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json"
+    germanium.vm.network "private_network", mac: "00006c000043", ip: "192.168.23.43", virtualbox__intnet: true
+    germanium.vm.hostname = "germanium.exam.local"
+    germanium.vm.provider "virtualbox" do |vb|
+      vb.name = "germanium"
+    end
+    germanium.vm.provision "shell", inline: $common_provisioning
+    germanium.vm.provision "shell", inline: $set_vagrant_password2
+  end
+
+#
+# OracleLinux 8 / arsenic
+#
+  config.vm.define :arsenic do |arsenic|
+    arsenic.vm.box = "oraclelinux/8"
+    arsenic.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json"
+    arsenic.vm.network "private_network", mac: "00006c000044", ip: "192.168.23.44", virtualbox__intnet: true
+    arsenic.vm.hostname = "arsenic.exam.local"
+    arsenic.vm.provider "virtualbox" do |vb|
+      vb.name = "arsenic"
+    end
+    arsenic.vm.provision "shell", inline: $common_provisioning
+    arsenic.vm.provision "shell", inline: $set_vagrant_password2
+  end
+
+#
+# OracleLinux 7 / selenium
+#
+  config.vm.define :selenium do |selenium|
+    selenium.vm.box = "oraclelinux/7"
+    selenium.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/7.json"
+    selenium.vm.network "private_network", mac: "00006c000045", ip: "192.168.23.45", virtualbox__intnet: true
+    selenium.vm.hostname = "selenium.exam.local"
+    selenium.vm.provider "virtualbox" do |vb|
+      vb.name = "selenium"
+    end
+    selenium.vm.provision "shell", inline: $common_provisioning
+    selenium.vm.provision "shell", inline: $set_vagrant_password2
+  end
+
+#
+# OracleLinux 7 / vabromine
+#
+  config.vm.define :vabromine do |vabromine|
+    vabromine.vm.box = "oraclelinux/7"
+    vabromine.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/7.json"
+    vabromine.vm.network "private_network", mac: "00006c000046", ip: "192.168.23.46", virtualbox__intnet: true
+    vabromine.vm.hostname = "vabromine.exam.local"
+    vabromine.vm.provider "virtualbox" do |vb|
+      vb.name = "vabromine"
+    end
+    vabromine.vm.provision "shell", inline: $common_provisioning
+    vabromine.vm.provision "shell", inline: $set_vagrant_password2
+  end
+
+#
+# OracleLinux 7 / krypton
+#
+  config.vm.define :krypton do |krypton|
+    krypton.vm.box = "oraclelinux/7"
+    krypton.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/7.json"
+    krypton.vm.network "private_network", mac: "00006c000047", ip: "192.168.23.47", virtualbox__intnet: true
+    krypton.vm.hostname = "krypton.exam.local"
+    krypton.vm.provider "virtualbox" do |vb|
+      vb.name = "krypton"
+    end
+    krypton.vm.provision "shell", inline: $common_provisioning
+    krypton.vm.provision "shell", inline: $set_vagrant_password2
+  end
+
+#
+# openSUSE Leap 15 / potassium
+#
+  config.vm.define :potassium do |potassium|
+    potassium.vm.box = "generic/opensuse15"
+    potassium.vm.network "private_network", mac: "00006c000029", ip: "192.168.23.29", virtualbox__intnet: true
+    potassium.vm.hostname = "potassium.exam.local"
+    potassium.vm.provider "virtualbox" do |vb|
+      vb.name = "potassium"
+    end
+    potassium.vm.provision "shell", inline: $set_time_date
+  end
+
+#
+# openSUSE Leap 15 / calcium
+#
+  config.vm.define :calcium do |calcium|
+    calcium.vm.box = "generic/opensuse15"
+    calcium.vm.network "private_network", mac: "00006c000030", ip: "192.168.23.30", virtualbox__intnet: true
+    calcium.vm.hostname = "calcium.exam.local"
+    calcium.vm.provider "virtualbox" do |vb|
+      vb.name = "calcium"
+    end
+    calcium.vm.provision "shell", inline: $set_time_date
+  end
+
+#
+# openSUSE Leap 15 / scandium
+#
+  config.vm.define :scandium do |scandium|
+    scandium.vm.box = "generic/opensuse15"
+    scandium.vm.network "private_network", mac: "00006c000031", ip: "192.168.23.31", virtualbox__intnet: true
+    scandium.vm.hostname = "scandium.exam.local"
+    scandium.vm.provider "virtualbox" do |vb|
+      vb.name = "scandium"
+    end
+    scandium.vm.provision "shell", inline: $set_time_date
+  end
+
+#
+# Fedora 33 / titanium
+#
+  config.vm.define :titanium do |titanium|
+    titanium.vm.box = "generic/fedora33"
+    titanium.vm.network "private_network", mac: "00006c000032", ip: "192.168.23.32", virtualbox__intnet: true
+    titanium.vm.hostname = "titanium.exam.local"
+    titanium.vm.provider "virtualbox" do |vb|
+      vb.name = "titanium"
+    end
+    titanium.vm.provision "shell", inline: $set_time_date2
+  end
+
+#
+# Fedora 33 / vanadium
+#
+  config.vm.define :vanadium do |vanadium|
+    vanadium.vm.box = "generic/fedora33"
+    vanadium.vm.network "private_network", mac: "00006c000033", ip: "192.168.23.33", virtualbox__intnet: true
+    vanadium.vm.hostname = "vanadium.exam.local"
+    vanadium.vm.provider "virtualbox" do |vb|
+      vb.name = "vanadium"
+    end
+    vanadium.vm.provision "shell", inline: $set_time_date2
+  end
+
+#
+# Fedora 33 / chromium
+#
+  config.vm.define :chromium do |chromium|
+    chromium.vm.box = "generic/fedora33"
+    chromium.vm.network "private_network", mac: "00006c000034", ip: "192.168.23.34", virtualbox__intnet: true
+    chromium.vm.hostname = "chromium.exam.local"
+    chromium.vm.provider "virtualbox" do |vb|
+      vb.name = "chromium"
+    end
+    chromium.vm.provision "shell", inline: $set_time_date2
+  end
+
+#
+# FreeBSD 12 / manganese
+#
+  config.vm.define :manganese do |manganese|
+    manganese.vm.box = "generic/freebsd12"
+    manganese.vm.network "private_network", mac: "00006c000035", ip: "192.168.23.35", virtualbox__intnet: true
+    manganese.vm.hostname = "manganese.exam.local"
+    manganese.vm.provider "virtualbox" do |vb|
+      vb.name = "manganese"
+    end
+  end
+
+#
+# FreeBSD 12 / rubidium
+#
+  config.vm.define :rubidium do |rubidium|
+    rubidium.vm.box = "generic/freebsd12"
+    rubidium.vm.network "private_network", mac: "00006c000048", ip: "192.168.23.48", virtualbox__intnet: true
+    rubidium.vm.hostname = "rubidium.exam.local"
+    rubidium.vm.provider "virtualbox" do |vb|
+      vb.name = "rubidium"
+    end
+  end
+
+#
+# FreeBSD 12 / strontium
+#
+  config.vm.define :strontium do |strontium|
+    strontium.vm.box = "generic/freebsd12"
+    strontium.vm.network "private_network", mac: "00006c000049", ip: "192.168.23.49", virtualbox__intnet: true
+    strontium.vm.hostname = "strontium.exam.local"
+    strontium.vm.provider "virtualbox" do |vb|
+      vb.name = "strontium"
+    end
+  end
+
+
+#
+# FreeBSD 11 / yttrium
+#
+  config.vm.define :yttrium do |yttrium|
+    yttrium.vm.box = "generic/freebsd11"
+    yttrium.vm.network "private_network", mac: "00006c000050", ip: "192.168.23.50", virtualbox__intnet: true
+    yttrium.vm.hostname = "yttrium.exam.local"
+    yttrium.vm.provider "virtualbox" do |vb|
+      vb.name = "yttrium"
+    end
+  end
+
+#
+# FreeBSD 11 / zirconium
+#
+  config.vm.define :zirconium do |zirconium|
+    zirconium.vm.box = "generic/freebsd11"
+    zirconium.vm.network "private_network", mac: "00006c000051", ip: "192.168.23.51", virtualbox__intnet: true
+    zirconium.vm.hostname = "zirconium.exam.local"
+    zirconium.vm.provider "virtualbox" do |vb|
+      vb.name = "zirconium"
+    end
+  end
+
+#
+# FreeBSD 11 / niobium
+#
+  config.vm.define :niobium do |niobium|
+    niobium.vm.box = "generic/freebsd11"
+    niobium.vm.network "private_network", mac: "00006c000052", ip: "192.168.23.52", virtualbox__intnet: true
+    niobium.vm.hostname = "niobium.exam.local"
+    niobium.vm.provider "virtualbox" do |vb|
+      vb.name = "niobium"
+    end
+  end
+
+#
+# Arch Linux / molybdenum
+#
+  config.vm.define :molybdenum do |molybdenum|
+    molybdenum.vm.box = "archlinux/archlinux"
+    molybdenum.vm.network "private_network", mac: "00006c000053", ip: "192.168.23.53", virtualbox__intnet: true
+    molybdenum.vm.hostname = "molybdenum.exam.local"
+    molybdenum.vm.provider "virtualbox" do |vb|
+      vb.name = "molybdenum"
+    end
+    molybdenum.vm.provision "shell", inline: $set_time_date
+  end
+
+#
+# Arch Linux / technetium
+#
+  config.vm.define :technetium do |technetium|
+    technetium.vm.box = "archlinux/archlinux"
+    technetium.vm.network "private_network", mac: "00006c000054", ip: "192.168.23.54", virtualbox__intnet: true
+    technetium.vm.hostname = "technetium.exam.local"
+    technetium.vm.provider "virtualbox" do |vb|
+      vb.name = "technetium"
+    end
+    technetium.vm.provision "shell", inline: $set_time_date
+  end
+#
+# Arch Linux / ruthenium
+#
+  config.vm.define :ruthenium do |ruthenium|
+    ruthenium.vm.box = "archlinux/archlinux"
+    ruthenium.vm.network "private_network", mac: "00006c000055", ip: "192.168.23.55", virtualbox__intnet: true
+    ruthenium.vm.hostname = "ruthenium.exam.local"
+    ruthenium.vm.provider "virtualbox" do |vb|
+      vb.name = "ruthenium"
+    end
+    ruthenium.vm.provision "shell", inline: $set_time_date
+  end
+
+end
+
+#
+# Common provisioning for all virtual machines
+#
+$common_provisioning = <<-'SCRIPT'
+timedatectl set-timezone Asia/Tokyo
+sed -e s/^'PasswordAuthentication no'/'PasswordAuthentication yes'/ /etc/ssh/sshd_config > /tmp/sshd_config
+mv -f /tmp/sshd_config /etc/ssh/
+chmod 0600 /etc/ssh/sshd_config
+systemctl restart sshd.service
+SCRIPT
+
+#
+# Time and Date
+#
+$set_time_date = <<-'SCRIPT'
+timedatectl set-timezone Asia/Tokyo
+timedatectl set-local-rtc 0
+SCRIPT
+
+#
+# Time and Date
+#
+$set_time_date2 = <<-'SCRIPT'
+setenforce 0
+timedatectl set-timezone Asia/Tokyo
+timedatectl set-local-rtc 0
+SCRIPT
+
+#
+# Remove open-vm-tools
+#
+$remove_vmtools = <<-'SCRIPT'
+dnf -y remove open-vm-tools
+SCRIPT
+
+#
+# Remove open-vm-tools (yum command)
+#
+$remove_vmtools_yum = <<-'SCRIPT'
+yum -y remove open-vm-tools
+SCRIPT
+
+#
+# Remove open-vm-tools (apt command)
+#
+$remove_vmtools_apt = <<-'SCRIPT'
+apt -y remove open-vm-tools
+SCRIPT
+
+#
+# Set the password for the account vagrant
+#
+$set_vagrant_password = <<-'SCRIPT'
+echo 'vagrant' > pass.txt
+echo 'vagrant' >> pass.txt
+passwd vagrant < pass.txt
+SCRIPT
+
+#
+# Set the password for the account vagrant
+#
+$set_vagrant_password2 = <<-'SCRIPT'
+echo 'vagrant' | passwd --stdin vagrant
+SCRIPT

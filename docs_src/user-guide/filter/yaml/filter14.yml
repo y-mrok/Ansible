@@ -1,0 +1,28 @@
+---
+- name: Example of filter usage
+  hosts: all
+  gather_facts: no
+
+  vars:
+    values:
+      - 7
+      - 3
+      - 1
+      - 9
+      - 2
+      - 5
+
+
+  tasks:
+    - name: The maximum value in the list
+      ansible.builtin.debug:
+        msg: "{{ values }} -> {{ values | max }}"
+    - name: The minimum value in the list
+      ansible.builtin.debug:
+        msg: "{{ values }} -> {{ values | min }}"
+    - name: The first value in the list
+      ansible.builtin.debug:
+        msg: "{{ values }} -> {{ values | first }}"
+    - name: The last value in the list
+      ansible.builtin.debug:
+        msg: "{{ values }} -> {{ values | last }}"

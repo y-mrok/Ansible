@@ -1,0 +1,945 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="管理対象ノードを作成" href="kankyo-managed.html" /><link rel="prev" title="実習環境の作成手順" href="kankyo.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>コントロールノードを作成 - Learning Ansible 2021/06/13 更新 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/06/13 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/13 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user-guide/user-guide.html">ユーザーガイド</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/ansible-no-install.html">Ansible のインストール</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/control-node-ni-ansible-wo-install.html">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/hensu/hensu.html">変数</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/hensu/play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label for="toctree-checkbox-8"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-sansho.html">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label for="toctree-checkbox-9"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label for="toctree-checkbox-11"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label for="toctree-checkbox-12"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label for="toctree-checkbox-13"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label for="toctree-checkbox-14"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label for="toctree-checkbox-15"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label for="toctree-checkbox-19"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/vault/vault.html">コンテンツの暗号化</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label for="toctree-checkbox-20"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../awx/awx-install.html">AWX をインストール</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="kankyo.html">実習環境の作成手順</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kankyo-tuika.html">管理対象ノードを追加</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="kankyo-control">
+<span id="id1"></span><h1>コントロールノードを作成<a class="headerlink" href="#kankyo-control" title="Permalink to this headline">¶</a></h1>
+<p>Oracle VirtualBox 上に Ubuntu 20.04 LTS をインストールし、その上にコントロールノードを作成します。</p>
+<div class="section" id="kankyo-control-packages">
+<span id="id2"></span><h2>使用パッケージ<a class="headerlink" href="#kankyo-control-packages" title="Permalink to this headline">¶</a></h2>
+<p>今回使用したパッケージです。Ubuntu は Ubuntu Japanese Team が作成している日本語 Remix を使用しました。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">VirtualBox-6.1.22-144080-Win.exe</a></p></li>
+<li><p><a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">Oracle_VM_VirtualBox_Extension_Pack-6.1.22.vbox-extpack</a></p></li>
+<li><p><a class="reference external" href="https://www.ubuntulinux.jp/News/ubuntu2004-ja-remix">ubuntu-ja-20.04.1-desktop-amd64.iso</a></p></li>
+</ul>
+</div>
+<div class="section" id="kankyo-control-vm">
+<span id="id3"></span><h2>コントロールノード用仮想マシンの仕様<a class="headerlink" href="#kankyo-control-vm" title="Permalink to this headline">¶</a></h2>
+<p>Ubuntu をインストールする仮想マシンの仕様です。ネットワークアダプター 2 を使用して管理対象ノードと通信します。</p>
+<a class="reference internal image-reference" href="../_images/2021-06-13_06h45_41.png"><img alt="../_images/2021-06-13_06h45_41.png" src="../_images/2021-06-13_06h45_41.png" style="width: 733.9200000000001px; height: 739.86px;"/></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上記のコントロールノード用仮想マシンの仕様は一例です。ご自身の環境にあわせて変更ください。</p>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy">
+<span id="id4"></span><h2>インストール<a class="headerlink" href="#kankyo-control-deploy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kankyo-control-deploy-tejun">
+<span id="id5"></span><h3>手順<a class="headerlink" href="#kankyo-control-deploy-tejun" title="Permalink to this headline">¶</a></h3>
+<p>大まかな手順です。手順 1. ～ 4. は一般的なことなので説明は省略します。</p>
+<ol class="arabic simple">
+<li><p>Oracle VirtualBox をインストール</p></li>
+<li><p>Oracle VirtualBox に Oracle VM VirtualBox Extension Pack をインストール</p></li>
+<li><p>仮想マシンを作成し Ubuntu をインストール</p></li>
+<li><p>Ubuntu に Guest Addition をインストール</p></li>
+<li><p>Ansible をインストール</p></li>
+<li><p>VS Code をインストール</p></li>
+</ol>
+</div>
+<div class="section" id="ansible">
+<span id="kankyo-control-deploy-ansible"></span><h3>Ansible をインストール<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<p>次の手順で作業を進めます。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#kankyo-control-deploy-ansible-guest"><span class="std std-ref">Guest Additions のインストール状態を確認</span></a></p></li>
+<li><p>既存パッケージを更新</p></li>
+<li><p>Ansible をインストール</p></li>
+</ol>
+<div class="section" id="guest-additions">
+<span id="kankyo-control-deploy-ansible-guest"></span><h4>Guest Additions のインストール状態を確認<a class="headerlink" href="#guest-additions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="kankyo-control-deploy-ansible-guest-command">
+<span id="id6"></span><h5>コマンド<a class="headerlink" href="#kankyo-control-deploy-ansible-guest-command" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>modinfo vboxguest
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-guest-log">
+<span id="id7"></span><h5>実行ログ<a class="headerlink" href="#kankyo-control-deploy-ansible-guest-log" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ modinfo vboxguest
+</span>filename:       /lib/modules/5.8.0-55-generic/kernel/drivers/virt/vboxguest/vboxguest.ko
+license:        GPL
+description:    Oracle VM VirtualBox Guest Additions for Linux Module
+author:         Oracle Corporation
+srcversion:     313CF8BE65D94633B5BF631
+alias:          pci:v000080EEd0000CAFEsv00000000sd00000000bc*sc*i*
+depends:        
+retpoline:      Y
+intree:         Y
+name:           vboxguest
+vermagic:       5.8.0-55-generic SMP mod_unload modversions 
+sig_id:         PKCS#7
+signer:         Build time autogenerated kernel key
+sig_key:        18:66:B5:E9:7A:AA:DF:38:69:8F:19:E4:0B:F6:A4:BB:2E:A0:7F:1A
+sig_hashalgo:   sha512
+signature:      80:6B:32:F0:66:C5:FE:B7:3B:8E:0C:77:01:C3:DD:3E:82:1B:CF:5B:
+                E6:5E:28:C8:D3:B4:61:27:14:F2:96:61:02:F4:15:42:3F:46:CE:8A:
+                6C:94:B2:58:E1:05:0E:C8:FF:4E:9B:61:FC:04:39:32:71:5D:D4:01:
+                1E:3D:5C:2F:CE:4A:DD:8C:E3:92:50:F4:A2:4F:2B:CA:B4:DD:21:C1:
+                C2:51:BB:EF:98:AA:46:03:32:89:DB:2D:E6:18:5C:92:BE:E5:A5:9B:
+                96:14:E6:61:A8:BD:0F:46:C2:92:11:AE:D2:9D:5E:C6:33:12:81:11:
+                44:91:15:B1:E3:B8:2E:5D:C7:F7:12:61:69:03:11:C4:09:B6:A4:15:
+                67:47:88:84:81:5C:CD:20:BC:5E:9B:87:2D:D8:62:ED:BF:9A:89:C9:
+                FD:2B:96:6F:E1:A1:27:AA:87:D4:A0:54:33:61:90:B6:B8:84:B6:71:
+                B2:D5:DB:DC:4D:AB:66:9B:C9:7F:29:EB:F8:DD:27:22:A8:C5:EE:A1:
+                D2:74:D1:A2:4C:3C:C3:77:94:7C:F7:4C:91:D5:BC:EC:BE:59:24:58:
+                9C:D0:55:BA:07:2C:12:2D:CC:7D:B8:3B:BB:D8:59:A3:FE:0C:A5:53:
+                8C:FE:AA:EE:CD:DB:AA:96:43:FE:94:EC:CD:8D:7C:F9:F9:0C:BB:B1:
+                07:C1:02:1C:1E:22:90:B3:58:76:E4:BF:FD:8D:8E:4E:2D:7E:4F:D7:
+                5F:3D:81:07:91:A1:EB:4B:C0:EB:ED:EB:FF:D7:31:DE:94:E8:EC:F2:
+                02:07:3E:E0:DF:D5:3A:43:77:08:22:A6:DE:57:09:E0:B3:06:DE:8C:
+                0D:38:2C:BF:63:29:53:1E:B7:CB:D2:3E:8D:CC:F6:1D:A0:78:62:65:
+                92:AC:61:5E:89:1C:26:88:E7:EA:CE:F5:33:6D:18:D8:F7:83:97:86:
+                17:29:5C:A0:9A:FD:A0:4E:EE:D5:A7:85:D2:EA:6C:80:8F:DB:8D:DF:
+                0F:E6:84:B9:6A:4F:57:3F:AC:ED:BE:D0:0D:DA:EF:8C:AE:B7:8F:AE:
+                01:CD:80:08:0F:56:35:2A:80:FC:AD:BB:E9:70:35:1E:C4:60:EF:57:
+                45:4B:67:F7:7F:1F:6F:F6:5A:9A:C9:C6:6B:4D:9F:BA:ED:56:19:76:
+                7E:F9:15:C4:ED:25:8E:6E:83:E5:6E:FA:31:9B:95:A4:A6:69:4B:43:
+                9F:72:E4:F1:F3:00:79:AB:26:72:F4:35:B5:25:11:6B:BA:CB:31:22:
+                0F:53:84:4A:33:CC:B6:18:11:DE:76:CA:10:5A:EC:98:F7:DA:12:6A:
+                16:0F:CC:96:39:4B:ED:DB:33:00:FA:BE
+piyo@vmpc:~$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-update">
+<span id="id8"></span><h4>既存パッケージを更新<a class="headerlink" href="#kankyo-control-deploy-ansible-update" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="kankyo-control-deploy-ansible-update-command">
+<span id="id9"></span><h5>コマンド<a class="headerlink" href="#kankyo-control-deploy-ansible-update-command" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt -y update
+sudo apt -y dist-upgrade
+sudo reboot
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-update-log">
+<span id="id10"></span><h5>実行ログ<a class="headerlink" href="#kankyo-control-deploy-ansible-update-log" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ sudo apt -y update
+</span>[sudo] piyo のパスワード: 
+ヒット:1 http://archive.ubuntulinux.jp/ubuntu focal InRelease
+ヒット:2 http://archive.ubuntulinux.jp/ubuntu-ja-non-free focal InRelease                         
+ヒット:3 http://jp.archive.ubuntu.com/ubuntu focal InRelease                                      
+取得:4 http://jp.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]                       
+取得:5 http://jp.archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]                    
+取得:6 http://jp.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [490 kB]
+取得:7 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+取得:8 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1,031 kB]
+取得:9 http://jp.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [229 kB]      
+取得:10 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [283 kB]
+取得:11 http://jp.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [13.5 kB] 
+取得:12 http://jp.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [272 kB] 
+取得:13 http://jp.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [39.5 kB]
+取得:14 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [576 kB]    
+取得:15 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [781 kB]
+取得:16 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [170 kB]
+取得:17 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [330 kB]
+取得:18 http://jp.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [17.7 kB]
+取得:19 http://jp.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [2,468 B]
+取得:20 http://jp.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [1,768 B]
+取得:21 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [704 kB]          
+取得:22 http://security.ubuntu.com/ubuntu focal-security/main Translation-en [141 kB]
+取得:23 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [24.5 kB]
+取得:24 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [251 kB]
+取得:25 http://security.ubuntu.com/ubuntu focal-security/restricted Translation-en [36.5 kB]
+取得:26 http://security.ubuntu.com/ubuntu focal-security/universe i386 Packages [462 kB]
+取得:27 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [588 kB]
+取得:28 http://security.ubuntu.com/ubuntu focal-security/universe Translation-en [95.2 kB]
+取得:29 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [58.4 kB]
+取得:30 http://security.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [11.5 kB]
+取得:31 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2,464 B]
+6,940 kB を 4秒 で取得しました (1,888 kB/s)              
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています       
+状態情報を読み取っています... 完了
+アップグレードできるパッケージが 289 個あります。表示するには 'apt list --upgradable' を実行してください。
+piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ sudo apt -y dist-upgrade
+</span>パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています                
+状態情報を読み取っています... 完了
+アップグレードパッケージを検出しています... 完了
+以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+  libfprint-2-tod1 libllvm10
+これを削除するには 'sudo apt autoremove' を利用してください。
+以下のパッケージが新たにインストールされます:
+  distro-info libllvm11
+以下のパッケージはアップグレードされます:
+  alsa-ucm-conf alsa-utils apt apt-utils aptdaemon-data base-files bind9-dnsutils bind9-libs bluez bluez-cups bluez-obexd bolt bsdutils
+  busybox-initramfs busybox-static cheese cheese-common command-not-found cpp-9 dirmngr distro-info-data enchant-2 evince evince-common
+  evolution-data-server evolution-data-server-common fdisk file-roller fonts-noto-color-emoji fonts-noto-mono fonts-opensymbol
+  friendly-recovery gcc-9-base gdb gdbserver gdm3 gir1.2-accountsservice-1.0 gir1.2-gdm-1.0 gir1.2-gnomebluetooth-1.0
+  gir1.2-gnomedesktop-3.0 gir1.2-goa-1.0 gir1.2-gst-plugins-base-1.0 gir1.2-gweather-3.0 gir1.2-mutter-6 gir1.2-nm-1.0 gir1.2-nma-1.0
+
+（中略）
+
+libebook-1.2-20:amd64 (3.36.5-0ubuntu1) を設定しています ...
+evolution-data-server (3.36.5-0ubuntu1) を設定しています ...
+進捗: [ 98%] [########################################################################################################################...] 
+gnome-shell (3.36.9-0ubuntu0.20.04.1) を設定しています ...
+gnome-shell-extension-appindicator (33.1-0ubuntu0.20.04.2) を設定しています ...
+gdm3 (3.36.3-0ubuntu0.20.04.3) を設定しています ...
+network-manager-gnome (1.8.24-1ubuntu3) を設定しています ...
+gnome-shell-extension-desktop-icons (20.04.0-3~ubuntu20.04.1) を設定しています ...
+update-manager (1:20.04.10.7) を設定しています ...
+進捗: [ 99%] [#########################################################################################################################..] 
+update-notifier (3.192.30.8) を設定しています ...
+ubuntu-desktop-minimal (1.450.2) を設定しています ...
+ubuntu-desktop (1.450.2) を設定しています ...
+initramfs-tools (0.136ubuntu6.5) のトリガを処理しています ...
+update-initramfs: Generating /boot/initrd.img-5.8.0-55-generic
+libc-bin (2.31-0ubuntu9.2) のトリガを処理しています ...
+piyo@vmpc:~$ 
+piyo@vmpc:~$ reboot
+Failed to set wall message, ignoring: Interactive authentication required.
+Failed to reboot system via logind: Interactive authentication required.
+Failed to open initctl fifo: 許可がありません
+Failed to talk to init daemon.
+<span class="hll">piyo@vmpc:~$ sudo reboot
+</span></pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-install">
+<span id="id11"></span><h4>Ansible をインストール<a class="headerlink" href="#kankyo-control-deploy-ansible-install" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="kankyo-control-deploy-ansible-install-command">
+<span id="id12"></span><h5>コマンド<a class="headerlink" href="#kankyo-control-deploy-ansible-install-command" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install -y python3-pip
+pip3 install ansible
+pip3 show ansible-core
+pip3 show ansible
+source ~/.profile
+ansible --version
+sudo apt -y install sshpass
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-install-log">
+<span id="id13"></span><h5>実行ログ<a class="headerlink" href="#kankyo-control-deploy-ansible-install-log" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ sudo apt install -y python3-pip
+</span>[sudo] piyo のパスワード: 
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています                
+状態情報を読み取っています... 完了
+以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+  libfprint-2-tod1 libllvm10
+これを削除するには 'sudo apt autoremove' を利用してください。
+以下の追加パッケージがインストールされます:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential dpkg-dev fakeroot g++ g++-9 gcc gcc-9 libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libatomic1 libbinutils libc-dev-bin libc6-dev libcrypt-dev libctf-nobfd0
+  libctf0 libexpat1-dev libfakeroot libgcc-9-dev libitm1 liblsan0 libpython3-dev libpython3.8-dev libquadmath0 libstdc++-9-dev libtsan0
+  libubsan1 linux-libc-dev make manpages-dev python-pip-whl python3-dev python3-distutils python3-setuptools python3-wheel python3.8-dev
+  zlib1g-dev
+提案パッケージ:
+  binutils-doc debian-keyring g++-multilib g++-9-multilib gcc-9-doc gcc-multilib autoconf automake libtool flex bison gcc-doc
+
+（中略）
+
+gcc (4:9.3.0-1ubuntu2) を設定しています ...
+進捗: [ 93%] [##################################################################################################################.........] 
+g++-9 (9.3.0-17ubuntu1~20.04) を設定しています ...
+進捗: [ 94%] [###################################################################################################################........] 
+python3.8-dev (3.8.5-1~20.04.3) を設定しています ...
+進捗: [ 95%] [#####################################################################################################################......] 
+g++ (4:9.3.0-1ubuntu2) を設定しています ...
+進捗: [ 97%] [######################################################################################################################.....] 
+update-alternatives: /usr/bin/c++ (c++) を提供するために自動モードで /usr/bin/g++ を使います
+進捗: [ 97%] [#######################################################################################################################....] 
+build-essential (12.8ubuntu1.1) を設定しています ...
+進捗: [ 98%] [########################################################################################################################...] 
+python3-dev (3.8.2-0ubuntu2) を設定しています ...
+進捗: [ 99%] [##########################################################################################################################.] 
+man-db (2.9.1-1) のトリガを処理しています ...
+libc-bin (2.31-0ubuntu9.2) のトリガを処理しています ...
+piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ pip3 install ansible
+</span>Collecting ansible
+  Downloading ansible-4.1.0.tar.gz (34.0 MB)
+     |████████████████████████████████| 34.0 MB 33.7 MB/s 
+Collecting ansible-core&lt;2.12,&gt;=2.11.1
+  Downloading ansible-core-2.11.1.tar.gz (6.1 MB)
+     |████████████████████████████████| 6.1 MB 27.2 MB/s 
+Requirement already satisfied: PyYAML in /usr/lib/python3/dist-packages (from ansible-core&lt;2.12,&gt;=2.11.1-&gt;ansible) (5.3.1)
+Requirement already satisfied: cryptography in /usr/lib/python3/dist-packages (from ansible-core&lt;2.12,&gt;=2.11.1-&gt;ansible) (2.8)
+Collecting jinja2
+  Downloading Jinja2-3.0.1-py3-none-any.whl (133 kB)
+     |████████████████████████████████| 133 kB 9.9 MB/s 
+Collecting packaging
+  Downloading packaging-20.9-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 12.5 MB/s 
+Collecting resolvelib&lt;0.6.0,&gt;=0.5.3
+  Downloading resolvelib-0.5.4-py2.py3-none-any.whl (12 kB)
+Collecting MarkupSafe&gt;=2.0
+  Downloading MarkupSafe-2.0.1-cp38-cp38-manylinux2010_x86_64.whl (30 kB)
+Collecting pyparsing&gt;=2.0.2
+  Downloading pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
+     |████████████████████████████████| 67 kB 7.9 MB/s 
+Building wheels for collected packages: ansible, ansible-core
+  Building wheel for ansible (setup.py) ... done
+  Created wheel for ansible: filename=ansible-4.1.0-py3-none-any.whl size=55998213 sha256=d026528420b3e2678488fac88ed6cf3a0d9d0ab7f56229cf4b5
+d27be625a11e0
+  Stored in directory: /home/piyo/.cache/pip/wheels/e1/b6/56/dcabbb59e82df6248ef2ac20f80596e6ae005bff72902b1e52
+  Building wheel for ansible-core (setup.py) ... done
+  Created wheel for ansible-core: filename=ansible_core-2.11.1-py3-none-any.whl size=1954022 sha256=bac1712c91a80fc2ff5eb8d6bc6dddf1fac2c5560
+3fc07b9dd861fef1dec35c0
+  Stored in directory: /home/piyo/.cache/pip/wheels/9c/1b/3e/9ab249618104d7a50e7a6066823d3fcb17ab46d695cb57ab4f
+Successfully built ansible ansible-core
+Installing collected packages: MarkupSafe, jinja2, pyparsing, packaging, resolvelib, ansible-core, ansible
+Successfully installed MarkupSafe-2.0.1 ansible-4.1.0 ansible-core-2.11.1 jinja2-3.0.1 packaging-20.9 pyparsing-2.4.7 resolvelib-0.5.4
+piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ pip3 show ansible-core
+</span>Name: ansible-core
+Version: 2.11.1
+Summary: Radically simple IT automation
+Home-page: https://ansible.com/
+Author: Ansible, Inc.
+Author-email: info@ansible.com
+License: GPLv3+
+Location: /home/piyo/.local/lib/python3.8/site-packages
+Requires: resolvelib, PyYAML, packaging, jinja2, cryptography
+Required-by: ansible
+piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ pip3 show ansible
+</span>Name: ansible
+Version: 4.1.0
+Summary: Radically simple IT automation
+Home-page: https://ansible.com/
+Author: Ansible, Inc.
+Author-email: info@ansible.com
+License: GPLv3+
+Location: /home/piyo/.local/lib/python3.8/site-packages
+Requires: ansible-core
+Required-by: 
+piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ source ~/.profile
+</span>piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ ansible --version
+</span>ansible [core 2.11.1] 
+  config file = None
+  configured module search path = ['/home/piyo/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/piyo/.local/lib/python3.8/site-packages/ansible
+  ansible collection location = /home/piyo/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/piyo/.local/bin/ansible
+  python version = 3.8.5 (default, May 27 2021, 13:30:53) [GCC 9.3.0]
+  jinja version = 3.0.1
+  libyaml = True
+piyo@vmpc:~$ 
+<span class="hll">piyo@vmpc:~$ sudo apt -y install sshpass
+</span>パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています                
+状態情報を読み取っています... 完了
+以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+  libfprint-2-tod1 libllvm10
+これを削除するには 'sudo apt autoremove' を利用してください。
+以下のパッケージが新たにインストールされます:
+  sshpass
+アップグレード: 0 個、新規インストール: 1 個、削除: 0 個、保留: 0 個。
+10.5 kB のアーカイブを取得する必要があります。
+この操作後に追加で 30.7 kB のディスク容量が消費されます。
+取得:1 http://jp.archive.ubuntu.com/ubuntu focal/universe amd64 sshpass amd64 1.06-1 [10.5 kB]
+10.5 kB を 0秒 で取得しました (38.0 kB/s)
+以前に未選択のパッケージ sshpass を選択しています。
+(データベースを読み込んでいます ... 現在 196975 個のファイルとディレクトリがインストールされています。)
+.../sshpass_1.06-1_amd64.deb を展開する準備をしています ...
+sshpass (1.06-1) を展開しています...
+sshpass (1.06-1) を設定しています ...
+man-db (2.9.1-1) のトリガを処理しています ...
+piyo@vmpc:~$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-config">
+<span id="id14"></span><h4>フィンガープリントを無視<a class="headerlink" href="#kankyo-control-deploy-ansible-config" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>フィンガープリントの設定は「 <a class="reference internal" href="../user-guide/ansible-no-install/managed-node-no-fingerprint.html#managed-node-no-fingerprint"><span class="std std-ref">管理対象ノードのフィンガープリントを無視するか否か</span></a> 」を参照ください。</p>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-config-command">
+<span id="id15"></span><h5>コマンド<a class="headerlink" href="#kankyo-control-deploy-ansible-config-command" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir ~/.ssh
+chmod 0700 ~/.ssh
+echo "Host *" &gt; ~/.ssh/config
+echo "  StrictHostKeyChecking no" &gt;&gt; ~/.ssh/config
+echo "  UserKnownHostsFile=/dev/null" &gt;&gt; ~/.ssh/config
+chmod 0600 ~/.ssh/config
+ls -l ~/.ssh
+cat ~/.ssh/config
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-control-deploy-ansible-config-log">
+<span id="id16"></span><h5>実行ログ<a class="headerlink" href="#kankyo-control-deploy-ansible-config-log" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ mkdir ~/.ssh
+</span><span class="hll">piyo@vmpc:~$ chmod 0700 ~/.ssh
+</span><span class="hll">piyo@vmpc:~$ echo "Host *" &gt; ~/.ssh/config
+</span><span class="hll">piyo@vmpc:~$ echo "  StrictHostKeyChecking no" &gt;&gt; ~/.ssh/config
+</span><span class="hll">piyo@vmpc:~$ echo "  UserKnownHostsFile=/dev/null" &gt;&gt; ~/.ssh/config
+</span><span class="hll">piyo@vmpc:~$ chmod 0600 ~/.ssh/config
+</span><span class="hll">piyo@vmpc:~$ ls -l ~/.ssh
+</span>合計 4
+-rw------- 1 piyo piyo 65  6月 12 19:36 config
+<span class="hll">piyo@vmpc:~$ cat ~/.ssh/config
+</span>Host *
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+piyo@vmpc:~$ 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kankyo-control-network">
+<span id="id17"></span><h3>ネットワーク<a class="headerlink" href="#kankyo-control-network" title="Permalink to this headline">¶</a></h3>
+<p>コントロールノードのネットワークの状態です。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>piyo@vmpc:~$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:20:00:35 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 56698sec preferred_lft 56698sec
+    inet6 fe80::1556:b690:c011:5a15/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:ee:1f:c1 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.23.230/24 brd 192.168.23.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::39fa:1819:7901:62af/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+piyo@vmpc:~$ 
+</pre></div>
+</div>
+<div class="section" id="kankyo-control-network-nic-1">
+<span id="id18"></span><h4>ネットワーク アダプター 1<a class="headerlink" href="#kankyo-control-network-nic-1" title="Permalink to this headline">¶</a></h4>
+<p>NAT 構成です。 Oracle VM VirtualBox が IP アドレスを割り当てています。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:20:00:35 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 56698sec preferred_lft 56698sec
+    inet6 fe80::1556:b690:c011:5a15/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-control-network-nic-2">
+<span id="id19"></span><h4>ネットワーク アダプター 2<a class="headerlink" href="#kankyo-control-network-nic-2" title="Permalink to this headline">¶</a></h4>
+<p>内部ネットワーク (intnet) 構成です。手動で IP アドレスを割り当てています。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+3: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:ee:1f:c1 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.23.230/24 brd 192.168.23.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::39fa:1819:7901:62af/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kankyo-control-edit">
+<span id="id20"></span><h2>テキストエディタ<a class="headerlink" href="#kankyo-control-edit" title="Permalink to this headline">¶</a></h2>
+<p>今回は　VS Code をインストールします。使い慣れたテキストエディタがあればそちらを使用ください。</p>
+<div class="section" id="vs-code">
+<span id="kankyo-control-edit-vscode-download"></span><h3>VS Code をダウンロード<a class="headerlink" href="#vs-code" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://code.visualstudio.com/download">VS Code のダウンロードサイト</a> から Debian,Ubuntu 用パッケージをダウンロードします。ダウンロード先は <code class="file docutils literal notranslate"><span class="pre">/home/$USER/ダウンロード</span></code> ディレクトリです。</p>
+<a class="reference internal image-reference" href="../_images/2021-06-11_22h24_57.png"><img alt="../_images/2021-06-11_22h24_57.png" src="../_images/2021-06-11_22h24_57.png" style="width: 614.4px; height: 460.79999999999995px;"/></a>
+</div>
+<div class="section" id="kankyo-control-edit-vscode-install">
+<span id="id22"></span><h3>インストール<a class="headerlink" href="#kankyo-control-edit-vscode-install" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="kankyo-control-edit-vscode-install-command">
+<span id="id23"></span><h4>コマンド<a class="headerlink" href="#kankyo-control-edit-vscode-install-command" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/$USER/ダウンロード
+ls -l
+sudo apt -y install ./code_1.56.2-1620838498_amd64.deb
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-control-edit-vscode-install-log">
+<span id="id24"></span><h4>実行ログ<a class="headerlink" href="#kankyo-control-edit-vscode-install-log" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">piyo@vmpc:~$ cd /home/$USER/ダウンロード
+</span>piyo@vmpc:~/ダウンロード$
+<span class="hll">piyo@vmpc:~/ダウンロード$ ls -l
+</span>合計 74572
+-rw-rw-r-- 1 piyo piyo 76359920  6月 11 22:25 code_1.57.0-1623259737_amd64.deb
+piyo@vmpc:~/ダウンロード$
+<span class="hll">piyo@vmpc:~/ダウンロード$ sudo apt -y install ./code_1.57.0-1623259737_amd64.deb 
+</span>[sudo] piyo のパスワード: 
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています                
+状態情報を読み取っています... 完了
+注意、'./code_1.57.0-1623259737_amd64.deb' の代わりに 'code' を選択します
+以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+  libfprint-2-tod1 libllvm10
+これを削除するには 'sudo apt autoremove' を利用してください。
+以下のパッケージが新たにインストールされます:
+  code
+アップグレード: 0 個、新規インストール: 1 個、削除: 0 個、保留: 0 個。
+76.4 MB 中 0 B のアーカイブを取得する必要があります。
+この操作後に追加で 293 MB のディスク容量が消費されます。
+取得:1 /home/piyo/ダウンロード/code_1.57.0-1623259737_amd64.deb code amd64 1.57.0-1623259737 [76.4 MB]
+以前に未選択のパッケージ code を選択しています。
+(データベースを読み込んでいます ... 現在 194895 個のファイルとディレクトリがインストールされています。)
+.../code_1.57.0-1623259737_amd64.deb を展開する準備をしています ...
+進捗: [ 20%] [########################...................................................................................................] 
+code (1.57.0-1623259737) を展開しています...
+進捗: [ 40%] [#################################################..........................................................................] 
+code (1.57.0-1623259737) を設定しています ...
+進捗: [ 80%] [##################################################################################################.........................] 
+mime-support (3.64ubuntu1) のトリガを処理しています ...
+gnome-menus (3.36.0-1ubuntu1) のトリガを処理しています ...
+shared-mime-info (1.15-1) のトリガを処理しています ...
+desktop-file-utils (0.24-1ubuntu3) のトリガを処理しています ...
+piyo@vmpc:~/ダウンロード$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kankyo-control-edit-vscode-customize">
+<span id="id25"></span><h3>拡張機能<a class="headerlink" href="#kankyo-control-edit-vscode-customize" title="Permalink to this headline">¶</a></h3>
+<p>VS Code は拡張機能が豊富にあります。その中からインストールしておいたほうが良いと思われる拡張機能を紹介します。</p>
+<div class="section" id="japanese-language-pack-for-visual-studio-code">
+<span id="kankyo-control-edit-vscode-customize-1"></span><h4>Japanese Language Pack for visual Studio Code<a class="headerlink" href="#japanese-language-pack-for-visual-studio-code" title="Permalink to this headline">¶</a></h4>
+<p>メニューなどを日本語化します。</p>
+<a class="reference internal image-reference" href="../_images/2021-06-11_22h38_00.png"><img alt="../_images/2021-06-11_22h38_00.png" src="../_images/2021-06-11_22h38_00.png" style="width: 614.4px; height: 460.79999999999995px;"/></a>
+</div>
+<div class="section" id="indent-rainbow">
+<span id="kankyo-control-edit-vscode-customize-2"></span><h4>indent-rainbow<a class="headerlink" href="#indent-rainbow" title="Permalink to this headline">¶</a></h4>
+<p>インデントごとに色分けします。</p>
+<a class="reference internal image-reference" href="../_images/2021-06-11_22h38_46.png"><img alt="../_images/2021-06-11_22h38_46.png" src="../_images/2021-06-11_22h38_46.png" style="width: 614.4px; height: 460.79999999999995px;"/></a>
+</div>
+<div class="section" id="github-theme">
+<span id="kankyo-control-edit-vscode-customize-3"></span><h4>Github Theme<a class="headerlink" href="#github-theme" title="Permalink to this headline">¶</a></h4>
+<p>VS Code 全体の見た目を変更します。</p>
+<a class="reference internal image-reference" href="../_images/2021-06-11_22h40_52.png"><img alt="../_images/2021-06-11_22h40_52.png" src="../_images/2021-06-11_22h40_52.png" style="width: 614.4px; height: 460.79999999999995px;"/></a>
+</div>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="kankyo-managed.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">管理対象ノードを作成</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="kankyo.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">実習環境の作成手順</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">コントロールノードを作成</a><ul>
+<li><a class="reference internal" href="#kankyo-control-packages">使用パッケージ</a></li>
+<li><a class="reference internal" href="#kankyo-control-vm">コントロールノード用仮想マシンの仕様</a></li>
+<li><a class="reference internal" href="#kankyo-control-deploy">インストール</a><ul>
+<li><a class="reference internal" href="#kankyo-control-deploy-tejun">手順</a></li>
+<li><a class="reference internal" href="#ansible">Ansible をインストール</a><ul>
+<li><a class="reference internal" href="#guest-additions">Guest Additions のインストール状態を確認</a><ul>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-guest-command">コマンド</a></li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-guest-log">実行ログ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-update">既存パッケージを更新</a><ul>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-update-command">コマンド</a></li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-update-log">実行ログ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-install">Ansible をインストール</a><ul>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-install-command">コマンド</a></li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-install-log">実行ログ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-config">フィンガープリントを無視</a><ul>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-config-command">コマンド</a></li>
+<li><a class="reference internal" href="#kankyo-control-deploy-ansible-config-log">実行ログ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kankyo-control-network">ネットワーク</a><ul>
+<li><a class="reference internal" href="#kankyo-control-network-nic-1">ネットワーク アダプター 1</a></li>
+<li><a class="reference internal" href="#kankyo-control-network-nic-2">ネットワーク アダプター 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kankyo-control-edit">テキストエディタ</a><ul>
+<li><a class="reference internal" href="#vs-code">VS Code をダウンロード</a></li>
+<li><a class="reference internal" href="#kankyo-control-edit-vscode-install">インストール</a><ul>
+<li><a class="reference internal" href="#kankyo-control-edit-vscode-install-command">コマンド</a></li>
+<li><a class="reference internal" href="#kankyo-control-edit-vscode-install-log">実行ログ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kankyo-control-edit-vscode-customize">拡張機能</a><ul>
+<li><a class="reference internal" href="#japanese-language-pack-for-visual-studio-code">Japanese Language Pack for visual Studio Code</a></li>
+<li><a class="reference internal" href="#indent-rainbow">indent-rainbow</a></li>
+<li><a class="reference internal" href="#github-theme">Github Theme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

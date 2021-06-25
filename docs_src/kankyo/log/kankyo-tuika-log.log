@@ -1,0 +1,272 @@
+piyo@vmpc:~/node$ ansible-playbook -i hosts.yml node.yml 
+
+PLAY [管理対象ノードに接続用のアカウントを作成] ******************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [beryllium]
+ok: [boron]
+ok: [helium]
+ok: [lithium]
+ok: [hydrogen]
+ok: [carbon]
+ok: [nitrogen]
+ok: [oxygen]
+ok: [fluorine]
+ok: [neon]
+ok: [aluminum]
+ok: [silicon]
+ok: [phosphorus]
+ok: [sodium]
+ok: [magnesium]
+ok: [sulfur]
+ok: [chlorine]
+ok: [argon]
+ok: [nickel]
+ok: [copper]
+ok: [zinc]
+ok: [gallium]
+ok: [germanium]
+ok: [arsenic]
+ok: [selenium]
+ok: [vabromine]
+ok: [krypton]
+ok: [potassium]
+ok: [calcium]
+ok: [scandium]
+ok: [titanium]
+ok: [vanadium]
+ok: [chromium]
+ok: [manganese]
+ok: [rubidium]
+ok: [strontium]
+ok: [yttrium]
+ok: [zirconium]
+ok: [molybdenum]
+ok: [technetium]
+ok: [niobium]
+ok: [ruthenium]
+
+TASK [鍵を作成] **************************************************************************************************************************************
+changed: [hydrogen -> localhost]
+
+TASK [アカウント ansible-user を作成] ****************************************************************************************************************
+changed: [beryllium]
+changed: [boron]
+changed: [nitrogen]
+changed: [helium]
+changed: [hydrogen]
+changed: [lithium]
+changed: [carbon]
+changed: [oxygen]
+changed: [fluorine]
+changed: [neon]
+changed: [sodium]
+changed: [magnesium]
+changed: [aluminum]
+changed: [silicon]
+changed: [sulfur]
+changed: [phosphorus]
+changed: [chlorine]
+changed: [argon]
+changed: [gallium]
+changed: [germanium]
+changed: [nickel]
+changed: [copper]
+changed: [zinc]
+changed: [arsenic]
+changed: [selenium]
+changed: [vabromine]
+changed: [krypton]
+changed: [potassium]
+changed: [calcium]
+changed: [scandium]
+changed: [titanium]
+changed: [vanadium]
+changed: [manganese]
+changed: [rubidium]
+changed: [chromium]
+changed: [strontium]
+changed: [yttrium]
+changed: [zirconium]
+changed: [niobium]
+changed: [molybdenum]
+changed: [technetium]
+changed: [ruthenium]
+
+TASK [管理対象ノードに鍵を登録] **********************************************************************************************************************
+changed: [beryllium]
+changed: [boron]
+changed: [hydrogen]
+changed: [lithium]
+changed: [helium]
+changed: [carbon]
+changed: [nitrogen]
+changed: [oxygen]
+changed: [fluorine]
+changed: [neon]
+changed: [sodium]
+changed: [aluminum]
+changed: [silicon]
+changed: [magnesium]
+changed: [phosphorus]
+changed: [sulfur]
+changed: [chlorine]
+changed: [argon]
+changed: [nickel]
+changed: [copper]
+changed: [gallium]
+changed: [germanium]
+changed: [zinc]
+changed: [selenium]
+changed: [arsenic]
+changed: [vabromine]
+changed: [krypton]
+changed: [potassium]
+changed: [calcium]
+changed: [titanium]
+changed: [vanadium]
+changed: [scandium]
+changed: [chromium]
+changed: [manganese]
+changed: [rubidium]
+changed: [strontium]
+changed: [yttrium]
+changed: [zirconium]
+changed: [technetium]
+changed: [molybdenum]
+changed: [ruthenium]
+changed: [niobium]
+
+TASK [sudo 用ファイルをコピー / Linux] ***************************************************************************************************************
+changed: [boron]
+changed: [beryllium]
+changed: [helium]
+changed: [hydrogen]
+changed: [lithium]
+changed: [nitrogen]
+changed: [oxygen]
+changed: [fluorine]
+changed: [neon]
+changed: [carbon]
+changed: [sodium]
+changed: [magnesium]
+changed: [silicon]
+changed: [aluminum]
+changed: [phosphorus]
+changed: [sulfur]
+changed: [argon]
+changed: [chlorine]
+changed: [nickel]
+changed: [copper]
+changed: [zinc]
+changed: [gallium]
+changed: [germanium]
+changed: [selenium]
+changed: [arsenic]
+changed: [vabromine]
+changed: [krypton]
+changed: [potassium]
+changed: [titanium]
+skipping: [manganese]
+skipping: [rubidium]
+skipping: [strontium]
+changed: [calcium]
+skipping: [yttrium]
+skipping: [zirconium]
+skipping: [niobium]
+changed: [scandium]
+changed: [vanadium]
+changed: [chromium]
+changed: [molybdenum]
+changed: [technetium]
+changed: [ruthenium]
+
+TASK [sudo 用ファイルをコピー / FreeBSD] *************************************************************************************************************
+skipping: [hydrogen]
+skipping: [helium]
+skipping: [lithium]
+skipping: [beryllium]
+skipping: [boron]
+skipping: [carbon]
+skipping: [nitrogen]
+skipping: [oxygen]
+skipping: [fluorine]
+skipping: [neon]
+skipping: [sodium]
+skipping: [aluminum]
+skipping: [magnesium]
+skipping: [silicon]
+skipping: [phosphorus]
+skipping: [sulfur]
+skipping: [chlorine]
+skipping: [argon]
+skipping: [nickel]
+skipping: [copper]
+skipping: [zinc]
+skipping: [gallium]
+skipping: [germanium]
+skipping: [arsenic]
+skipping: [selenium]
+skipping: [vabromine]
+skipping: [krypton]
+skipping: [potassium]
+skipping: [calcium]
+skipping: [scandium]
+skipping: [titanium]
+skipping: [vanadium]
+skipping: [chromium]
+changed: [rubidium]
+changed: [manganese]
+skipping: [molybdenum]
+skipping: [technetium]
+changed: [zirconium]
+skipping: [ruthenium]
+changed: [strontium]
+changed: [yttrium]
+changed: [niobium]
+
+PLAY RECAP *******************************************************************************************************************************************
+aluminum                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+argon                      : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+arsenic                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+beryllium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+boron                      : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+calcium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+carbon                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+chlorine                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+chromium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+copper                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+fluorine                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+gallium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+germanium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+helium                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+hydrogen                   : ok=5    changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+krypton                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+lithium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+magnesium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+manganese                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+molybdenum                 : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+neon                       : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+nickel                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+niobium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+nitrogen                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+oxygen                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+phosphorus                 : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+potassium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+rubidium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+ruthenium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+scandium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+selenium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+silicon                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+sodium                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+strontium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+sulfur                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+technetium                 : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+titanium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+vabromine                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+vanadium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+yttrium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+zinc                       : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+zirconium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
+piyo@vmpc:~/node$ 
