@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Changelog" href="../changelog.html" /><link rel="prev" title="コントロールノードから管理対象ノードに接続する準備" href="kankyo-setuzoku.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="追加した管理対象ノードのインベントリ" href="kankyo-inventory.html" /><link rel="prev" title="コントロールノードから管理対象ノードに接続する準備" href="kankyo-setuzoku.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>管理対象ノードを追加 - Learning Ansible 2021/06/13 更新 documentation</title>
+        <title>管理対象ノードを追加 - Learning Ansible 2021/06/26 更新 documentation</title>
       <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Learning Ansible 2021/06/13 更新　 documentation</div></a>
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/06/26 更新　 documentation</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
@@ -101,7 +101,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">Learning Ansible 2021/06/13 更新　 documentation</span>
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/26 更新　 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -270,7 +270,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../awx/awx-install.html">AWX をインストール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awx/awx-deploy.html">AWX をデプロイ</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -291,6 +291,7 @@
 <li class="toctree-l2"><a class="reference internal" href="kankyo-managed.html">管理対象ノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">管理対象ノードを追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kankyo-inventory.html">追加した管理対象ノードのインベントリ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
@@ -524,6 +525,21 @@
 <td><p>FreeBSD 11</p></td>
 <td><p>niobium</p></td>
 <td><p>192.168.23.52</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>Arch Linux</p></td>
+<td><p>molybdenum</p></td>
+<td><p>192.168.23.53</p></td>
+</tr>
+<tr class="row-even"><td><p>41</p></td>
+<td><p>Arch Linux</p></td>
+<td><p>technetium</p></td>
+<td><p>192.168.23.54</p></td>
+</tr>
+<tr class="row-odd"><td><p>42</p></td>
+<td><p>Arch Linux</p></td>
+<td><p>ruthenium</p></td>
+<td><p>192.168.23.55</p></td>
 </tr>
 </tbody>
 </table></div>
@@ -1082,6 +1098,44 @@ Vagrant.configure("2") do |config|
     end
   end
 
+#
+# Arch Linux / molybdenum
+#
+  config.vm.define :molybdenum do |molybdenum|
+    molybdenum.vm.box = "archlinux/archlinux"
+    molybdenum.vm.network "private_network", mac: "00006c000053", ip: "192.168.23.53", virtualbox__intnet: true
+    molybdenum.vm.hostname = "molybdenum.exam.local"
+    molybdenum.vm.provider "virtualbox" do |vb|
+      vb.name = "molybdenum"
+    end
+    molybdenum.vm.provision "shell", inline: $set_time_date
+  end
+
+#
+# Arch Linux / technetium
+#
+  config.vm.define :technetium do |technetium|
+    technetium.vm.box = "archlinux/archlinux"
+    technetium.vm.network "private_network", mac: "00006c000054", ip: "192.168.23.54", virtualbox__intnet: true
+    technetium.vm.hostname = "technetium.exam.local"
+    technetium.vm.provider "virtualbox" do |vb|
+      vb.name = "technetium"
+    end
+    technetium.vm.provision "shell", inline: $set_time_date
+  end
+#
+# Arch Linux / ruthenium
+#
+  config.vm.define :ruthenium do |ruthenium|
+    ruthenium.vm.box = "archlinux/archlinux"
+    ruthenium.vm.network "private_network", mac: "00006c000055", ip: "192.168.23.55", virtualbox__intnet: true
+    ruthenium.vm.hostname = "ruthenium.exam.local"
+    ruthenium.vm.provider "virtualbox" do |vb|
+      vb.name = "ruthenium"
+    end
+    ruthenium.vm.provision "shell", inline: $set_time_date
+  end
+
 end
 
 #
@@ -1152,15 +1206,16 @@ SCRIPT
 </div>
 </div>
 </div>
+<div class="section" id="kankyo-tuika-play">
+<span id="id3"></span><h2>プレイ<a class="headerlink" href="#kankyo-tuika-play" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="kankyo-tuika-inventory">
-<span id="id3"></span><h2>インベントリファイル<a class="headerlink" href="#kankyo-tuika-inventory" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h3>インベントリファイル<a class="headerlink" href="#kankyo-tuika-inventory" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># hosts.yml</span>
 <span class="nn">---</span>
 <span class="nt">all</span><span class="p">:</span>
   <span class="nt">vars</span><span class="p">:</span>
     <span class="nt">ansible_user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vagrant</span>
     <span class="nt">ansible_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vagrant</span>
-  <span class="nt">hosts</span><span class="p">:</span>
   <span class="nt">children</span><span class="p">:</span>
     <span class="nt">centos8</span><span class="p">:</span>
       <span class="nt">hosts</span><span class="p">:</span>
@@ -1278,11 +1333,21 @@ SCRIPT
           <span class="nt">ansible_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.23.51</span>
         <span class="nt">niobium</span><span class="p">:</span>
           <span class="nt">ansible_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.23.52</span>
+    <span class="nt">arch</span><span class="p">:</span>
+      <span class="nt">vars</span><span class="p">:</span>
+        <span class="nt">ansible_python_interpreter</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/python</span>
+      <span class="nt">hosts</span><span class="p">:</span>
+        <span class="nt">molybdenum</span><span class="p">:</span>
+          <span class="nt">ansible_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.23.53</span>
+        <span class="nt">technetium</span><span class="p">:</span>
+          <span class="nt">ansible_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.23.54</span>
+        <span class="nt">ruthenium</span><span class="p">:</span>
+          <span class="nt">ansible_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.23.55</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="kankyo-tuika-playbookfile">
-<span id="id4"></span><h2>プレイブックファイル<a class="headerlink" href="#kankyo-tuika-playbookfile" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h3>プレイブックファイル<a class="headerlink" href="#kankyo-tuika-playbookfile" title="Permalink to this headline">¶</a></h3>
 <p>「 <a class="reference internal" href="kankyo-setuzoku.html#kankyo-setuzoku"><span class="std std-ref">コントロールノードから管理対象ノードに接続する準備</span></a> 」のプレイを FreeBSD 対応に変更しました。</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># node.yml</span>
 <span class="nn">---</span>
@@ -1335,18 +1400,302 @@ SCRIPT
 </pre></div>
 </div>
 </div>
+<div class="section" id="sudo-sudo-txt">
+<span id="kankyo-tuika-sudo"></span><h3>sudo 用ファイル : sudo.txt<a class="headerlink" href="#sudo-sudo-txt" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ansible-user ALL=(ALL:ALL) NOPASSWD: ALL
+</pre></div>
+</div>
+</div>
+<div class="section" id="kankyo-tuika-log">
+<span id="id6"></span><h3>実行ログ<a class="headerlink" href="#kankyo-tuika-log" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>piyo@vmpc:~/node$ ansible-playbook -i hosts.yml node.yml 
+
+PLAY [管理対象ノードに接続用のアカウントを作成] ******************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************
+ok: [beryllium]
+ok: [boron]
+ok: [helium]
+ok: [lithium]
+ok: [hydrogen]
+ok: [carbon]
+ok: [nitrogen]
+ok: [oxygen]
+ok: [fluorine]
+ok: [neon]
+ok: [aluminum]
+ok: [silicon]
+ok: [phosphorus]
+ok: [sodium]
+ok: [magnesium]
+ok: [sulfur]
+ok: [chlorine]
+ok: [argon]
+ok: [nickel]
+ok: [copper]
+ok: [zinc]
+ok: [gallium]
+ok: [germanium]
+ok: [arsenic]
+ok: [selenium]
+ok: [vabromine]
+ok: [krypton]
+ok: [potassium]
+ok: [calcium]
+ok: [scandium]
+ok: [titanium]
+ok: [vanadium]
+ok: [chromium]
+ok: [manganese]
+ok: [rubidium]
+ok: [strontium]
+ok: [yttrium]
+ok: [zirconium]
+ok: [molybdenum]
+ok: [technetium]
+ok: [niobium]
+ok: [ruthenium]
+
+TASK [鍵を作成] **************************************************************************************************************************************
+changed: [hydrogen -&gt; localhost]
+
+TASK [アカウント ansible-user を作成] ****************************************************************************************************************
+changed: [beryllium]
+changed: [boron]
+changed: [nitrogen]
+changed: [helium]
+changed: [hydrogen]
+changed: [lithium]
+changed: [carbon]
+changed: [oxygen]
+changed: [fluorine]
+changed: [neon]
+changed: [sodium]
+changed: [magnesium]
+changed: [aluminum]
+changed: [silicon]
+changed: [sulfur]
+changed: [phosphorus]
+changed: [chlorine]
+changed: [argon]
+changed: [gallium]
+changed: [germanium]
+changed: [nickel]
+changed: [copper]
+changed: [zinc]
+changed: [arsenic]
+changed: [selenium]
+changed: [vabromine]
+changed: [krypton]
+changed: [potassium]
+changed: [calcium]
+changed: [scandium]
+changed: [titanium]
+changed: [vanadium]
+changed: [manganese]
+changed: [rubidium]
+changed: [chromium]
+changed: [strontium]
+changed: [yttrium]
+changed: [zirconium]
+changed: [niobium]
+changed: [molybdenum]
+changed: [technetium]
+changed: [ruthenium]
+
+TASK [管理対象ノードに鍵を登録] **********************************************************************************************************************
+changed: [beryllium]
+changed: [boron]
+changed: [hydrogen]
+changed: [lithium]
+changed: [helium]
+changed: [carbon]
+changed: [nitrogen]
+changed: [oxygen]
+changed: [fluorine]
+changed: [neon]
+changed: [sodium]
+changed: [aluminum]
+changed: [silicon]
+changed: [magnesium]
+changed: [phosphorus]
+changed: [sulfur]
+changed: [chlorine]
+changed: [argon]
+changed: [nickel]
+changed: [copper]
+changed: [gallium]
+changed: [germanium]
+changed: [zinc]
+changed: [selenium]
+changed: [arsenic]
+changed: [vabromine]
+changed: [krypton]
+changed: [potassium]
+changed: [calcium]
+changed: [titanium]
+changed: [vanadium]
+changed: [scandium]
+changed: [chromium]
+changed: [manganese]
+changed: [rubidium]
+changed: [strontium]
+changed: [yttrium]
+changed: [zirconium]
+changed: [technetium]
+changed: [molybdenum]
+changed: [ruthenium]
+changed: [niobium]
+
+TASK [sudo 用ファイルをコピー / Linux] ***************************************************************************************************************
+changed: [boron]
+changed: [beryllium]
+changed: [helium]
+changed: [hydrogen]
+changed: [lithium]
+changed: [nitrogen]
+changed: [oxygen]
+changed: [fluorine]
+changed: [neon]
+changed: [carbon]
+changed: [sodium]
+changed: [magnesium]
+changed: [silicon]
+changed: [aluminum]
+changed: [phosphorus]
+changed: [sulfur]
+changed: [argon]
+changed: [chlorine]
+changed: [nickel]
+changed: [copper]
+changed: [zinc]
+changed: [gallium]
+changed: [germanium]
+changed: [selenium]
+changed: [arsenic]
+changed: [vabromine]
+changed: [krypton]
+changed: [potassium]
+changed: [titanium]
+skipping: [manganese]
+skipping: [rubidium]
+skipping: [strontium]
+changed: [calcium]
+skipping: [yttrium]
+skipping: [zirconium]
+skipping: [niobium]
+changed: [scandium]
+changed: [vanadium]
+changed: [chromium]
+changed: [molybdenum]
+changed: [technetium]
+changed: [ruthenium]
+
+TASK [sudo 用ファイルをコピー / FreeBSD] *************************************************************************************************************
+skipping: [hydrogen]
+skipping: [helium]
+skipping: [lithium]
+skipping: [beryllium]
+skipping: [boron]
+skipping: [carbon]
+skipping: [nitrogen]
+skipping: [oxygen]
+skipping: [fluorine]
+skipping: [neon]
+skipping: [sodium]
+skipping: [aluminum]
+skipping: [magnesium]
+skipping: [silicon]
+skipping: [phosphorus]
+skipping: [sulfur]
+skipping: [chlorine]
+skipping: [argon]
+skipping: [nickel]
+skipping: [copper]
+skipping: [zinc]
+skipping: [gallium]
+skipping: [germanium]
+skipping: [arsenic]
+skipping: [selenium]
+skipping: [vabromine]
+skipping: [krypton]
+skipping: [potassium]
+skipping: [calcium]
+skipping: [scandium]
+skipping: [titanium]
+skipping: [vanadium]
+skipping: [chromium]
+changed: [rubidium]
+changed: [manganese]
+skipping: [molybdenum]
+skipping: [technetium]
+changed: [zirconium]
+skipping: [ruthenium]
+changed: [strontium]
+changed: [yttrium]
+changed: [niobium]
+
+PLAY RECAP *******************************************************************************************************************************************
+aluminum                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+argon                      : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+arsenic                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+beryllium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+boron                      : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+calcium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+carbon                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+chlorine                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+chromium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+copper                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+fluorine                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+gallium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+germanium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+helium                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+hydrogen                   : ok=5    changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+krypton                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+lithium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+magnesium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+manganese                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+molybdenum                 : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+neon                       : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+nickel                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+niobium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+nitrogen                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+oxygen                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+phosphorus                 : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+potassium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+rubidium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+ruthenium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+scandium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+selenium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+silicon                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+sodium                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+strontium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+sulfur                     : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+technetium                 : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+titanium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+vabromine                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+vanadium                   : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+yttrium                    : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+zinc                       : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+zirconium                  : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
+piyo@vmpc:~/node$ 
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
       </article>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../changelog.html">
+          <a class="next-page" href="kankyo-inventory.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Changelog</div>
+                <div class="title">追加した管理対象ノードのインベントリ</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1392,8 +1741,13 @@ SCRIPT
 <li><a class="reference internal" href="#vagrantfile">Vagrantfile</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#kankyo-tuika-play">プレイ</a><ul>
 <li><a class="reference internal" href="#kankyo-tuika-inventory">インベントリファイル</a></li>
 <li><a class="reference internal" href="#kankyo-tuika-playbookfile">プレイブックファイル</a></li>
+<li><a class="reference internal" href="#sudo-sudo-txt">sudo 用ファイル : sudo.txt</a></li>
+<li><a class="reference internal" href="#kankyo-tuika-log">実行ログ</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

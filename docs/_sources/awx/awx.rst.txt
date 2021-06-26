@@ -6,4 +6,4 @@ AWX
 .. toctree::
    :maxdepth: 2
 
-   ./awx-install
+   ./awx-deploy

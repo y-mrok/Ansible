@@ -1,27 +1,34 @@
-.. _awx-install-login:
+.. _awx-deploy-login:
 
 **************************************************
 ログイン
 **************************************************
-1. ブラウザーで **http://192.168.23.40** を開く
+1. ブラウザーで **https://awx.example.jp** を開く
 
-   .. image:: img/2021-05-01_22h15_48.png
+#. 「ユーザー名」と「パスワード」を入力　→　:guilabel:`ログイン` をクリック
 
-   名前解決ができるのなら **http://awx** のような指定も可能
+   .. list-table::
+      :header-rows: 1
+      :widths: 1, 5
 
-   .. image:: img/2021-05-01_22h17_12.png
+      * - 項目
+        - 入力値
+      * - ユーザー名
+        - Admin
+      * - パスワード
+        - Vsybh2z7SXwr4yo7GVBVPafPWc2vgZKW
+   
+   パスワードは :command:`kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode` の実行で得た値です。
 
-#. :guilabel:`Username` に **Admin** 、 :guilabel:`Password` に **password**  を入力
-
-   .. image:: img/2021-05-01_22h16_22.png
-      :scale: 65%
-
-#. :guilabel:`Log In` をクリック
-
-   .. image:: img/2021-05-01_22h16_31.png
-      :scale: 65%
+   .. image:: img/2021-06-23_22h11_04.png
+      :scale: 50%
 
 #. ログイン終了　＝　AWX のダッシュボードを表示
 
-   .. image:: img/2021-05-01_22h16_49.png
-      :scale: 65%
+   .. image:: img/2021-06-23_22h11_32.png
+      :scale: 50%
+
+今回デプロイした AWX のバージョンです。
+
+.. image:: img/2021-06-23_22h26_48.png
+   :scale: 50%

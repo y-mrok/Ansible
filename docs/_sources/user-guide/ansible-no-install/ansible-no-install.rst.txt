@@ -9,3 +9,8 @@ Ansible のインストール
    ./node-no-yoken
    ./control-node-ni-ansible-wo-install
    ./managed-node-ni-setuzokusuru-junbi
+
+.. note::
+
+   「 :ref:`kankyo` 」も参照ください。
+

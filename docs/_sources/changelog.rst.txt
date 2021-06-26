@@ -3,6 +3,11 @@
 ##################################################
 Changelog
 ##################################################
+2021-06-26
+
+   - 「 :ref:`awx` 」から「 AWX をインストール」を削除した
+   - 「 :ref:`awx` 」に「 :ref:`awx-deploy` 」を追加した
+
 2021-06-13
 
    - 「 :ref:`kankyo` 」を追加した
@@ -18,7 +23,7 @@ Changelog
    - 「 :ref:`user-guide` 」に「 :ref:`vault` 」を追加した
    - 「 :ref:`user-guide` 」に「 :ref:`filter` 」を追加した
    - 「 :ref:`user-guide` 」に「 :ref:`plugin` 」を追加した
-   - 「 :ref:`awx` 」に「 :ref:`awx-install` 」を追加した
+   - 「 :ref:`awx` 」に「 AWX をインストール」を追加した
 
 2021-04-24
 

@@ -180,6 +180,18 @@ Vagrant
      - FreeBSD 11
      - niobium
      - 192.168.23.52
+   * - 40
+     - Arch Linux
+     - molybdenum
+     - 192.168.23.53
+   * - 41
+     - Arch Linux
+     - technetium
+     - 192.168.23.54
+   * - 42
+     - Arch Linux
+     - ruthenium
+     - 192.168.23.55
 
 .. _kankyo-tuika-vagrant-vagrantfile:
 
@@ -195,20 +207,39 @@ Vagrantfile
 .. literalinclude:: ./vagrant/Vagrantfile2
    :language: none
 
-.. _kankyo-tuika-inventory:
+.. _kankyo-tuika-play:
 
 **************************************************
-インベントリファイル
+プレイ
 **************************************************
+
+.. _kankyo-tuika-inventory:
+
+インベントリファイル
+==================================================
 .. literalinclude:: ./yaml/hosts2.yml
    :language: yaml
 
 .. _kankyo-tuika-playbookfile:
 
-**************************************************
 プレイブックファイル
-**************************************************
+==================================================
 「 :ref:`kankyo-setuzoku` 」のプレイを FreeBSD 対応に変更しました。
 
 .. literalinclude:: ./yaml/node2.yml
    :language: yaml
+
+.. _kankyo-tuika-sudo:
+
+sudo 用ファイル : sudo.txt
+==================================================
+.. code-block:: none
+
+   ansible-user ALL=(ALL:ALL) NOPASSWD: ALL
+
+.. _kankyo-tuika-log:
+
+実行ログ
+==================================================
+.. literalinclude:: ./log/kankyo-tuika-log.log
+   :language: none
