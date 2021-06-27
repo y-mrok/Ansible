@@ -13,6 +13,7 @@ GitLab サーバーをデプロイ
    - `GitLab - Install self-managed GitLab <https://about.gitlab.com/install/?version=ce#centos-8>`_
    - `てくなべ (tekunabe) - [Ansible] yum モジュールで特定のパッケージがインストール済みであることを確認する <https://tekunabe.hatenablog.jp/entry/2020/04/11/ansible_assert_yum_installed>`_
    - `Qiita - Ansibleでファイル・ディレクトリの存在確認 <https://qiita.com/yasthon/items/0693e9f7b605c660d0a3>`_
+   - `How to reset your root password - GitLab 日本語ドキュメント <https://gitlab-docs.creationline.com/ee/security/reset_root_password.html>`_
 
 .. _deploy_gitlab-inventory:
 
@@ -73,7 +74,7 @@ GitLab サーバーをデプロイ
 .. _deploy_gitlab-web-interface:
 
 **************************************************
-root アカウントのパスワードを設定
+GitLab の管理者アカウントのパスワードを設定
 **************************************************
 1. ブラウザーで :file:`group_vars/gitlab_group.yml` ファイル内の変数 gitlab_url に指定した URL を開く
 
@@ -98,6 +99,31 @@ root アカウントのパスワードを設定
 #. root アカウントのパスワードの設定終了
 
    .. image:: img/2021-04-24_15h40_17.png
+
+.. _deploy_gitlab-password-reset:
+
+*************************************************************
+GitLab の管理者アカウントのパスワードを設定（コマンドライン）
+*************************************************************
+GitLab をデプロイ後にブラウザーでアクセスしたとき、GitLab の管理者アカウント（ root ）パスワード変更画面が表示されないことがあります。そのような場合は、 GitLab サーバーにログインしてコマンドラインで管理者アカウントのパスワードを設定します。この方法は GitLab の管理者アカウントのパスワードを再設定する場合にも使用できます。
+
+.. _deploy_gitlab-password-reset-command:
+
+実行コマンド
+==================================================
+管理者パスワードを **secret_pass** に設定します。
+
+.. literalinclude:: ./cmd/password-reset-cmd.txt
+   :language: none
+
+.. _deploy_gitlab-password-reset-log:
+
+実行ログ
+==================================================
+GitLab の管理者アカウントのパスワードを **adminpassword** に変更した場合のログです。
+
+.. literalinclude:: ./log/deploy_gitlab-password-reset.log
+   :language: none
 
 .. _deploy_gitlab-login:
 

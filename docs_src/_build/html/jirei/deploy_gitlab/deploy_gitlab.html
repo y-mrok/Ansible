@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="実習環境の作成手順" href="../../kankyo/kankyo.html" /><link rel="prev" title="Zabbix サーバーをデプロイ" href="../deploy_zabbix/deploy_zabbix.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>GitLab サーバーをデプロイ - Learning Ansible 2021/06/26 更新 documentation</title>
+        <title>GitLab サーバーをデプロイ - Learning Ansible 2021/06/27 更新 documentation</title>
       <link rel="stylesheet" href="../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="../../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">Learning Ansible 2021/06/26 更新　 documentation</div></a>
+      <a href="../../index.html"><div class="brand">Learning Ansible 2021/06/27 更新　 documentation</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
@@ -101,7 +101,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">Learning Ansible 2021/06/26 更新　 documentation</span>
+  <span class="sidebar-brand-text">Learning Ansible 2021/06/27 更新　 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -271,6 +271,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../awx/awx-deploy.html">AWX をデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-gitlab.html">GitLab の設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-user.html">ユーザー</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -322,6 +324,7 @@
 <li><p><a class="reference external" href="https://about.gitlab.com/install/?version=ce#centos-8">GitLab - Install self-managed GitLab</a></p></li>
 <li><p><a class="reference external" href="https://tekunabe.hatenablog.jp/entry/2020/04/11/ansible_assert_yum_installed">てくなべ (tekunabe) - [Ansible] yum モジュールで特定のパッケージがインストール済みであることを確認する</a></p></li>
 <li><p><a class="reference external" href="https://qiita.com/yasthon/items/0693e9f7b605c660d0a3">Qiita - Ansibleでファイル・ディレクトリの存在確認</a></p></li>
+<li><p><a class="reference external" href="https://gitlab-docs.creationline.com/ee/security/reset_root_password.html">How to reset your root password - GitLab 日本語ドキュメント</a></p></li>
 </ul>
 </div>
 <div class="section" id="deploy-gitlab-inventory">
@@ -604,8 +607,8 @@ piyo@vmpc:~/example/sample/gitlab$
 </div>
 </div>
 </div>
-<div class="section" id="root">
-<span id="deploy-gitlab-web-interface"></span><h2>root アカウントのパスワードを設定<a class="headerlink" href="#root" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="deploy-gitlab-web-interface">
+<span id="id6"></span><h2>GitLab の管理者アカウントのパスワードを設定<a class="headerlink" href="#deploy-gitlab-web-interface" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>ブラウザーで <code class="file docutils literal notranslate"><span class="pre">group_vars/gitlab_group.yml</span></code> ファイル内の変数 gitlab_url に指定した URL を開く</p>
 <img alt="../../_images/2021-04-24_15h35_44.png" src="../../_images/2021-04-24_15h35_44.png"/>
@@ -626,8 +629,49 @@ piyo@vmpc:~/example/sample/gitlab$
 </li>
 </ol>
 </div>
+<div class="section" id="deploy-gitlab-password-reset">
+<span id="id7"></span><h2>GitLab の管理者アカウントのパスワードを設定（コマンドライン）<a class="headerlink" href="#deploy-gitlab-password-reset" title="Permalink to this headline">¶</a></h2>
+<p>GitLab をデプロイ後にブラウザーでアクセスしたとき、GitLab の管理者アカウント（ root ）パスワード変更画面が表示されないことがあります。そのような場合は、 GitLab サーバーにログインしてコマンドラインで管理者アカウントのパスワードを設定します。この方法は GitLab の管理者アカウントのパスワードを再設定する場合にも使用できます。</p>
+<div class="section" id="deploy-gitlab-password-reset-command">
+<span id="id8"></span><h3>実行コマンド<a class="headerlink" href="#deploy-gitlab-password-reset-command" title="Permalink to this headline">¶</a></h3>
+<p>管理者パスワードを <strong>secret_pass</strong> に設定します。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo gitlab-rails console -e production
+user = User.where(id: 1).first
+user.password = 'secret_pass'
+user.password_confirmation = 'secret_pass'
+user.save!
+exit
+</pre></div>
+</div>
+</div>
+<div class="section" id="deploy-gitlab-password-reset-log">
+<span id="id9"></span><h3>実行ログ<a class="headerlink" href="#deploy-gitlab-password-reset-log" title="Permalink to this headline">¶</a></h3>
+<p>GitLab の管理者アカウントのパスワードを <strong>adminpassword</strong> に変更した場合のログです。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[ansible-user@gitlab ~]$ sudo gitlab-rails console -e production
+--------------------------------------------------------------------------------
+ Ruby:         ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-linux]
+ GitLab:       14.0.1 (76b84b42f64) FOSS
+ GitLab Shell: 13.19.0
+ PostgreSQL:   12.6
+--------------------------------------------------------------------------------
+Loading production environment (Rails 6.1.3.2)
+irb(main):001:0&gt; user = User.where(id: 1).first
+=&gt; #&lt;User id:1 @root&gt;
+irb(main):002:0&gt; user.password = 'adminpassword'
+=&gt; "adminpassword"
+irb(main):003:0&gt; user.password_confirmation = 'adminpassword'
+=&gt; "adminpassword"
+irb(main):004:0&gt; user.save!
+Enqueued ActionMailer::MailDeliveryJob (Job ID: f1e30646-6720-4e8f-80fe-ceec8306a255) to Sidekiq(mailers) with arguments: "DeviseMailer", "password_change", "deliver_now", {:args=&gt;[#&lt;GlobalID:0x00007f413fe84900 @uri=#&lt;URI::GID gid://gitlab/User/1&gt;&gt;]}
+=&gt; true
+irb(main):005:0&gt; exit
+[ansible-user@gitlab ~]$ 
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="deploy-gitlab-login">
-<span id="id6"></span><h2>gitlab にログイン<a class="headerlink" href="#deploy-gitlab-login" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>gitlab にログイン<a class="headerlink" href="#deploy-gitlab-login" title="Permalink to this headline">¶</a></h2>
 <p>テストとして root アカウントでログインします。</p>
 <ol class="arabic">
 <li><p>ブラウザーで <code class="file docutils literal notranslate"><span class="pre">group_vars/gitlab_group.yml</span></code> ファイル内の変数 gitlab_url に指定した URL を開く</p>
@@ -710,7 +754,12 @@ piyo@vmpc:~/example/sample/gitlab$
 <li><a class="reference internal" href="#deploy-gitlab-log-2">2 回目の実行</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#root">root アカウントのパスワードを設定</a></li>
+<li><a class="reference internal" href="#deploy-gitlab-web-interface">GitLab の管理者アカウントのパスワードを設定</a></li>
+<li><a class="reference internal" href="#deploy-gitlab-password-reset">GitLab の管理者アカウントのパスワードを設定（コマンドライン）</a><ul>
+<li><a class="reference internal" href="#deploy-gitlab-password-reset-command">実行コマンド</a></li>
+<li><a class="reference internal" href="#deploy-gitlab-password-reset-log">実行ログ</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#deploy-gitlab-login">gitlab にログイン</a></li>
 </ul>
 </li>

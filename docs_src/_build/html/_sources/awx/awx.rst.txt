@@ -7,3 +7,5 @@ AWX
    :maxdepth: 2
 
    ./awx-deploy
+   ./awx-gitlab
+   ./awx-user
