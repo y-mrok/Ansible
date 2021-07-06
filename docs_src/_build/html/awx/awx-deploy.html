@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="GitLab の設定" href="awx-gitlab.html" /><link rel="prev" title="AWX" href="awx.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="ユーザー" href="awx-user.html" /><link rel="prev" title="AWX" href="awx.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>AWX をデプロイ - Learning Ansible 2021/06/27 更新 documentation</title>
+        <title>AWX をデプロイ - Learning Ansible 2021/07/06 更新 documentation</title>
       <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Learning Ansible 2021/06/27 更新　 documentation</div></a>
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/07/06 更新　 documentation</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
@@ -101,7 +101,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">Learning Ansible 2021/06/27 更新　 documentation</span>
+  <span class="sidebar-brand-text">Learning Ansible 2021/07/06 更新　 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -271,24 +271,36 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="awx.html">AWX</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">AWX をデプロイ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="awx-gitlab.html">GitLab の設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="awx-user.html">ユーザー</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="awx-inventory.html">インベントリとホスト</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="awx-inventory-teigi.html">インベントリを追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="awx-inventory-group.html">グループを追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="awx-inventory-host.html">管理対象ノードを追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="awx-inventory-group-host.html">グループにホストを追加</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="awx-ninsho.html">認証情報</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="awx-ninsho-node.html">管理対象ノードに接続するための認証情報</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="awx-adohoc.html">アドホックコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-gitlab.html">GitLab の設定</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label for="toctree-checkbox-29"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label for="toctree-checkbox-30"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
@@ -313,7 +325,7 @@
         </label>
         <div class="section" id="awx">
 <span id="awx-deploy"></span><h1>AWX をデプロイ<a class="headerlink" href="#awx" title="Permalink to this headline">¶</a></h1>
-<p>CentOS 8.4 に AWX 19.2.0 をインストールします。</p>
+<p>CentOS 8.4 に AWX 19.2.2 をインストールします。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -341,7 +353,6 @@ reboot
 #
 # OS を設定
 #
-dnf -y upgrade
 dnf -y install setroubleshoot-server curl lsof wget
 sed -i  '/swap/d' /etc/fstab
 swapoff -a
@@ -355,7 +366,7 @@ reboot
 #
 curl -sfL https://get.k3s.io | sh
 cat /etc/systemd/system/k3s.service
-systemctl status k3s
+systemctl status k3s.service
 kubectl get nodes
 kubectl get pods --all-namespaces
 
@@ -363,7 +374,7 @@ kubectl get pods --all-namespaces
 # AWX operator をデプロイ
 #
 kubectl config set-context --current --namespace=default
-kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.10.0/deploy/awx-operator.yaml
+kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.12.0/deploy/awx-operator.yaml
 kubectl get events -w --all-namespaces
 kubectl get pods
 kubectl logs -f deployment.apps/awx-operator
@@ -374,18 +385,6 @@ kubectl logs -f deployment.apps/awx-operator
 kubectl create namespace awx
 kubectl config set-context --current --namespace=awx
 vi myawx.yml
-
------ ここから myawx.yml の内容 -----
-apiVersion: awx.ansible.com/v1beta1
-kind: AWX
-metadata:
-  name: awx
-spec:
-  ingress_type: Ingress
-  route_tls_termination_mechanism: edge
-  hostname: awx.example.jp
------ ここまで myawx.yml の内容 -----
-
 cat myawx.yml
 kubectl apply -f myawx.yml
 kubectl get events -w --all-namespaces
@@ -399,185 +398,107 @@ kubectl get svc
 kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode
 </pre></div>
 </div>
+<p><code class="file docutils literal notranslate"><span class="pre">myawx.yml</span></code> ファイルの内容です。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awx.ansible.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWX</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awx</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">ingress_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+  <span class="nt">route_tls_termination_mechanism</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">edge</span>
+  <span class="nt">hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awx.example.jp</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="awx-install-log">
 <span id="id2"></span><h2>実行ログ<a class="headerlink" href="#awx-install-log" title="Permalink to this headline">¶</a></h2>
 <p>実行ログです。すべてを掲載すると長くなるので一部を省略しました。</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# dnf -y install open-vm-tools
-</span>CentOS Linux 8 - AppStream                                          4.0 MB/s | 7.5 MB     00:01    
-CentOS Linux 8 - BaseOS                                             3.2 MB/s | 2.6 MB     00:00    
-CentOS Linux 8 - Extras                                              15 kB/s | 9.6 kB     00:00    
+</span>CentOS Linux 8 - AppStream                                                                                   7.0 MB/s | 8.1 MB     00:01    
+CentOS Linux 8 - BaseOS                                                                                      4.0 MB/s | 3.6 MB     00:00    
+CentOS Linux 8 - Extras                                                                                       18 kB/s | 9.8 kB     00:00    
 パッケージ open-vm-tools-11.2.0-2.el8.x86_64 は既にインストールされています。
 依存関係が解決しました。
 行うべきことはありません。
 完了しました!
 <span class="hll">[root@awx ~]# dnf -y install epel-release
-</span>メタデータの期限切れの最終確認: 0:00:11 時間前の 2021年06月23日 21時26分31秒 に実施しました。
+</span>メタデータの期限切れの最終確認: 0:00:07 時間前の 2021年07月03日 01時21分13秒 に実施しました。
 依存関係が解決しました。
-====================================================================================================
- パッケージ                 アーキテクチャー     バージョン              リポジトリー         サイズ
-====================================================================================================
+=============================================================================================================================================
+ パッケージ                           アーキテクチャー               バージョン                         リポジトリー                   サイズ
+=============================================================================================================================================
 インストール:
- epel-release               noarch               8-8.el8                 extras                23 k
+ epel-release                         noarch                         8-11.el8                           extras                          24 k
 
 トランザクションの概要
-====================================================================================================
+=============================================================================================================================================
 インストール  1 パッケージ
-
-ダウンロードサイズの合計: 23 k
-インストール後のサイズ: 32 k
-パッケージのダウンロード:
-epel-release-8-8.el8.noarch.rpm                                     116 kB/s |  23 kB     00:00    
-----------------------------------------------------------------------------------------------------
-合計                                                                 35 kB/s |  23 kB     00:00     
-警告: /var/cache/dnf/extras-2770d521ba03e231/packages/epel-release-8-8.el8.noarch.rpm: ヘッダー V3 R
-SA/SHA256 Signature、鍵 ID 8483c65d: NOKEY
-CentOS Linux 8 - Extras                                             1.6 MB/s | 1.6 kB     00:00    
-GPG 鍵 0x8483C65D をインポート中:
- Userid     : "CentOS (CentOS Official Signing Key) &lt;security@centos.org&gt;"
- Fingerprint: 99DB 70FA E1D7 CE22 7FB6 4882 05B5 55B3 8483 C65D
- From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
-鍵のインポートに成功しました
-トランザクションの確認を実行中
-トランザクションの確認に成功しました。
-トランザクションのテストを実行中
-トランザクションのテストに成功しました。
-トランザクションを実行中
-  準備             :                                                                            1/1 
-  インストール中   : epel-release-8-8.el8.noarch                                                1/1 
-  scriptletの実行中: epel-release-8-8.el8.noarch                                                1/1 
-  検証             : epel-release-8-8.el8.noarch                                                1/1 
-
-インストール済み:
-  epel-release-8-8.el8.noarch                                                                       
-
-完了しました!
-<span class="hll">[root@awx ~]# dnf -y update
-</span>Extra Packages for Enterprise Linux Modular 8 - x86_64              465 kB/s | 611 kB     00:01    
-Extra Packages for Enterprise Linux 8 - x86_64                      4.4 MB/s | 9.5 MB     00:02    
-メタデータの期限切れの最終確認: 0:00:01 時間前の 2021年06月23日 21時26分53秒 に実施しました。
-依存関係が解決しました。
-====================================================================================================
- パッケージ               Arch           バージョン                            リポジトリー   サイズ
-====================================================================================================
-アップグレード:
- bash                     x86_64         4.4.20-1.el8_4                        baseos         1.5 M
- bind-export-libs         x86_64         32:9.11.26-4.el8_4                    baseos         1.1 M
- dbus                     x86_64         1:1.12.8-12.el8_4.2                   baseos          41 k
- dbus-common              noarch         1:1.12.8-12.el8_4.2                   baseos          46 k
- dbus-daemon              x86_64         1:1.12.8-12.el8_4.2                   baseos         240 k
- dbus-libs                x86_64         1:1.12.8-12.el8_4.2                   baseos         184 k
- dbus-tools               x86_64         1:1.12.8-12.el8_4.2                   baseos          85 k
- epel-release             noarch         8-10.el8                              epel            22 k
- glib2                    x86_64         2.56.4-10.el8_4                       baseos         2.5 M
- gnutls                   x86_64         3.6.14-8.el8_3                        baseos         1.0 M
- microcode_ctl            x86_64         4:20210216-1.20210525.1.el8_4         baseos         5.5 M
- nettle                   x86_64         3.4.1-4.el8_3                         baseos         301 k
- openssh                  x86_64         8.0p1-6.el8_4.2                       baseos         521 k
- openssh-clients          x86_64         8.0p1-6.el8_4.2                       baseos         667 k
- openssh-server           x86_64         8.0p1-6.el8_4.2                       baseos         484 k
- polkit                   x86_64         0.115-11.el8_4.1                      baseos         154 k
- polkit-libs              x86_64         0.115-11.el8_4.1                      baseos          76 k
 
 （中略）
 
-  検証             : openssh-server-8.0p1-5.el8.x86_64                                        28/34 
-  検証             : polkit-0.115-11.el8_4.1.x86_64                                           29/34 
-  検証             : polkit-0.115-11.el8.x86_64                                               30/34 
-  検証             : polkit-libs-0.115-11.el8_4.1.x86_64                                      31/34 
-  検証             : polkit-libs-0.115-11.el8.x86_64                                          32/34 
-  検証             : epel-release-8-10.el8.noarch                                             33/34 
-  検証             : epel-release-8-8.el8.noarch                                              34/34 
+トランザクションのテストに成功しました。
+トランザクションを実行中
+  準備             :                                                                                                                     1/1 
+  インストール中   : epel-release-8-11.el8.noarch                                                                                        1/1 
+  scriptletの実行中: epel-release-8-11.el8.noarch                                                                                        1/1 
+  検証             : epel-release-8-11.el8.noarch                                                                                        1/1 
 
-アップグレード済み:
-  bash-4.4.20-1.el8_4.x86_64                           bind-export-libs-32:9.11.26-4.el8_4.x86_64  
-  dbus-1:1.12.8-12.el8_4.2.x86_64                      dbus-common-1:1.12.8-12.el8_4.2.noarch      
-  dbus-daemon-1:1.12.8-12.el8_4.2.x86_64               dbus-libs-1:1.12.8-12.el8_4.2.x86_64        
-  dbus-tools-1:1.12.8-12.el8_4.2.x86_64                epel-release-8-10.el8.noarch                
-  glib2-2.56.4-10.el8_4.x86_64                         gnutls-3.6.14-8.el8_3.x86_64                
-  microcode_ctl-4:20210216-1.20210525.1.el8_4.x86_64   nettle-3.4.1-4.el8_3.x86_64                 
-  openssh-8.0p1-6.el8_4.2.x86_64                       openssh-clients-8.0p1-6.el8_4.2.x86_64      
-  openssh-server-8.0p1-6.el8_4.2.x86_64                polkit-0.115-11.el8_4.1.x86_64              
-  polkit-libs-0.115-11.el8_4.1.x86_64                 
+インストール済み:
+  epel-release-8-11.el8.noarch                                                                                                               
+
+完了しました!
+<span class="hll">[root@awx ~]# dnf -y update
+</span>Extra Packages for Enterprise Linux Modular 8 - x86_64                                                       489 kB/s | 663 kB     00:01    
+Extra Packages for Enterprise Linux 8 - x86_64                                                                12 MB/s |  10 MB     00:00    
+メタデータの期限切れの最終確認: 0:00:01 時間前の 2021年07月03日 01時21分27秒 に実施しました。
+依存関係が解決しました。
+=============================================================================================================================================
+ パッケージ                                アーキテクチャー      バージョン                                   リポジトリー             サイズ
+=============================================================================================================================================
+インストール:
+ kernel                                    x86_64                4.18.0-305.7.1.el8_4                         baseos                   5.9 M
+ kernel-core                               x86_64                4.18.0-305.7.1.el8_4                         baseos                    36 M
+
+（中略）
+
+  rpm-build-libs-4.14.3-14.el8_4.x86_64                              rpm-libs-4.14.3-14.el8_4.x86_64                                        
+  rpm-plugin-selinux-4.14.3-14.el8_4.x86_64                          rpm-plugin-systemd-inhibit-4.14.3-14.el8_4.x86_64                      
+  rsyslog-8.1911.0-7.el8_4.2.x86_64                                  sssd-client-2.4.0-9.el8_4.1.x86_64                                     
+  sssd-common-2.4.0-9.el8_4.1.x86_64                                 sssd-kcm-2.4.0-9.el8_4.1.x86_64                                        
+  sssd-nfs-idmap-2.4.0-9.el8_4.1.x86_64                              systemd-239-45.el8_4.1.x86_64                                          
+  systemd-libs-239-45.el8_4.1.x86_64                                 systemd-pam-239-45.el8_4.1.x86_64                                      
+  systemd-udev-239-45.el8_4.1.x86_64                                 tuned-2.15.0-2.el8_4.1.noarch                                          
+インストール済み:
+  kernel-4.18.0-305.7.1.el8_4.x86_64        kernel-core-4.18.0-305.7.1.el8_4.x86_64        kernel-modules-4.18.0-305.7.1.el8_4.x86_64       
 
 完了しました!
 <span class="hll">[root@awx ~]# reboot
 </span></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# dnf -y upgrade
-</span>メタデータの期限切れの最終確認: 0:07:34 時間前の 2021年06月23日 21時26分53秒 に実施しました。
-依存関係が解決しました。
-行うべきことはありません。
-完了しました!
-<span class="hll">[root@awx ~]# dnf -y install setroubleshoot-server curl lsof wget
-</span>メタデータの期限切れの最終確認: 0:07:40 時間前の 2021年06月23日 21時26分53秒 に実施しました。
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# dnf -y install setroubleshoot-server curl lsof wget
+</span>メタデータの期限切れの最終確認: 0:03:03 時間前の 2021年07月03日 01時21分27秒 に実施しました。
 パッケージ curl-7.61.1-18.el8.x86_64 は既にインストールされています。
 依存関係が解決しました。
-====================================================================================================
- パッケージ                      Arch      バージョン                            リポジトリー サイズ
-====================================================================================================
+=============================================================================================================================================
+ パッケージ                                 アーキテクチャー     バージョン                                    リポジトリー            サイズ
+=============================================================================================================================================
 インストール:
- lsof                            x86_64    4.93.2-1.el8                          baseos       253 k
- setroubleshoot-server           x86_64    3.3.24-3.el8                          appstream    401 k
- wget                            x86_64    1.19.5-10.el8                         appstream    734 k
-依存関係のインストール:
- cairo                           x86_64    1.15.12-3.el8                         appstream    721 k
- cairo-gobject                   x86_64    1.15.12-3.el8                         appstream     33 k
- checkpolicy                     x86_64    2.9-1.el8                             baseos       348 k
- dejavu-fonts-common             noarch    2.35-7.el8                            baseos        74 k
- dejavu-sans-fonts               noarch    2.35-7.el8                            baseos       1.6 M
- fontconfig                      x86_64    2.13.1-3.el8                          baseos       275 k
- fontpackages-filesystem         noarch    1.44-22.el8                           baseos        16 k
- libX11                          x86_64    1.6.8-4.el8                           appstream    611 k
- libX11-common                   noarch    1.6.8-4.el8                           appstream    158 k
- libXau                          x86_64    1.0.9-3.el8                           appstream     37 k
- libXext                         x86_64    1.3.4-1.el8                           appstream     45 k
- libXrender                      x86_64    0.9.10-7.el8                          appstream     33 k
- libxcb                          x86_64    1.13.1-1.el8                          appstream    229 k
- pixman                          x86_64    0.38.4-1.el8                          appstream    257 k
- policycoreutils-python-utils    noarch    2.9-14.el8                            baseos       252 k
- python3-audit                   x86_64    3.0-0.17.20191104git1c2f876.el8       baseos        86 k
- python3-cairo                   x86_64    1.16.3-6.el8                          appstream     90 k
- python3-gobject                 x86_64    3.28.3-2.el8                          appstream     26 k
- python3-libsemanage             x86_64    2.9-6.el8                             baseos       127 k
- python3-libxml2                 x86_64    2.9.7-9.el8                           baseos       237 k
- python3-policycoreutils         noarch    2.9-14.el8                            baseos       2.2 M
- python3-pydbus                  noarch    0.6.0-5.el8                           appstream     53 k
- python3-setools                 x86_64    4.3.0-2.el8                           baseos       626 k
- python3-systemd                 x86_64    234-8.el8                             appstream     81 k
- setroubleshoot-plugins          noarch    3.3.13-1.el8                          appstream    361 k
+ lsof                                       x86_64               4.93.2-1.el8                                  baseos                  253 k
+ setroubleshoot-server                      x86_64               3.3.24-3.el8                                  appstream               401 k
+ wget                                       x86_64               1.19.5-10.el8                                 appstream               734 k
 
 （中略）
 
-インストール済み:
-  cairo-1.15.12-3.el8.x86_64                                                                        
-  cairo-gobject-1.15.12-3.el8.x86_64                                                                
-  checkpolicy-2.9-1.el8.x86_64                                                                      
-  dejavu-fonts-common-2.35-7.el8.noarch                                                             
-  dejavu-sans-fonts-2.35-7.el8.noarch                                                               
-  fontconfig-2.13.1-3.el8.x86_64                                                                    
-  fontpackages-filesystem-1.44-22.el8.noarch                                                        
-  libX11-1.6.8-4.el8.x86_64                                                                         
-  libX11-common-1.6.8-4.el8.noarch                                                                  
-  libXau-1.0.9-3.el8.x86_64                                                                         
-  libXext-1.3.4-1.el8.x86_64                                                                        
-  libXrender-0.9.10-7.el8.x86_64                                                                    
-  libxcb-1.13.1-1.el8.x86_64                                                                        
-  lsof-4.93.2-1.el8.x86_64                                                                          
-  pixman-0.38.4-1.el8.x86_64                                                                        
-  policycoreutils-python-utils-2.9-14.el8.noarch                                                    
-  python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64                                              
-  python3-cairo-1.16.3-6.el8.x86_64                                                                 
-  python3-gobject-3.28.3-2.el8.x86_64                                                               
-  python3-libsemanage-2.9-6.el8.x86_64                                                              
-  python3-libxml2-2.9.7-9.el8.x86_64                                                                
-  python3-policycoreutils-2.9-14.el8.noarch                                                         
-  python3-pydbus-0.6.0-5.el8.noarch                                                                 
-  python3-setools-4.3.0-2.el8.x86_64                                                                
-  python3-systemd-234-8.el8.x86_64                                                                  
-  setroubleshoot-plugins-3.3.13-1.el8.noarch                                                        
-  setroubleshoot-server-3.3.24-3.el8.x86_64                                                         
-  wget-1.19.5-10.el8.x86_64                                                                         
+  libXext-1.3.4-1.el8.x86_64                                               libXrender-0.9.10-7.el8.x86_64                                    
+  libxcb-1.13.1-1.el8.x86_64                                               lsof-4.93.2-1.el8.x86_64                                          
+  pixman-0.38.4-1.el8.x86_64                                               policycoreutils-python-utils-2.9-14.el8.noarch                    
+  python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64                     python3-cairo-1.16.3-6.el8.x86_64                                 
+  python3-gobject-3.28.3-2.el8.x86_64                                      python3-libsemanage-2.9-6.el8.x86_64                              
+  python3-libxml2-2.9.7-9.el8_4.2.x86_64                                   python3-policycoreutils-2.9-14.el8.noarch                         
+  python3-pydbus-0.6.0-5.el8.noarch                                        python3-setools-4.3.0-2.el8.x86_64                                
+  python3-systemd-234-8.el8.x86_64                                         setroubleshoot-plugins-3.3.13-1.el8.noarch                        
+  setroubleshoot-server-3.3.24-3.el8.x86_64                                wget-1.19.5-10.el8.x86_64                                         
 
 完了しました!
 <span class="hll">[root@awx ~]# sed -i  '/swap/d' /etc/fstab
@@ -593,30 +514,19 @@ Extra Packages for Enterprise Linux 8 - x86_64                      4.4 MB/s | 9
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">[root@awx ~]# curl -sfL https://get.k3s.io | sh
 </span>[INFO]  Finding release for channel stable
-[INFO]  Using v1.21.1+k3s1 as release
-[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.21.1+k3s1/sha256sum-amd6
-4.txt
-[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.21.1+k3s1/k3s
+[INFO]  Using v1.21.2+k3s1 as release
+[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.21.2+k3s1/sha256sum-amd64.txt
+[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.21.2+k3s1/k3s
 [INFO]  Verifying binary download
 [INFO]  Installing k3s to /usr/local/bin/k3s
-Rancher K3s Common (stable)                                         834  B/s | 1.2 kB     00:01    
+Rancher K3s Common (stable)                                                                                  1.2 kB/s | 1.2 kB     00:01    
 依存関係が解決しました。
-====================================================================================================
- パッケージ        Arch   バージョン                                リポジトリー              サイズ
-====================================================================================================
-インストール:
- k3s-selinux       noarch 0.3-0.el8                                 rancher-k3s-common-stable  18 k
-依存関係のインストール:
- container-selinux noarch 2:2.162.0-1.module_el8.4.0+830+8027e1c4   appstream                  52 k
-モジュールストリームの有効化中:
- container-tools          rhel8                                                                    
+=============================================================================================================================================
+ パッケージ                  アーキテクチャー バージョン                                           リポジトリー                        サイズ
+=============================================================================================================================================
 
 （中略）
 
-インストール済み:
-  container-selinux-2:2.162.0-1.module_el8.4.0+830+8027e1c4.noarch   k3s-selinux-0.3-0.el8.noarch  
-
-完了しました!
 [INFO]  Creating /usr/local/bin/kubectl symlink to k3s
 [INFO]  Creating /usr/local/bin/crictl symlink to k3s
 [INFO]  Creating /usr/local/bin/ctr symlink to k3s
@@ -625,8 +535,7 @@ Rancher K3s Common (stable)                                         834  B/s | 1
 [INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
 [INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
 [INFO]  systemd: Enabling k3s unit
-Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.se
-rvice.
+Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
 [INFO]  systemd: Starting k3s
 <span class="hll">[root@awx ~]# cat /etc/systemd/system/k3s.service
 </span>[Unit]
@@ -660,53 +569,57 @@ ExecStartPre=-/sbin/modprobe overlay
 ExecStart=/usr/local/bin/k3s \
     server \
 
-<span class="hll">[root@awx ~]# systemctl status k3s
+<span class="hll">[root@awx ~]# systemctl status k3s.service
 </span>● k3s.service - Lightweight Kubernetes
    Loaded: loaded (/etc/systemd/system/k3s.service; enabled; vendor preset: disabled)
-   Active: active (running) since Wed 2021-06-23 21:38:03 JST; 1min 4s ago
+   Active: active (running) since Sat 2021-07-03 01:28:00 +03; 19s ago
      Docs: https://k3s.io
-  Process: 2501 ExecStartPre=/sbin/modprobe overlay (code=exited, status=0/SUCCESS)
-  Process: 2494 ExecStartPre=/sbin/modprobe br_netfilter (code=exited, status=0/SUCCESS)
-  Process: 2491 ExecStartPre=/bin/sh -xc ! /usr/bin/systemctl is-enabled --quiet nm-cloud-setup.ser&gt;
- Main PID: 2503 (k3s-server)
-    Tasks: 98
-   Memory: 1.2G
+  Process: 2402 ExecStartPre=/sbin/modprobe overlay (code=exited, status=0/SUCCESS)
+  Process: 2395 ExecStartPre=/sbin/modprobe br_netfilter (code=exited, status=0/SUCCESS)
+  Process: 2392 ExecStartPre=/bin/sh -xc ! /usr/bin/systemctl is-enabled --quiet nm-cloud-setup.service (code=exited, status=0/SUCCESS)
+ Main PID: 2405 (k3s-server)
+    Tasks: 108
+   Memory: 859.1M
    CGroup: /system.slice/k3s.service
-           ├─2503 /usr/local/bin/k3s server
-           ├─2533 containerd 
-           ├─3048 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
-           ├─3073 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
-           ├─3077 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
-           ├─4156 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
-           └─4334 /var/lib/rancher/k3s/data/77457d0b09d8b94d6f5029bcbc70f94b7ae9c50a08b539b76612e71&gt;
+           ├─2405 /usr/local/bin/k3s server
+           ├─2422 containerd 
+           ├─3014 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/containerd-shim-runc-v2 -na&gt;
+           ├─3056 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/containerd-shim-runc-v2 -na&gt;
+           ├─3082 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/containerd-shim-runc-v2 -na&gt;
+           ├─3107 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/containerd-shim-runc-v2 -na&gt;
+           ├─3114 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/containerd-shim-runc-v2 -na&gt;
+           ├─3227 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/unpigz -d -c
+           ├─3244 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/unpigz -d -c
+           ├─3248 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/unpigz -d -c
+           ├─3252 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/unpigz -d -c
+           └─3258 /var/lib/rancher/k3s/data/57d64d4b123cea8e276484f00ab3dfa7178a00a35368aa6b43df3e3bd8ce032d/bin/unpigz -d -c
 
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.230576    2503 reconciler.go:196] "operat&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.230608    2503 reconciler.go:196] "operat&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: W0623 21:38:51.230892    2503 empty_dir.go:520] Warning:&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: W0623 21:38:51.231703    2503 empty_dir.go:520] Warning:&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.231930    2503 operation_generator.go:829&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.232145    2503 operation_generator.go:829&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.245708    2503 operation_generator.go:829&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.331499    2503 reconciler.go:319] "Volume&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.331587    2503 reconciler.go:319] "Volume&gt;
- 6月 23 21:38:51 awx.example.jp k3s[2503]: I0623 21:38:51.331616    2503 reconciler.go:319] "Volume&gt;
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.056099    2405 iptables.go:160] Adding iptables rule: -s 10.42.0.0/16 -d 10.42.0.0&gt;
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.059710    2405 iptables.go:160] Adding iptables rule: -s 10.42.0.0/16 -j ACCEPT
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.071304    2405 iptables.go:160] Adding iptables rule: -s 10.42.0.0/16 ! -d 224.0.0&gt;
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.072033    2405 iptables.go:160] Adding iptables rule: -d 10.42.0.0/16 -j ACCEPT
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.084390    2405 iptables.go:160] Adding iptables rule: ! -s 10.42.0.0/16 -d 10.42.0&gt;
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.089824    2405 iptables.go:160] Adding iptables rule: ! -s 10.42.0.0/16 -d 10.42.0&gt;
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: W0703 01:28:01.257602    2405 handler_proxy.go:102] no RequestInfo found in the context
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: E0703 01:28:01.257903    2405 controller.go:116] loading OpenAPI spec for "v1beta1.metrics.k8s.io&gt;
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: , Header: map[Content-Type:[text/plain; charset=utf-8] X-Content-Type-Options:[nosniff]]
+ 7月 03 01:28:01 awx.example.jp k3s[2405]: I0703 01:28:01.257924    2405 controller.go:129] OpenAPI AggregationController: action for item v&gt;
 <span class="hll">[root@awx ~]# kubectl get nodes
 </span>NAME             STATUS   ROLES                  AGE   VERSION
-awx.example.jp   Ready    control-plane,master   73s   v1.21.1+k3s1
+awx.example.jp   Ready    control-plane,master   51s   v1.21.2+k3s1
 <span class="hll">[root@awx ~]# kubectl get pods --all-namespaces
 </span>NAMESPACE     NAME                                      READY   STATUS      RESTARTS   AGE
-kube-system   coredns-7448499f4d-j9msp                  1/1     Running     0          8m38s
-kube-system   metrics-server-86cbb8457f-2xcjn           1/1     Running     0          8m38s
-kube-system   local-path-provisioner-5ff76fc89d-cpvz9   1/1     Running     0          8m38s
-kube-system   helm-install-traefik-crd-m8q8v            0/1     Completed   0          8m38s
-kube-system   helm-install-traefik-xvhn2                0/1     Completed   1          8m38s
-kube-system   svclb-traefik-crrbq                       2/2     Running     0          8m6s
-kube-system   traefik-97b44b794-s999w                   1/1     Running     0          8m6s
+kube-system   local-path-provisioner-5ff76fc89d-bcq49   1/1     Running     0          44s
+kube-system   coredns-7448499f4d-lwnrm                  1/1     Running     0          44s
+kube-system   metrics-server-86cbb8457f-hwdcs           1/1     Running     0          44s
+kube-system   helm-install-traefik-crd-xmnx8            0/1     Completed   0          44s
+kube-system   helm-install-traefik-6xz9s                0/1     Completed   1          44s
+kube-system   svclb-traefik-gw6dj                       2/2     Running     0          17s
+kube-system   traefik-97b44b794-9j4xc                   0/1     Running     0          17s
 <span class="hll">[root@awx ~]# kubectl config set-context --current --namespace=default
 </span>Context "default" modified.
-<span class="hll">[root@awx ~]# kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.10.0/deploy/
-</span>awx-operator.yaml
-customresourcedefinition.apiextensions.k8s.io/awxs.awx.ansible.com created
+<span class="hll">[root@awx ~]# kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.12.0/deploy/awx-operator.yaml
+</span>customresourcedefinition.apiextensions.k8s.io/awxs.awx.ansible.com created
 customresourcedefinition.apiextensions.k8s.io/awxbackups.awx.ansible.com created
 customresourcedefinition.apiextensions.k8s.io/awxrestores.awx.ansible.com created
 clusterrole.rbac.authorization.k8s.io/awx-operator created
@@ -714,62 +627,56 @@ clusterrolebinding.rbac.authorization.k8s.io/awx-operator created
 serviceaccount/awx-operator created
 deployment.apps/awx-operator created
 <span class="hll">[root@awx ~]# kubectl get events -w --all-namespaces
-</span>NAMESPACE     LAST SEEN   TYPE      REASON                    OBJECT                                
-         MESSAGE
-default       9m21s       Normal    Starting                  node/awx.example.jp                   
-         Starting kubelet.
-default       9m21s       Warning   InvalidDiskCapacity       node/awx.example.jp                   
-         invalid capacity 0 on image filesystem
-default       9m21s       Normal    NodeHasSufficientMemory   node/awx.example.jp                   
-         Node awx.example.jp status is now: NodeHasSufficientMemory
-default       9m21s       Normal    NodeHasNoDiskPressure     node/awx.example.jp                   
-         Node awx.example.jp status is now: NodeHasNoDiskPressure
+</span>NAMESPACE     LAST SEEN   TYPE      REASON                    OBJECT                                         MESSAGE
+default       2m35s       Normal    Starting                  node/awx.example.jp                            Starting kubelet.
+default       2m35s       Warning   InvalidDiskCapacity       node/awx.example.jp                            invalid capacity 0 on image file
+system
+default       2m35s       Normal    NodeHasSufficientMemory   node/awx.example.jp                            Node awx.example.jp status is no
+w: NodeHasSufficientMemory
+default       2m35s       Normal    NodeHasNoDiskPressure     node/awx.example.jp                            Node awx.example.jp status is no
+w: NodeHasNoDiskPressure
+default       2m35s       Normal    NodeHasSufficientPID      node/awx.example.jp                            Node awx.example.jp status is no
+w: NodeHasSufficientPID
 
 （中略）
 
-
-default       9s          Normal    Scheduled                 pod/awx-operator-75c79f5489-62lbb     
-         Successfully assigned default/awx-operator-75c79f5489-62lbb to awx.example.jp
-default       9s          Normal    Pulling                   pod/awx-operator-75c79f5489-62lbb     
-         Pulling image "quay.io/ansible/awx-operator:0.10.0"
-default       0s          Normal    Pulled                    pod/awx-operator-75c79f5489-62lbb     
-         Successfully pulled image "quay.io/ansible/awx-operator:0.10.0" in 24.289586903s
-default       0s          Normal    Created                   pod/awx-operator-75c79f5489-62lbb     
-         Created container awx-operator
-default       0s          Normal    Started                   pod/awx-operator-75c79f5489-62lbb     
-         Started container awx-operator
+default       39s         Normal    SuccessfulCreate          replicaset/awx-operator-545497f7d5             Created pod: awx-operator-545497
+f7d5-dd6x7
+default       39s         Normal    Scheduled                 pod/awx-operator-545497f7d5-dd6x7              Successfully assigned default/aw
+x-operator-545497f7d5-dd6x7 to awx.example.jp
+default       39s         Normal    Pulling                   pod/awx-operator-545497f7d5-dd6x7              Pulling image "quay.io/ansible/a
+wx-operator:0.12.0"
+default       14s         Normal    Pulled                    pod/awx-operator-545497f7d5-dd6x7              Successfully pulled image "quay.
+io/ansible/awx-operator:0.12.0" in 24.980793901s
+default       12s         Normal    Created                   pod/awx-operator-545497f7d5-dd6x7              Created container awx-operator
+default       12s         Normal    Started                   pod/awx-operator-545497f7d5-dd6x7              Started container awx-operator
 <span class="hll">^C[root@awx ~]# kubectl get pods
 </span>NAME                            READY   STATUS    RESTARTS   AGE
-awx-operator-75c79f5489-62lbb   1/1     Running   0          3m26s
+awx-operator-545497f7d5-dd6x7   1/1     Running   0          70s
 <span class="hll">[root@awx ~]# kubectl logs -f deployment.apps/awx-operator
-</span>{"level":"info","ts":1624452462.4707985,"logger":"cmd","msg":"Go Version: go1.13.15"}
-{"level":"info","ts":1624452462.4709737,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
-{"level":"info","ts":1624452462.4710875,"logger":"cmd","msg":"Version of ansible-operator: v0.19.4"}
-{"level":"info","ts":1624452462.471164,"logger":"cmd","msg":"Git commit of ansible-operator: 125d0df
-cc71fef4f9d7e2a42b1354cb79ffdee03"}
-{"level":"info","ts":1624452462.4718332,"logger":"cmd","msg":"Watching all namespaces.","Namespace":
-""}
-{"level":"info","ts":1624452463.2776682,"logger":"controller-runtime.metrics","msg":"metrics server 
-is starting to listen","addr":"0.0.0.0:8383"}
-{"level":"info","ts":1624452463.2785845,"logger":"watches","msg":"Environment variable not set; usin
-g default value","envVar":"WORKER_AWX_AWX_ANSIBLE_COM","default":1}
+</span>{"level":"info","ts":1625265009.5248892,"logger":"cmd","msg":"Go Version: go1.13.15"}
+{"level":"info","ts":1625265009.5249238,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
+{"level":"info","ts":1625265009.524929,"logger":"cmd","msg":"Version of ansible-operator: v0.19.4"}
+{"level":"info","ts":1625265009.5249329,"logger":"cmd","msg":"Git commit of ansible-operator: 125d0dfcc71fef4f9d7e2a42b1354cb79ffdee03"}
+{"level":"info","ts":1625265009.5251622,"logger":"cmd","msg":"Watching all namespaces.","Namespace":""}
+{"level":"info","ts":1625265010.3291895,"logger":"controller-runtime.metrics","msg":"metrics server is starting to listen","addr":"0.0.0.0:83
+83"}
+{"level":"info","ts":1625265010.329772,"logger":"watches","msg":"Environment variable not set; using default value","envVar":"WORKER_AWX_AWX_
+ANSIBLE_COM","default":1}
+{"level":"info","ts":1625265010.3298202,"logger":"watches","msg":"Environment variable not set; using default value","envVar":"ANSIBLE_VERBOS
 
 （中略）
 
-{"level":"info","ts":1624452468.1431108,"logger":"controller-runtime.controller","msg":"Starting Eve
-ntSource","controller":"awx-controller","source":"kind source: awx.ansible.com/v1beta1, Kind=AWX"}
-{"level":"info","ts":1624452468.2454379,"logger":"controller-runtime.controller","msg":"Starting Con
-troller","controller":"awxrestore-controller"}
-{"level":"info","ts":1624452468.2454855,"logger":"controller-runtime.controller","msg":"Starting wor
-kers","controller":"awxrestore-controller","worker count":1}
-{"level":"info","ts":1624452468.2457247,"logger":"controller-runtime.controller","msg":"Starting Con
-troller","controller":"awxbackup-controller"}
-{"level":"info","ts":1624452468.2457676,"logger":"controller-runtime.controller","msg":"Starting wor
-kers","controller":"awxbackup-controller","worker count":1}
-{"level":"info","ts":1624452468.2467782,"logger":"controller-runtime.controller","msg":"Starting Con
-troller","controller":"awx-controller"}
-{"level":"info","ts":1624452468.2468538,"logger":"controller-runtime.controller","msg":"Starting wor
-kers","controller":"awx-controller","worker count":1}
+
+{"level":"info","ts":1625265015.2855458,"logger":"controller-runtime.controller","msg":"Starting workers","controller":"awxbackup-controller"
+,"worker count":1}
+{"level":"info","ts":1625265015.2854798,"logger":"controller-runtime.controller","msg":"Starting Controller","controller":"awxrestore-control
+ler"}
+{"level":"info","ts":1625265015.2855923,"logger":"controller-runtime.controller","msg":"Starting workers","controller":"awxrestore-controller
+","worker count":1}
+{"level":"info","ts":1625265015.2854474,"logger":"controller-runtime.controller","msg":"Starting Controller","controller":"awx-controller"}
+{"level":"info","ts":1625265015.285608,"logger":"controller-runtime.controller","msg":"Starting workers","controller":"awx-controller","worke
+r count":1}
 ^C
 <span class="hll">[root@awx ~]# kubectl create namespace awx
 </span>namespace/awx created
@@ -790,138 +697,65 @@ spec:
 <span class="hll">[root@awx ~]# kubectl apply -f myawx.yml
 </span>awx.awx.ansible.com/awx created
 <span class="hll">[root@awx ~]# kubectl get events -w --all-namespaces
-</span>NAMESPACE     LAST SEEN   TYPE      REASON                    OBJECT                                
-         MESSAGE
-default       15m         Normal    Starting                  node/awx.example.jp                   
-         Starting kubelet.
-default       15m         Warning   InvalidDiskCapacity       node/awx.example.jp                   
-         invalid capacity 0 on image filesystem
-default       15m         Normal    NodeHasSufficientMemory   node/awx.example.jp                   
-         Node awx.example.jp status is now: NodeHasSufficientMemory
-default       15m         Normal    NodeHasNoDiskPressure     node/awx.example.jp                   
-         Node awx.example.jp status is now: NodeHasNoDiskPressure
+</span>NAMESPACE     LAST SEEN   TYPE      REASON                    OBJECT                                         MESSAGE
+default       5m33s       Normal    Starting                  node/awx.example.jp                            Starting kubelet.
+default       5m33s       Warning   InvalidDiskCapacity       node/awx.example.jp                            invalid capacity 0 on image file
+system
+default       5m33s       Normal    NodeHasSufficientMemory   node/awx.example.jp                            Node awx.example.jp status is no
+w: NodeHasSufficientMemory
+default       5m33s       Normal    NodeHasNoDiskPressure     node/awx.example.jp                            Node awx.example.jp status is no
+w: NodeHasNoDiskPressure
+default       5m33s       Normal    NodeHasSufficientPID      node/awx.example.jp                            Node awx.example.jp status is no
+w: NodeHasSufficientPID
 
 （中略）
 
-default       6m13s       Normal    Created                   pod/awx-operator-75c79f5489-62lbb     
-         Created container awx-operator
-default       6m13s       Normal    Started                   pod/awx-operator-75c79f5489-62lbb     
-         Started container awx-operator
-awx           0s          Normal    SuccessfulCreate          statefulset/awx-postgres              
-         create Claim postgres-awx-postgres-0 Pod awx-postgres-0 in StatefulSet awx-postgres success
-awx           0s          Normal    SuccessfulCreate          statefulset/awx-postgres              
-         create Pod awx-postgres-0 in StatefulSet awx-postgres successful
-awx           0s          Normal    WaitForFirstConsumer      persistentvolumeclaim/postgres-awx-pos
-tgres-0   waiting for first consumer to be created before binding
-awx           0s          Normal    ExternalProvisioning      persistentvolumeclaim/postgres-awx-pos
-tgres-0   waiting for a volume to be created, either by external provisioner "rancher.io/local-path"
- or manually created by system administrator
-awx           0s          Normal    ExternalProvisioning      persistentvolumeclaim/postgres-awx-pos
-tgres-0   waiting for a volume to be created, either by external provisioner "rancher.io/local-path"
- or manually created by system administrator
-awx           0s          Normal    Provisioning              persistentvolumeclaim/postgres-awx-pos
-tgres-0   External provisioner is provisioning volume for claim "awx/postgres-awx-postgres-0"
-awx           0s          Normal    ExternalProvisioning      persistentvolumeclaim/postgres-awx-pos
-tgres-0   waiting for a volume to be created, either by external provisioner "rancher.io/local-path"
- or manually created by system administrator
-kube-system   0s          Normal    Pulling                   pod/helper-pod-create-pvc-7d2733ad-bbb
-5-4085-b4d3-41817d1f8498   Pulling image "rancher/library-busybox:1.32.1"
-kube-system   0s          Normal    Pulled                    pod/helper-pod-create-pvc-7d2733ad-bbb
-5-4085-b4d3-41817d1f8498   Successfully pulled image "rancher/library-busybox:1.32.1" in 4.747771925
-s
-kube-system   0s          Normal    Created                   pod/helper-pod-create-pvc-7d2733ad-bbb
-5-4085-b4d3-41817d1f8498   Created container helper-pod
-kube-system   0s          Normal    Started                   pod/helper-pod-create-pvc-7d2733ad-bbb
-5-4085-b4d3-41817d1f8498   Started container helper-pod
-awx           0s          Normal    ProvisioningSucceeded     persistentvolumeclaim/postgres-awx-pos
-tgres-0                    Successfully provisioned volume pvc-7d2733ad-bbb5-4085-b4d3-41817d1f8498
-awx           0s          Normal    Scheduled                 pod/awx-postgres-0                    
-                           Successfully assigned awx/awx-postgres-0 to awx.example.jp
-awx           0s          Normal    Pulling                   pod/awx-postgres-0                    
-                           Pulling image "postgres:12"
-awx           0s          Normal    ScalingReplicaSet         deployment/awx                        
-                           Scaled up replica set awx-6d97bb8b9f to 1
-awx           0s          Normal    SuccessfulCreate          replicaset/awx-6d97bb8b9f             
-                           Created pod: awx-6d97bb8b9f-s4z5t
-awx           0s          Normal    Scheduled                 pod/awx-6d97bb8b9f-s4z5t              
-                           Successfully assigned awx/awx-6d97bb8b9f-s4z5t to awx.example.jp
-awx           0s          Normal    Pulling                   pod/awx-6d97bb8b9f-s4z5t              
-                           Pulling image "docker.io/redis:latest"
-awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
-                           Successfully pulled image "docker.io/redis:latest" in 7.096207056s
-awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
-                           Created container redis
-awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
-                           Started container redis
-awx           0s          Normal    Pulling                   pod/awx-6d97bb8b9f-s4z5t              
-                           Pulling image "quay.io/ansible/awx:19.2.0"
-awx           0s          Normal    Pulled                    pod/awx-postgres-0                    
-                           Successfully pulled image "postgres:12" in 16.409029626s
-awx           0s          Normal    Created                   pod/awx-postgres-0                    
-                           Created container postgres
-awx           0s          Normal    Started                   pod/awx-postgres-0                    
-                           Started container postgres
-awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
-                           Successfully pulled image "quay.io/ansible/awx:19.2.0" in 38.545021461s
-awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
-                           Created container awx-web
-awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
-                           Started container awx-web
-awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
-                           Container image "quay.io/ansible/awx:19.2.0" already present on machine
-awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
-                           Created container awx-task
-awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
-                           Started container awx-task
-awx           0s          Normal    Pulling                   pod/awx-6d97bb8b9f-s4z5t              
-                           Pulling image "quay.io/ansible/awx-ee:0.3.0"
-awx           0s          Normal    Pulled                    pod/awx-6d97bb8b9f-s4z5t              
-                           Successfully pulled image "quay.io/ansible/awx-ee:0.3.0" in 47.595402606s
-awx           0s          Normal    Created                   pod/awx-6d97bb8b9f-s4z5t              
-                           Created container awx-ee
-awx           0s          Normal    Started                   pod/awx-6d97bb8b9f-s4z5t              
-                           Started container awx-ee
+awx           0s          Normal    Started                   pod/awx-7c5d846c88-knht2                                         Started contai
+ner awx-task
+awx           0s          Normal    Pulling                   pod/awx-7c5d846c88-knht2                                         Pulling image 
+"quay.io/ansible/awx-ee:0.5.0"
+awx           0s          Normal    Pulled                    pod/awx-7c5d846c88-knht2                                         Successfully p
+ulled image "quay.io/ansible/awx-ee:0.5.0" in 56.93414422s
+awx           0s          Normal    Created                   pod/awx-7c5d846c88-knht2                                         Created contai
+ner awx-ee
+awx           0s          Normal    Started                   pod/awx-7c5d846c88-knht2                                         Started contai
+ner awx-ee
 <span class="hll">^C[root@awx ~]# kubectl logs -f deployment.apps/awx-operator -n default
-</span>{"level":"info","ts":1624452462.4707985,"logger":"cmd","msg":"Go Version: go1.13.15"}
-{"level":"info","ts":1624452462.4709737,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
-{"level":"info","ts":1624452462.4710875,"logger":"cmd","msg":"Version of ansible-operator: v0.19.4"}
-{"level":"info","ts":1624452462.471164,"logger":"cmd","msg":"Git commit of ansible-operator: 125d0df
-cc71fef4f9d7e2a42b1354cb79ffdee03"}
-{"level":"info","ts":1624452462.4718332,"logger":"cmd","msg":"Watching all namespaces.","Namespace":
-""}
-{"level":"info","ts":1624452463.2776682,"logger":"controller-runtime.metrics","msg":"metrics server 
-is starting to listen","addr":"0.0.0.0:8383"}
-{"level":"info","ts":1624452463.2785845,"logger":"watches","msg":"Environment variable not set; usin
-g default value","envVar":"WORKER_AWX_AWX_ANSIBLE_COM","default":1}
+</span>{"level":"info","ts":1625265009.5248892,"logger":"cmd","msg":"Go Version: go1.13.15"}
+{"level":"info","ts":1625265009.5249238,"logger":"cmd","msg":"Go OS/Arch: linux/amd64"}
+{"level":"info","ts":1625265009.524929,"logger":"cmd","msg":"Version of ansible-operator: v0.19.4"}
+{"level":"info","ts":1625265009.5249329,"logger":"cmd","msg":"Git commit of ansible-operator: 125d0dfcc71fef4f9d7e2a42b1354cb79ffdee03"}
+{"level":"info","ts":1625265009.5251622,"logger":"cmd","msg":"Watching all namespaces.","Namespace":""}
+{"level":"info","ts":1625265010.3291895,"logger":"controller-runtime.metrics","msg":"metrics server is starting to listen","addr":"0.0.0.0:83
+83"}
+{"level":"info","ts":1625265010.329772,"logger":"watches","msg":"Environment variable not set; using default value","envVar":"WORKER_AWX_AWX_
+ANSIBLE_COM","default":1}
+{"level":"info","ts":1625265010.3298202,"logger":"watches","msg":"Environment variable not set; using default value","envVar":"ANSIBLE_VERBOS
+ITY_AWX_AWX_ANSIBLE_COM","default":2}
 
 （中略）
 
-{"level":"info","ts":1624453218.18947,"logger":"proxy","msg":"Read object from cache","resource":{"I
-sResourceRequest":true,"Path":"/api/v1/namespaces/awx/secrets/awx-broadcast-websocket","Verb":"get",
-"APIPrefix":"api","APIGroup":"","APIVersion":"v1","Namespace":"awx","Resource":"secrets","Subresourc
-e":"","Name":"awx-broadcast-websocket","Parts":["secrets","awx-broadcast-websocket"]}}
-{"level":"info","ts":1624453218.5074484,"logger":"runner","msg":"Ansible-runner exited successfully"
-,"job":"5486140987150761883","name":"awx","namespace":"awx"}
+{"level":"info","ts":1625265640.3923583,"logger":"runner","msg":"Ansible-runner exited successfully","job":"5486140987150761883","name":"awx"
+,"namespace":"awx"}
 
 --------------------------- Ansible Task Status Event StdOut  -----------------
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=49   changed=2    unreachable=0    failed=0    skipped=34   rescued=
-0    ignored=0   
+localhost                  : ok=53   changed=0    unreachable=0    failed=0    skipped=39   rescued=0    ignored=0   
 
 
 -------------------------------------------------------------------------------
 ^C
 <span class="hll">[root@awx ~]# kubectl get pods
 </span>NAME                   READY   STATUS    RESTARTS   AGE
-awx-postgres-0         1/1     Running   0          15m
-awx-6d97bb8b9f-s4z5t   4/4     Running   0          14m
+awx-postgres-0         1/1     Running   0          13m
+awx-7c5d846c88-knht2   4/4     Running   0          12m
 <span class="hll">[root@awx ~]# kubectl get svc
-</span>NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-awx-postgres   ClusterIP   None            &lt;none&gt;        5432/TCP   15m
-awx-service    ClusterIP   10.43.119.138   &lt;none&gt;        80/TCP     15m
+</span>NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+awx-postgres   ClusterIP   None           &lt;none&gt;        5432/TCP   13m
+awx-service    ClusterIP   10.43.172.89   &lt;none&gt;        80/TCP     13m
 <span class="hll">[root@awx ~]# kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode
-</span>Vsybh2z7SXwr4yo7GVBVPafPWc2vgZKW[root@awx ~]# 
+</span>SXISjPJsoFP3yre0voCHWjt7ODCIdfil[root@awx ~]# 
 </pre></div>
 </div>
 </div>
@@ -945,19 +779,19 @@ awx-service    ClusterIP   10.43.119.138   &lt;none&gt;        80/TCP     15m
 <td><p>Admin</p></td>
 </tr>
 <tr class="row-odd"><td><p>パスワード</p></td>
-<td><p>Vsybh2z7SXwr4yo7GVBVPafPWc2vgZKW</p></td>
+<td><p>SXISjPJsoFP3yre0voCHWjt7ODCIdfil</p></td>
 </tr>
 </tbody>
 </table></div>
 <p>パスワードは <strong class="command">kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode</strong> の実行で得た値です。</p>
-<a class="reference internal image-reference" href="../_images/2021-06-23_22h11_04.png"><img alt="../_images/2021-06-23_22h11_04.png" src="../_images/2021-06-23_22h11_04.png" style="width: 553.0px; height: 277.0px;"/></a>
+<a class="reference internal image-reference" href="../_images/2021-07-03_08h16_03.png"><img alt="../_images/2021-07-03_08h16_03.png" src="../_images/2021-07-03_08h16_03.png" style="width: 710.45px; height: 347.75px;"/></a>
 </li>
 <li><p>ログイン終了　＝　AWX のダッシュボードを表示</p>
-<a class="reference internal image-reference" href="../_images/2021-06-23_22h11_32.png"><img alt="../_images/2021-06-23_22h11_32.png" src="../_images/2021-06-23_22h11_32.png" style="width: 719.0px; height: 574.0px;"/></a>
+<a class="reference internal image-reference" href="../_images/2021-07-03_08h16_29.png"><img alt="../_images/2021-07-03_08h16_29.png" src="../_images/2021-07-03_08h16_29.png" style="width: 719.0px; height: 572.5px;"/></a>
 </li>
 </ol>
 <p>今回デプロイした AWX のバージョンです。</p>
-<a class="reference internal image-reference" href="../_images/2021-06-23_22h26_48.png"><img alt="../_images/2021-06-23_22h26_48.png" src="../_images/2021-06-23_22h26_48.png" style="width: 617.0px; height: 381.0px;"/></a>
+<img alt="../_images/2021-07-03_08h43_22.png" src="../_images/2021-07-03_08h43_22.png"/>
 </div>
 </div>
 
@@ -965,12 +799,12 @@ awx-service    ClusterIP   10.43.119.138   &lt;none&gt;        80/TCP     15m
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="awx-gitlab.html">
+          <a class="next-page" href="awx-user.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">GitLab の設定</div>
+                <div class="title">ユーザー</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>

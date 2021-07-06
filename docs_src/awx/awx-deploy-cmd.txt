@@ -9,7 +9,6 @@ reboot
 #
 # OS を設定
 #
-dnf -y upgrade
 dnf -y install setroubleshoot-server curl lsof wget
 sed -i  '/swap/d' /etc/fstab
 swapoff -a
@@ -23,7 +22,7 @@ reboot
 #
 curl -sfL https://get.k3s.io | sh
 cat /etc/systemd/system/k3s.service
-systemctl status k3s
+systemctl status k3s.service
 kubectl get nodes
 kubectl get pods --all-namespaces
 
@@ -31,7 +30,7 @@ kubectl get pods --all-namespaces
 # AWX operator をデプロイ
 #
 kubectl config set-context --current --namespace=default
-kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.10.0/deploy/awx-operator.yaml
+kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/0.12.0/deploy/awx-operator.yaml
 kubectl get events -w --all-namespaces
 kubectl get pods
 kubectl logs -f deployment.apps/awx-operator
@@ -42,18 +41,6 @@ kubectl logs -f deployment.apps/awx-operator
 kubectl create namespace awx
 kubectl config set-context --current --namespace=awx
 vi myawx.yml
-
------ ここから myawx.yml の内容 -----
-apiVersion: awx.ansible.com/v1beta1
-kind: AWX
-metadata:
-  name: awx
-spec:
-  ingress_type: Ingress
-  route_tls_termination_mechanism: edge
-  hostname: awx.example.jp
------ ここまで myawx.yml の内容 -----
-
 cat myawx.yml
 kubectl apply -f myawx.yml
 kubectl get events -w --all-namespaces

@@ -16,19 +16,18 @@
       * - ユーザー名
         - Admin
       * - パスワード
-        - Vsybh2z7SXwr4yo7GVBVPafPWc2vgZKW
+        - SXISjPJsoFP3yre0voCHWjt7ODCIdfil
    
    パスワードは :command:`kubectl get secret awx-admin-password -o jsonpath='{.data.password}' | base64 --decode` の実行で得た値です。
 
-   .. image:: img/2021-06-23_22h11_04.png
-      :scale: 50%
+   .. image:: img/2021-07-03_08h16_03.png
+      :scale: 65%
 
 #. ログイン終了　＝　AWX のダッシュボードを表示
 
-   .. image:: img/2021-06-23_22h11_32.png
+   .. image:: img/2021-07-03_08h16_29.png
       :scale: 50%
 
 今回デプロイした AWX のバージョンです。
 
-.. image:: img/2021-06-23_22h26_48.png
-   :scale: 50%
+.. image:: img/2021-07-03_08h43_22.png

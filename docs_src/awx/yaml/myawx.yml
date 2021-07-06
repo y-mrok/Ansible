@@ -1,0 +1,9 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  ingress_type: Ingress
+  route_tls_termination_mechanism: edge
+  hostname: awx.example.jp

@@ -5,3 +5,8 @@
 **************************************************
 .. literalinclude:: ./awx-deploy-cmd.txt
    :language: none
+
+:file:`myawx.yml` ファイルの内容です。
+
+.. literalinclude:: ./yaml/myawx.yml
+   :language: yaml

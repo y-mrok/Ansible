@@ -5,14 +5,14 @@
 **************************************************
 実行ログです。すべてを掲載すると長くなるので一部を省略しました。
 
-.. literalinclude:: ./log/awx_install.log
+.. literalinclude:: ./log/210703_071944_awx.log
    :language: none
-   :emphasize-lines: 1, 9, 50, 99
+   :emphasize-lines: 1, 9, 35, 60
 
-.. literalinclude:: ./log/awx_install1.log
+.. literalinclude:: ./log/210703_072422_awx.log
    :language: none
-   :emphasize-lines: 1, 6, 77, 78, 79, 81, 83, 85
+   :emphasize-lines: 1, 26, 27, 28, 30, 32, 34
 
-.. literalinclude:: ./log/awx_install2.log
+.. literalinclude:: ./log/210703_072604_awx.log
    :language: none
-   :emphasize-lines: 1, 38, 70, 100, 103, 112, 114, 123, 148, 151, 181, 183, 185, 186, 197, 199, 291, 322, 326, 330
+   :emphasize-lines: 1, 26, 58, 93, 96, 105, 107, 115, 139, 142, 167, 169, 171, 172, 183, 185, 209, 235, 239, 243

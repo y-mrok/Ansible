@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="ループの進捗を把握：index_var" href="loop-control-index-var.html" /><link rel="prev" title="ループの制御" href="loop-controls.html" />
 
     <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>ループ変数を指定：loop_var - Learning Ansible 2021/06/27 更新 documentation</title>
+        <title>ループ変数を指定：loop_var - Learning Ansible 2021/07/06 更新 documentation</title>
       <link rel="stylesheet" href="../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="../../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">Learning Ansible 2021/06/27 更新　 documentation</div></a>
+      <a href="../../index.html"><div class="brand">Learning Ansible 2021/07/06 更新　 documentation</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
@@ -101,7 +101,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">Learning Ansible 2021/06/27 更新　 documentation</span>
+  <span class="sidebar-brand-text">Learning Ansible 2021/07/06 更新　 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -271,24 +271,36 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../awx/awx-deploy.html">AWX をデプロイ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-gitlab.html">GitLab の設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../awx/awx-user.html">ユーザー</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../awx/awx-inventory.html">インベントリとホスト</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-teigi.html">インベントリを追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-group.html">グループを追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-host.html">管理対象ノードを追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-group-host.html">グループにホストを追加</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../awx/awx-ninsho.html">認証情報</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-ninsho-node.html">管理対象ノードに接続するための認証情報</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-adohoc.html">アドホックコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-gitlab.html">GitLab の設定</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label for="toctree-checkbox-29"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label for="toctree-checkbox-30"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
