@@ -9,6 +9,5 @@ AWX
    ./awx-deploy
    ./awx-user
    ./awx-inventory
-   ./awx-ninsho
    ./awx-adohoc
-   ./awx-gitlab
+   ./awx-playbook

@@ -94,6 +94,6 @@ dw_php_codehinting.config
 # --------------------------------------
 # Sphinx.gitignore
 # --------------------------------------
-docs_src/_build/
 tmp/
 bkup/
+_build/

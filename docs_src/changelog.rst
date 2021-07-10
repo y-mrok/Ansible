@@ -3,17 +3,18 @@
 ##################################################
 Changelog
 ##################################################
+2021-07-10
+   - 「 :ref:`awx` 」に「 :ref:`awx-playbook` 」を追加した
+
 2021-07-06
    - 「 :ref:`awx-deploy` 」の AWX のバージョンを 19.2.0 から 19.2.2 へ変更した
    - 「 :ref:`awx` 」に「 :ref:`awx-inventory` 」を追加した
-   - 「 :ref:`awx` 」に「 :ref:`awx-ninsho` 」を追加した
    - 「 :ref:`awx` 」に「 :ref:`awx-adohoc` 」を追加した
 
 2021-06-27
    - 「 :ref:`awx` 」から「 AWX をインストール」を削除した
    - 「 :ref:`awx` 」に「 :ref:`awx-deploy` 」を追加した
-   - 「 :ref:`deploy_gitlab` 」に「 :ref:`deploy_gitlab-password-reset` 」追加した
-   - 「 :ref:`awx` 」に「 :ref:`awx-gitlab` 」を追加した
+   - 「 :ref:`jirei` 」の「 :ref:`deploy_gitlab` 」に「 :ref:`deploy_gitlab-password-reset` 」を追加した
    - 「 :ref:`awx` 」に「 :ref:`awx-user` 」を追加した
 
 2021-06-13
