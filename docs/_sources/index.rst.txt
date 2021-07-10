@@ -3,7 +3,12 @@
 ##################################################
 Learning Ansible
 ##################################################
-このドキュメントは `Ansible Documentation <https://docs.ansible.com/ansible/latest/index.html>`_ で学習した内容をまとめたものです。
+このドキュメントは以下のドキュメントで学習した内容をまとめたものです。
+
+- `Ansible Documentation <https://docs.ansible.com/ansible/latest/index.html>`_ 
+- `Ansible Tower User Guide <https://docs.ansible.com/ansible-tower/latest/html/userguide/index.html>`_
+
+----
 
 .. toctree::
    :maxdepth: 2
