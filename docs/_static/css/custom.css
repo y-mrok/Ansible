@@ -9,3 +9,8 @@ table.docutils th.head{
 table.docutils tr.row-odd{
     background-color: aliceblue;
 }
+
+table.docutils tr{
+    text-align: left;
+    vretial-align: middle;
+}

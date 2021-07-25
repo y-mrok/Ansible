@@ -3,10 +3,7 @@
 ##################################################
 Learning Ansible
 ##################################################
-このドキュメントは以下のドキュメントで学習した内容をまとめたものです。
-
-- `Ansible Documentation <https://docs.ansible.com/ansible/latest/index.html>`_ 
-- `Ansible Tower User Guide <https://docs.ansible.com/ansible-tower/latest/html/userguide/index.html>`_
+このドキュメントは私が Ansible および AWX を学習したときの備忘録です。理解不足や誤った理解などにより、説明不足や不正確、誤った内容などが含まれている可能性があります。
 
 ----
 
@@ -19,4 +16,5 @@ Learning Ansible
    ./collection-index/collection-index
    ./jirei/jirei
    ./kankyo/kankyo
+   ./references
    ./changelog

@@ -4,11 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="block" href="../block/block.html" /><link rel="prev" title="タスクの関連付け" href="handlers-fukusu.html" />
 
-    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
-        <title>handlers の実行タイミングの変更 - Learning Ansible 2021/07/10 更新 documentation</title>
-      <link rel="stylesheet" href="../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
-    <link rel="stylesheet" href="../../_static/pygments.css">
-    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+    <meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
+        <title>handlers の実行タイミングの変更 - Learning Ansible 2021/07/25 更新 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     
 
 
@@ -37,8 +38,7 @@
   --color-code-foreground: #d0d0d0;
   
   }
-</style><link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
-    <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css"></head>
   <body dir="">
     
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">Learning Ansible 2021/07/10 更新　 documentation</div></a>
+      <a href="../../index.html"><div class="brand">Learning Ansible 2021/07/25 更新　 documentation</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
@@ -101,7 +101,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">Learning Ansible 2021/07/10 更新　 documentation</span>
+  <span class="sidebar-brand-text">Learning Ansible 2021/07/25 更新　 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -271,44 +271,31 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../awx/awx.html">AWX</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../awx/awx-deploy.html">AWX をデプロイ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-user.html">ユーザー</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../awx/awx-inventory.html">インベントリとホスト</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-teigi.html">インベントリを追加</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-group.html">グループを追加</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-host.html">インベントリに管理対象ノードを追加</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-inventory-group-host.html">グループに管理対象ノードを追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-about.html">AWX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-organizations.html">組織 : Organizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-users.html">ユーザー : Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-teams.html">チーム : Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-credentials.html">認証情報 : Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-inventories.html">インベントリ : Inventories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-projects.html">プロジェクト : Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-templates.html">テンプレート : Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awx/awx-adohoc.html">アドホックコマンド</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../awx/awx-adohoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-adhoc-ninsho.html">管理対象ノードに接続するための認証情報</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-adhoc-command.html">アドホックコマンドを実行</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../awx/awx-playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-playbook-key.html">鍵を作成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-playbook-gitlab-key.html">GitLab サーバーに公開鍵を登録</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-playbook-ninsho.html">GitLab サーバーに接続するための認証情報</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-playbook-project.html">GitLab のプロジェクトを指定</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-playbook-template.html">ジョブテンプレートを作成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../awx/awx-playbook-jikko.html">ジョブテンプレートを実行</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label for="toctree-checkbox-29"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label for="toctree-checkbox-30"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
@@ -316,6 +303,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../kankyo/kankyo-inventory.html">追加した管理対象ノードのインベントリ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">参考資料</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 
@@ -411,83 +399,46 @@
 </pre></div>
 </div>
 <p>実行ログです。</p>
-<div class="highlight-none notranslate"><div class="table-wrapper"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>piyo@vmpc:~/example/handlers$ ansible-playbook -i hosts.yml handlers3.yml 
-
-PLAY [Example of handleres usage] ********************************************************************************************************************
-
-TASK [Gathering Facts] *******************************************************************************************************************************
-ok: [centos83]
-
-TASK [Install the latest version of Apache or update to the latest version] **************************************************************************
-changed: [centos83]
-
-TASK [Update the configuration file -&gt; Set the host name] ********************************************************************************************
-changed: [centos83]
-
-<span class="hll">RUNNING HANDLER [Syntax check of httpd.conf] *********************************************************************************************************
-</span><span class="hll">changed: [centos83]
-</span>
-<span class="hll">RUNNING HANDLER [Restart or start httpd.service] *****************************************************************************************************
-</span><span class="hll">changed: [centos83]
-</span>
-TASK [Update the configuration file -&gt; Set the listen port] ******************************************************************************************
-changed: [centos83]
-
-TASK [Open port:8080/tcp] ****************************************************************************************************************************
-changed: [centos83]
-
-<span class="hll">RUNNING HANDLER [Syntax check of httpd.conf] *********************************************************************************************************
-</span><span class="hll">changed: [centos83]
-</span>
-<span class="hll">RUNNING HANDLER [Restart or start httpd.service] *****************************************************************************************************
-</span><span class="hll">changed: [centos83]
-</span>
-<span class="hll">RUNNING HANDLER [Reload the firewalld configuration] *************************************************************************************************
-</span><span class="hll">changed: [centos83]
-</span>
-PLAY RECAP *******************************************************************************************************************************************
-centos83                   : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-piyo@vmpc:~/example/handlers$ 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>piyo@vmpc:~/example/handlers$ ansible-playbook -i hosts.yml handlers3.yml 
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>PLAY [Example of handleres usage] ********************************************************************************************************************
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>TASK [Gathering Facts] *******************************************************************************************************************************
+<span class="linenos"> 6</span>ok: [centos83]
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>TASK [Install the latest version of Apache or update to the latest version] **************************************************************************
+<span class="linenos"> 9</span>changed: [centos83]
+<span class="linenos">10</span>
+<span class="linenos">11</span>TASK [Update the configuration file -&gt; Set the host name] ********************************************************************************************
+<span class="linenos">12</span>changed: [centos83]
+<span class="linenos">13</span>
+<span class="hll"><span class="linenos">14</span>RUNNING HANDLER [Syntax check of httpd.conf] *********************************************************************************************************
+</span><span class="hll"><span class="linenos">15</span>changed: [centos83]
+</span><span class="linenos">16</span>
+<span class="hll"><span class="linenos">17</span>RUNNING HANDLER [Restart or start httpd.service] *****************************************************************************************************
+</span><span class="hll"><span class="linenos">18</span>changed: [centos83]
+</span><span class="linenos">19</span>
+<span class="linenos">20</span>TASK [Update the configuration file -&gt; Set the listen port] ******************************************************************************************
+<span class="linenos">21</span>changed: [centos83]
+<span class="linenos">22</span>
+<span class="linenos">23</span>TASK [Open port:8080/tcp] ****************************************************************************************************************************
+<span class="linenos">24</span>changed: [centos83]
+<span class="linenos">25</span>
+<span class="hll"><span class="linenos">26</span>RUNNING HANDLER [Syntax check of httpd.conf] *********************************************************************************************************
+</span><span class="hll"><span class="linenos">27</span>changed: [centos83]
+</span><span class="linenos">28</span>
+<span class="hll"><span class="linenos">29</span>RUNNING HANDLER [Restart or start httpd.service] *****************************************************************************************************
+</span><span class="hll"><span class="linenos">30</span>changed: [centos83]
+</span><span class="linenos">31</span>
+<span class="hll"><span class="linenos">32</span>RUNNING HANDLER [Reload the firewalld configuration] *************************************************************************************************
+</span><span class="hll"><span class="linenos">33</span>changed: [centos83]
+</span><span class="linenos">34</span>
+<span class="linenos">35</span>PLAY RECAP *******************************************************************************************************************************************
+<span class="linenos">36</span>centos83                   : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+<span class="linenos">37</span>
+<span class="linenos">38</span>piyo@vmpc:~/example/handlers$ 
 </pre></div>
-</td></tr></table></div></div>
+</div>
 <p>tasks セクションの途中で実行した 14 - 15 行目と 17 - 18 行目のハンドラーは <strong class="command">ansible.builtin.meta: flush_handlers</strong> を実行した結果です。ここで実行しているハンドラーはタスク [Install the latest version of Apache or update to the latest version] と [Update the configuration file -&gt; Set the host name] の <code class="docutils literal notranslate"><span class="pre">notify</span></code> ディレクティブによるものです。<strong class="command">ansible.builtin.meta: flush_handlers</strong> を実行したあとはハンドラーに関する情報をリセットします。</p>
 <p>tasks セクションのすべてのタスクの実行終了後に実行した 26 - 27 行目、 29 - 30 行目、 32 - 33 行目のハンドラーはタスク [Update the configuration file -&gt; Set the listen port] と  [Open port:8080/tcp] の <code class="docutils literal notranslate"><span class="pre">notify</span></code> ディレクティブによるものです。タスク [Install the latest version of Apache or update to the latest version] と [Update the configuration file -&gt; Set the host name] の <code class="docutils literal notranslate"><span class="pre">notify</span></code> ディレクティブに関連するハンドラーは <strong class="command">ansible.builtin.meta: flush_handlers</strong> で実行済みのため、ここでは関係ありません。</p>
 <p>参考までに <strong class="command">ansible.builtin.meta: flush_handlers</strong> を削除した場合の実行ログです。こちらは tasks セクションのすべてのタスクの実行終了後にハンドラーを実行しています。</p>
@@ -570,10 +521,10 @@ piyo@vmpc:~/example/handlers$
       
     </aside>
   </main>
-</div>
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+    <script src="../../_static/scripts/main.js"></script>
+    </body>
 </html>

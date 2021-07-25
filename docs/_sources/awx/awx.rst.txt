@@ -7,7 +7,12 @@ AWX
    :maxdepth: 2
 
    ./awx-deploy
-   ./awx-user
-   ./awx-inventory
+   ./awx-about
+   ./awx-organizations
+   ./awx-users
+   ./awx-teams
+   ./awx-credentials
+   ./awx-inventories
+   ./awx-projects
+   ./awx-templates
    ./awx-adohoc
-   ./awx-playbook

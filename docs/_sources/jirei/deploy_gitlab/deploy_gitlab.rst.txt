@@ -156,4 +156,4 @@ gitlab にログイン
 
    GitLab の使い方は次の URL をご確認ください。
 
-   `Leaning GitLab (https://learning-gitlab.readthedocs.io/) <https://learning-gitlab.readthedocs.io/>`_
+   `Leaning GitLab CE (https://y-mrok.github.io/gitlab/) <https://y-mrok.github.io/gitlab/>`_
