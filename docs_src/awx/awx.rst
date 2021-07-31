@@ -15,4 +15,5 @@ AWX
    ./awx-inventories
    ./awx-projects
    ./awx-templates
+   ./awx-notifications
    ./awx-adohoc

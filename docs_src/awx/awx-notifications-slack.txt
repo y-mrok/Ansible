@@ -1,0 +1,108 @@
+.. _awx-notifications-slack:
+
+**************************************************
+Slack の設定
+**************************************************
+Slack で Bot User を設定します。
+
+#. `Slack API (https://api.slack.com/) <https://api.slack.com/>`_ のページを開く
+
+   .. image:: img/2021-07-31_17h23_16.png
+      :scale: 65%
+
+#. :guilabel:`Create an app` をクリック
+
+   .. image:: img/2021-07-31_17h23_26.png
+
+#. :guilabel:`From scratch` をクリック
+
+   .. image:: img/2021-07-31_17h23_41.png
+
+   .. note:: 
+
+      下図が表示された場合、 :guilabel:`Create an APP` をクリックすると上図が表示されます。
+
+      .. image:: img/2021-07-31_17h23_52.png
+         :scale: 65%
+
+#. 次の値を入力
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 2, 3
+
+      * - 項目
+        - 入力 / 選択する値
+      * - App Name
+        - アプリケーション名
+      * - Pick a workspace to develop your app in:
+        - プルダウンリストからアプリケーションを追加するワークスペースを選択
+
+   .. image:: img/2021-07-31_17h24_13.png
+
+#. :guilabel:`Create App` をクリック
+
+   .. image:: img/2021-07-31_17h24_24.png
+
+#. :guilabel:`Bots` をクリック
+
+   .. image:: img/2021-07-31_17h24_41.png
+      :scale: 65%
+
+#. :guilabel:`Review Scopes to add` をクリック
+
+   .. image:: img/2021-07-31_17h24_55.png
+      :scale: 65%
+
+#. :guilabel:`Add an OAuth Scope` をクリックして次の 3 つのスコープを選択
+
+   - chat:write
+   - chat:write.public
+   - incoming-webhock
+
+   .. image:: img/2021-07-31_17h25_09.png
+      :scale: 65%
+
+   ↓
+
+   .. image:: img/2021-07-31_17h25_59.png
+      :scale: 65%
+
+#. :guilabel:`Install to Workspace` をクリック
+
+   .. image:: img/2021-07-31_17h26_11.png
+      :scale: 65%
+
+#. :guilabel:`Test APP の東欧先はどちらにしますか？` のプルダウンリストからメッセージの投稿先のチャンネルを選択
+
+   .. image:: img/2021-07-31_17h26_31.png
+      :scale: 65%
+
+#. :guilabel:`許可する` をクリック
+
+   .. image:: img/2021-07-31_17h26_41.png
+      :scale: 65%
+
+#. :guilabel:`copy` をクリック（トークンをクリップボードにコピー）
+
+   .. image:: img/2021-07-31_17h27_32.png
+      :scale: 65%
+
+#. コピーしたトークンをテキストエディターに貼り付け
+
+   .. image:: img/2021-07-31_17h28_34.png
+
+#. Slack で :guilabel:`＋ アプリを追加する` をクリック
+
+   .. image:: img/2021-07-31_17h31_19.png
+      :scale: 65%
+
+#. "Test App" をクリック
+
+   .. image:: img/2021-07-31_17h32_14.png
+      :scale: 65%
+
+#. "Test App" が追加されたことを確認
+
+   .. image:: img/2021-07-31_17h32_32.png
+      :scale: 65%
