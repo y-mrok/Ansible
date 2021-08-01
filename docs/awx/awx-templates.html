@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="アドホックコマンド" href="awx-adohoc.html" /><link rel="prev" title="プロジェクト : Projects" href="awx-projects.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="ジョブ : Jobs" href="awx-jobs.html" /><link rel="prev" title="プロジェクト : Projects" href="awx-projects.html" />
 
     <meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
-        <title>テンプレート : Job Templates - Learning Ansible 2021/07/25 更新 documentation</title>
+        <title>テンプレート : Job Templates - Learning Ansible 2021/08/01 更新 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Learning Ansible 2021/07/25 更新　 documentation</div></a>
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/08/01 更新　 documentation</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
@@ -101,7 +101,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">Learning Ansible 2021/07/25 更新　 documentation</span>
+  <span class="sidebar-brand-text">Learning Ansible 2021/08/01 更新　 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -279,6 +279,8 @@
 <li class="toctree-l2"><a class="reference internal" href="awx-inventories.html">インベントリ : Inventories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="awx-projects.html">プロジェクト : Projects</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">テンプレート : Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-jobs.html">ジョブ : Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-notifications.html">Slack に通知</a></li>
 <li class="toctree-l2"><a class="reference internal" href="awx-adohoc.html">アドホックコマンド</a></li>
 </ul>
 </li>
@@ -404,18 +406,169 @@
 </li>
 </ol>
 </div>
+<div class="section" id="awx-templates-schedule">
+<span id="id3"></span><h2>テンプレートをスケジュール実行<a class="headerlink" href="#awx-templates-schedule" title="Permalink to this headline">¶</a></h2>
+<p>作成したテンプレートにスケジュールを設定することで特定の時間に実行したり、定期的に実行したりします。</p>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-07-31_10h40_49.png" src="../_images/2021-07-31_10h40_49.png"/>
+</li>
+<li><p>スケジュールを設定するテンプレートをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h41_03.png"><img alt="../_images/2021-07-31_10h41_03.png" src="../_images/2021-07-31_10h41_03.png" style="width: 726.7px; height: 364.65000000000003px;"/></a>
+</li>
+<li><p><span class="guilabel">スケジュール</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h41_17.png"><img alt="../_images/2021-07-31_10h41_17.png" src="../_images/2021-07-31_10h41_17.png" style="width: 726.7px; height: 464.75px;"/></a>
+</li>
+<li><p><span class="guilabel">追加</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h41_26.png"><img alt="../_images/2021-07-31_10h41_26.png" src="../_images/2021-07-31_10h41_26.png" style="width: 726.7px; height: 295.75px;"/></a>
+</li>
+<li><p>各項目に値を入力</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>項目名</p></th>
+<th class="head"><p>入力する値</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>名前</p></td>
+<td><p>テンプレートに設定するスケジュールの名前</p></td>
+</tr>
+<tr class="row-odd"><td><p>説明</p></td>
+<td><p>スケジュールの説明</p></td>
+</tr>
+<tr class="row-even"><td><p>開始 date/time</p></td>
+<td><p>スケジュールの開始日時を設定</p></td>
+</tr>
+<tr class="row-odd"><td><p>ローカルタイムゾーン</p></td>
+<td><p>プルダウンリストから <code class="docutils literal notranslate"><span class="pre">Asia/Tokyo</span></code> を選択</p></td>
+</tr>
+<tr class="row-even"><td><p>実行頻度</p></td>
+<td><p>繰り返しの頻度を選択する</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">実行頻度</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>選択肢</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>なし (1回実行)</p></td>
+<td><p>「開始 date/time 」に設定した日時に 1 回だけ実行</p></td>
+</tr>
+<tr class="row-odd"><td><p>分</p></td>
+<td><p>「開始 date/time 」に設定した日時から指定した分ごとに実行</p></td>
+</tr>
+<tr class="row-even"><td><p>時間</p></td>
+<td><p>「開始 date/time 」に設定した日時から指定した時ごとに実行</p></td>
+</tr>
+<tr class="row-odd"><td><p>日</p></td>
+<td><p>「開始 date/time 」に設定した日時から指定した日ごとに実行</p></td>
+</tr>
+<tr class="row-even"><td><p>週</p></td>
+<td><p>「開始 date/time 」に設定した日時から指定した曜日ごとに実行</p></td>
+</tr>
+<tr class="row-odd"><td><p>月</p></td>
+<td><p>「開始 date/time 」に設定した日時から毎月の指定した日や曜日に実行</p></td>
+</tr>
+<tr class="row-even"><td><p>年</p></td>
+<td><p>「開始 date/time 」に設定した日時から指定した日に実行</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>5 分ごとにテンプレートを実行するスケジュールです。</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h42_42.png"><img alt="../_images/2021-07-31_10h42_42.png" src="../_images/2021-07-31_10h42_42.png" style="width: 726.7px; height: 419.90000000000003px;"/></a>
+</li>
+<li><p><span class="guilabel">保存</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h42_53.png"><img alt="../_images/2021-07-31_10h42_53.png" src="../_images/2021-07-31_10h42_53.png" style="width: 726.7px; height: 419.25px;"/></a>
+</li>
+<li><p>設定したスケジュールを確認</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h43_04.png"><img alt="../_images/2021-07-31_10h43_04.png" src="../_images/2021-07-31_10h43_04.png" style="width: 726.7px; height: 497.25px;"/></a>
+</li>
+<li><p><span class="guilabel">スケジュールに戻る</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h43_05.png"><img alt="../_images/2021-07-31_10h43_05.png" src="../_images/2021-07-31_10h43_05.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>登録したスケジュールを確認</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_10h43_23.png"><img alt="../_images/2021-07-31_10h43_23.png" src="../_images/2021-07-31_10h43_23.png" style="width: 726.7px; height: 301.6px;"/></a>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>スケジュールにもとづきテンプレートを実行する前にプロジェクト（上記では <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">project</span></code> ）の同期を実行します。これにより、 GitLab 上に保管しているプレイブックを更新されても、更新後のプレイブックを実行します。</p>
+</div>
+</div>
+<div class="section" id="awx-templates-schedule-off">
+<span id="id4"></span><h2>テンプレートのスケジュールを解除<a class="headerlink" href="#awx-templates-schedule-off" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="awx-templates-schedule-off-temp">
+<span id="id5"></span><h3>一時的な解除<a class="headerlink" href="#awx-templates-schedule-off-temp" title="Permalink to this headline">¶</a></h3>
+<p>スケジュール自体は残しておき、スケジュール実行をオフにします。</p>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-07-31_11h21_54.png" src="../_images/2021-07-31_11h21_54.png"/>
+</li>
+<li><p>スケジュールをオフにするテンプレートをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h22_22.png"><img alt="../_images/2021-07-31_11h22_22.png" src="../_images/2021-07-31_11h22_22.png" style="width: 726.7px; height: 365.3px;"/></a>
+</li>
+<li><p><span class="guilabel">スケジュール</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h22_52.png"><img alt="../_images/2021-07-31_11h22_52.png" src="../_images/2021-07-31_11h22_52.png" style="width: 726.7px; height: 463.45px;"/></a>
+</li>
+<li><p><span class="guilabel">アクション</span> をオフに変更</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h26_56.png"><img alt="../_images/2021-07-31_11h26_56.png" src="../_images/2021-07-31_11h26_56.png" style="width: 726.7px; height: 300.3px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h27_07.png"><img alt="../_images/2021-07-31_11h27_07.png" src="../_images/2021-07-31_11h27_07.png" style="width: 726.7px; height: 299.65000000000003px;"/></a>
+</li>
+</ol>
+</div>
+<div class="section" id="awx-templates-schedule-delete">
+<span id="id6"></span><h3>スケジュールを削除<a class="headerlink" href="#awx-templates-schedule-delete" title="Permalink to this headline">¶</a></h3>
+<p>スケジュールを削除します。</p>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-07-31_11h44_36.png" src="../_images/2021-07-31_11h44_36.png"/>
+</li>
+<li><p>スケジュールを削除するテンプレートをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h45_02.png"><img alt="../_images/2021-07-31_11h45_02.png" src="../_images/2021-07-31_11h45_02.png" style="width: 726.7px; height: 364.0px;"/></a>
+</li>
+<li><p><span class="guilabel">スケジュール</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h45_16.png"><img alt="../_images/2021-07-31_11h45_16.png" src="../_images/2021-07-31_11h45_16.png" style="width: 726.7px; height: 462.8px;"/></a>
+</li>
+<li><p>削除するスケジュールをチェック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h45_52.png"><img alt="../_images/2021-07-31_11h45_52.png" src="../_images/2021-07-31_11h45_52.png" style="width: 726.7px; height: 299.65000000000003px;"/></a>
+</li>
+<li><p><span class="guilabel">削除</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h46_14.png"><img alt="../_images/2021-07-31_11h46_14.png" src="../_images/2021-07-31_11h46_14.png" style="width: 726.7px; height: 299.65000000000003px;"/></a>
+</li>
+<li><p><span class="guilabel">削除</span> をクリック</p>
+<img alt="../_images/2021-07-31_11h46_35.png" src="../_images/2021-07-31_11h46_35.png"/>
+</li>
+<li><p>スケジュールが削除されたことを確認</p>
+<a class="reference internal image-reference" href="../_images/2021-07-31_11h46_46.png"><img alt="../_images/2021-07-31_11h46_46.png" src="../_images/2021-07-31_11h46_46.png" style="width: 726.7px; height: 296.40000000000003px;"/></a>
+</li>
+</ol>
+</div>
+</div>
 </div>
 
       </article>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="awx-adohoc.html">
+          <a class="next-page" href="awx-jobs.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">アドホックコマンド</div>
+                <div class="title">ジョブ : Jobs</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -458,6 +611,12 @@
 <li><a class="reference internal" href="#">テンプレート : Job Templates</a><ul>
 <li><a class="reference internal" href="#awx-templates-create">テンプレートを登録</a></li>
 <li><a class="reference internal" href="#awx-templates-execute">テンプレートを実行</a></li>
+<li><a class="reference internal" href="#awx-templates-schedule">テンプレートをスケジュール実行</a></li>
+<li><a class="reference internal" href="#awx-templates-schedule-off">テンプレートのスケジュールを解除</a><ul>
+<li><a class="reference internal" href="#awx-templates-schedule-off-temp">一時的な解除</a></li>
+<li><a class="reference internal" href="#awx-templates-schedule-delete">スケジュールを削除</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
