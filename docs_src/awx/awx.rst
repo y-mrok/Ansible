@@ -16,6 +16,7 @@ AWX
    ./awx-projects
    ./awx-templates
    ./awx-jobs
-   ./awx-notifications
    ./awx-workflows
+   ./awx-survey
+   ./awx-notifications
    ./awx-adohoc

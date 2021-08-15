@@ -1,0 +1,740 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="author" title="About these documents" href="../about.html" /><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Slack に通知" href="awx-notifications.html" /><link rel="prev" title="ワークフロー" href="awx-workflows.html" />
+
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.08.11.beta42"/>
+        <title>Survey - Learning Ansible 2021/08/15 更新 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=197f00461d56902ea7ca048ec6e6ba026f62c97b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css"></head>
+  <body>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Learning Ansible 2021/08/15 更新　 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Learning Ansible 2021/08/15 更新　 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">このドキュメントについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kihon-gainen/kihon-gainen.html">基本概念</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user-guide/user-guide.html">ユーザーガイド</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/ansible-toha/ansible-toha.html">Ansible とは</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/ansible-no-install.html">Ansible のインストール</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/node-no-yoken.html">ノードの要件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/ansible-no-install/control-node-ni-ansible-wo-install.html">コントロールノードに Ansible をインストール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzokusuru-junbi.html">管理対象ノードに接続する準備</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-setuzoku-surutokini-kouryo-surukoto.html">管理対象ノードに接続するときに考慮すること</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-no-fingerprint.html">管理対象ノードのフィンガープリントを無視するか否か</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/ansible-no-install/managed-node-ni-account-wo-sakusei.html">管理対象ノードにアカウントを作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user-guide/yaml/yaml.html">YAML</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/inventory/inventory.html">インベントリ</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-kihon.html">インベントリの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-group.html">インベントリのグループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hensu-no-wariate.html">変数の割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-no-seiri.html">ホスト変数・グループ変数の整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/ansible-inventory-command.html">ansible-inventory コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/fukusu-no-inventory.html">複数のインベントリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/inventory/inventory-hostname.html">インベントリ内のホスト名</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/adhoc/adhoc.html">アドホックコマンド</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-command.html">ansible コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/linux-commmand-no-jikko.html">アドホックコマンドで Linux コマンドを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/adhoc/ansible-module-no-jikko.html">アドホックコマンドで Ansible のモジュールを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/playbook/playbook.html">プレイブック</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/playbook-no-kosei.html">プレイブックの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/4-tu-no-section.html">4 つのセクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/ansible-playbook-command.html">ansible-playbook コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/playbook/bekitousei.html">冪等性（べきとうせい）</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/hensu/hensu.html">変数</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-syurui.html">変数の種類</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/hensu/play-hensu.html">プレイ変数</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars.html">vars ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-files.html">vars_files ディレクティブ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/hensu/play-hensu-vars-prompt.html">vars_prompt ディレクティブ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/magic-hensu.html">マジック変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/fact-hensu.html">ファクト変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/task-hensu.html">タスク変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/hensu/hensu-no-sansho.html">変数の参照方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/loop/loop.html">loop</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-no-kihon-dousa.html">シーケンスとの組み合わせ（ループの基本動作）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-sequence-mapping.html">シーケンスの中にマッピングをネストとの組み合わせ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-hensu-no-siyo.html">変数の使用</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/loop/loop-controls.html">ループの制御</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-loop-var.html">ループ変数を指定：loop_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-index-var.html">ループの進捗を把握：index_var</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/loop/loop-control-pause.html">ループの実行を指定秒数だけ停止：pause</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/loop/loop-futeikai.html">不定回の繰り返し</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/delegate/delegate.html">実行を委任</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-node.html">委任先に指定するノードの条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-fuka.html">委任できないタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-task.html">タスクの実行を委任</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-control.html">コントロールノードでプレイを実行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/delegate/delegate-any.html">任意のノードでプレイを実行</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/jyoken/jyoken.html">条件 (when)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-hikaku-joken.html">比較条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-ronri-joken.html">論理条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-in.html">in / not in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-is-defined.html">is defined / is not defined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/jyoken/jyoken-loop.html">loop ディレクティブを併用した場合</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/handlers/handlers.html">handlers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-kihondousa.html">基本動作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-fukusu.html">タスクの関連付け</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/handlers/handlers-tochu.html">handlers の実行タイミングの変更</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/block/block.html">block</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-kihon.html">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-rescue.html">エラー処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-always.html">常に実行するタスク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/block/block-sonota.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/role/role.html">ロール</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-directory.html">roles ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/role/role-tukaikata.html">ロールの使い方</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/role/role-import-include.html">ansible.builtin.import_role と ansible.builtin.include_role</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-import-dousa.html">ansible.builtin.import_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-include-dousa.html">ansible.builtin.include_role の動作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-sonota.html">その他</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/role/role-matome.html">まとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/tag/tag.html">タグ</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-task.html">タスクにタグをつける</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-special.html">タスクに設定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-t.html">-t / –tags パラメーターに指定できる特別なタグ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-block.html">block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-play.html">プレイ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-roles.html">import_role / include_role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/tag/tag-tasks.html">import_tasks / include_tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling.html">エラー処理</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-ignore.html">発生したエラーを無視する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-register-hensu.html">レジスター変数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-teigi.html">エラーと判断する条件を定義する</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota.html">その他</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-any_errors_fatal.html">エラー発生時にすべての管理対象ノードの実行を終了する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-max_fail_percentage.html">タスクの実行の失敗を許容する台数を割合で設定する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../user-guide/errorhandling/errorhandling-sonota-changed_when.html">“changed” と判断する条件を定義する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/vault/vault.html">コンテンツの暗号化</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/ansible-vault-command.html">ansible-vault コマンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-file.html">ファイルを暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-string.html">文字列を暗号化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/vault/vault-usage.html">暗号化したファイルを使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/filter/filter.html">フィルター</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-kakikata.html">フィルターの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-default.html">default フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-ternary.html">ternary フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-type_debug.html">type_debug フィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-calculate.html">計算関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-list.html">list 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-cast.html">キャスト関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-hash.html">ハッシュ関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-path.html">PATH 関連のフィルター</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/filter/filter-strftime.html">strftime フィルター</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/plugin/plugin.html">プラグイン</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/plugin/plugin-lookup.html">lookup プラグイン</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../user-guide/lint/lint.html">プレイブックをチェック</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/lint-install.html">ansible-lint をインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user-guide/lint/ansible-lint.html">ansible-lint コマンド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="awx.html">AWX</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="awx-deploy.html">AWX をデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-about.html">AWX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-organizations.html">組織 : Organizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-users.html">ユーザー : Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-teams.html">チーム : Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-credentials.html">認証情報 : Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-inventories.html">インベントリ : Inventories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-projects.html">プロジェクト : Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-templates.html">テンプレート : Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-jobs.html">ジョブ : Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-workflows.html">ワークフロー</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Survey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-notifications.html">Slack に通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="awx-adohoc.html">アドホックコマンド</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../collection-index/collection-index.html">コレクション インデックス</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../collection-index/ansible_builtin/ansible_builtin.html">Ansible.builtin</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/import_tasks/ansible_builtin_import_tasks.html">ansible.builtin.import_tasks - タスクを静的に取り込む</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../collection-index/ansible_builtin/include_tasks/ansible_builtin_include_tasks.html">ansible.builtin.include_tasks - タスクを動的に取り込む</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../jirei/jirei.html">事例</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_zabbix/deploy_zabbix.html">Zabbix サーバーをデプロイ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jirei/deploy_gitlab/deploy_gitlab.html">GitLab サーバーをデプロイ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kankyo/kankyo.html">実習環境の作成手順</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-control.html">コントロールノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-managed.html">管理対象ノードを作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-setuzoku.html">コントロールノードから管理対象ノードに接続する準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-tuika.html">管理対象ノードを追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kankyo/kankyo-inventory.html">追加した管理対象ノードのインベントリ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">参考資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <article role="main">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <div class="section" id="survey">
+<span id="awx-survey"></span><h1>Survey<a class="headerlink" href="#survey" title="Permalink to this headline">¶</a></h1>
+<p>テンプレートの実行前に追加の変数を定義し、その変数に設定する値をキー入力します。</p>
+<div class="section" id="awx-survey-play-and-template">
+<span id="id1"></span><h2>検証に使用するテンプレートとプレイ<a class="headerlink" href="#awx-survey-play-and-template" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="awx-survey-template">
+<span id="id2"></span><h3>テンプレート<a class="headerlink" href="#awx-survey-template" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/2021-08-15_09h12_56.png"><img alt="../_images/2021-08-15_09h12_56.png" src="../_images/2021-08-15_09h12_56.png" style="width: 726.7px; height: 479.05px;"/></a>
+</div>
+<div class="section" id="awx-survey-play">
+<span id="id3"></span><h3>プレイ<a class="headerlink" href="#awx-survey-play" title="Permalink to this headline">¶</a></h3>
+<p>テンプレートの実行時に変数 <code class="docutils literal notranslate"><span class="pre">hostname</span></code> に設定する値を読み込みます。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Checking the operation of "Survey"</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+
+  <span class="nt">tasks</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> 
+      <span class="nt">debug</span><span class="p">:</span>
+        <span class="nt">msg</span><span class="p">:</span> <span class="s">"The</span><span class="nv"> </span><span class="s">ip</span><span class="nv"> </span><span class="s">address</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">hostname</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">ansible_facts['all_ipv4_addresses'][0]</span><span class="nv"> </span><span class="s">}}."</span>
+      <span class="nt">when</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">inventory_hostname == hostname</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="awx-survey-text">
+<span id="id4"></span><h2>テキストを入力<a class="headerlink" href="#awx-survey-text" title="Permalink to this headline">¶</a></h2>
+<p>追加の変数に設定する文字列をキー入力します。</p>
+<div class="section" id="awx-survey-text-define">
+<span id="id5"></span><h3>設定<a class="headerlink" href="#awx-survey-text-define" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-08-15_09h35_04.png" src="../_images/2021-08-15_09h35_04.png"/>
+</li>
+<li><p>Survey を設定するテンプレートをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_09h35_38.png"><img alt="../_images/2021-08-15_09h35_38.png" src="../_images/2021-08-15_09h35_38.png" style="width: 726.7px; height: 430.95px;"/></a>
+</li>
+<li><p><span class="guilabel">Survey</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_09h36_07.png"><img alt="../_images/2021-08-15_09h36_07.png" src="../_images/2021-08-15_09h36_07.png" style="width: 726.7px; height: 479.05px;"/></a>
+</li>
+<li><p><span class="guilabel">追加</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_09h36_31.png"><img alt="../_images/2021-08-15_09h36_31.png" src="../_images/2021-08-15_09h36_31.png" style="width: 726.7px; height: 295.75px;"/></a>
+</li>
+<li><p>各項目に値を入力</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 21%"/>
+<col style="width: 79%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>項目名</p></th>
+<th class="head"><p>入力する値</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>質問</p></td>
+<td><p>変数に値を入力するときに表示する質問</p></td>
+</tr>
+<tr class="row-odd"><td><p>説明</p></td>
+<td><p>質問の説明</p></td>
+</tr>
+<tr class="row-even"><td><p>回答の変数名</p></td>
+<td><p>質問に対する回答の値を設定する変数名</p></td>
+</tr>
+<tr class="row-odd"><td><p>回答タイプ</p></td>
+<td><p>プルダウンリストから <code class="docutils literal notranslate"><span class="pre">テキスト</span></code> を選択</p></td>
+</tr>
+<tr class="row-even"><td><p>必須</p></td>
+<td><p>チェックを付ける</p></td>
+</tr>
+<tr class="row-odd"><td><p>最小長</p></td>
+<td><p>回答の最小の長さ</p></td>
+</tr>
+<tr class="row-even"><td><p>最大長</p></td>
+<td><p>回答の最長の長さ</p></td>
+</tr>
+<tr class="row-odd"><td><p>デフォルトの応答</p></td>
+<td><p>回答のデフォルト値（回答を省略したときに設定される値）</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>「回答の変数名」に他の Servey に使用した変数は使用できません。</p>
+</div>
+<a class="reference internal image-reference" href="../_images/2021-08-15_09h45_43.png"><img alt="../_images/2021-08-15_09h45_43.png" src="../_images/2021-08-15_09h45_43.png" style="width: 726.7px; height: 369.85px;"/></a>
+</li>
+<li><p><span class="guilabel">保存</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_09h46_05.png"><img alt="../_images/2021-08-15_09h46_05.png" src="../_images/2021-08-15_09h46_05.png" style="width: 726.7px; height: 369.85px;"/></a>
+</li>
+<li><p><span class="guilabel">オン</span> に変更（ Survey を有効にする）</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h22_48.png"><img alt="../_images/2021-08-15_10h22_48.png" src="../_images/2021-08-15_10h22_48.png" style="width: 726.7px; height: 255.45000000000002px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h23_04.png"><img alt="../_images/2021-08-15_10h23_04.png" src="../_images/2021-08-15_10h23_04.png" style="width: 726.7px; height: 255.45000000000002px;"/></a>
+</li>
+<li><p><span class="guilabel">テンプレートに戻る</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h23_54.png"><img alt="../_images/2021-08-15_10h23_54.png" src="../_images/2021-08-15_10h23_54.png" style="width: 726.7px; height: 257.40000000000003px;"/></a>
+</li>
+<li><p>設定終了</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h25_02.png"><img alt="../_images/2021-08-15_10h25_02.png" src="../_images/2021-08-15_10h25_02.png" style="width: 726.7px; height: 430.3px;"/></a>
+</li>
+</ol>
+</div>
+<div class="section" id="awx-survey-text-execute">
+<span id="id6"></span><h3>実行<a class="headerlink" href="#awx-survey-text-execute" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-08-15_10h26_25.png" src="../_images/2021-08-15_10h26_25.png"/>
+</li>
+<li><p>実行するテンプレートの右側のロケットマークをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h27_02.png"><img alt="../_images/2021-08-15_10h27_02.png" src="../_images/2021-08-15_10h27_02.png" style="width: 726.7px; height: 429.0px;"/></a>
+</li>
+<li><p>変数（今回は <code class="docutils literal notranslate"><span class="pre">hostname</span></code> ）に設定する値を入力</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h31_51.png"><img alt="../_images/2021-08-15_10h31_51.png" src="../_images/2021-08-15_10h31_51.png" style="width: 726.7px; height: 495.3px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h32_05.png"><img alt="../_images/2021-08-15_10h32_05.png" src="../_images/2021-08-15_10h32_05.png" style="width: 726.7px; height: 495.3px;"/></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>「デフォルトの応答」に設定した値がテキストボックスに表示される</p>
+</div>
+</li>
+<li><p><span class="guilabel">次へ</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h32_22.png"><img alt="../_images/2021-08-15_10h32_22.png" src="../_images/2021-08-15_10h32_22.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>確認画面を表示</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h32_52.png"><img alt="../_images/2021-08-15_10h32_52.png" src="../_images/2021-08-15_10h32_52.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>「プロンプト値」で変数と入力した値を確認</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h33_34.png"><img alt="../_images/2021-08-15_10h33_34.png" src="../_images/2021-08-15_10h33_34.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p><span class="guilabel">起動</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h33_53.png"><img alt="../_images/2021-08-15_10h33_53.png" src="../_images/2021-08-15_10h33_53.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>実行終了</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_10h34_30.png"><img alt="../_images/2021-08-15_10h34_30.png" src="../_images/2021-08-15_10h34_30.png" style="width: 726.7px; height: 537.5500000000001px;"/></a>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="awx-survey-choice">
+<span id="id7"></span><h2>選択肢から入力<a class="headerlink" href="#awx-survey-choice" title="Permalink to this headline">¶</a></h2>
+<p>予め入力する値の候補が存在する場合、それらの候補から選択できます。</p>
+<div class="section" id="awx-survey-choice-define">
+<span id="id8"></span><h3>設定<a class="headerlink" href="#awx-survey-choice-define" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-08-15_18h50_25.png" src="../_images/2021-08-15_18h50_25.png"/>
+</li>
+<li><p>Survey を設定するテンプレートをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h50_47.png"><img alt="../_images/2021-08-15_18h50_47.png" src="../_images/2021-08-15_18h50_47.png" style="width: 726.7px; height: 429.0px;"/></a>
+</li>
+<li><p><span class="guilabel">Survey</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h51_00.png"><img alt="../_images/2021-08-15_18h51_00.png" src="../_images/2021-08-15_18h51_00.png" style="width: 726.7px; height: 479.05px;"/></a>
+</li>
+<li><p><span class="guilabel">追加</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h51_12.png"><img alt="../_images/2021-08-15_18h51_12.png" src="../_images/2021-08-15_18h51_12.png" style="width: 726.7px; height: 295.1px;"/></a>
+</li>
+<li><p>各項目に値を入力</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 75%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>項目名</p></th>
+<th class="head"><p>入力する値</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>質問</p></td>
+<td><p>変数に値を入力するときに表示する質問</p></td>
+</tr>
+<tr class="row-odd"><td><p>説明</p></td>
+<td><p>質問の説明</p></td>
+</tr>
+<tr class="row-even"><td><p>回答の変数名</p></td>
+<td><p>質問に対する回答の値を設定する変数名</p></td>
+</tr>
+<tr class="row-odd"><td><p>回答タイプ</p></td>
+<td><p>プルダウンリストから <code class="docutils literal notranslate"><span class="pre">複数の選択</span> <span class="pre">(単一の選択)</span></code> を選択</p></td>
+</tr>
+<tr class="row-even"><td><p>必須</p></td>
+<td><p>チェックを付ける</p></td>
+</tr>
+<tr class="row-odd"><td><p>複数の選択オプション</p></td>
+<td><p>選択肢の値</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>「回答の変数名」に他の Servey に使用した変数は使用できません。</p>
+</div>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h54_42.png"><img alt="../_images/2021-08-15_18h54_42.png" src="../_images/2021-08-15_18h54_42.png" style="width: 726.7px; height: 482.95px;"/></a>
+</li>
+<li><p>既定値にチェックを付ける</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h55_49.png"><img alt="../_images/2021-08-15_18h55_49.png" src="../_images/2021-08-15_18h55_49.png" style="width: 726.7px; height: 479.05px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h56_02.png"><img alt="../_images/2021-08-15_18h56_02.png" src="../_images/2021-08-15_18h56_02.png" style="width: 726.7px; height: 479.05px;"/></a>
+</li>
+<li><p><span class="guilabel">保存</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h56_26.png"><img alt="../_images/2021-08-15_18h56_26.png" src="../_images/2021-08-15_18h56_26.png" style="width: 726.7px; height: 479.05px;"/></a>
+</li>
+<li><p><span class="guilabel">オン</span> に変更</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h56_39.png"><img alt="../_images/2021-08-15_18h56_39.png" src="../_images/2021-08-15_18h56_39.png" style="width: 726.7px; height: 254.8px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h56_52.png"><img alt="../_images/2021-08-15_18h56_52.png" src="../_images/2021-08-15_18h56_52.png" style="width: 726.7px; height: 255.45000000000002px;"/></a>
+</li>
+<li><p><span class="guilabel">テンプレートに戻る</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h57_08.png"><img alt="../_images/2021-08-15_18h57_08.png" src="../_images/2021-08-15_18h57_08.png" style="width: 726.7px; height: 254.8px;"/></a>
+</li>
+<li><p>設定終了</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h57_25.png"><img alt="../_images/2021-08-15_18h57_25.png" src="../_images/2021-08-15_18h57_25.png" style="width: 726.7px; height: 427.7px;"/></a>
+</li>
+</ol>
+</div>
+<div class="section" id="awx-survey-choice-execute">
+<span id="id9"></span><h3>実行<a class="headerlink" href="#awx-survey-choice-execute" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="guilabel">テンプレート</span> をクリック</p>
+<img alt="../_images/2021-08-15_18h57_41.png" src="../_images/2021-08-15_18h57_41.png"/>
+</li>
+<li><p>実行するテンプレートの右側のロケットマークをクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h57_53.png"><img alt="../_images/2021-08-15_18h57_53.png" src="../_images/2021-08-15_18h57_53.png" style="width: 726.7px; height: 374.40000000000003px;"/></a>
+</li>
+<li><p>変数（今回は <code class="docutils literal notranslate"><span class="pre">hostname</span></code> ）に設定する値をプルダウンリストから選択</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h58_28.png"><img alt="../_images/2021-08-15_18h58_28.png" src="../_images/2021-08-15_18h58_28.png" style="width: 726.7px; height: 495.3px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h58_44.png"><img alt="../_images/2021-08-15_18h58_44.png" src="../_images/2021-08-15_18h58_44.png" style="width: 726.7px; height: 495.3px;"/></a>
+<p>↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h58_57.png"><img alt="../_images/2021-08-15_18h58_57.png" src="../_images/2021-08-15_18h58_57.png" style="width: 726.7px; height: 495.3px;"/></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>既定値に設定した値がプルダウンリストに表示されます</p>
+</div>
+</li>
+<li><p><span class="guilabel">次へ</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h59_38.png"><img alt="../_images/2021-08-15_18h59_38.png" src="../_images/2021-08-15_18h59_38.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>確認画面を表示</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_18h59_50.png"><img alt="../_images/2021-08-15_18h59_50.png" src="../_images/2021-08-15_18h59_50.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>「プロンプト値」で変数と入力した値を確認</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_19h00_02.png"><img alt="../_images/2021-08-15_19h00_02.png" src="../_images/2021-08-15_19h00_02.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p><span class="guilabel">起動</span> をクリック</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_19h00_14.png"><img alt="../_images/2021-08-15_19h00_14.png" src="../_images/2021-08-15_19h00_14.png" style="width: 726.7px; height: 495.3px;"/></a>
+</li>
+<li><p>実行終了</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_19h00_44.png"><img alt="../_images/2021-08-15_19h00_44.png" src="../_images/2021-08-15_19h00_44.png" style="width: 726.7px; height: 542.1px;"/></a>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="awx-survey-multiple">
+<span id="id10"></span><h2>複数の Survey<a class="headerlink" href="#awx-survey-multiple" title="Permalink to this headline">¶</a></h2>
+<p>複数の Survey を設定できます。</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_20h18_18.png"><img alt="../_images/2021-08-15_20h18_18.png" src="../_images/2021-08-15_20h18_18.png" style="width: 726.7px; height: 303.55px;"/></a>
+<p>実行時の画面です。</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_20h18_41.png"><img alt="../_images/2021-08-15_20h18_41.png" src="../_images/2021-08-15_20h18_41.png" style="width: 726.7px; height: 495.3px;"/></a>
+<div class="section" id="awx-survey-multiple-seq">
+<span id="id11"></span><h3>順番の入れ替え<a class="headerlink" href="#awx-survey-multiple-seq" title="Permalink to this headline">¶</a></h3>
+<p>画面左端の ▲ と ▼ で Survey の順番を入れ替えます。</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_20h24_46.png"><img alt="../_images/2021-08-15_20h24_46.png" src="../_images/2021-08-15_20h24_46.png" style="width: 726.7px; height: 302.25px;"/></a>
+<p>　↓</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_20h25_15.png"><img alt="../_images/2021-08-15_20h25_15.png" src="../_images/2021-08-15_20h25_15.png" style="width: 726.7px; height: 302.25px;"/></a>
+<p>入れ替え後の実行時の画面</p>
+<a class="reference internal image-reference" href="../_images/2021-08-15_20h25_47.png"><img alt="../_images/2021-08-15_20h25_47.png" src="../_images/2021-08-15_20h25_47.png" style="width: 726.7px; height: 495.3px;"/></a>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="awx-notifications.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Slack に通知</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="awx-workflows.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ワークフロー</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, y_mrok
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Survey</a><ul>
+<li><a class="reference internal" href="#awx-survey-play-and-template">検証に使用するテンプレートとプレイ</a><ul>
+<li><a class="reference internal" href="#awx-survey-template">テンプレート</a></li>
+<li><a class="reference internal" href="#awx-survey-play">プレイ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#awx-survey-text">テキストを入力</a><ul>
+<li><a class="reference internal" href="#awx-survey-text-define">設定</a></li>
+<li><a class="reference internal" href="#awx-survey-text-execute">実行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#awx-survey-choice">選択肢から入力</a><ul>
+<li><a class="reference internal" href="#awx-survey-choice-define">設定</a></li>
+<li><a class="reference internal" href="#awx-survey-choice-execute">実行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#awx-survey-multiple">複数の Survey</a><ul>
+<li><a class="reference internal" href="#awx-survey-multiple-seq">順番の入れ替え</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    </body>
+</html>

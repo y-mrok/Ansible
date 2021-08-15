@@ -1,0 +1,9 @@
+---
+- name: Checking the operation of "Survey"
+  hosts: all
+
+  tasks:
+    - name: 
+      debug:
+        msg: "The ip address of {{ hostname }} is {{ ansible_facts['all_ipv4_addresses'][0] }}."
+      when: inventory_hostname == hostname
